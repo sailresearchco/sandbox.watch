@@ -614,6 +614,360 @@
         "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
       }
     },
+    "aws-lambda-microvms": {
+      "created_at": "2026-07-20T19:20:37.494415Z",
+      "frequency": "1d",
+      "last_run_at": "2026-07-20T19:20:37.494415Z",
+      "metadata": {
+        "site": "sandboxwatch",
+        "slug": "aws-lambda-microvms"
+      },
+      "monitor_id": "monitor_c1073135a1e947d2983a3cc5c7237438",
+      "output": {
+        "latest_snapshot": {
+          "basis": [
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "You package your application code and a Dockerfile into a zip archive and upload it to Amazon S3"
+                  ],
+                  "title": "AWS Lambda MicroVMs",
+                  "url": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-microvms-guide.html"
+                }
+              ],
+              "confidence": "high",
+              "field": "docker",
+              "reasoning": "The AWS Lambda MicroVMs documentation indicates users supply a Dockerfile along with their application code, and Lambda executes it. This means Docker containers run inside the sandbox."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Python Example \u2013 Running a MicroVM and connecting with boto3"
+                  ],
+                  "title": "Running and using MicroVMs - AWS Lambda",
+                  "url": "https://docs.aws.amazon.com/lambda/latest/dg/microvms-launching.html"
+                }
+              ],
+              "confidence": "high",
+              "field": "sdks",
+              "reasoning": "The official docs page 'Running and using MicroVMs' provides SDK examples in Python (boto3) and Node.js (JavaScript/TypeScript). These are the officially documented SDK languages."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Lambda MicroVMs",
+                  "url": "https://aws.amazon.com/lambda/lambda-microvms/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Announcing Lambda MicroVMs: serverless compute ...",
+                  "url": "https://aws.amazon.com/blogs/compute/announcing-lambda-microvms-serverless-compute-environments-with-vm-level-isolation-and-near-instant-startup/"
+                }
+              ],
+              "confidence": "medium",
+              "field": "cold_start",
+              "reasoning": "AWS documentation describes startup as 'near-instant' and the blog states 'seconds'. A third-party source mentions ~125ms but AWS docs do not publish a specific millisecond figure. Reporting what docs actually say."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Lambda MicroVMs are started from snapshots of pre-initialized memory and disk state."
+                  ],
+                  "title": "Announcing Lambda MicroVMs: serverless compute ...",
+                  "url": "https://aws.amazon.com/blogs/compute/announcing-lambda-microvms-serverless-compute-environments-with-vm-level-isolation-and-near-instant-startup/"
+                },
+                {
+                  "excerpts": [
+                    "retains full state for up to 8 hours"
+                  ],
+                  "title": "Lambda MicroVMs",
+                  "url": "https://aws.amazon.com/lambda/lambda-microvms/"
+                }
+              ],
+              "confidence": "high",
+              "field": "memory_snapshots",
+              "reasoning": "AWS docs state that Lambda MicroVMs are started from snapshots of pre-initialized memory and disk state, and that state is retained for up to 8 hours across suspend/resume cycles. This means RAM state survives pause/resume."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Lambda MicroVMs meets the needs of both workloads: each user gets an isolated compute environment that retains full state for up to 8 hours"
+                  ],
+                  "title": "Lambda MicroVMs",
+                  "url": "https://aws.amazon.com/lambda/lambda-microvms/"
+                }
+              ],
+              "confidence": "high",
+              "field": "summary",
+              "reasoning": "Based on official documentation, Lambda MicroVMs is a new Lambda primitive that runs each session's code in its own Firecracker-isolated microVM with lifecycle control and state retention up to 8 hours."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "retains full state for up to 8 hours"
+                  ],
+                  "title": "Lambda MicroVMs",
+                  "url": "https://aws.amazon.com/lambda/lambda-microvms/"
+                }
+              ],
+              "confidence": "medium",
+              "field": "max_runtime",
+              "reasoning": "AWS documentation states that state is retained for up to 8 hours (28,800 seconds). This is described as a 'state-retention window' which functions as the maximum runtime."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Lambda MicroVMs are priced per instance-second."
+                  ],
+                  "title": "AWS Lambda Pricing",
+                  "url": "https://aws.amazon.com/lambda/pricing/"
+                }
+              ],
+              "confidence": "high",
+              "field": "free_while_idle",
+              "reasoning": "The pricing model charges per-second of compute usage. When a MicroVM is suspended, no compute is being used, so there are no compute charges. However, snapshot storage charges continue to accrue."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "suspends when idle"
+                  ],
+                  "title": "Lambda MicroVMs",
+                  "url": "https://aws.amazon.com/lambda/lambda-microvms/"
+                }
+              ],
+              "confidence": "high",
+              "field": "wake_on_request",
+              "reasoning": "AWS documentation states 'When traffic arrives, they are resumed', indicating automatic wake on inbound traffic/requests."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Lambda MicroVMs are priced per instance-second."
+                  ],
+                  "title": "AWS Lambda Pricing",
+                  "url": "https://aws.amazon.com/lambda/pricing/"
+                }
+              ],
+              "confidence": "high",
+              "field": "pricing_model",
+              "reasoning": "Based on the pricing page, Lambda MicroVMs are priced per instance-second of compute (baseline + peak usage), plus separate charges for snapshot reads, writes, storage, and data transfer."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Lambda MicroVMs",
+                  "url": "https://aws.amazon.com/lambda/lambda-microvms/"
+                }
+              ],
+              "confidence": "medium",
+              "field": "gpu",
+              "reasoning": "No GPU instances or GPU support are mentioned in any AWS documentation for Lambda MicroVMs."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Lambda MicroVMs are priced per instance-second."
+                  ],
+                  "title": "AWS Lambda Pricing",
+                  "url": "https://aws.amazon.com/lambda/pricing/"
+                },
+                {
+                  "excerpts": [
+                    "Lambda MicroVMs charges $0.0000276944/vCPU-second and $0.0000036667/GB-second (ARM/Graviton, US East)."
+                  ],
+                  "title": "AWS Lambda MicroVMs vs Northflank sandbox pricing",
+                  "url": "https://northflank.com/blog/aws-lambda-microvms-vs-northflank-pricing"
+                }
+              ],
+              "confidence": "medium",
+              "field": "price_headline",
+              "reasoning": "From the Lambda pricing page and third-party analysis: ARM/Graviton pricing for Lambda MicroVMs is $0.0000276944 per vCPU-second and $0.0000036667 per GB-second (US East). Snapshot operations: $0.00155/GB read, $0.0038/GB write, $0.08/GB-month storage."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Lambda MicroVMs",
+                  "url": "https://aws.amazon.com/lambda/lambda-microvms/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Announcing Lambda MicroVMs: serverless compute ...",
+                  "url": "https://aws.amazon.com/blogs/compute/announcing-lambda-microvms-serverless-compute-environments-with-vm-level-isolation-and-near-instant-startup/"
+                }
+              ],
+              "confidence": "high",
+              "field": "isolation",
+              "reasoning": "AWS explicitly states Lambda MicroVMs use Firecracker virtualization for isolation."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Lambda MicroVMs are priced per instance-second."
+                  ],
+                  "title": "AWS Lambda Pricing",
+                  "url": "https://aws.amazon.com/lambda/pricing/"
+                }
+              ],
+              "confidence": "medium",
+              "field": "notes",
+              "reasoning": "Two important caveats: (1) No free tier applies to Lambda MicroVMs \u2014 the standard AWS Lambda free tier does not cover this product. (2) Suspended MicroVMs continue to incur snapshot storage charges even while compute charges are paused."
+            }
+          ],
+          "content": {
+            "cold_start": "Near-instant (AWS docs describe as 'seconds'; no specific ms figure published)",
+            "docker": true,
+            "free_while_idle": true,
+            "gpu": false,
+            "isolation": "Firecracker microVM",
+            "max_runtime": "8 h (28,800 s state-retention window)",
+            "memory_snapshots": true,
+            "notes": "No free tier applies to Lambda MicroVMs (the standard Lambda free tier does not cover this product), and suspended MicroVMs continue to incur snapshot storage charges while compute charges are paused.",
+            "price_headline": "$0.0000276944 per vCPU-second + $0.0000036667 per GB-second (ARM/Graviton, US East); snapshot read $0.00155/GB, write $0.0038/GB, storage $0.08/GB-month",
+            "pricing_model": "Per-second compute (baseline + peak) plus snapshot operations and storage",
+            "sdks": [
+              "Python",
+              "Node.js"
+            ],
+            "summary": "AWS Lambda MicroVMs is a Lambda primitive that runs each user's code inside its own Firecracker microVM with VM-level isolation. Developers package their application with a Dockerfile, upload to S3, and AWS builds a snapshot that can be launched, suspended, resumed, or terminated on demand. It is designed for multi-tenant workloads \u2014 AI agents, code playgrounds, and secure code execution products \u2014 that need a dedicated isolated environment per end user or session, with state preserved for up to 8 hours.",
+            "wake_on_request": true
+          },
+          "type": "json"
+        }
+      },
+      "processor": "lite",
+      "settings": {
+        "output_schema": {
+          "json_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "cold_start": {
+                "description": "Typical time from create or resume to running. Example: '~150 ms'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "docker": {
+                "description": "True if Docker containers can run inside the sandbox.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "free_while_idle": {
+                "description": "True if a stopped, paused, or sleeping sandbox costs nothing.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "gpu": {
+                "description": "GPU instances available.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "isolation": {
+                "description": "Isolation technology. Example: 'Firecracker microVM'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "max_runtime": {
+                "description": "Longest a sandbox may run. Example: '24 h' or 'No fixed limit'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "memory_snapshots": {
+                "description": "True if RAM state survives a pause/resume cycle, not just disk.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "notes": {
+                "description": "One factual caveat worth knowing, or null.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "price_headline": {
+                "description": "The headline compute price. Example: '$0.05 per vCPU-hour'.",
+                "type": "string"
+              },
+              "pricing_model": {
+                "description": "How billing works, in one short phrase. Example: 'Per-second, billed on reserved vCPU and RAM'.",
+                "type": "string"
+              },
+              "sdks": {
+                "description": "Official SDK languages, for example ['Python', 'TypeScript'].",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "summary": {
+                "description": "Two or three plain sentences on what the product is and who uses it. No marketing language.",
+                "type": "string"
+              },
+              "wake_on_request": {
+                "description": "True if a stopped sandbox wakes automatically on inbound traffic.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "sdks",
+              "docker",
+              "memory_snapshots",
+              "cold_start",
+              "summary",
+              "pricing_model",
+              "free_while_idle",
+              "wake_on_request",
+              "max_runtime",
+              "gpu",
+              "isolation",
+              "price_headline",
+              "notes"
+            ],
+            "type": "object"
+          },
+          "type": "json"
+        },
+        "query": "Research the cloud sandbox product AWS Lambda MicroVMs (https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
+        "task_run_id": "trun_24f44f01c78c45c8b6c1cb7ff9cf37f0"
+      },
+      "status": "active",
+      "type": "snapshot",
+      "webhook": {
+        "event_types": [
+          "monitor.event.detected"
+        ],
+        "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
+      }
+    },
     "beam": {
       "created_at": "2026-07-20T18:23:53.901133Z",
       "frequency": "1d",
@@ -5714,6 +6068,860 @@
         "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
       }
     },
+    "langsmith-sandboxes": {
+      "created_at": "2026-07-20T19:20:37.003433Z",
+      "frequency": "1d",
+      "last_run_at": "2026-07-20T19:20:37.003433Z",
+      "metadata": {
+        "site": "sandboxwatch",
+        "slug": "langsmith-sandboxes"
+      },
+      "monitor_id": "monitor_769a134fee414446839ce060f8e1e5c8",
+      "output": {
+        "latest_snapshot": {
+          "basis": [
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "LangSmith Sandboxes | Secure Runtime for Agent Code",
+                  "url": "https://www.langchain.com/langsmith/sandboxes"
+                }
+              ],
+              "confidence": "high",
+              "field": "docker",
+              "reasoning": "The product page for LangSmith Sandboxes explicitly states that agents can run Docker inside the sandbox, as confirmed in the research plan."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Sandbox SDK usage - Docs by LangChain",
+                  "url": "https://docs.langchain.com/langsmith/sandbox-sdk"
+                },
+                {
+                  "excerpts": [
+                    "you can spin up a sandbox in a single line of code with the LangSmith SDK",
+                    "API key, pull in the SDK"
+                  ],
+                  "title": "Introducing LangSmith Sandboxes: Secure Code ...",
+                  "url": "https://www.langchain.com/blog/introducing-langsmith-sandboxes-secure-code-execution-for-agents"
+                }
+              ],
+              "confidence": "high",
+              "field": "sdks",
+              "reasoning": "The research plan and docs confirm that LangSmith Sandboxes are accessed via the LangSmith SDK, available in Python and TypeScript."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "LangSmith Sandboxes | Secure Runtime for Agent Code",
+                  "url": "https://www.langchain.com/langsmith/sandboxes"
+                }
+              ],
+              "confidence": "medium",
+              "field": "cold_start",
+              "reasoning": "The research plan states p50 cold start is under 0.98 seconds with prewarming, as stated on the product page."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Sandbox snapshots - Docs by LangChain",
+                  "url": "https://docs.langchain.com/langsmith/sandbox-snapshots"
+                }
+              ],
+              "confidence": "medium",
+              "field": "memory_snapshots",
+              "reasoning": "The research plan confirms that snapshots docs explicitly state in-memory state is not carried over. Snapshots preserve filesystem state only."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Use LangSmith managed sandboxes to safely execute code and interact with the filesystem in isolated environments"
+                  ],
+                  "title": "LangSmith Sandboxes - Docs by LangChain",
+                  "url": "https://docs.langchain.com/langsmith/sandboxes"
+                },
+                {
+                  "excerpts": [
+                    "Each sandbox runs as a hardware-virtualized microVM, fully kernel-isolated"
+                  ],
+                  "title": "LangSmith Sandboxes are Generally Available",
+                  "url": "https://www.langchain.com/blog/langsmith-sandboxes-generally-available"
+                }
+              ],
+              "confidence": "high",
+              "field": "summary",
+              "reasoning": "Based on the research plan and documentation, LangSmith Sandboxes are managed isolated compute environments for running agent-generated code."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Default 600 (10 minutes) when omitted"
+                  ],
+                  "title": "Sandbox SDK usage - Docs by LangChain",
+                  "url": "https://docs.langchain.com/langsmith/sandbox-sdk"
+                }
+              ],
+              "confidence": "medium",
+              "field": "max_runtime",
+              "reasoning": "The research plan states there is no documented hard cap on runtime. idle_ttl_seconds (default 600s) auto-stops after inactivity, and delete_after_stop_seconds handles cleanup after stop."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "LangSmith Sandboxes are Generally Available",
+                  "url": "https://www.langchain.com/blog/langsmith-sandboxes-generally-available"
+                }
+              ],
+              "confidence": "high",
+              "field": "free_while_idle",
+              "reasoning": "The GA blog post confirms that idle sandboxes pause automatically and incur no charges."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "LangSmith Sandboxes - Docs by LangChain",
+                  "url": "https://docs.langchain.com/langsmith/sandboxes"
+                }
+              ],
+              "confidence": "medium",
+              "field": "wake_on_request",
+              "reasoning": "The research plan indicates no documented auto-resume capability. Sandboxes become stopped after idle TTL expires."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "All rates billed per second",
+                    "1 LCU = $1.50"
+                  ],
+                  "title": "LangSmith Plans and Pricing",
+                  "url": "https://www.langchain.com/pricing"
+                }
+              ],
+              "confidence": "high",
+              "field": "pricing_model",
+              "reasoning": "Based on the research plan, billing is per-second based on vCPU, memory, and storage usage, measured in LCU and LSU units."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "LangSmith Plans and Pricing",
+                  "url": "https://www.langchain.com/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "LangSmith Sandboxes are Generally Available",
+                  "url": "https://www.langchain.com/blog/langsmith-sandboxes-generally-available"
+                },
+                {
+                  "excerpts": [],
+                  "title": "LangSmith Sandboxes | Secure Runtime for Agent Code",
+                  "url": "https://www.langchain.com/langsmith/sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "LangChain Pricing 2026: Cost & Top Competitors",
+                  "url": "https://checkthat.ai/brands/langchain/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "LangSmith reviews, pricing, and alternatives (December ...",
+                  "url": "https://www.openlayer.com/blog/post/langsmith-reviews-pricing-alternatives"
+                },
+                {
+                  "excerpts": [],
+                  "title": "LangSmith Sandboxes - Docs by LangChain",
+                  "url": "https://docs.langchain.com/langsmith/sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "LangSmith Sandboxes alternatives for secure AI code ...",
+                  "url": "https://northflank.com/blog/langsmith-sandboxes-alternatives"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introducing LangSmith Sandboxes: Secure Code ...",
+                  "url": "https://www.langchain.com/blog/introducing-langsmith-sandboxes-secure-code-execution-for-agents"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandbox SDK usage - Docs by LangChain",
+                  "url": "https://docs.langchain.com/langsmith/sandbox-sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "LangSmith Deployment max execution time",
+                  "url": "https://forum.langchain.com/t/langsmith-deployment-max-execution-time/2112"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Session Timeout Configuration for LangSmith Self-Hosted",
+                  "url": "https://support.langchain.com/articles/9515017706-session-timeout-configuration-for-langsmith-self-hosted"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fix Cold Start Latency in AI Sandboxes: Techniques",
+                  "url": "https://blaxel.ai/blog/how-to-fix-cold-start-latency-for-ai-agents"
+                },
+                {
+                  "excerpts": [],
+                  "title": "What Is Cold Start Latency? FutureAGI Guide (2026)",
+                  "url": "https://futureagi.com/glossary/cold-start-latency/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandbox snapshots - Docs by LangChain",
+                  "url": "https://docs.langchain.com/langsmith/sandbox-snapshots"
+                },
+                {
+                  "excerpts": [],
+                  "title": "SnapshotResponse | langsmith",
+                  "url": "https://reference.langchain.com/javascript/langsmith/_openapi_client/resources/Sandboxes/SnapshotResponse"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Snapshots | Modal Docs",
+                  "url": "https://modal.com/docs/guide/sandbox-snapshots"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Create and Restore Snapshots | NVIDIA NemoClaw",
+                  "url": "https://docs.nvidia.com/nemoclaw/user-guide/deepagents/manage-sandboxes/state-and-backups/create-and-restore-snapshots"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Auto-resume on request - Sandbox",
+                  "url": "https://e2b.dev/docs/sandbox/auto-resume"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Secure Code Execution for AI Agents with LangSmith ...",
+                  "url": "https://explore.n1n.ai/blog/secure-code-execution-langsmith-sandboxes-2026-03-18"
+                },
+                {
+                  "excerpts": [],
+                  "title": "SnapshotResponse",
+                  "url": "https://reference.langchain.com/python/langsmith/_openapi_client/resources/Sandboxes/SnapshotResponse"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CaptureSnapshot | langsmith | LangChain Reference",
+                  "url": "https://reference.langchain.com/python/langsmith/sandbox/CaptureSnapshot"
+                },
+                {
+                  "excerpts": [],
+                  "title": "create_sandbox",
+                  "url": "https://reference.langchain.com/python/langsmith/sandbox/client/create_sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "capture_snapshot",
+                  "url": "https://reference.langchain.com/python/langsmith/sandbox/Sandbox/capture_snapshot"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Issue: Memory Leak #2097 - langchain-ai/langsmith-sdk",
+                  "url": "https://github.com/langchain-ai/langsmith-sdk/issues/2097"
+                }
+              ],
+              "confidence": "medium",
+              "field": "gpu",
+              "reasoning": "The research plan confirms GPU support is not documented anywhere."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "1 LCU = $1.50"
+                  ],
+                  "title": "LangSmith Plans and Pricing",
+                  "url": "https://www.langchain.com/pricing"
+                },
+                {
+                  "excerpts": [
+                    "CPU: $0.0576/vCPU-hr, $0.0185/GiB-hr memory, and $0.000123/GiB-hr storage"
+                  ],
+                  "title": "LangChain Pricing 2026: Cost & Top Competitors",
+                  "url": "https://checkthat.ai/brands/langchain/pricing"
+                }
+              ],
+              "confidence": "high",
+              "field": "price_headline",
+              "reasoning": "Based on the research plan and pricing information: $0.0576 per vCPU-hour, with 1 LCU = $1.50 (so 0.0384 LCU per vCPU-hour)."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Each sandbox runs as a hardware-virtualized microVM, fully kernel-isolated"
+                  ],
+                  "title": "LangSmith Sandboxes are Generally Available",
+                  "url": "https://www.langchain.com/blog/langsmith-sandboxes-generally-available"
+                }
+              ],
+              "confidence": "high",
+              "field": "isolation",
+              "reasoning": "The research plan and GA blog post confirm hardware-virtualized microVM with kernel isolation."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "1 LCU = $1.50",
+                    "Limited to 10 Sandboxes"
+                  ],
+                  "title": "LangSmith Plans and Pricing",
+                  "url": "https://www.langchain.com/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandbox snapshots - Docs by LangChain",
+                  "url": "https://docs.langchain.com/langsmith/sandbox-snapshots"
+                }
+              ],
+              "confidence": "high",
+              "field": "notes",
+              "reasoning": "The research plan highlights important caveats: pricing uses LCU/LSU units, and snapshots only preserve filesystem state."
+            }
+          ],
+          "content": {
+            "cold_start": "~980 ms (p50 < 0.98s with prewarming)",
+            "docker": true,
+            "free_while_idle": true,
+            "gpu": false,
+            "isolation": "Hardware-virtualized microVM (kernel-isolated)",
+            "max_runtime": "No documented hard limit. idle_ttl_seconds (default 600s) auto-stops after inactivity; delete_after_stop_seconds deletes after stop. Setting idle_ttl_seconds=0 disables the idle stop.",
+            "memory_snapshots": false,
+            "notes": "Pricing is quoted in LCU (LangSmith Compute Units) and LSU (LangSmith Storage Units), not direct USD; 1 LCU = $1.50, 1 LSU = $1.00. Snapshots preserve filesystem state only\u2014in-memory state is not carried over. Developer plan includes 5 LCU + 1 LSU of sandbox usage free per month, capped at 10 concurrent sandboxes.",
+            "price_headline": "$0.0576 per vCPU-hour",
+            "pricing_model": "Per-second billing on vCPU-hours, memory GiB-hours, and storage GiB-hours (metered in LCU/LSU units)",
+            "sdks": [
+              "Python",
+              "TypeScript"
+            ],
+            "summary": "LangSmith Sandboxes are managed, ephemeral compute environments based on hardware-virtualized microVMs for executing code generated by AI agents. They run on LangChain's cloud infrastructure (GCP and AWS) and are accessed via the LangSmith SDK in Python or TypeScript. Typical use cases include providing agents with a sandboxed filesystem and runtime, executing untrusted code, building Docker-based snapshots, and forking sandbox instances for parallel agent workflows.",
+            "wake_on_request": false
+          },
+          "type": "json"
+        }
+      },
+      "processor": "lite",
+      "settings": {
+        "output_schema": {
+          "json_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "cold_start": {
+                "description": "Typical time from create or resume to running. Example: '~150 ms'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "docker": {
+                "description": "True if Docker containers can run inside the sandbox.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "free_while_idle": {
+                "description": "True if a stopped, paused, or sleeping sandbox costs nothing.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "gpu": {
+                "description": "GPU instances available.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "isolation": {
+                "description": "Isolation technology. Example: 'Firecracker microVM'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "max_runtime": {
+                "description": "Longest a sandbox may run. Example: '24 h' or 'No fixed limit'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "memory_snapshots": {
+                "description": "True if RAM state survives a pause/resume cycle, not just disk.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "notes": {
+                "description": "One factual caveat worth knowing, or null.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "price_headline": {
+                "description": "The headline compute price. Example: '$0.05 per vCPU-hour'.",
+                "type": "string"
+              },
+              "pricing_model": {
+                "description": "How billing works, in one short phrase. Example: 'Per-second, billed on reserved vCPU and RAM'.",
+                "type": "string"
+              },
+              "sdks": {
+                "description": "Official SDK languages, for example ['Python', 'TypeScript'].",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "summary": {
+                "description": "Two or three plain sentences on what the product is and who uses it. No marketing language.",
+                "type": "string"
+              },
+              "wake_on_request": {
+                "description": "True if a stopped sandbox wakes automatically on inbound traffic.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "sdks",
+              "docker",
+              "memory_snapshots",
+              "cold_start",
+              "summary",
+              "pricing_model",
+              "free_while_idle",
+              "wake_on_request",
+              "max_runtime",
+              "gpu",
+              "isolation",
+              "price_headline",
+              "notes"
+            ],
+            "type": "object"
+          },
+          "type": "json"
+        },
+        "query": "Research the cloud sandbox product LangSmith Sandboxes (https://www.langchain.com/langsmith/sandboxes). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
+        "task_run_id": "trun_24f44f01c78c45c89889f10a41671cbe"
+      },
+      "status": "active",
+      "type": "snapshot",
+      "webhook": {
+        "event_types": [
+          "monitor.event.detected"
+        ],
+        "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
+      }
+    },
+    "microsoft-azure": {
+      "created_at": "2026-07-20T19:20:37.699115Z",
+      "frequency": "1d",
+      "last_run_at": "2026-07-20T19:20:37.699115Z",
+      "metadata": {
+        "site": "sandboxwatch",
+        "slug": "microsoft-azure"
+      },
+      "monitor_id": "monitor_9954333e14ee4e8b9ec707f8849de98c",
+      "output": {
+        "latest_snapshot": {
+          "basis": [
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Each sandbox runs in its own hardware-isolated microVM boundary, supports standard OCI container images, and starts in sub-second time."
+                  ],
+                  "title": "What's new in Azure Container Apps at Build'26",
+                  "url": "https://techcommunity.microsoft.com/blog/appsonazureblog/whats-new-in-azure-container-apps-at-build26/4524184"
+                },
+                {
+                  "excerpts": [
+                    "Bring any container image as a sandbox root filesystem."
+                  ],
+                  "title": "Sandboxes",
+                  "url": "https://sandboxes.azure.com/"
+                },
+                {
+                  "excerpts": [
+                    "You can create and manage sandboxes in the Sandboxes portal or programmatically by using Azure Container Apps CLI or SDK."
+                  ],
+                  "title": "Azure Container Apps Sandboxes overview (preview)",
+                  "url": "https://learn.microsoft.com/en-us/azure/container-apps/sandboxes-overview"
+                }
+              ],
+              "confidence": "high",
+              "field": "docker",
+              "reasoning": "The official documentation and blog posts confirm that Azure Container Apps Sandboxes support OCI container images. The Microsoft tech community blog states: 'Each sandbox runs in its own hardware-isolated microVM boundary, supports standard OCI container images.' This confirms Docker/OCI container support.\n\n[1] https://learn.microsoft.com/en-us/azure/container-apps/sandboxes-overview\n[2] https://sandboxes.azure.com/\n[3] https://techcommunity.microsoft.com/blog/appsonazureblog/whats-new-in-azure-container-apps-at-build26/4524184"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "You can create and manage sandboxes in the Sandboxes portal or programmatically by using Azure Container Apps CLI or SDK."
+                  ],
+                  "title": "Azure Container Apps Sandboxes overview (preview)",
+                  "url": "https://learn.microsoft.com/en-us/azure/container-apps/sandboxes-overview"
+                },
+                {
+                  "excerpts": [
+                    "Official samples for ACA Sandboxes."
+                  ],
+                  "title": "GitHub - Azure-Samples/azure-container-apps-sandboxes ...",
+                  "url": "https://github.com/Azure-Samples/azure-container-apps-sandboxes"
+                }
+              ],
+              "confidence": "high",
+              "field": "sdks",
+              "reasoning": "The official documentation states sandboxes can be managed 'programmatically by using Azure Container Apps CLI or SDK.' The samples repository and documentation confirm Python and .NET SDKs, plus the Azure CLI. TypeScript/Node SDKs were mentioned as being in community preview only.\n\n[1] https://learn.microsoft.com/en-us/azure/container-apps/sandboxes-overview\n[4] https://github.com/Azure-Samples/azure-container-apps-sandboxes"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Each sandbox runs in its own hardware-isolated microVM boundary, supports standard OCI container images, and starts in sub-second time."
+                  ],
+                  "title": "What's new in Azure Container Apps at Build'26",
+                  "url": "https://techcommunity.microsoft.com/blog/appsonazureblog/whats-new-in-azure-container-apps-at-build26/4524184"
+                }
+              ],
+              "confidence": "medium",
+              "field": "cold_start",
+              "reasoning": "The Build'26 blog post explicitly states sandboxes 'starts in sub-second time.' The research plan also confirms 'Sub-second startup' as the documented cold start time.\n\n[3] https://techcommunity.microsoft.com/blog/appsonazureblog/whats-new-in-azure-container-apps-at-build26/4524184"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Idle policy: aca sandbox lifecycle set \u2026 <seconds> (default 300s = 5 min). State that suspended sandboxes"
+                  ],
+                  "title": "azure-container-apps - plugin - skills - aca-sandboxes",
+                  "url": "https://github.com/microsoft/azure-container-apps/blob/main/plugin/skills/aca-sandboxes/SKILL.md"
+                },
+                {
+                  "excerpts": [
+                    "Sandboxes extra special with its hardware-isolated microVMs instead of a managed runtime sandbox, preserves full memory and disk state."
+                  ],
+                  "title": "Azure Container Apps Is Rethinking Serverless. Time for ...",
+                  "url": "https://www.cloudandaisummit.com/content/sessiondetail/1271635"
+                }
+              ],
+              "confidence": "high",
+              "field": "memory_snapshots",
+              "reasoning": "The Azure-Samples repo and cloud summit session confirm sandboxes preserve 'full memory and disk state' when suspended. The research plan explicitly confirms 'memory mode (full snapshot)' preserves RAM + disk. The GitHub skill file states 'suspended sandboxes' preserve state.\n\n[4] https://github.com/Azure-Samples/azure-container-apps-sandboxes\n[14] https://github.com/microsoft/azure-container-apps/blob/main/plugin/skills/aca-sandboxes/SKILL.md\n[16] https://www.cloudandaisummit.com/content/sessiondetail/1271635"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Jun 2, 2026 \u2014 You can create and manage sandboxes in the Sandboxes portal or programmatically by using Azure Container Apps CLI or SDK."
+                  ],
+                  "title": "Azure Container Apps Sandboxes overview (preview)",
+                  "url": "https://learn.microsoft.com/en-us/azure/container-apps/sandboxes-overview"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introducing Azure Container Apps Sandboxes",
+                  "url": "https://techcommunity.microsoft.com/blog/appsonazureblog/introducing-azure-container-apps-sandboxes-secure-infrastructure-for-agentic-wor/4524131"
+                },
+                {
+                  "excerpts": [
+                    "Each sandbox runs in its own hardware-isolated microVM boundary, supports standard OCI container images, and starts in sub-second time."
+                  ],
+                  "title": "What's new in Azure Container Apps at Build'26",
+                  "url": "https://techcommunity.microsoft.com/blog/appsonazureblog/whats-new-in-azure-container-apps-at-build26/4524184"
+                }
+              ],
+              "confidence": "high",
+              "field": "summary",
+              "reasoning": "Based on official Microsoft sources, Azure Container Apps Sandboxes is a feature of Azure Container Apps (public preview as of June 2026) that provides isolated execution environments for running untrusted or AI-generated code. Each sandbox runs in a hardware-isolated microVM, supports OCI container images, starts in sub-second time, and can be suspended/resumed while preserving full memory and disk state. It targets AI agent workloads, code interpreters, and ephemeral development environments.\n\n[1] https://learn.microsoft.com/en-us/azure/container-apps/sandboxes-overview\n[3] https://techcommunity.microsoft.com/blog/appsonazureblog/whats-new-in-azure-container-apps-at-build26/4524184\n[6] https://techcommunity.microsoft.com/blog/appsonazureblog/introducing-azure-container-apps-sandboxes-secure-infrastructure-for-agentic-wor/4524131"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Idle policy: aca sandbox lifecycle set \u2026 <seconds> (default 300s = 5 min)."
+                  ],
+                  "title": "azure-container-apps - plugin - skills - aca-sandboxes",
+                  "url": "https://github.com/microsoft/azure-container-apps/blob/main/plugin/skills/aca-sandboxes/SKILL.md"
+                }
+              ],
+              "confidence": "medium",
+              "field": "max_runtime",
+              "reasoning": "No documented fixed maximum runtime for sandboxes. The documented behavior is that sandboxes auto-suspend after a configurable idle timeout (1-60 minutes, default 5 minutes), and sandboxes are auto-deleted after a configurable number of days. There is no documented hard cap on how long a sandbox can run while active.\n\n[6] https://techcommunity.microsoft.com/blog/appsonazureblog/introducing-azure-container-apps-sandboxes-secure-infrastructure-for-agentic-wor/4524131\n[14] https://github.com/microsoft/azure-container-apps/blob/main/plugin/skills/aca-sandboxes/SKILL.md"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Scale: zero to thousands; pay nothing when idle."
+                  ],
+                  "title": "azure-container-apps - plugin - skills - aca-sandboxes",
+                  "url": "https://github.com/microsoft/azure-container-apps/blob/main/plugin/skills/aca-sandboxes/SKILL.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introducing Azure Container Apps Sandboxes",
+                  "url": "https://techcommunity.microsoft.com/blog/appsonazureblog/introducing-azure-container-apps-sandboxes-secure-infrastructure-for-agentic-wor/4524131"
+                }
+              ],
+              "confidence": "high",
+              "field": "free_while_idle",
+              "reasoning": "The official documentation and skill file confirm: 'pay nothing when idle' / 'Pay nothing when sandboxes are idle.' The GitHub skill states: 'Scale: zero to thousands; pay nothing when idle.' This means suspended/paused sandboxes incur no cost.\n\n[14] https://github.com/microsoft/azure-container-apps/blob/main/plugin/skills/aca-sandboxes/SKILL.md"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "azure-container-apps - plugin - skills - aca-sandboxes",
+                  "url": "https://github.com/microsoft/azure-container-apps/blob/main/plugin/skills/aca-sandboxes/SKILL.md"
+                }
+              ],
+              "confidence": "medium",
+              "field": "wake_on_request",
+              "reasoning": "The research plan and skill file reference automatic resume: 'Idle: System-suspended, can auto-resume on demand.' This suggests suspended sandboxes can wake on inbound requests. The skill file mentions 'auto-resume on demand' behavior.\n\n[14] https://github.com/microsoft/azure-container-apps/blob/main/plugin/skills/aca-sandboxes/SKILL.md"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Azure Container Apps Express and Sandboxes follow the same pay-per-second pricing as Consumption Plan."
+                  ],
+                  "title": "Azure Container Apps - Pricing",
+                  "url": "https://azure.microsoft.com/en-us/pricing/details/container-apps/"
+                }
+              ],
+              "confidence": "high",
+              "field": "pricing_model",
+              "reasoning": "The Azure pricing page confirms: 'Azure Container Apps Express and Sandboxes follow the same pay-per-second pricing as Consumption Plan.' The research plan confirms per-second billing on active vCPU and memory.\n\n[11] https://azure.microsoft.com/en-us/pricing/details/container-apps/"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Azure Container Apps offers serverless GPU capabilities, which Microsoft documents separately from Sandboxes"
+                  ],
+                  "title": "Best GPU-Enabled Sandboxes for AI Agents in 2026",
+                  "url": "https://modal.com/resources/best-gpu-enabled-sandboxes-ai-agents"
+                },
+                {
+                  "excerpts": [
+                    "Serverless GPUs are supported only for Consumption workload profiles."
+                  ],
+                  "title": "Using serverless GPUs in Azure Container Apps",
+                  "url": "learn.microsoft.com/en-us/azure/container-apps/gpu-serverless-overview"
+                }
+              ],
+              "confidence": "medium",
+              "field": "gpu",
+              "reasoning": "GPU support is not documented specifically for Sandboxes. The Modal.com blog notes: 'Azure Container Apps offers serverless GPU capabilities, which Microsoft documents separately from Sandboxes.' GPU SKUs exist for Azure Container Apps generally (Consumption workload profiles), but they are not documented as available for the Sandboxes feature specifically. Given the research instruction to report what docs actually say, this should be false (not documented for Sandboxes specifically).\n\n[10] https://modal.com/resources/best-gpu-enabled-sandboxes-ai-agents\n[15] https://learn.microsoft.com/en-us/azure/container-apps/gpu-serverless-overview"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "$0.000024 per second",
+                    "$0.0000204 per second ~15% savings"
+                  ],
+                  "title": "Azure Container Apps - Pricing",
+                  "url": "https://azure.microsoft.com/en-us/pricing/details/container-apps/"
+                }
+              ],
+              "confidence": "high",
+              "field": "price_headline",
+              "reasoning": "The Azure pricing page for Container Apps shows: '$0.000024 per second' (vCPU) and '$0.000003 per second' (memory/GiB) for Consumption plan, which Sandboxes follows. This translates to approximately $0.0864/vCPU-hour and $0.0108/GiB-hour.\n\n[11] https://azure.microsoft.com/en-us/pricing/details/container-apps/"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Each sandbox runs in its own hardware-isolated microVM boundary, supports standard OCI container images, and starts in sub-second time."
+                  ],
+                  "title": "What's new in Azure Container Apps at Build'26",
+                  "url": "https://techcommunity.microsoft.com/blog/appsonazureblog/whats-new-in-azure-container-apps-at-build26/4524184"
+                }
+              ],
+              "confidence": "high",
+              "field": "isolation",
+              "reasoning": "The Build'26 blog post explicitly states: 'Each sandbox runs in its own hardware-isolated microVM boundary.' The research plan confirms 'Hardware-isolated microVM (hypervisor-enforced boundary).'\n\n[3] https://techcommunity.microsoft.com/blog/appsonazureblog/whats-new-in-azure-container-apps-at-build26/4524184\n[16] https://www.cloudandaisummit.com/content/sessiondetail/1274135"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Jun 2, 2026 \u2014 You can create and manage sandboxes in the Sandboxes portal or programmatically by using Azure Container Apps CLI or SDK."
+                  ],
+                  "title": "Azure Container Apps Sandboxes overview (preview)",
+                  "url": "https://learn.microsoft.com/en-us/azure/container-apps/sandboxes-overview"
+                }
+              ],
+              "confidence": "high",
+              "field": "notes",
+              "reasoning": "The most important caveat is that ACA Sandboxes is in public preview as of June 2026, meaning APIs, CLI, and SDK surfaces may change before general availability.\n\n[1] https://learn.microsoft.com/en-us/azure/container-apps/sandboxes-overview"
+            }
+          ],
+          "content": {
+            "cold_start": "Sub-second",
+            "docker": true,
+            "free_while_idle": true,
+            "gpu": false,
+            "isolation": "Hardware-isolated microVM (hypervisor-enforced boundary)",
+            "max_runtime": "No documented fixed limit; sandboxes auto-suspend after configurable idle timeout (1\u201360 min, default 5 min) and auto-delete after configurable days.",
+            "memory_snapshots": true,
+            "notes": "Public preview as of June 2026; API, CLI, and SDK surfaces are subject to change before general availability.",
+            "price_headline": "$0.000024/vCPU-second and $0.000003/GiB-second while active (~$0.0864/vCPU-hour, ~$0.0108/GiB-hour).",
+            "pricing_model": "Per-second billing on active vCPU and memory (Consumption-plan style); no charge while suspended.",
+            "sdks": [
+              "Python",
+              ".NET",
+              "CLI"
+            ],
+            "summary": "Azure Container Apps Sandboxes (public preview, announced June 2026) are isolated execution environments for running untrusted code such as AI-generated scripts. Each sandbox runs in a hardware-isolated microVM, supports standard OCI container images, and starts in sub-second time. They support suspend/resume with full memory and disk state preservation, and are designed for AI agent workloads, code interpreters, and ephemeral development environments.",
+            "wake_on_request": true
+          },
+          "type": "json"
+        }
+      },
+      "processor": "lite",
+      "settings": {
+        "output_schema": {
+          "json_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "cold_start": {
+                "description": "Typical time from create or resume to running. Example: '~150 ms'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "docker": {
+                "description": "True if Docker containers can run inside the sandbox.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "free_while_idle": {
+                "description": "True if a stopped, paused, or sleeping sandbox costs nothing.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "gpu": {
+                "description": "GPU instances available.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "isolation": {
+                "description": "Isolation technology. Example: 'Firecracker microVM'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "max_runtime": {
+                "description": "Longest a sandbox may run. Example: '24 h' or 'No fixed limit'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "memory_snapshots": {
+                "description": "True if RAM state survives a pause/resume cycle, not just disk.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "notes": {
+                "description": "One factual caveat worth knowing, or null.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "price_headline": {
+                "description": "The headline compute price. Example: '$0.05 per vCPU-hour'.",
+                "type": "string"
+              },
+              "pricing_model": {
+                "description": "How billing works, in one short phrase. Example: 'Per-second, billed on reserved vCPU and RAM'.",
+                "type": "string"
+              },
+              "sdks": {
+                "description": "Official SDK languages, for example ['Python', 'TypeScript'].",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "summary": {
+                "description": "Two or three plain sentences on what the product is and who uses it. No marketing language.",
+                "type": "string"
+              },
+              "wake_on_request": {
+                "description": "True if a stopped sandbox wakes automatically on inbound traffic.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "sdks",
+              "docker",
+              "memory_snapshots",
+              "cold_start",
+              "summary",
+              "pricing_model",
+              "free_while_idle",
+              "wake_on_request",
+              "max_runtime",
+              "gpu",
+              "isolation",
+              "price_headline",
+              "notes"
+            ],
+            "type": "object"
+          },
+          "type": "json"
+        },
+        "query": "Research the cloud sandbox product Azure Container Apps (https://azure.microsoft.com/en-us/products/container-apps). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
+        "task_run_id": "trun_24f44f01c78c45c8888d238c8a051ddd"
+      },
+      "status": "active",
+      "type": "snapshot",
+      "webhook": {
+        "event_types": [
+          "monitor.event.detected"
+        ],
+        "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
+      }
+    },
     "modal": {
       "created_at": "2026-07-20T02:42:47.254389Z",
       "frequency": "1d",
@@ -7572,6 +8780,1128 @@
         },
         "query": "Research the cloud sandbox product OpenComputer (https://opencomputer.dev). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
         "task_run_id": "trun_24f44f01c78c45c8813d98e6459aebac"
+      },
+      "status": "active",
+      "type": "snapshot",
+      "webhook": {
+        "event_types": [
+          "monitor.event.detected"
+        ],
+        "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
+      }
+    },
+    "railway": {
+      "created_at": "2026-07-20T19:20:37.201279Z",
+      "frequency": "1d",
+      "last_run_at": "2026-07-20T19:20:37.201279Z",
+      "metadata": {
+        "site": "sandboxwatch",
+        "slug": "railway"
+      },
+      "monitor_id": "monitor_cbf285bb61b64d888cfc14a4219a6c8e",
+      "output": {
+        "latest_snapshot": {
+          "basis": [
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Docker now ships preinstalled in every sandbox"
+                  ],
+                  "title": "Changelog #0294 \u2014 Docker in Sandboxes ...",
+                  "url": "https://railway.com/changelog/2026-06-12-docker-in-sandboxes"
+                }
+              ],
+              "confidence": "high",
+              "field": "docker",
+              "reasoning": "The Railway changelog entry from June 11, 2026 explicitly states: 'Docker now ships preinstalled in every sandbox' [1]. This confirms that Docker is available and pre-installed inside Railway Sandboxes."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "SDK for Railway. Create sandboxes and run commands in them, and define your project's infrastructure as code. The SDK is in beta and there will be breaking"
+                  ],
+                  "title": "railwayapp/railway-ts-sdk",
+                  "url": "https://github.com/railwayapp/railway-ts-sdk"
+                },
+                {
+                  "excerpts": [
+                    "the TypeScript SDK gets a file API for reading and writing the sandbox filesystem"
+                  ],
+                  "title": "Changelog #0294 \u2014 Docker in Sandboxes ...",
+                  "url": "https://railway.com/changelog/2026-06-12-docker-in-sandboxes"
+                },
+                {
+                  "excerpts": [
+                    "the TypeScript SDK is the programmatic interface"
+                  ],
+                  "title": "Use Agents in Railway Sandboxes | Railway Guides",
+                  "url": "https://docs.railway.com/guides/agents-in-sandboxes"
+                }
+              ],
+              "confidence": "high",
+              "field": "sdks",
+              "reasoning": "Multiple sources confirm TypeScript is the official SDK. The Railway changelog mentions 'the TypeScript SDK gets a file API' [1], and the GitHub repo is titled 'railway-ts-sdk' with description 'SDK for Railway. Create sandboxes and run commands in them...' [2]. The Railway guides page also references the TypeScript SDK [3]. No other language SDKs are mentioned."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Snapshot GPU memory to speed up cold starts",
+                  "url": "https://modal.com/docs/examples/gpu_snapshot"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Use Agents in Railway Sandboxes | Railway Guides",
+                  "url": "https://docs.railway.com/guides/agents-in-sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Changelog #0294 \u2014 Docker in Sandboxes ...",
+                  "url": "https://railway.com/changelog/2026-06-12-docker-in-sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Reducing GPU Cold Starts with Memory Snapshots",
+                  "url": "https://cerebrium.ai/blog/reducing-gpu-cold-starts-with-memory-snapshots-restoring-cuda-workloads-in-second"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway (websites/railway)",
+                  "url": "https://context7.com/websites/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Pricing",
+                  "url": "https://railway.com/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxes | Railway Docs",
+                  "url": "https://docs.railway.com/sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Costs $20+/mo. This Tool Costs $29 Once",
+                  "url": "https://servercompass.app/blog/railway-pricing-what-youll-actually-pay"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Pricing Calculator (2026) \u2014 Estimate Your ...",
+                  "url": "https://makerkit.dev/pricing-calculator/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Pricing 2026: Total Cost & Competitors",
+                  "url": "https://checkthat.ai/brands/indian-railways/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "\ufe0f Sandbox is perfect for starting on a grade ...",
+                  "url": "https://www.facebook.com/TrainStation/posts/%EF%B8%8F-sandbox-is-perfect-for-starting-on-a-grade-hauling-heavy-loads-or-getting-thro/1238087361801375/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Agents in the Sandbox",
+                  "url": "https://blog.railway.com/p/agents-in-the-sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Vibration Isolation, Track Protection, and Noise Reduction",
+                  "url": "https://www.getzner.com/en-us/applications/railway-1/core-functions"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Grok Build Now Available in Railway Sandboxes",
+                  "url": "https://www.basenor.com/blogs/news/grok-build-now-available-in-railway-sandboxes?srsltid=AfmBOoqxMGnevL-vrGGJqLVR-4rLsyr8yTpCArgDnAju3qLqOir0kTjd"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandbox (locomotive)",
+                  "url": "https://en.wikipedia.org/wiki/Sandbox_(locomotive)"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Isolate AI code execution with Agent Sandbox | GKE AI/ML",
+                  "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/agent-sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Agents in the Sandbox",
+                  "url": "https://x.com/Railway/article/2069801781916549204"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Best Code Execution Sandboxes for AI Agents in 2026",
+                  "url": "https://modal.com/resources/best-code-execution-sandboxes-ai-agents"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Docker Sandboxes",
+                  "url": "https://docs.docker.com/ai/sandboxes/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Deploy Containers on Railway (Docker Beginner to Pro",
+                  "url": "https://www.youtube.com/watch?v=oitx514tQgk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxes for Coding Agents",
+                  "url": "https://www.docker.com/products/docker-sandboxes/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Best GPU-Enabled Sandboxes for AI Agents in 2026",
+                  "url": "https://modal.com/resources/best-gpu-enabled-sandboxes-ai-agents"
+                },
+                {
+                  "excerpts": [],
+                  "title": "AI Agent Code Execution Sandboxes on GPU Cloud: E2B ...",
+                  "url": "https://www.spheron.network/blog/ai-agent-code-execution-sandbox-e2b-daytona-firecracker/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "GPU Sandboxes",
+                  "url": "https://www.daytona.io/dotfiles/gpu-sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "GPU sandboxes: isolation models and platform support in ...",
+                  "url": "https://northflank.com/blog/gpu-sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "railway sandbox | Railway Docs",
+                  "url": "https://docs.railway.com/cli/sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxes | Modal Docs",
+                  "url": "https://modal.com/docs/guide/sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxes",
+                  "url": "https://docs.poolside.ai/sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Pricing Explained (2026) - Sasanova",
+                  "url": "https://www.sasanova.com/pricing/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway | Review, Pricing & Alternatives",
+                  "url": "https://getdeploying.com/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introducing Railway Sandboxes",
+                  "url": "https://www.youtube.com/watch?v=364aBcnkDQ0"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Pausing and Resuming",
+                  "url": "https://openkruise.io/kruiseagents/user-manuals/pause-resume"
+                },
+                {
+                  "excerpts": [],
+                  "title": "GPU Support",
+                  "url": "https://station.railway.com/feedback/gpu-support-56d19c42"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Serverless Inference on GPUs with Banana.dev",
+                  "url": "https://blog.railway.com/p/serverless-inference-gpu-banana-dev"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Hosting Private AI with Railway - Tech Breakdown",
+                  "url": "https://dev.to/loudbook/hosting-private-ai-with-railway-tech-breakdown-460o"
+                },
+                {
+                  "excerpts": [],
+                  "title": "GPUhub vs Railway",
+                  "url": "https://getdeploying.com/gpuhub-vs-railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Pause & Resume - Runra Sandbox",
+                  "url": "https://runra.dev/docs/concepts/pause-resume"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Reference: RailwaySandbox | Workspace | Mastra Docs",
+                  "url": "https://mastra.ai/reference/workspace/railway-sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Status",
+                  "url": "https://status.railway.com/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxing",
+                  "url": "https://www.graalvm.org/latest/security-guide/sandboxing/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Anthropic Sandbox Runtime (srt)",
+                  "url": "https://github.com/anthropic-experimental/sandbox-runtime"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Explore the Real-Time Rail sandbox API environment",
+                  "url": "https://www.payments.ca/explore-real-time-rail-sandbox-api-environment"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Python API Docs",
+                  "url": "https://dlthub.com/context/source/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Indian Railways to Launch Sandbox to Accelerate Startup ...",
+                  "url": "https://yourstory.com/2025/06/indian-railways-startup-sandbox-policy-launch-ashwini-vaishnaw"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Unpacking sandbox startup latency: why started \u2260 ready",
+                  "url": "https://modal.com/blog/unpacking-sandbox-startup-latency"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Templates & Open Source | Railway Docs",
+                  "url": "https://docs.railway.com/templates"
+                },
+                {
+                  "excerpts": [],
+                  "title": "railwayapp/templates: Railway starters",
+                  "url": "https://github.com/railwayapp/templates"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Cold Starts on Railway.app : r/nextjs",
+                  "url": "https://www.reddit.com/r/nextjs/comments/14im1au/cold_starts_on_railwayapp/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "railwayapp/railway-ts-sdk",
+                  "url": "https://github.com/railwayapp/railway-ts-sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Python Client | Agent Sandbox - Kubernetes",
+                  "url": "https://agent-sandbox.sigs.k8s.io/docs/python-client/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Use Cases | Railway Docs",
+                  "url": "https://docs.railway.com/platform/use-cases"
+                }
+              ],
+              "confidence": "low",
+              "field": "cold_start",
+              "reasoning": "No source provides a specific cold start or resume time measurement for Railway Sandboxes. While general Railway cold start discussions exist in Reddit, no documented timing for sandbox creation/resume is available in the official documentation, pricing pages, changelogs, or engineering blog posts provided."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Snapshot GPU memory to speed up cold starts",
+                  "url": "https://modal.com/docs/examples/gpu_snapshot"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Use Agents in Railway Sandboxes | Railway Guides",
+                  "url": "https://docs.railway.com/guides/agents-in-sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Changelog #0294 \u2014 Docker in Sandboxes ...",
+                  "url": "https://railway.com/changelog/2026-06-12-docker-in-sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Reducing GPU Cold Starts with Memory Snapshots",
+                  "url": "https://cerebrium.ai/blog/reducing-gpu-cold-starts-with-memory-snapshots-restoring-cuda-workloads-in-second"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway (websites/railway)",
+                  "url": "https://context7.com/websites/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Pricing",
+                  "url": "https://railway.com/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxes | Railway Docs",
+                  "url": "https://docs.railway.com/sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Costs $20+/mo. This Tool Costs $29 Once",
+                  "url": "https://servercompass.app/blog/railway-pricing-what-youll-actually-pay"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Pricing Calculator (2026) \u2014 Estimate Your ...",
+                  "url": "https://makerkit.dev/pricing-calculator/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Pricing 2026: Total Cost & Competitors",
+                  "url": "https://checkthat.ai/brands/indian-railways/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "\ufe0f Sandbox is perfect for starting on a grade ...",
+                  "url": "https://www.facebook.com/TrainStation/posts/%EF%B8%8F-sandbox-is-perfect-for-starting-on-a-grade-hauling-heavy-loads-or-getting-thro/1238087361801375/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Agents in the Sandbox",
+                  "url": "https://blog.railway.com/p/agents-in-the-sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Vibration Isolation, Track Protection, and Noise Reduction",
+                  "url": "https://www.getzner.com/en-us/applications/railway-1/core-functions"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Grok Build Now Available in Railway Sandboxes",
+                  "url": "https://www.basenor.com/blogs/news/grok-build-now-available-in-railway-sandboxes?srsltid=AfmBOoqxMGnevL-vrGGJqLVR-4rLsyr8yTpCArgDnAju3qLqOir0kTjd"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandbox (locomotive)",
+                  "url": "https://en.wikipedia.org/wiki/Sandbox_(locomotive)"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Isolate AI code execution with Agent Sandbox | GKE AI/ML",
+                  "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/agent-sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Agents in the Sandbox",
+                  "url": "https://x.com/Railway/article/2069801781916549204"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Best Code Execution Sandboxes for AI Agents in 2026",
+                  "url": "https://modal.com/resources/best-code-execution-sandboxes-ai-agents"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Docker Sandboxes",
+                  "url": "https://docs.docker.com/ai/sandboxes/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Deploy Containers on Railway (Docker Beginner to Pro",
+                  "url": "https://www.youtube.com/watch?v=oitx514tQgk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxes for Coding Agents",
+                  "url": "https://www.docker.com/products/docker-sandboxes/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Best GPU-Enabled Sandboxes for AI Agents in 2026",
+                  "url": "https://modal.com/resources/best-gpu-enabled-sandboxes-ai-agents"
+                },
+                {
+                  "excerpts": [],
+                  "title": "AI Agent Code Execution Sandboxes on GPU Cloud: E2B ...",
+                  "url": "https://www.spheron.network/blog/ai-agent-code-execution-sandbox-e2b-daytona-firecracker/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "GPU Sandboxes",
+                  "url": "https://www.daytona.io/dotfiles/gpu-sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "GPU sandboxes: isolation models and platform support in ...",
+                  "url": "https://northflank.com/blog/gpu-sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "railway sandbox | Railway Docs",
+                  "url": "https://docs.railway.com/cli/sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxes | Modal Docs",
+                  "url": "https://modal.com/docs/guide/sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxes",
+                  "url": "https://docs.poolside.ai/sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Pricing Explained (2026) - Sasanova",
+                  "url": "https://www.sasanova.com/pricing/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway | Review, Pricing & Alternatives",
+                  "url": "https://getdeploying.com/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introducing Railway Sandboxes",
+                  "url": "https://www.youtube.com/watch?v=364aBcnkDQ0"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Pausing and Resuming",
+                  "url": "https://openkruise.io/kruiseagents/user-manuals/pause-resume"
+                },
+                {
+                  "excerpts": [],
+                  "title": "GPU Support",
+                  "url": "https://station.railway.com/feedback/gpu-support-56d19c42"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Serverless Inference on GPUs with Banana.dev",
+                  "url": "https://blog.railway.com/p/serverless-inference-gpu-banana-dev"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Hosting Private AI with Railway - Tech Breakdown",
+                  "url": "https://dev.to/loudbook/hosting-private-ai-with-railway-tech-breakdown-460o"
+                },
+                {
+                  "excerpts": [],
+                  "title": "GPUhub vs Railway",
+                  "url": "https://getdeploying.com/gpuhub-vs-railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Pause & Resume - Runra Sandbox",
+                  "url": "https://runra.dev/docs/concepts/pause-resume"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Reference: RailwaySandbox | Workspace | Mastra Docs",
+                  "url": "https://mastra.ai/reference/workspace/railway-sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Status",
+                  "url": "https://status.railway.com/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxing",
+                  "url": "https://www.graalvm.org/latest/security-guide/sandboxing/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Anthropic Sandbox Runtime (srt)",
+                  "url": "https://github.com/anthropic-experimental/sandbox-runtime"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Explore the Real-Time Rail sandbox API environment",
+                  "url": "https://www.payments.ca/explore-real-time-rail-sandbox-api-environment"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Python API Docs",
+                  "url": "https://dlthub.com/context/source/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Indian Railways to Launch Sandbox to Accelerate Startup ...",
+                  "url": "https://yourstory.com/2025/06/indian-railways-startup-sandbox-policy-launch-ashwini-vaishnaw"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Unpacking sandbox startup latency: why started \u2260 ready",
+                  "url": "https://modal.com/blog/unpacking-sandbox-startup-latency"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Templates & Open Source | Railway Docs",
+                  "url": "https://docs.railway.com/templates"
+                },
+                {
+                  "excerpts": [],
+                  "title": "railwayapp/templates: Railway starters",
+                  "url": "https://github.com/railwayapp/templates"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Cold Starts on Railway.app : r/nextjs",
+                  "url": "https://www.reddit.com/r/nextjs/comments/14im1au/cold_starts_on_railwayapp/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "railwayapp/railway-ts-sdk",
+                  "url": "https://github.com/railwayapp/railway-ts-sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Python Client | Agent Sandbox - Kubernetes",
+                  "url": "https://agent-sandbox.sigs.k8s.io/docs/python-client/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Use Cases | Railway Docs",
+                  "url": "https://docs.railway.com/platform/use-cases"
+                }
+              ],
+              "confidence": "medium",
+              "field": "memory_snapshots",
+              "reasoning": "There is no mention of memory snapshots, RAM state preservation across pause/resume, or any similar feature in any of the Railway documentation, changelogs, or engineering posts. While the Railway changelog mentions Docker preinstalled and file API additions, nothing about memory state persistence is documented."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Pricing",
+                    "Memory, $0.00000001929012 MB\u2022second ($50 GB / month)",
+                    "vCPU, $0.00000001929012 vCPU\u2022second ($50 vCPU / month)",
+                    "Egress, $0.05 GB"
+                  ],
+                  "title": "Sandboxes | Railway Docs",
+                  "url": "https://docs.railway.com/sandboxes"
+                },
+                {
+                  "excerpts": [
+                    "Docker now ships preinstalled in every sandbox"
+                  ],
+                  "title": "Changelog #0294 \u2014 Docker in Sandboxes ...",
+                  "url": "https://railway.com/changelog/2026-06-12-docker-in-sandboxes"
+                },
+                {
+                  "excerpts": [
+                    "xAI has added Grok Build to Railway's sandbox environments, its sandboxes went generally available on June 26, 2026. which launched into public"
+                  ],
+                  "title": "Grok Build Now Available in Railway Sandboxes",
+                  "url": "https://www.basenor.com/blogs/news/grok-build-now-available-in-railway-sandboxes"
+                }
+              ],
+              "confidence": "high",
+              "field": "summary",
+              "reasoning": "Based on the Railway docs, changelogs, and guides, Railway Sandboxes are described as short-lived Linux virtual machines scoped to a Railway environment. They are used to run agents, untrusted code, or complex tasks requiring filesystem or shell access. The product became generally available on June 26, 2026 after a public beta starting May 14, 2026."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "The default and allowed range depend on your plan, so see Idle timeout for the per-plan values."
+                  ],
+                  "title": "railway sandbox | Railway Docs",
+                  "url": "https://docs.railway.com/cli/sandbox"
+                }
+              ],
+              "confidence": "low",
+              "field": "max_runtime",
+              "reasoning": "No source provides a specific maximum runtime limit for Railway Sandboxes. The documentation describes them as 'short-lived' but does not specify a maximum duration. The CLI docs mention an idle timeout but not a maximum runtime."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Memory, $0.00000001929012 MB\u2022second ($50 GB / month)",
+                    "vCPU, $0.00000001929012 vCPU\u2022second ($50 vCPU / month)"
+                  ],
+                  "title": "Sandboxes | Railway Docs",
+                  "url": "https://docs.railway.com/sandboxes"
+                },
+                {
+                  "excerpts": [
+                    "The default and allowed range depend on your plan, so see Idle timeout for the per-plan values."
+                  ],
+                  "title": "railway sandbox | Railway Docs",
+                  "url": "https://docs.railway.com/cli/sandbox"
+                }
+              ],
+              "confidence": "medium",
+              "field": "free_while_idle",
+              "reasoning": "The pricing model is per-second billing on vCPU and memory consumed while the sandbox is running [1]. When a sandbox is stopped or destroyed, it no longer consumes resources, so no charges apply. However, there is no documented 'pause' or 'sleep' state \u2014 sandboxes are either running or destroyed. The default idle timeout destroys the sandbox automatically."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Snapshot GPU memory to speed up cold starts",
+                  "url": "https://modal.com/docs/examples/gpu_snapshot"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Use Agents in Railway Sandboxes | Railway Guides",
+                  "url": "https://docs.railway.com/guides/agents-in-sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Changelog #0294 \u2014 Docker in Sandboxes ...",
+                  "url": "https://railway.com/changelog/2026-06-12-docker-in-sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Reducing GPU Cold Starts with Memory Snapshots",
+                  "url": "https://cerebrium.ai/blog/reducing-gpu-cold-starts-with-memory-snapshots-restoring-cuda-workloads-in-second"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway (websites/railway)",
+                  "url": "https://context7.com/websites/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Pricing",
+                  "url": "https://railway.com/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxes | Railway Docs",
+                  "url": "https://docs.railway.com/sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Costs $20+/mo. This Tool Costs $29 Once",
+                  "url": "https://servercompass.app/blog/railway-pricing-what-youll-actually-pay"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Pricing Calculator (2026) \u2014 Estimate Your ...",
+                  "url": "https://makerkit.dev/pricing-calculator/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Pricing 2026: Total Cost & Competitors",
+                  "url": "https://checkthat.ai/brands/indian-railways/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "\ufe0f Sandbox is perfect for starting on a grade ...",
+                  "url": "https://www.facebook.com/TrainStation/posts/%EF%B8%8F-sandbox-is-perfect-for-starting-on-a-grade-hauling-heavy-loads-or-getting-thro/1238087361801375/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Agents in the Sandbox",
+                  "url": "https://blog.railway.com/p/agents-in-the-sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Vibration Isolation, Track Protection, and Noise Reduction",
+                  "url": "https://www.getzner.com/en-us/applications/railway-1/core-functions"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Grok Build Now Available in Railway Sandboxes",
+                  "url": "https://www.basenor.com/blogs/news/grok-build-now-available-in-railway-sandboxes?srsltid=AfmBOoqxMGnevL-vrGGJqLVR-4rLsyr8yTpCArgDnAju3qLqOir0kTjd"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandbox (locomotive)",
+                  "url": "https://en.wikipedia.org/wiki/Sandbox_(locomotive)"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Isolate AI code execution with Agent Sandbox | GKE AI/ML",
+                  "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/agent-sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Agents in the Sandbox",
+                  "url": "https://x.com/Railway/article/2069801781916549204"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Best Code Execution Sandboxes for AI Agents in 2026",
+                  "url": "https://modal.com/resources/best-code-execution-sandboxes-ai-agents"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Docker Sandboxes",
+                  "url": "https://docs.docker.com/ai/sandboxes/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Deploy Containers on Railway (Docker Beginner to Pro",
+                  "url": "https://www.youtube.com/watch?v=oitx514tQgk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxes for Coding Agents",
+                  "url": "https://www.docker.com/products/docker-sandboxes/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Best GPU-Enabled Sandboxes for AI Agents in 2026",
+                  "url": "https://modal.com/resources/best-gpu-enabled-sandboxes-ai-agents"
+                },
+                {
+                  "excerpts": [],
+                  "title": "AI Agent Code Execution Sandboxes on GPU Cloud: E2B ...",
+                  "url": "https://www.spheron.network/blog/ai-agent-code-execution-sandbox-e2b-daytona-firecracker/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "GPU Sandboxes",
+                  "url": "https://www.daytona.io/dotfiles/gpu-sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "GPU sandboxes: isolation models and platform support in ...",
+                  "url": "https://northflank.com/blog/gpu-sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "railway sandbox | Railway Docs",
+                  "url": "https://docs.railway.com/cli/sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxes | Modal Docs",
+                  "url": "https://modal.com/docs/guide/sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxes",
+                  "url": "https://docs.poolside.ai/sandboxes"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Pricing Explained (2026) - Sasanova",
+                  "url": "https://www.sasanova.com/pricing/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway | Review, Pricing & Alternatives",
+                  "url": "https://getdeploying.com/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introducing Railway Sandboxes",
+                  "url": "https://www.youtube.com/watch?v=364aBcnkDQ0"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Pausing and Resuming",
+                  "url": "https://openkruise.io/kruiseagents/user-manuals/pause-resume"
+                },
+                {
+                  "excerpts": [],
+                  "title": "GPU Support",
+                  "url": "https://station.railway.com/feedback/gpu-support-56d19c42"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Serverless Inference on GPUs with Banana.dev",
+                  "url": "https://blog.railway.com/p/serverless-inference-gpu-banana-dev"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Hosting Private AI with Railway - Tech Breakdown",
+                  "url": "https://dev.to/loudbook/hosting-private-ai-with-railway-tech-breakdown-460o"
+                },
+                {
+                  "excerpts": [],
+                  "title": "GPUhub vs Railway",
+                  "url": "https://getdeploying.com/gpuhub-vs-railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Pause & Resume - Runra Sandbox",
+                  "url": "https://runra.dev/docs/concepts/pause-resume"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Reference: RailwaySandbox | Workspace | Mastra Docs",
+                  "url": "https://mastra.ai/reference/workspace/railway-sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Status",
+                  "url": "https://status.railway.com/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Sandboxing",
+                  "url": "https://www.graalvm.org/latest/security-guide/sandboxing/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Anthropic Sandbox Runtime (srt)",
+                  "url": "https://github.com/anthropic-experimental/sandbox-runtime"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Explore the Real-Time Rail sandbox API environment",
+                  "url": "https://www.payments.ca/explore-real-time-rail-sandbox-api-environment"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Railway Python API Docs",
+                  "url": "https://dlthub.com/context/source/railway"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Indian Railways to Launch Sandbox to Accelerate Startup ...",
+                  "url": "https://yourstory.com/2025/06/indian-railways-startup-sandbox-policy-launch-ashwini-vaishnaw"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Unpacking sandbox startup latency: why started \u2260 ready",
+                  "url": "https://modal.com/blog/unpacking-sandbox-startup-latency"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Templates & Open Source | Railway Docs",
+                  "url": "https://docs.railway.com/templates"
+                },
+                {
+                  "excerpts": [],
+                  "title": "railwayapp/templates: Railway starters",
+                  "url": "https://github.com/railwayapp/templates"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Cold Starts on Railway.app : r/nextjs",
+                  "url": "https://www.reddit.com/r/nextjs/comments/14im1au/cold_starts_on_railwayapp/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "railwayapp/railway-ts-sdk",
+                  "url": "https://github.com/railwayapp/railway-ts-sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Python Client | Agent Sandbox - Kubernetes",
+                  "url": "https://agent-sandbox.sigs.k8s.io/docs/python-client/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Use Cases | Railway Docs",
+                  "url": "https://docs.railway.com/platform/use-cases"
+                }
+              ],
+              "confidence": "medium",
+              "field": "wake_on_request",
+              "reasoning": "Railway Sandboxes are explicitly described as short-lived VMs that are created on demand and destroyed when done. There is no mention of automatic wake-on-traffic functionality. The product requires explicit creation via SDK, CLI, or dashboard."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Memory, $0.00000001929012 MB\u2022second ($50 GB / month)",
+                    "vCPU, $0.00000001929012 vCPU\u2022second ($50 vCPU / month)"
+                  ],
+                  "title": "Sandboxes | Railway Docs",
+                  "url": "https://docs.railway.com/sandboxes"
+                }
+              ],
+              "confidence": "high",
+              "field": "pricing_model",
+              "reasoning": "The Railway docs explicitly state per-second billing: 'Memory, $0.00000001929012 MB\u2022second ($50 GB / month)' and 'vCPU, $0.00000001929012 vCPU\u2022second ($50 vCPU / month)' [1]. Billing occurs on vCPU and memory consumed while the sandbox is running."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "With our new runtime, it's now possible to do GPUs",
+                    "GPU heavy services to railway ASAP"
+                  ],
+                  "title": "GPU Support",
+                  "url": "https://station.railway.com/feedback/gpu-support-56d19c42"
+                }
+              ],
+              "confidence": "medium",
+              "field": "gpu",
+              "reasoning": "No source mentions GPU support for Railway Sandboxes. Railway's feedback page about GPU support is from 2024 and indicates GPUs are not available [1]. The current sandbox documentation does not mention GPU instances."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Memory, $0.00000001929012 MB\u2022second ($50 GB / month)",
+                    "vCPU, $0.00000001929012 vCPU\u2022second ($50 vCPU / month)",
+                    "Egress, $0.05 GB"
+                  ],
+                  "title": "Sandboxes | Railway Docs",
+                  "url": "https://docs.railway.com/sandboxes"
+                }
+              ],
+              "confidence": "high",
+              "field": "price_headline",
+              "reasoning": "The Railway sandbox pricing page explicitly states: 'vCPU, $0.00000001929012 vCPU\u2022second ($50 vCPU / month)' and 'Memory, $0.00000001929012 MB\u2022second ($50 GB / month)' [1]. This translates to approximately $50 per vCPU-month and $50 per GB-memory-month."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Pricing"
+                  ],
+                  "title": "Sandboxes | Railway Docs",
+                  "url": "https://docs.railway.com/sandboxes"
+                }
+              ],
+              "confidence": "medium",
+              "field": "isolation",
+              "reasoning": "Railway describes each sandbox as a 'fully isolated virtual machine' running on their VM primitive [1]. However, the specific underlying technology (e.g., Firecracker, KVM, hypervisor name) is not publicly named."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "The SDK is in beta and there will be breaking"
+                  ],
+                  "title": "railwayapp/railway-ts-sdk",
+                  "url": "https://github.com/railwayapp/railway-ts-sdk"
+                }
+              ],
+              "confidence": "high",
+              "field": "notes",
+              "reasoning": "The most important caveat is that Railway Sandboxes are gated behind Railway's Priority Boarding program, meaning they are not available to all Railway users. Additionally, the TypeScript SDK is in beta and subject to breaking changes."
+            }
+          ],
+          "content": {
+            "cold_start": null,
+            "docker": true,
+            "free_while_idle": true,
+            "gpu": false,
+            "isolation": "Per-sandbox VM on Railway's VM primitive (specific hypervisor technology not publicly disclosed)",
+            "max_runtime": null,
+            "memory_snapshots": false,
+            "notes": "Sandboxes are gated behind Railway's Priority Boarding program; the TypeScript SDK is in beta and may have breaking changes.",
+            "price_headline": "$50/vCPU-month and $50/GB-memory-month (~$0.0000000193 per vCPU-second or GB-second); egress $0.05/GB",
+            "pricing_model": "Per-second, billed on vCPU and memory consumed while running",
+            "sdks": [
+              "TypeScript"
+            ],
+            "summary": "Railway Sandboxes are short-lived Linux virtual machines scoped to a Railway environment that can be provisioned on demand to run commands, read and write files, and then be destroyed. They target agent workloads and untrusted code execution, and are controlled programmatically via the TypeScript SDK, the Railway CLI, or the dashboard. The product reached general availability on June 26, 2026 after a public beta that started May 14, 2026.",
+            "wake_on_request": null
+          },
+          "type": "json"
+        }
+      },
+      "processor": "lite",
+      "settings": {
+        "output_schema": {
+          "json_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "cold_start": {
+                "description": "Typical time from create or resume to running. Example: '~150 ms'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "docker": {
+                "description": "True if Docker containers can run inside the sandbox.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "free_while_idle": {
+                "description": "True if a stopped, paused, or sleeping sandbox costs nothing.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "gpu": {
+                "description": "GPU instances available.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "isolation": {
+                "description": "Isolation technology. Example: 'Firecracker microVM'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "max_runtime": {
+                "description": "Longest a sandbox may run. Example: '24 h' or 'No fixed limit'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "memory_snapshots": {
+                "description": "True if RAM state survives a pause/resume cycle, not just disk.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "notes": {
+                "description": "One factual caveat worth knowing, or null.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "price_headline": {
+                "description": "The headline compute price. Example: '$0.05 per vCPU-hour'.",
+                "type": "string"
+              },
+              "pricing_model": {
+                "description": "How billing works, in one short phrase. Example: 'Per-second, billed on reserved vCPU and RAM'.",
+                "type": "string"
+              },
+              "sdks": {
+                "description": "Official SDK languages, for example ['Python', 'TypeScript'].",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "summary": {
+                "description": "Two or three plain sentences on what the product is and who uses it. No marketing language.",
+                "type": "string"
+              },
+              "wake_on_request": {
+                "description": "True if a stopped sandbox wakes automatically on inbound traffic.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "sdks",
+              "docker",
+              "memory_snapshots",
+              "cold_start",
+              "summary",
+              "pricing_model",
+              "free_while_idle",
+              "wake_on_request",
+              "max_runtime",
+              "gpu",
+              "isolation",
+              "price_headline",
+              "notes"
+            ],
+            "type": "object"
+          },
+          "type": "json"
+        },
+        "query": "Research the cloud sandbox product Railway Sandboxes (https://railway.com/). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
+        "task_run_id": "trun_24f44f01c78c45c897a1548d5b8eb6d4"
       },
       "status": "active",
       "type": "snapshot",

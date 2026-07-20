@@ -1,1 +1,55 @@
-{"cold_start": "Sub-second startup", "docker": null, "free_while_idle": true, "gpu": null, "isolation": "Hardware-isolated microVM boundary (each sandbox fully separated from the host, the platform, and every other sandbox)", "last_verified": "2026-07-20", "max_runtime": null, "memory_snapshots": true, "name": "Azure Container Apps Sandboxes", "notes": "Sandboxes are a first-class resource type (Microsoft.App/SandboxGroups) in Container Apps, alongside apps, jobs, and dynamic sessions. They support standard OCI container images and include built-in suspend and resume capabilities.", "price_headline": null, "pricing_model": null, "sdks": [], "slug": "microsoft-azure", "sources": [{"url": "https://learn.microsoft.com/en-us/azure/container-apps/sandboxes-overview"}, {"url": "https://techcommunity.microsoft.com/blog/appsonazureblog/introducing-azure-container-apps-sandboxes-secure-infrastructure-for-agentic-wor/4524131"}, {"url": "https://techcommunity.microsoft.com/blog/appsonazureblog/whats-new-in-azure-container-apps-at-build26/4524184"}, {"url": "https://learn.microsoft.com/en-us/azure/container-apps/ai-integration"}, {"url": "https://azure.microsoft.com/en-us/products/container-apps"}, {"url": "https://github.com/Azure-Samples/azure-container-apps-sandboxes"}], "summary": "Azure Container Apps Sandboxes are a Microsoft-managed compute product that runs AI agent code in secure, ephemeral, hardware-isolated microVM environments. Each sandbox starts in sub-second time, scales to thousands, and costs nothing when idle. Developers create and manage sandboxes through the Azure Container Apps CLI or SDK and can run standard OCI container images inside them.", "wake_on_request": null, "website": "https://azure.microsoft.com/en-us/products/container-apps"}
+{
+  "cold_start": "Sub-second",
+  "docker": true,
+  "free_while_idle": true,
+  "gpu": false,
+  "isolation": "Hardware-isolated microVM (hypervisor-enforced boundary)",
+  "last_verified": "2026-07-20",
+  "max_runtime": "No documented fixed limit; sandboxes auto-suspend after configurable idle timeout (1\u201360 min, default 5 min) and auto-delete after configurable days.",
+  "memory_snapshots": true,
+  "name": "Azure Container Apps",
+  "notes": "Public preview as of June 2026; API, CLI, and SDK surfaces are subject to change before general availability.",
+  "price_headline": "$0.000024/vCPU-second and $0.000003/GiB-second while active (~$0.0864/vCPU-hour, ~$0.0108/GiB-hour).",
+  "pricing_model": "Per-second billing on active vCPU and memory (Consumption-plan style); no charge while suspended.",
+  "sdks": [
+    "Python",
+    ".NET",
+    "CLI"
+  ],
+  "slug": "microsoft-azure",
+  "sources": [
+    {
+      "url": "https://techcommunity.microsoft.com/blog/appsonazureblog/whats-new-in-azure-container-apps-at-build26/4524184"
+    },
+    {
+      "url": "https://sandboxes.azure.com/"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/container-apps/sandboxes-overview"
+    },
+    {
+      "url": "https://github.com/Azure-Samples/azure-container-apps-sandboxes"
+    },
+    {
+      "url": "https://github.com/microsoft/azure-container-apps/blob/main/plugin/skills/aca-sandboxes/SKILL.md"
+    },
+    {
+      "url": "https://www.cloudandaisummit.com/content/sessiondetail/1271635"
+    },
+    {
+      "url": "https://techcommunity.microsoft.com/blog/appsonazureblog/introducing-azure-container-apps-sandboxes-secure-infrastructure-for-agentic-wor/4524131"
+    },
+    {
+      "url": "https://azure.microsoft.com/en-us/pricing/details/container-apps/"
+    },
+    {
+      "url": "https://modal.com/resources/best-gpu-enabled-sandboxes-ai-agents"
+    },
+    {
+      "url": "learn.microsoft.com/en-us/azure/container-apps/gpu-serverless-overview"
+    }
+  ],
+  "summary": "Azure Container Apps Sandboxes (public preview, announced June 2026) are isolated execution environments for running untrusted code such as AI-generated scripts. Each sandbox runs in a hardware-isolated microVM, supports standard OCI container images, and starts in sub-second time. They support suspend/resume with full memory and disk state preservation, and are designed for AI agent workloads, code interpreters, and ephemeral development environments.",
+  "wake_on_request": true,
+  "website": "https://azure.microsoft.com/en-us/products/container-apps"
+}

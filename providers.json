@@ -4,13 +4,21 @@
     "slug": "sailboxes",
     "website": "https://sailresearch.com/sailboxes"
   },
-  { "name": "E2B", "slug": "e2b", "website": "https://e2b.dev" },
+  {
+    "name": "E2B",
+    "slug": "e2b",
+    "website": "https://e2b.dev"
+  },
   {
     "name": "Modal Sandboxes",
     "slug": "modal",
     "website": "https://modal.com"
   },
-  { "name": "Daytona", "slug": "daytona", "website": "https://daytona.io" },
+  {
+    "name": "Daytona",
+    "slug": "daytona",
+    "website": "https://daytona.io"
+  },
   {
     "name": "Morph Cloud",
     "slug": "morph",
@@ -31,8 +39,16 @@
     "slug": "fly",
     "website": "https://fly.io/docs/machines/"
   },
-  { "name": "Runloop", "slug": "runloop", "website": "https://runloop.ai" },
-  { "name": "Blaxel", "slug": "blaxel", "website": "https://blaxel.ai" },
+  {
+    "name": "Runloop",
+    "slug": "runloop",
+    "website": "https://runloop.ai"
+  },
+  {
+    "name": "Blaxel",
+    "slug": "blaxel",
+    "website": "https://blaxel.ai"
+  },
   {
     "name": "CodeSandbox SDK",
     "slug": "codesandbox",
@@ -93,14 +109,18 @@
     "slug": "langsmith-sandboxes",
     "website": "https://www.langchain.com/langsmith/sandboxes"
   },
-  { "name": "Railway Sandboxes", "slug": "railway", "website": "https://railway.com/" },
+  {
+    "name": "Railway Sandboxes",
+    "slug": "railway",
+    "website": "https://railway.com/"
+  },
   {
     "name": "AWS Lambda MicroVMs",
     "slug": "aws-lambda-microvms",
     "website": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/"
   },
   {
-    "name": "Azure Container Apps Sandboxes",
+    "name": "Azure Container Apps",
     "slug": "microsoft-azure",
     "website": "https://azure.microsoft.com/en-us/products/container-apps"
   }

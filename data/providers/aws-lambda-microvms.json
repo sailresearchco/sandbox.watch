@@ -1,1 +1,42 @@
-{"cold_start": null, "docker": null, "free_while_idle": true, "gpu": null, "isolation": "Firecracker microVM (own kernel, filesystem, and network namespace)", "last_verified": "2026-07-20", "max_runtime": null, "memory_snapshots": true, "name": "AWS Lambda MicroVMs", "notes": "When idle, a MicroVM suspends and preserves memory and disk state while reducing costs; it resumes with state intact when traffic returns. Suspend and resume can be configured through lifecycle policies or triggered via API calls to suspend-microvm and resume-microvm.", "price_headline": null, "pricing_model": null, "sdks": [], "slug": "aws-lambda-microvms", "sources": [{"url": "https://aws.amazon.com/blogs/compute/secure-code-execution-for-ai-agents-with-aws-lambda-microvms/"}, {"url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/"}, {"url": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-microvms-guide.html"}, {"url": "https://aws.amazon.com/about-aws/whats-new/2026/06/aws-lambda-microvms/"}, {"url": "https://www.amazon.com/lambda"}], "summary": "AWS Lambda MicroVMs are a serverless compute primitive within AWS Lambda that run user- or AI-generated code in isolated, stateful execution environments built on Firecracker. AWS positions them for multi-tenant applications that need to give each session its own isolated sandbox, including AI code execution. Developers call run-microvm to launch from a snapshot, connect through a dedicated HTTPS endpoint, and suspend or resume via API.", "wake_on_request": true, "website": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/"}
+{
+  "cold_start": "Near-instant (AWS docs describe as 'seconds'; no specific ms figure published)",
+  "docker": true,
+  "free_while_idle": true,
+  "gpu": false,
+  "isolation": "Firecracker microVM",
+  "last_verified": "2026-07-20",
+  "max_runtime": "8 h (28,800 s state-retention window)",
+  "memory_snapshots": true,
+  "name": "AWS Lambda MicroVMs",
+  "notes": "No free tier applies to Lambda MicroVMs (the standard Lambda free tier does not cover this product), and suspended MicroVMs continue to incur snapshot storage charges while compute charges are paused.",
+  "price_headline": "$0.0000276944 per vCPU-second + $0.0000036667 per GB-second (ARM/Graviton, US East); snapshot read $0.00155/GB, write $0.0038/GB, storage $0.08/GB-month",
+  "pricing_model": "Per-second compute (baseline + peak) plus snapshot operations and storage",
+  "sdks": [
+    "Python",
+    "Node.js"
+  ],
+  "slug": "aws-lambda-microvms",
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-microvms-guide.html"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/microvms-launching.html"
+    },
+    {
+      "url": "https://aws.amazon.com/lambda/lambda-microvms/"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/compute/announcing-lambda-microvms-serverless-compute-environments-with-vm-level-isolation-and-near-instant-startup/"
+    },
+    {
+      "url": "https://aws.amazon.com/lambda/pricing/"
+    },
+    {
+      "url": "https://northflank.com/blog/aws-lambda-microvms-vs-northflank-pricing"
+    }
+  ],
+  "summary": "AWS Lambda MicroVMs is a Lambda primitive that runs each user's code inside its own Firecracker microVM with VM-level isolation. Developers package their application with a Dockerfile, upload to S3, and AWS builds a snapshot that can be launched, suspended, resumed, or terminated on demand. It is designed for multi-tenant workloads \u2014 AI agents, code playgrounds, and secure code execution products \u2014 that need a dedicated isolated environment per end user or session, with state preserved for up to 8 hours.",
+  "wake_on_request": true,
+  "website": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/"
+}
