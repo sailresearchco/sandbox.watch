@@ -44,9 +44,6 @@
     },
     {
       "url": "https://modal.com/resources/best-gpu-enabled-sandboxes-ai-agents"
-    },
-    {
-      "url": "learn.microsoft.com/en-us/azure/container-apps/gpu-serverless-overview"
     }
   ],
   "summary": "Azure Container Apps Sandboxes (public preview, announced June 2026) are isolated execution environments for running untrusted code such as AI-generated scripts. Each sandbox runs in a hardware-isolated microVM, supports standard OCI container images, and starts in sub-second time. They support suspend/resume with full memory and disk state preservation, and are designed for AI agent workloads, code interpreters, and ephemeral development environments.",
