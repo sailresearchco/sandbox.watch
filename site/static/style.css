@@ -223,6 +223,19 @@ td.name a {
   color: var(--muted);
 }
 
+.diagram {
+  max-width: 46rem;
+  margin: 1.25rem 0;
+}
+.diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.diagram text.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
 .about ol {
   max-width: 46rem;
   padding-left: 1.2rem;

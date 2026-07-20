@@ -239,9 +239,7 @@ def run_discovery_turn(discovery_path: Path | None = None) -> dict:
     prompt_path.write_text(template.format(discovery_path=candidates_path))
 
     agent_ok = run_agent(prompt_path)
-    errors = (
-        providers.validate_all() + providers.validate_census() if agent_ok else []
-    )
+    errors = providers.validate_all() + providers.validate_census() if agent_ok else []
     if agent_ok and errors:
         logger.warning("discovery turn failed validation: %s", errors)
 
