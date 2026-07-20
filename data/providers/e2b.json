@@ -1,7 +1,7 @@
 {
   "cold_start": "80-800 ms",
   "docker": null,
-  "free_while_idle": false,
+  "free_while_idle": true,
   "gpu": false,
   "isolation": "Firecracker microVM",
   "last_verified": "2026-07-20",
@@ -50,6 +50,9 @@
     },
     {
       "url": "http://e2b.dev/"
+    },
+    {
+      "url": "https://www.beam.cloud/blog/e2b-pricing-explained"
     }
   ],
   "summary": "E2B is an open-source cloud infrastructure that provides isolated Linux sandbox environments for executing AI-generated code. It is used by developers building AI agents, LLM-powered apps, and agentic workflows.",
