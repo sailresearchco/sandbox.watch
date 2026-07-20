@@ -123,5 +123,10 @@
     "name": "Azure Container Apps",
     "slug": "microsoft-azure",
     "website": "https://azure.microsoft.com/en-us/products/container-apps"
+  },
+  {
+    "name": "exe.dev",
+    "slug": "exe-dev",
+    "website": "https://exe.dev"
   }
 ]
