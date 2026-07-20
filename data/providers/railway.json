@@ -1,7 +1,7 @@
 {
   "cold_start": null,
   "docker": true,
-  "free_while_idle": true,
+  "free_while_idle": false,
   "gpu": false,
   "isolation": "Per-sandbox VM on Railway's VM primitive (specific hypervisor technology not publicly disclosed)",
   "last_verified": "2026-07-20",
@@ -51,9 +51,15 @@
     },
     {
       "url": "https://www.facebook.com/TrainStation/posts/%EF%B8%8F-sandbox-is-perfect-for-starting-on-a-grade-hauling-heavy-loads-or-getting-thro/1238087361801375/"
+    },
+    {
+      "url": "https://www.npmjs.com/package/@computesdk/railway"
+    },
+    {
+      "url": "https://x.com/Railway/article/2069801781916549204"
     }
   ],
   "summary": "Railway Sandboxes are short-lived Linux virtual machines scoped to a Railway environment that can be provisioned on demand to run commands, read and write files, and then be destroyed. They target agent workloads and untrusted code execution, and are controlled programmatically via the TypeScript SDK, the Railway CLI, or the dashboard. The product reached general availability on June 26, 2026 after a public beta that started May 14, 2026.",
-  "wake_on_request": null,
+  "wake_on_request": false,
   "website": "https://railway.com/"
 }
