@@ -1,0 +1,49 @@
+{
+  "cold_start": "milliseconds",
+  "docker": true,
+  "free_while_idle": false,
+  "gpu": null,
+  "isolation": "Firecracker microVM",
+  "last_verified": "2026-07-20",
+  "max_runtime": "24 h",
+  "memory_snapshots": true,
+  "name": "Vercel Sandbox",
+  "notes": "Hobby plan users have a hard runtime limit of 45 minutes.",
+  "price_headline": "$0.128 per vCPU-hour",
+  "pricing_model": "Metered by Active CPU, Provisioned Memory, and Sandbox Creations",
+  "sdks": [
+    "JavaScript",
+    "TypeScript",
+    "Python"
+  ],
+  "slug": "vercel",
+  "sources": [
+    {
+      "url": "http://vercel.com/docs/sandbox"
+    },
+    {
+      "url": "https://vercel.com/blog/agent-stack"
+    },
+    {
+      "url": "http://vercel.com/sandbox"
+    },
+    {
+      "url": "https://vercel.com/sandbox"
+    },
+    {
+      "url": "https://vercel.com/docs/sandbox/pricing"
+    },
+    {
+      "url": "https://vercel.com/docs/sandbox"
+    },
+    {
+      "url": "https://createos.sh/vs/vercel"
+    },
+    {
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1qa8bch/anthropic_and_vercel_chose_different_sandboxes/"
+    }
+  ],
+  "summary": "Vercel Sandbox provides on-demand, isolated Linux microVMs for safely running untrusted or user-generated code. It is primarily used by developers building AI agents and interactive tools that require a secure, ephemeral compute environment.",
+  "wake_on_request": null,
+  "website": "https://vercel.com/docs/vercel-sandbox"
+}

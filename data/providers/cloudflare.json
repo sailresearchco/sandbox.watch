@@ -1,0 +1,50 @@
+{
+  "cold_start": "milliseconds",
+  "docker": true,
+  "free_while_idle": true,
+  "gpu": null,
+  "isolation": "VM-level isolation",
+  "last_verified": "2026-07-20",
+  "max_runtime": "No fixed limit",
+  "memory_snapshots": true,
+  "name": "Cloudflare Sandboxes",
+  "notes": "Sandboxes restart after inactivity, meaning all internal state is lost unless explicitly persisted via other means.",
+  "price_headline": "$0.00002 per vCPU-second",
+  "pricing_model": "Active CPU pricing, billed on cycles used",
+  "sdks": [
+    "TypeScript"
+  ],
+  "slug": "cloudflare",
+  "sources": [
+    {
+      "url": "https://developers.cloudflare.com/sandbox/guides/"
+    },
+    {
+      "url": "https://developers.cloudflare.com/sandbox/"
+    },
+    {
+      "url": "https://developers.cloudflare.com/agents/tools/sandbox/"
+    },
+    {
+      "url": "https://www.cloudflare.com/products/sandboxes/"
+    },
+    {
+      "url": "https://www.infoq.com/news/2026/04/cloudflare-sandboxes-ga/"
+    },
+    {
+      "url": "http://developers.cloudflare.com/sandbox"
+    },
+    {
+      "url": "https://developers.cloudflare.com/sandbox/concepts/security/"
+    },
+    {
+      "url": "https://developers.cloudflare.com/sandbox/concepts/architecture/"
+    },
+    {
+      "url": "https://developers.cloudflare.com/sandbox/concepts/sandboxes/"
+    }
+  ],
+  "summary": "Cloudflare Sandboxes provide secure, isolated Linux environments for executing untrusted code. They are primarily used by developers building AI agents, interactive development environments, data analysis platforms, and CI/CD systems.",
+  "wake_on_request": true,
+  "website": "https://developers.cloudflare.com/sandboxes/"
+}

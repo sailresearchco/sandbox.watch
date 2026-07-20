@@ -1,23 +1,58 @@
 {
-  "name": "E2B",
-  "slug": "e2b",
-  "website": "https://e2b.dev",
-  "summary": "Open-source cloud sandboxes aimed at running AI-generated code, with a hosted service and SDKs for spawning short-lived isolated environments.",
-  "pricing_model": "Per-second, billed on provisioned sandbox resources",
-  "price_headline": "$0.0504 per vCPU-hour",
-  "free_while_idle": null,
-  "memory_snapshots": null,
-  "wake_on_request": null,
-  "cold_start": null,
-  "max_runtime": "24 h",
-  "isolation": "Firecracker microVM",
-  "sdks": ["Python", "TypeScript"],
-  "gpu": null,
+  "cold_start": "80 ms",
   "docker": null,
-  "notes": "Seed entry with a minimal field set. The first bootstrap run replaces it with fresh cited research.",
-  "sources": [
-    { "url": "https://e2b.dev/pricing" },
-    { "url": "https://docs.sailresearch.com/sailboxes" }
+  "free_while_idle": null,
+  "gpu": null,
+  "isolation": "Firecracker microVM",
+  "last_verified": "2026-07-20",
+  "max_runtime": "24 h",
+  "memory_snapshots": null,
+  "name": "E2B",
+  "notes": "New users receive $100 in free credits to get started.",
+  "price_headline": "$0.000028/s for 2 vCPUs",
+  "pricing_model": "Per-second, billed on vCPU and RAM usage",
+  "sdks": [
+    "Python",
+    "JavaScript",
+    "TypeScript"
   ],
-  "last_verified": "2026-07-19"
+  "slug": "e2b",
+  "sources": [
+    {
+      "url": "http://e2b.dev/docs"
+    },
+    {
+      "url": "http://github.com/e2b-dev/e2b"
+    },
+    {
+      "url": "https://e2b.dev/"
+    },
+    {
+      "url": "http://github.com/api-evangelist/e2b"
+    },
+    {
+      "url": "http://agdex.ai/tools/e2b"
+    },
+    {
+      "url": "http://blaxel.ai/blog/e2b-alternatives-sandbox-environments"
+    },
+    {
+      "url": "https://e2b.dev/pricing"
+    },
+    {
+      "url": "https://devtune.ai/verticals/ai-code-sandboxes-agent-runtimes/e2b/pricing"
+    },
+    {
+      "url": "https://e2b.dev/docs/sandbox"
+    },
+    {
+      "url": "https://e2b.dev/docs/billing"
+    },
+    {
+      "url": "http://e2b.dev/"
+    }
+  ],
+  "summary": "E2B is an open-source infrastructure that provides isolated cloud sandboxes for executing AI-generated code. It is used by developers building AI agents, LLM-powered applications, and data analysis tools.",
+  "wake_on_request": null,
+  "website": "https://e2b.dev"
 }

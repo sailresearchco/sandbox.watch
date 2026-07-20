@@ -1,0 +1,48 @@
+{
+  "cold_start": "2.7 s",
+  "docker": true,
+  "free_while_idle": null,
+  "gpu": false,
+  "isolation": "Firecracker microVM",
+  "last_verified": "2026-07-20",
+  "max_runtime": null,
+  "memory_snapshots": true,
+  "name": "CodeSandbox SDK",
+  "notes": "The product is currently rebranding as Together Code Sandbox and migrating features to the Together AI platform.",
+  "price_headline": "$0.01486 per credit",
+  "pricing_model": "Credit-based",
+  "sdks": [
+    "TypeScript",
+    "JavaScript"
+  ],
+  "slug": "codesandbox",
+  "sources": [
+    {
+      "url": "https://apis.io/apis/codesandbox/sdk/"
+    },
+    {
+      "url": "http://together.ai/sandbox"
+    },
+    {
+      "url": "https://rywalker.com/research/codesandbox-sdk"
+    },
+    {
+      "url": "http://docs.together.ai/docs/together-code-sandbox"
+    },
+    {
+      "url": "http://codesandbox.io/"
+    },
+    {
+      "url": "http://rywalker.com/research/codesandbox-sdk"
+    },
+    {
+      "url": "https://docs.together.ai/docs/together-code-sandbox"
+    },
+    {
+      "url": "http://apis.io/apis/codesandbox/sdk"
+    }
+  ],
+  "summary": "CodeSandbox SDK provides programmable microVM environments designed for AI agents to execute untrusted code. It features environment forking, snapshotting, and hibernation, and is being rebranded as Together Code Sandbox under Together AI.",
+  "wake_on_request": null,
+  "website": "https://codesandbox.io/docs/sdk"
+}

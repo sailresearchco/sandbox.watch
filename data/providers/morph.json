@@ -1,0 +1,42 @@
+{
+  "cold_start": "<250 ms",
+  "docker": true,
+  "free_while_idle": null,
+  "gpu": null,
+  "isolation": "Infinibranch (MorphVMs)",
+  "last_verified": "2026-07-20",
+  "max_runtime": null,
+  "memory_snapshots": true,
+  "name": "Morph Cloud",
+  "notes": "There is experimental support for Windows, OSX (x86), and nested virtualization.",
+  "price_headline": "The available sources do not contain a headline compute price for Morph Cloud sandboxes.",
+  "pricing_model": "Usage-based, billed on compute and storage used",
+  "sdks": [
+    "Python",
+    "TypeScript"
+  ],
+  "slug": "morph",
+  "sources": [
+    {
+      "url": "https://github.com/morph-labs/morph-python-sdk"
+    },
+    {
+      "url": "https://cloud.morph.so/docs/blog/developers"
+    },
+    {
+      "url": "https://cloud.morph.so/docs/developers"
+    },
+    {
+      "url": "https://cloud.morph.so/docs/documentation/setup/installation-guide"
+    },
+    {
+      "url": "http://cloud.morph.so/web/product/devboxes"
+    },
+    {
+      "url": "http://morph.so/"
+    }
+  ],
+  "summary": "Morph Cloud provides programmable cloud development environments called Devboxes and infrastructure for AI agents. It is used by developers to deploy and scale computational environments that support instant branching and sub-second startup times.",
+  "wake_on_request": null,
+  "website": "https://cloud.morph.so"
+}

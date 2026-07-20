@@ -1,23 +1,39 @@
 {
-  "name": "Sailboxes",
-  "slug": "sailboxes",
-  "website": "https://sailresearch.com/sailboxes",
-  "summary": "Persistent Linux VMs built for long-horizon AI agents. A Sailbox checkpoints its full memory state when idle, wakes on inbound traffic, and bills only the CPU, RAM, and disk it actually uses while running.",
-  "pricing_model": "Usage-based: billed on actively used vCPU, RAM, and disk, plus a one-time creation fee",
-  "price_headline": "$0.015 per actively used vCPU-hour",
-  "free_while_idle": true,
-  "memory_snapshots": true,
-  "wake_on_request": true,
-  "cold_start": "under 3 s",
-  "max_runtime": "No fixed limit",
-  "isolation": "Kernel-isolated VM",
-  "sdks": ["Python", "TypeScript", "Rust"],
-  "gpu": null,
+  "cold_start": null,
   "docker": true,
-  "notes": "Seed entry from the provider's public docs. The first bootstrap run replaces it with fresh cited research.",
+  "free_while_idle": true,
+  "gpu": null,
+  "isolation": "Linux VM",
+  "last_verified": "2026-07-20",
+  "max_runtime": "No fixed limit",
+  "memory_snapshots": null,
+  "name": "Sailboxes",
+  "notes": "Memory is elastic, starting small and scaling up to 128 GB.",
+  "price_headline": "The available sources do not provide a specific headline compute price.",
+  "pricing_model": "Usage-based",
+  "sdks": [],
+  "slug": "sailboxes",
   "sources": [
-    { "url": "https://docs.sailresearch.com/sailboxes" },
-    { "url": "https://docs.sailresearch.com/sailboxes-pricing" }
+    {
+      "url": "https://finance.yahoo.com/technology/ai/articles/sail-research-launches-sailboxes-first-152700722.html"
+    },
+    {
+      "url": "https://www.linkedin.com/company/sailresearch"
+    },
+    {
+      "url": "http://sailresearch.com/"
+    },
+    {
+      "url": "http://docs.sailresearch.com/sailboxes"
+    },
+    {
+      "url": "http://prnewswire.com/news-releases/sail-research-raises-80-million-to-build-max-efficiency-infrastructure-for-ai-agents-302810497.html"
+    },
+    {
+      "url": "https://www.morningstar.com/news/pr-newswire/20260714sf04266/sail-research-launches-sailboxes-the-first-cloud-environment-purpose-built-for-long-horizon-ai-agents"
+    }
   ],
-  "last_verified": "2026-07-19"
+  "summary": "Sailboxes are persistent Linux virtual machines designed for long-horizon AI agents. They provide enterprise teams with full machines that support persistent state and can run indefinitely.",
+  "wake_on_request": null,
+  "website": "https://sailresearch.com/sailboxes"
 }

@@ -1,0 +1,58 @@
+{
+  "cold_start": "~25 ms",
+  "docker": true,
+  "free_while_idle": true,
+  "gpu": null,
+  "isolation": "microVM",
+  "last_verified": "2026-07-20",
+  "max_runtime": "No fixed limit",
+  "memory_snapshots": true,
+  "name": "Blaxel",
+  "notes": "Maintaining sandboxes in standby incurs snapshot storage charges ($0.20/GB-month).",
+  "price_headline": "$0.0000115 per GB RAM-second",
+  "pricing_model": "Usage-based, pay-as-you-go",
+  "sdks": [
+    "TypeScript",
+    "Python",
+    "Go"
+  ],
+  "slug": "blaxel",
+  "sources": [
+    {
+      "url": "https://blaxel.ai/ai-information"
+    },
+    {
+      "url": "https://docs.blaxel.ai/sdk-reference/introduction"
+    },
+    {
+      "url": "http://docs.blaxel.ai/Overview"
+    },
+    {
+      "url": "https://www.theai.tw/en/tools/blaxel"
+    },
+    {
+      "url": "http://docs.blaxel.ai/Sandboxes/Overview"
+    },
+    {
+      "url": "https://blaxel.ai/sandbox"
+    },
+    {
+      "url": "http://docs.blaxel.ai/"
+    },
+    {
+      "url": "http://blaxel.ai/blog"
+    },
+    {
+      "url": "https://blaxel.ai/pricing"
+    },
+    {
+      "url": "https://docs.blaxel.ai/Overview"
+    },
+    {
+      "url": "https://www.airframe.ai/product/blaxel-ai/analysis"
+    }
+  ],
+  "summary": "Blaxel is a perpetual sandbox platform that provides isolated microVM compute environments for AI agents to execute code in production. It is used by AI builders and teams developing autonomous agents.",
+  "wake_on_request": true,
+  "website": "https://blaxel.ai"
+}

@@ -1,0 +1,42 @@
+{
+  "cold_start": "under 1 second",
+  "docker": null,
+  "free_while_idle": true,
+  "gpu": null,
+  "isolation": "Isolated virtual desktop environments",
+  "last_verified": "2026-07-20",
+  "max_runtime": null,
+  "memory_snapshots": null,
+  "name": "Scrapybara",
+  "notes": null,
+  "price_headline": "$29/month",
+  "pricing_model": "Per-second billing with monthly subscription plans",
+  "sdks": [
+    "Python",
+    "TypeScript"
+  ],
+  "slug": "scrapybara",
+  "sources": [
+    {
+      "url": "https://www.ycombinator.com/launches/MHN-scrapybara-a-computer-for-your-ai"
+    },
+    {
+      "url": "https://scrapybara.com/"
+    },
+    {
+      "url": "https://scrapybara.com/blog"
+    },
+    {
+      "url": "https://docs.scrapybara.com/"
+    },
+    {
+      "url": "https://www.ycombinator.com/companies/capy"
+    },
+    {
+      "url": "https://www.pulsrev.com/tools/scrapybara"
+    }
+  ],
+  "summary": "Scrapybara provides virtual desktop and browser infrastructure designed for computer-use AI agents to perform tasks. It allows developers to deploy secure, remote environments where agents can interact with digital interfaces and execute code via an API.",
+  "wake_on_request": null,
+  "website": "https://scrapybara.com"
+}

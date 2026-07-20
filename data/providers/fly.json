@@ -1,0 +1,45 @@
+{
+  "cold_start": "few hundred milliseconds",
+  "docker": true,
+  "free_while_idle": false,
+  "gpu": false,
+  "isolation": "Firecracker microVM",
+  "last_verified": "2026-07-20",
+  "max_runtime": "No fixed limit",
+  "memory_snapshots": true,
+  "name": "Fly Machines",
+  "notes": "Stopped Fly Machines are not free; they are charged for the root file system storage at $0.15 per 1GB for 30 days.",
+  "price_headline": "$0.0027 per hour for a shared 256 MB instance",
+  "pricing_model": "Per-second billing",
+  "sdks": [],
+  "slug": "fly",
+  "sources": [
+    {
+      "url": "https://fly.io/machines/"
+    },
+    {
+      "url": "http://fly.io/"
+    },
+    {
+      "url": "http://fly.io/ai"
+    },
+    {
+      "url": "https://fly.io/docs/machines/overview/"
+    },
+    {
+      "url": "http://rywalker.com/research/sprites"
+    },
+    {
+      "url": "http://fly.io/machines"
+    },
+    {
+      "url": "https://fly.io/docs/about/pricing/"
+    },
+    {
+      "url": "https://www.withorb.com/blog/flyio-pricing"
+    }
+  ],
+  "summary": "Fly Machines are fast-booting, lightweight virtual machines powered by Firecracker microVMs. They provide isolated compute environments used by developers to run arbitrary code and as secure sandboxes for AI agents.",
+  "wake_on_request": true,
+  "website": "https://fly.io/docs/machines/"
+}
