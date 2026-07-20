@@ -7,22 +7,77 @@ schema Parallel research runs must fill, and the site's comparison table.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 from . import config
 
-# Spec fields rendered on the site, in table column order. Booleans render as
-# Yes/No, null renders as "n/a" (meaning: no cited public fact yet).
+# A dollar figure stated per vCPU (or CPU core) per exact time unit. Only
+# these normalize honestly: converting seconds or minutes to hours is unit
+# arithmetic. Per-credit, per-MCU, per-instance, and per-month prices carry
+# assumptions the docs do not state, so they stay unranked.
+_VCPU_RATE = re.compile(
+    r"\$([0-9][0-9,]*(?:\.[0-9]+)?)"
+    r"\s*(?:per\s+|/\s*)(?:active\s+)?v?cpu(?:\s+core)?"
+    r"[\s/-]*(sec(?:ond)?|min(?:ute)?|hour|hr)\b",
+    re.IGNORECASE,
+)
+_PER_HOUR_FACTOR = {"s": 3600.0, "m": 60.0, "h": 1.0}
+
+
+def vcpu_hour_rate(price_headline: str | None) -> float | None:
+    """Dollars per vCPU-hour when the headline states a per-vCPU time rate.
+
+    Returns None for every other pricing shape, which the table sorts as
+    not directly comparable."""
+    if not price_headline:
+        return None
+    match = _VCPU_RATE.search(price_headline)
+    if not match:
+        return None
+    amount = float(match.group(1).replace(",", ""))
+    factor = _PER_HOUR_FACTOR[match.group(2)[0].lower()]
+    return round(amount * factor, 6)
+
+# Spec fields rendered on the site, in table column order: (key, label,
+# visitor tooltip). Booleans render as Yes/No, null renders as "n/a"
+# (meaning: no cited public fact yet).
 SPEC_FIELDS = [
-    ("price_headline", "Pricing"),
-    ("free_while_idle", "Free while idle"),
-    ("memory_snapshots", "Memory snapshots"),
-    ("wake_on_request", "Wake on request"),
-    ("cold_start", "Cold start"),
-    ("max_runtime", "Max runtime"),
-    ("isolation", "Isolation"),
-    ("gpu", "GPUs"),
-    ("docker", "Docker"),
+    (
+        "price_headline",
+        "Pricing",
+        "The headline compute price as the provider states it. Sorting ranks "
+        "prices stated per vCPU over time, converted to hourly. Other "
+        "pricing models sort after, unranked.",
+    ),
+    (
+        "free_while_idle",
+        "Free while idle",
+        "Whether a stopped, paused, or sleeping sandbox costs nothing.",
+    ),
+    (
+        "memory_snapshots",
+        "Memory snapshots",
+        "Whether RAM state survives a pause and resume, not just disk.",
+    ),
+    (
+        "wake_on_request",
+        "Wake on request",
+        "Whether a stopped sandbox wakes automatically on inbound traffic.",
+    ),
+    (
+        "cold_start",
+        "Cold start",
+        "Typical time from create or resume to running.",
+    ),
+    ("max_runtime", "Max runtime", "The longest a sandbox may run."),
+    ("isolation", "Isolation", "The isolation technology between sandboxes."),
+    ("gpu", "GPUs", "Whether GPU instances are available for sandboxes."),
+    (
+        "docker",
+        "Docker",
+        "Whether Docker containers can run inside the sandbox.",
+    ),
 ]
 
 # Schema handed to Parallel task runs and snapshot monitors. Descriptions are

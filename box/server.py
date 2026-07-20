@@ -94,8 +94,18 @@ def _page(request: Request, template: str, **context) -> HTMLResponse:
 @app.get("/", response_class=HTMLResponse)
 def index(request: Request):
     items = providers.load_providers()
+    # Sort keys for the pricing column: dollars per vCPU-hour where the
+    # provider states such a rate, None (unranked) everywhere else.
+    price_keys = {
+        p.get("slug"): providers.vcpu_hour_rate(p.get("price_headline"))
+        for p in items
+    }
     return _page(
-        request, "index.html", providers=items, spec_fields=providers.SPEC_FIELDS
+        request,
+        "index.html",
+        providers=items,
+        spec_fields=providers.SPEC_FIELDS,
+        price_keys=price_keys,
     )
 
 

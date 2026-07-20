@@ -22,8 +22,8 @@ comparison{% endblock %} {% block content %}
     <thead>
       <tr>
         <th>Product</th>
-        {% for key, label in spec_fields %}
-        <th>{{ label }}</th>
+        {% for key, label, tip in spec_fields %}
+        <th title="{{ tip }}">{{ label }}</th>
         {% endfor %}
       </tr>
     </thead>
@@ -31,14 +31,35 @@ comparison{% endblock %} {% block content %}
       {% for p in providers %}
       <tr data-href="/p/{{ p.slug }}">
         <td class="name"><a href="/p/{{ p.slug }}">{{ p.name }}</a></td>
-        {% for key, label in spec_fields %}
-        <td>{{ p.get(key) | cell }}</td>
+        {% for key, label, tip in spec_fields %}
+        <td
+          {%
+          if
+          key=""
+          ="price_headline"
+          and
+          price_keys.get(p.slug)
+          is
+          not
+          none
+          %}
+          data-key="{{ price_keys[p.slug] }}"
+          {%
+          endif
+          %}
+        >
+          {{ p.get(key) | cell }}
+        </td>
         {% endfor %}
       </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
+<p class="legend">
+  n/a means the public record does not state it. Hover a column header for what
+  it measures.
+</p>
 {% if not providers %}
 <p class="empty">No data yet. The first bootstrap run fills this table.</p>
 {% endif %}
@@ -46,15 +67,15 @@ comparison{% endblock %} {% block content %}
 <script>
   // Column sort and row filter. Everything else on this page is plain HTML.
   const table = document.getElementById("compare");
-  // Cells with a dollar figure sort by the first one. A plain text sort
-  // compares digit runs as whole numbers, which mis-orders decimals: it
-  // would put $0.15 before $0.0504. Other text sorts alphabetically, and
-  // n/a stays last in both directions.
-  function sortKey(text) {
-    const t = text.trim();
-    const money = t.match(/\$([0-9][0-9,]*(?:\.[0-9]+)?)/);
-    if (money) {
-      return { rank: 0, num: parseFloat(money[1].replace(/,/g, "")), text: t };
+  // Pricing cells carry a server-computed data-key: dollars per vCPU-hour
+  // where the provider states such a rate. Those rank first, by value.
+  // Cells without one (per-credit, per-month, and other shapes that do not
+  // normalize honestly) sort after them alphabetically, and n/a stays last
+  // in both directions.
+  function sortKey(cell) {
+    const t = cell.innerText.trim();
+    if (cell.dataset.key !== undefined) {
+      return { rank: 0, num: parseFloat(cell.dataset.key), text: t };
     }
     if (!t || t === "n/a") return { rank: 2, num: 0, text: t };
     return { rank: 1, num: 0, text: t };
@@ -66,8 +87,8 @@ comparison{% endblock %} {% block content %}
       th.dataset.dir = dir === 1 ? "asc" : "desc";
       const rows = [...table.tBodies[0].rows];
       rows.sort((a, b) => {
-        const ka = sortKey(a.cells[col].innerText);
-        const kb = sortKey(b.cells[col].innerText);
+        const ka = sortKey(a.cells[col]);
+        const kb = sortKey(b.cells[col]);
         if (ka.rank !== kb.rank) return ka.rank - kb.rank;
         if (ka.rank === 0 && ka.num !== kb.num) return dir * (ka.num - kb.num);
         return (

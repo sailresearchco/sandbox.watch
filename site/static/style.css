@@ -247,6 +247,12 @@ td.name a {
   max-width: 46rem;
 }
 
+.legend {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0.6rem 0 0;
+}
+
 .empty {
   color: var(--muted);
 }

@@ -10,9 +10,9 @@ endblock %} {% block content %}
       <th>Pricing model</th>
       <td>{{ p.get("pricing_model") | cell }}</td>
     </tr>
-    {% for key, label in spec_fields %}
+    {% for key, label, tip in spec_fields %}
     <tr>
-      <th>{{ label }}</th>
+      <th title="{{ tip }}">{{ label }}</th>
       <td>{{ p.get(key) | cell }}</td>
     </tr>
     {% endfor %}
