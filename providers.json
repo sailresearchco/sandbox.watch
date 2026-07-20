@@ -87,5 +87,21 @@
     "name": "Runwork Agent Sandbox",
     "slug": "runwork",
     "website": "https://www.runwork.ai"
+  },
+  {
+    "name": "LangSmith Sandboxes",
+    "slug": "langsmith-sandboxes",
+    "website": "https://www.langchain.com/langsmith/sandboxes"
+  },
+  { "name": "Railway Sandboxes", "slug": "railway", "website": "https://railway.com/" },
+  {
+    "name": "AWS Lambda MicroVMs",
+    "slug": "aws-lambda-microvms",
+    "website": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/"
+  },
+  {
+    "name": "Azure Container Apps Sandboxes",
+    "slug": "microsoft-azure",
+    "website": "https://azure.microsoft.com/en-us/products/container-apps"
   }
 ]
