@@ -1,12 +1,12 @@
 {
   "cold_start": "<90ms",
-  "docker": true,
+  "docker": null,
   "free_while_idle": null,
-  "gpu": true,
+  "gpu": null,
   "isolation": "Linux containers",
   "last_verified": "2026-07-20",
   "max_runtime": "No fixed limit",
-  "memory_snapshots": true,
+  "memory_snapshots": null,
   "name": "Daytona",
   "notes": "Sandboxes can be archived to cost-effective object storage to preserve state for extended periods, though starting them takes more time than stopped sandboxes.",
   "price_headline": "$0.0504 per vCPU-hour",
@@ -14,8 +14,6 @@
   "sdks": [
     "Python",
     "TypeScript",
-    "Ruby",
-    "Go",
     "Java"
   ],
   "slug": "daytona",
@@ -46,6 +44,24 @@
     },
     {
       "url": "https://www.daytona.io/docs/en/typescript-sdk/sandbox/"
+    },
+    {
+      "url": "https://www.daytona.io/"
+    },
+    {
+      "url": "https://www.daytona.io/docs/en/python-sdk/"
+    },
+    {
+      "url": "https://www.daytona.io/dotfiles/java-sdk"
+    },
+    {
+      "url": "https://github.com/daytonaio/sdk"
+    },
+    {
+      "url": "https://www.morphllm.com/comparisons/daytona-alternative"
+    },
+    {
+      "url": "https://medium.com/@kacperwlodarczyk/sub-90ms-cloud-code-execution-how-daytona-replaced-docker-in-our-ai-agent-stack-b6f343e4e547"
     }
   ],
   "summary": "Daytona provides isolated runtime environments, called sandboxes, for AI agents to execute code. These sandboxes are managed programmatically and are used by AI agents and developers to run untrusted or AI-generated code.",
