@@ -41,6 +41,7 @@ def vcpu_hour_rate(price_headline: str | None) -> float | None:
     factor = _PER_HOUR_FACTOR[match.group(2)[0].lower()]
     return round(amount * factor, 6)
 
+
 # Spec fields rendered on the site, in table column order: (key, label,
 # visitor tooltip). Booleans render as Yes/No, null renders as "n/a"
 # (meaning: no cited public fact yet).
@@ -56,6 +57,13 @@ SPEC_FIELDS = [
         "free_while_idle",
         "Free while idle",
         "Whether a stopped, paused, or sleeping sandbox costs nothing.",
+    ),
+    (
+        "usage_billed",
+        "Billed on use",
+        "Yes when the bill scales with compute the sandbox actively uses. "
+        "No when you pay for reserved or allocated capacity, or running "
+        "time, whether or not it is used.",
     ),
     (
         "memory_snapshots",
@@ -109,6 +117,15 @@ PROVIDER_OUTPUT_SCHEMA = {
         "free_while_idle": {
             "type": ["boolean", "null"],
             "description": "True if a stopped, paused, or sleeping sandbox costs nothing.",
+        },
+        "usage_billed": {
+            "type": ["boolean", "null"],
+            "description": (
+                "True if compute billing scales with what the sandbox actively "
+                "uses (active or observed CPU time). False if billing is on "
+                "reserved or allocated capacity, or on wall-clock running "
+                "time, regardless of use. Null if the docs do not say."
+            ),
         },
         "memory_snapshots": {
             "type": ["boolean", "null"],

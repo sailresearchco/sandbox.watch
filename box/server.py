@@ -97,8 +97,7 @@ def index(request: Request):
     # Sort keys for the pricing column: dollars per vCPU-hour where the
     # provider states such a rate, None (unranked) everywhere else.
     price_keys = {
-        p.get("slug"): providers.vcpu_hour_rate(p.get("price_headline"))
-        for p in items
+        p.get("slug"): providers.vcpu_hour_rate(p.get("price_headline")) for p in items
     }
     return _page(
         request,
