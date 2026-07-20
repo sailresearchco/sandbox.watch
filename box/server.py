@@ -14,6 +14,7 @@ from __future__ import annotations
 import contextlib
 import json
 import logging
+import os
 import threading
 import time
 import uuid
@@ -176,6 +177,11 @@ def _drain_pending() -> None:
 
 
 def _sleep_self() -> None:
+    # The SDK authenticates from the environment; secrets live in files here,
+    # so surface the key before first use.
+    key = config.secret("sail_api_key")
+    if key:
+        os.environ.setdefault("SAIL_API_KEY", key)
     # Imported lazily: the SDK is only installed inside the box.
     import sail
 
