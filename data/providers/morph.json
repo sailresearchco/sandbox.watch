@@ -30,13 +30,19 @@
       "url": "https://cloud.morph.so/docs/documentation/setup/installation-guide"
     },
     {
-      "url": "http://cloud.morph.so/web/product/devboxes"
+      "url": "https://cloud.morph.so/web/product/devboxes"
+    },
+    {
+      "url": "https://www.morphllm.com/pricing"
+    },
+    {
+      "url": "https://cloud.morph.so/docs/devboxes/getting-started"
     },
     {
       "url": "http://morph.so/"
     }
   ],
   "summary": "Morph Cloud provides programmable cloud development environments called Devboxes and infrastructure for AI agents. It is used by developers to deploy and scale computational environments that support instant branching and sub-second startup times.",
-  "wake_on_request": null,
+  "wake_on_request": true,
   "website": "https://cloud.morph.so"
 }
