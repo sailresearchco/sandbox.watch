@@ -78,11 +78,37 @@ def write_provider_file(seed: dict, result: dict) -> None:
     print(f"wrote {path}")
 
 
+def cancel_existing_monitors(client: ParallelClient) -> None:
+    """Cancel the monitors recorded in data/monitors.json, if any.
+
+    Re-running bootstrap would otherwise pile up a second full set of
+    monitors, and every duplicate fires duplicate webhooks forever."""
+    path = config.data_dir() / "monitors.json"
+    if not path.is_file():
+        return
+    try:
+        existing = json.loads(path.read_text())
+    except json.JSONDecodeError:
+        return
+    created = list((existing.get("providers") or {}).values())
+    created.append(existing.get("new_products"))
+    for record in created:
+        monitor_id = (record or {}).get("monitor_id")
+        if not monitor_id:
+            continue
+        try:
+            client.cancel_monitor(monitor_id)
+            print(f"cancelled old monitor {monitor_id}")
+        except Exception as exc:
+            print(f"could not cancel {monitor_id}: {exc}", file=sys.stderr)
+
+
 def create_monitors(
     client: ParallelClient, runs: dict[str, str], webhook_url: str, frequency: str
 ) -> dict:
     """One snapshot monitor per provider (diffs against the research run) plus
     one event-stream monitor that watches for new products."""
+    cancel_existing_monitors(client)
     monitors: dict[str, dict] = {"providers": {}, "new_products": None}
     for slug, run_id in runs.items():
         created = client.create_monitor(
@@ -131,6 +157,17 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(client.trigger_monitor_run(args.trigger_monitor), indent=2))
         return 0
 
+    # Hold the busy marker so the server's idle self-sleep doesn't checkpoint
+    # the box in the middle of research.
+    marker = config.busy_marker()
+    marker.touch()
+    try:
+        return _run(client, args)
+    finally:
+        marker.unlink(missing_ok=True)
+
+
+def _run(client: ParallelClient, args: argparse.Namespace) -> int:
     seeds = json.loads((config.root_dir() / "providers.json").read_text())
     if args.only:
         seeds = [s for s in seeds if s["slug"] == args.only]

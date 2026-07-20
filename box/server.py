@@ -208,6 +208,17 @@ def _sleep_self() -> None:
     ).sleep()
 
 
+def _busy_hold() -> bool:
+    """True while a long non-HTTP job (e.g. bootstrap research) holds the
+    busy marker. A marker older than two hours is treated as stale so a
+    killed job cannot keep the box awake forever."""
+    try:
+        age = time.time() - config.busy_marker().stat().st_mtime
+    except OSError:
+        return False
+    return age < 7200
+
+
 def _sleep_when_idle() -> None:
     """Sleep the box once the server has been idle long enough.
 
@@ -215,7 +226,7 @@ def _sleep_when_idle() -> None:
     the box the call returns and the loop continues where it left off."""
     while True:
         time.sleep(5)
-        if _turn_lock.locked():
+        if _turn_lock.locked() or _busy_hold():
             continue
         if time.monotonic() - _last_activity < config.idle_seconds():
             continue

@@ -36,6 +36,14 @@ def state_dir() -> Path:
     return path
 
 
+def busy_marker() -> Path:
+    """Marker file that pauses idle self-sleep during long non-HTTP work.
+
+    Bootstrap research runs for many minutes without touching the web server,
+    and sleeping mid-run would freeze it and sever its API connections."""
+    return state_dir() / "busy"
+
+
 def secrets_dir() -> Path:
     return Path(
         os.environ.get("SANDBOXWATCH_SECRETS_DIR") or "/opt/sandboxwatch/secrets"

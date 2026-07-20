@@ -94,6 +94,11 @@ class ParallelClient:
             return payload
         return payload.get("events", [])
 
+    def cancel_monitor(self, monitor_id: str) -> None:
+        """Cancel a monitor. Cancelled monitors stop executing for good."""
+        resp = self._http.post(f"/v1/monitors/{monitor_id}/cancel")
+        resp.raise_for_status()
+
     def trigger_monitor_run(self, monitor_id: str) -> dict:
         """Force a monitor execution now instead of waiting for its cadence."""
         resp = self._http.post(f"/v1/monitors/{monitor_id}/trigger")
