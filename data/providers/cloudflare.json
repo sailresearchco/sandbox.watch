@@ -3,12 +3,12 @@
   "docker": true,
   "free_while_idle": true,
   "gpu": null,
-  "isolation": "VM-level isolation",
+  "isolation": "Container-based isolation (Cloudflare Containers)",
   "last_verified": "2026-07-20",
   "max_runtime": "No fixed limit",
   "memory_snapshots": true,
   "name": "Cloudflare Sandboxes",
-  "notes": "Sandboxes restart after inactivity, meaning all internal state is lost unless explicitly persisted via other means.",
+  "notes": "Persistence is described in terms of external object storage (R2) and production deployment; the public docs do not claim that internal ephemeral memory is preserved across restarts, so ephemeral state should be treated as non-persistent unless explicitly persisted externally.",
   "price_headline": "$0.00002 per vCPU-second",
   "pricing_model": "Active CPU pricing, billed on cycles used",
   "sdks": [
@@ -42,6 +42,12 @@
     },
     {
       "url": "https://developers.cloudflare.com/sandbox/concepts/sandboxes/"
+    },
+    {
+      "url": "https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/"
+    },
+    {
+      "url": "https://developers.cloudflare.com/sandbox/platform/pricing/"
     }
   ],
   "summary": "Cloudflare Sandboxes provide secure, isolated Linux environments for executing untrusted code. They are primarily used by developers building AI agents, interactive development environments, data analysis platforms, and CI/CD systems.",
