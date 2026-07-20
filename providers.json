@@ -42,5 +42,50 @@
     "name": "Scrapybara",
     "slug": "scrapybara",
     "website": "https://scrapybara.com"
+  },
+  {
+    "name": "OpenComputer",
+    "slug": "opencomputer",
+    "website": "https://opencomputer.dev"
+  },
+  {
+    "name": "Box by ASCII",
+    "slug": "box-by-ascii",
+    "website": "https://box.ascii.dev"
+  },
+  {
+    "name": "Fly.io Sprites",
+    "slug": "fly-io-sprites",
+    "website": "https://fly.io/sprites/"
+  },
+  {
+    "name": "Beam",
+    "slug": "beam",
+    "website": "https://www.beam.cloud/sandbox"
+  },
+  {
+    "name": "Deno Sandbox",
+    "slug": "deno-sandbox",
+    "website": "https://deno.com/deploy/sandbox"
+  },
+  {
+    "name": "Novita AI Sandbox",
+    "slug": "novita",
+    "website": "https://novita.ai/sandbox"
+  },
+  {
+    "name": "AWS AgentCore Code Interpreter",
+    "slug": "aws-agentcore-code-interpreter",
+    "website": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/code-interpreter-tool.html"
+  },
+  {
+    "name": "GKE Agent Sandbox",
+    "slug": "gke-agent-sandbox",
+    "website": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/agent-sandbox"
+  },
+  {
+    "name": "Runwork Agent Sandbox",
+    "slug": "runwork",
+    "website": "https://www.runwork.ai"
   }
 ]

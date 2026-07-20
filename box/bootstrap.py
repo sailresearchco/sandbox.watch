@@ -145,22 +145,24 @@ def discover_providers(client: ParallelClient, seeds: list[dict]) -> list[dict]:
 
 
 def run_discovery(client: ParallelClient) -> int:
-    """--discover mode: merge FindAll results into providers.json and exit.
+    """--discover mode: FindAll candidate products into data/discovery.json.
 
-    Research for the new seeds stays a separate bootstrap run, so the
-    operator sees what was added before paying for deep research."""
-    path = config.root_dir() / "providers.json"
-    seeds = json.loads(path.read_text())
+    Candidates are review input, not rows: broad generators match listicles,
+    infrastructure libraries, and general compute platforms alongside real
+    sandbox products, so a person (or the in-box agent, with evidence) moves
+    entries into providers.json before any research money is spent."""
+    seeds = json.loads((config.root_dir() / "providers.json").read_text())
     found = discover_providers(client, seeds)
     if not found:
         print("discovery found nothing new")
         return 0
     for seed in found:
-        print(f"discovered: {seed['name']} ({seed['website']}) slug={seed['slug']}")
-    path.write_text(json.dumps(seeds + found, indent=2) + "\n")
+        print(f"candidate: {seed['name']} ({seed['website']}) slug={seed['slug']}")
+    out = config.data_dir() / "discovery.json"
+    out.write_text(json.dumps(found, indent=2) + "\n")
     print(
-        f"added {len(found)} providers to providers.json; research them with "
-        "--only <slug> --skip-monitors, then refresh monitors"
+        f"wrote {len(found)} candidates to {out}; move real products into "
+        "providers.json, then research them with --only <slug>"
     )
     return 0
 
