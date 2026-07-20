@@ -1,5 +1,5 @@
 {
-  "cold_start": "<2s",
+  "cold_start": "a few seconds",
   "docker": true,
   "free_while_idle": true,
   "gpu": false,
@@ -43,6 +43,12 @@
     },
     {
       "url": "http://runloop.ai/"
+    },
+    {
+      "url": "https://docs.runloop.ai/docs/devboxes/overview"
+    },
+    {
+      "url": "https://runloop.ai/blog/runloop-devbox-al-driven-development-environment"
     }
   ],
   "summary": "Runloop is a platform providing secure cloud-hosted sandboxes (Devboxes) for building, testing, and deploying AI coding agents. It is used by AI-first teams, startups, enterprise innovation teams, and academic labs.",
