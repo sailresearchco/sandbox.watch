@@ -94,6 +94,56 @@ class ParallelClient:
             return payload
         return payload.get("events", [])
 
+    def create_findall_run(
+        self,
+        *,
+        objective: str,
+        entity_type: str,
+        match_conditions: list[dict],
+        generator: str = "base",
+        match_limit: int = 40,
+        exclude_names: Iterable[str] = (),
+    ) -> str:
+        """Start a FindAll run (public beta) and return its findall_id."""
+        body: dict[str, Any] = {
+            "objective": objective,
+            "entity_type": entity_type,
+            "match_conditions": match_conditions,
+            "generator": generator,
+            "match_limit": match_limit,
+        }
+        excludes = [name for name in exclude_names if name]
+        if excludes:
+            body["exclude_list"] = excludes
+        resp = self._http.post("/v1beta/findall/runs", json=body)
+        resp.raise_for_status()
+        return resp.json()["findall_id"]
+
+    def findall_result(
+        self,
+        findall_id: str,
+        timeout_seconds: float = 1200,
+        poll_seconds: float = 15,
+    ) -> dict:
+        """Poll a FindAll run until it finishes, then return {run, candidates}."""
+        deadline = time.time() + timeout_seconds
+        while True:
+            resp = self._http.get(f"/v1beta/findall/runs/{findall_id}")
+            resp.raise_for_status()
+            # The run's status field is itself an object: {status, is_active, ...}.
+            status = resp.json().get("status") or {}
+            active = status.get("is_active")
+            if active is None:
+                active = status.get("status") in ("queued", "running", "action_required")
+            if not active:
+                break
+            if time.time() > deadline:
+                raise TimeoutError(f"findall run {findall_id} still active")
+            time.sleep(poll_seconds)
+        resp = self._http.get(f"/v1beta/findall/runs/{findall_id}/result")
+        resp.raise_for_status()
+        return resp.json()
+
     def cancel_monitor(self, monitor_id: str) -> None:
         """Cancel a monitor. Cancelled monitors stop executing for good."""
         resp = self._http.post(f"/v1/monitors/{monitor_id}/cancel")

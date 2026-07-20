@@ -34,6 +34,35 @@ Report the product name, the company, the website, and what changed, with
 sources.
 """
 
+DISCOVER_OBJECTIVE = """\
+Find all cloud sandbox products built for running AI agents' code: hosted
+isolated compute (VMs, microVMs, or containers) that an agent or its harness
+creates and controls programmatically to execute agent-generated or untrusted
+code.
+"""
+
+DISCOVER_MATCH_CONDITIONS = [
+    {
+        "name": "agent_sandbox",
+        "description": (
+            "The product provides hosted isolated compute (VM, microVM, or "
+            "container sandboxes) marketed or documented for running code "
+            "from AI agents or LLM-driven workflows."
+        ),
+    },
+    {
+        "name": "programmatic",
+        "description": (
+            "Sandboxes can be created and controlled programmatically "
+            "through an API, SDK, or CLI."
+        ),
+    },
+    {
+        "name": "public_docs",
+        "description": "The product has public documentation or a pricing page.",
+    },
+]
+
 
 def research_all(
     client: ParallelClient, seeds: list[dict], processor: str
@@ -76,6 +105,62 @@ def write_provider_file(seed: dict, result: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(record, indent=2, sort_keys=True) + "\n")
     print(f"wrote {path}")
+
+
+def _slugify(name: str) -> str:
+    slug = "".join(c if c.isalnum() else "-" for c in name.lower())
+    return "-".join(part for part in slug.split("-") if part)
+
+
+def discover_providers(client: ParallelClient, seeds: list[dict]) -> list[dict]:
+    """FindAll products the seed list doesn't cover yet. Returns new seeds."""
+    findall_id = client.create_findall_run(
+        objective=DISCOVER_OBJECTIVE,
+        entity_type="products",
+        match_conditions=DISCOVER_MATCH_CONDITIONS,
+        generator="base",
+        match_limit=40,
+        exclude_names=[seed["name"] for seed in seeds],
+    )
+    print(f"findall run started: {findall_id}")
+    result = client.findall_result(findall_id)
+    taken = {seed["slug"] for seed in seeds}
+    taken.update(seed["name"].lower() for seed in seeds)
+    found: list[dict] = []
+    for candidate in result.get("candidates", []):
+        if candidate.get("match_status") != "matched":
+            continue
+        name = (candidate.get("name") or "").strip()
+        url = (candidate.get("url") or "").strip()
+        slug = _slugify(name)
+        if not name or not url or not slug:
+            continue
+        if slug in taken or name.lower() in taken:
+            continue
+        taken.add(slug)
+        found.append({"name": name, "slug": slug, "website": url})
+    return found
+
+
+def run_discovery(client: ParallelClient) -> int:
+    """--discover mode: merge FindAll results into providers.json and exit.
+
+    Research for the new seeds stays a separate bootstrap run, so the
+    operator sees what was added before paying for deep research."""
+    path = config.root_dir() / "providers.json"
+    seeds = json.loads(path.read_text())
+    found = discover_providers(client, seeds)
+    if not found:
+        print("discovery found nothing new")
+        return 0
+    for seed in found:
+        print(f"discovered: {seed['name']} ({seed['website']}) slug={seed['slug']}")
+    path.write_text(json.dumps(seeds + found, indent=2) + "\n")
+    print(
+        f"added {len(found)} providers to providers.json; research them with "
+        "--only <slug> --skip-monitors, then refresh monitors"
+    )
+    return 0
 
 
 def cancel_existing_monitors(client: ParallelClient) -> None:
@@ -122,11 +207,15 @@ def create_monitors(
         print(
             f"snapshot monitor for {slug}: {created.get('monitor_id') or created.get('id')}"
         )
+    # Backfill seeds the first execution with a sample of recent history so
+    # launches from before the monitor existed can still surface; base digs
+    # deeper than lite and this monitor runs only once a day.
     monitors["new_products"] = client.create_monitor(
         monitor_type="event_stream",
         frequency=frequency,
-        settings={"query": EVENT_STREAM_QUERY},
+        settings={"query": EVENT_STREAM_QUERY, "include_backfill": True},
         webhook_url=webhook_url,
+        processor="base",
         metadata={"site": "sandboxwatch", "kind": "new_products"},
     )
     print("event-stream monitor created")
@@ -150,6 +239,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--trigger-monitor", help="force one monitor execution now and exit"
     )
+    parser.add_argument(
+        "--discover",
+        action="store_true",
+        help="FindAll new products into providers.json and exit",
+    )
     args = parser.parse_args(argv)
 
     client = turn.default_client()
@@ -162,6 +256,8 @@ def main(argv: list[str] | None = None) -> int:
     marker = config.busy_marker()
     marker.touch()
     try:
+        if args.discover:
+            return run_discovery(client)
         return _run(client, args)
     finally:
         marker.unlink(missing_ok=True)
@@ -174,6 +270,12 @@ def _run(client: ParallelClient, args: argparse.Namespace) -> int:
         if not seeds:
             print(f"unknown provider slug: {args.only}", file=sys.stderr)
             return 1
+        if not args.skip_monitors:
+            # create_monitors replaces the full monitor set with one built
+            # from this run, which for --only would cancel every other
+            # provider's monitor. Refresh monitors with a full bootstrap.
+            print("--only implies --skip-monitors; keeping existing monitors")
+            args.skip_monitors = True
 
     runs = research_all(client, seeds, args.processor)
     failures = []
