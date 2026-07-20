@@ -5,36 +5,31 @@
   "gpu": null,
   "isolation": "Firecracker microVM",
   "last_verified": "2026-07-20",
-  "max_runtime": "24 h",
-  "memory_snapshots": true,
+  "max_runtime": "Hobby: 45 min; Pro/Enterprise: 24 h (default timeout 5 min, extendable via sandbox.extendTimeout())",
+  "memory_snapshots": null,
   "name": "Vercel Sandbox",
-  "notes": "Hobby plan users have a hard runtime limit of 45 minutes.",
+  "notes": "Vercel's docs describe Snapshots and Persistent sandboxes that auto-save filesystem and installed packages, but do not explicitly state that in-memory process state survives stop and resume.",
   "price_headline": "$0.128 per vCPU-hour",
-  "pricing_model": "Metered by Active CPU, Provisioned Memory, and Sandbox Creations",
+  "pricing_model": "Metered by Active CPU (per vCPU-hour) and Provisioned Memory (per GB-hour); also charges for Sandbox Creations, Snapshot storage, and Data transfer",
   "sdks": [
     "JavaScript",
     "TypeScript",
-    "Python"
+    "Python",
+    "CLI"
   ],
   "slug": "vercel",
   "sources": [
     {
-      "url": "http://vercel.com/docs/sandbox"
+      "url": "https://vercel.com/docs/sandbox"
     },
     {
       "url": "https://vercel.com/blog/agent-stack"
-    },
-    {
-      "url": "http://vercel.com/sandbox"
     },
     {
       "url": "https://vercel.com/sandbox"
     },
     {
       "url": "https://vercel.com/docs/sandbox/pricing"
-    },
-    {
-      "url": "https://vercel.com/docs/sandbox"
     },
     {
       "url": "https://createos.sh/vs/vercel"
