@@ -1,17 +1,17 @@
 {
-  "cold_start": null,
+  "cold_start": "<3 s",
   "docker": true,
-  "free_while_idle": true,
+  "free_while_idle": null,
   "gpu": null,
   "isolation": "Virtual machines",
   "last_verified": "2026-07-20",
   "max_runtime": "No fixed limit",
-  "memory_snapshots": null,
+  "memory_snapshots": true,
   "name": "Sailboxes",
   "notes": "Memory is elastic, with boxes starting small and growing up to 128 GB.",
-  "price_headline": "The available sources do not contain a specific headline compute price for Sailboxes.",
+  "price_headline": "$0.008 per active vCPU-hour; $0.015 per active GB-hour",
   "pricing_model": "Usage-based",
-  "sdks": [],
+  "sdks": ["Python", "TypeScript", "Rust", "CLI/TUI"],
   "slug": "sailboxes",
   "sources": [
     {
@@ -34,6 +34,9 @@
     },
     {
       "url": "https://www.linkedin.com/company/sailresearch"
+    },
+    {
+      "url": "https://sailresearch.com/sailboxes"
     }
   ],
   "summary": "Sailboxes are persistent Linux virtual machines designed for long-horizon AI agents. They provide enterprise teams with full machines that support persistent state and auto-sleep to run agents for extended periods.",
