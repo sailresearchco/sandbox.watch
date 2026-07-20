@@ -1,1 +1,61 @@
-{"cold_start": null, "docker": null, "free_while_idle": null, "gpu": null, "isolation": "KVM", "last_verified": "2026-07-20", "max_runtime": null, "memory_snapshots": null, "name": "exe.dev", "notes": "exe.dev states the product is in developer preview.", "price_headline": null, "pricing_model": null, "sdks": ["JavaScript"], "slug": "exe-dev", "sources": [{"url": "https://exe.dev/sandbox"}, {"url": "https://exe.dev/docs/use-case-agent"}, {"url": "https://blog.exe.dev/meet-exe.dev"}, {"url": "https://www.agentsh.org/secure-sandbox/"}, {"url": "https://ethantroy.dev/posts/testing-exe-dev/"}, {"url": "https://blog.exe.dev/persistent"}], "summary": "exe.dev provides persistent Linux VMs marketed as sandboxes for AI agents. Each VM has a public hostname, root access, persistent disk, SSH and HTTPS, and KVM isolation. The product is in developer preview and ships a JavaScript SDK plus SSH for creating and controlling VMs.", "usage_billed": null, "wake_on_request": null, "website": "https://exe.dev"}
+{
+  "cold_start": "~0.6\u20130.8s (VPS demo) to ~2s (docs FAQ)",
+  "docker": true,
+  "free_while_idle": false,
+  "gpu": false,
+  "isolation": "KVM via Cloud Hypervisor (also uses crosvm; per a third-party article, Kata Containers)",
+  "last_verified": "2026-07-20",
+  "max_runtime": null,
+  "memory_snapshots": false,
+  "name": "exe.dev",
+  "notes": "Stopped VMs are not free: disk continues to meter at $0.08/GiB-month, and memory falls to a 'disk rate' under usage pricing.",
+  "price_headline": "$0.05 per CPU core-hour (usage pricing); $20/month Personal pool plan",
+  "pricing_model": "Two models: Pool (flat monthly bundle of CPU/RAM/disk/transfer) and Usage (per-second, billed on active CPU + active memory; idle drops to disk-only)",
+  "sdks": [
+    "JavaScript",
+    "TypeScript"
+  ],
+  "slug": "exe-dev",
+  "sources": [
+    {
+      "url": "https://exe.dev"
+    },
+    {
+      "url": "https://exe.dev/sandbox"
+    },
+    {
+      "url": "https://exe.dev/vps"
+    },
+    {
+      "url": "https://exe.dev/docs/faq/docker"
+    },
+    {
+      "url": "https://exe.dev/docs/docker"
+    },
+    {
+      "url": "https://exe.dev/docs/can-i-run-docker-images"
+    },
+    {
+      "url": "https://www.npmjs.com/package/%40exedev/sdk"
+    },
+    {
+      "url": "https://store.boilerplate.com/product/npm/QGV4ZWRldi9zZGs="
+    },
+    {
+      "url": "https://exe.dev/pricing"
+    },
+    {
+      "url": "https://exe.dev/docs/faq/how-exedev-works"
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=46397861"
+    },
+    {
+      "url": "https://algustionesa.com/the-rise-of-micro-vms-a-look-at-exe-dev/"
+    }
+  ],
+  "summary": "exe.dev provides persistent Linux virtual machines designed to be controlled programmatically by AI agents and developer tools. Each sandbox is a full Linux box with root access, systemd, a public hostname, a persistent disk, and SSH, accessed via 'ssh exe.dev new' or an HTTPS API. The product is marketed toward AI coding agents that need real isolated compute environments.",
+  "usage_billed": true,
+  "wake_on_request": false,
+  "website": "https://exe.dev"
+}

@@ -4881,6 +4881,442 @@
         "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
       }
     },
+    "exe-dev": {
+      "created_at": "2026-07-20T22:50:41.027642Z",
+      "frequency": "1d",
+      "last_run_at": "2026-07-20T22:50:41.027642Z",
+      "metadata": {
+        "site": "sandboxwatch",
+        "slug": "exe-dev"
+      },
+      "monitor_id": "monitor_752a3f75959048dfa8e803da93de48bd",
+      "output": {
+        "latest_snapshot": {
+          "basis": [
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "exe.dev",
+                    "ssh exe.dev"
+                  ],
+                  "title": "exe.dev - ssh exe.dev",
+                  "url": "https://exe.dev"
+                },
+                {
+                  "excerpts": [
+                    "AI sandboxes"
+                  ],
+                  "title": "AI Sandboxes \u00b7 exe.dev",
+                  "url": "https://exe.dev/sandbox"
+                },
+                {
+                  "excerpts": [
+                    "An exe.dev VM is a Linux box you SSH into."
+                  ],
+                  "title": "The modern VPS",
+                  "url": "https://exe.dev/vps"
+                }
+              ],
+              "confidence": "high",
+              "field": "summary",
+              "reasoning": "Based on the verified research plan and confirmed findings, exe.dev provides persistent Linux VMs designed for AI agents. The summary should be factual and concise."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Can I run docker images? - exe.dev docs",
+                  "url": "https://exe.dev/docs/faq/docker"
+                },
+                {
+                  "excerpts": [
+                    "Or run any Docker"
+                  ],
+                  "title": "The modern VPS",
+                  "url": "https://exe.dev/vps"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Docs | exe.dev",
+                  "url": "https://exe.dev/docs/docker"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Docs | exe.dev",
+                  "url": "https://exe.dev/docs/can-i-run-docker-images"
+                }
+              ],
+              "confidence": "high",
+              "field": "docker",
+              "reasoning": "The research plan confirms docker is TRUE, verified via /docs/faq/docker and /vps pages. exe.dev VMs can run Docker containers inside them."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "@exedev/sdk - npm",
+                  "url": "https://www.npmjs.com/package/%40exedev/sdk"
+                },
+                {
+                  "excerpts": [
+                    "Official JavaScript/TypeScript SDK for the exe.dev HTTPS API."
+                  ],
+                  "title": "@exedev/sdk - Boilerplate Store",
+                  "url": "https://store.boilerplate.com/product/npm/QGV4ZWRldi9zZGs="
+                }
+              ],
+              "confidence": "high",
+              "field": "sdks",
+              "reasoning": "The verified research confirms the official SDK is JavaScript/TypeScript via the @exedev/sdk npm package. No other official SDKs are mentioned."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Pricing - exe.dev",
+                  "url": "https://exe.dev/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "AI Sandboxes \u00b7 exe.dev",
+                  "url": "https://exe.dev/sandbox"
+                }
+              ],
+              "confidence": "high",
+              "field": "usage_billed",
+              "reasoning": "The research confirms usage billing scales with active CPU and active memory, not reserved capacity. The pricing model bills per-second on active CPU + active memory, with idle dropping to disk-only."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "How does exe.dev work? \u2014 Docs",
+                  "url": "https://exe.dev/docs/faq/how-exedev-works"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Hello, an exe.dev person here. They are VMs, on a crosvm- ...",
+                  "url": "https://news.ycombinator.com/item?id=46397861"
+                },
+                {
+                  "excerpts": [
+                    "By using Kata Containers and Cloud Hypervisor"
+                  ],
+                  "title": "The Rise of Micro-VMs: A Look at Exe.dev",
+                  "url": "https://algustionesa.com/the-rise-of-micro-vms-a-look-at-exe-dev/"
+                }
+              ],
+              "confidence": "medium",
+              "field": "isolation",
+              "reasoning": "The research confirms KVM via Cloud Hypervisor. One third-party article also mentions Kata Containers. The verified answer uses KVM/Cloud Hypervisor as stated in the official FAQ."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Pricing - exe.dev",
+                  "url": "https://exe.dev/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "AI Sandboxes \u00b7 exe.dev",
+                  "url": "https://exe.dev/sandbox"
+                }
+              ],
+              "confidence": "high",
+              "field": "notes",
+              "reasoning": "The most important factual caveat is that stopped VMs are not free \u2014 disk continues to be billed at $0.08/GiB-month and memory falls to a 'disk rate' under usage pricing."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "The modern VPS",
+                  "url": "https://exe.dev/vps"
+                },
+                {
+                  "excerpts": [],
+                  "title": "How does exe.dev work? \u2014 Docs",
+                  "url": "https://exe.dev/docs/faq/how-exedev-works"
+                },
+                {
+                  "excerpts": [
+                    "creating a new VM take about two seconds."
+                  ],
+                  "title": "exe.dev Documentation",
+                  "url": "https://exe.dev/docs/all"
+                }
+              ],
+              "confidence": "medium",
+              "field": "cold_start",
+              "reasoning": "The research shows different measurements: ~0.6\u20130.8s in the VPS demo, 'sub-second start' in the launch blog, and 'about two seconds' in the docs FAQ. I'll report the range as stated."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "AI Sandboxes \u00b7 exe.dev",
+                  "url": "https://exe.dev/sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Pricing - exe.dev",
+                  "url": "https://exe.dev/pricing"
+                }
+              ],
+              "confidence": "high",
+              "field": "memory_snapshots",
+              "reasoning": "The research confirms memory_snapshots is FALSE. Stopped VMs release CPU and memory back to the pool, meaning RAM state does not survive a pause/stop cycle."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Pricing - exe.dev",
+                  "url": "https://exe.dev/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "AI Sandboxes \u00b7 exe.dev",
+                  "url": "https://exe.dev/sandbox"
+                }
+              ],
+              "confidence": "high",
+              "field": "pricing_model",
+              "reasoning": "Two models exist: Pool (flat monthly bundle of CPU/RAM/disk/transfer) and Usage (per-second, billed on active CPU + active memory; idle drops to disk-only)."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Pricing - exe.dev",
+                  "url": "https://exe.dev/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "AI Sandboxes \u00b7 exe.dev",
+                  "url": "https://exe.dev/sandbox"
+                }
+              ],
+              "confidence": "high",
+              "field": "free_while_idle",
+              "reasoning": "The research confirms free_while_idle is FALSE. Stopped VMs still incur disk charges at $0.08/GiB-month."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "What is exe.dev? \u2014 Docs | exe.dev",
+                  "url": "https://exe.dev/docs"
+                },
+                {
+                  "excerpts": [],
+                  "title": "AI Sandboxes \u00b7 exe.dev",
+                  "url": "https://exe.dev/sandbox"
+                }
+              ],
+              "confidence": "high",
+              "field": "wake_on_request",
+              "reasoning": "The research confirms wake_on_request is FALSE. The exe.dev proxy requires the VM to be running, and 'ssh exe.dev' is needed to start a stopped VM."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "What is exe.dev? \u2014 Docs | exe.dev",
+                  "url": "https://exe.dev/docs"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Docs | exe.dev",
+                  "url": "https://exe.dev/docs/sandbox"
+                }
+              ],
+              "confidence": "medium",
+              "field": "max_runtime",
+              "reasoning": "The research confirms max_runtime is NULL \u2014 no fixed maximum runtime is stated in public docs. Disks persist across restarts."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Pricing - exe.dev",
+                  "url": "https://exe.dev/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "What is exe.dev? \u2014 Docs | exe.dev",
+                  "url": "https://exe.dev/docs#gpu"
+                }
+              ],
+              "confidence": "high",
+              "field": "gpu",
+              "reasoning": "The research confirms GPU is FALSE \u2014 no GPU instances are mentioned in any public documentation or pricing."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Pricing - exe.dev",
+                  "url": "https://exe.dev/pricing"
+                }
+              ],
+              "confidence": "high",
+              "field": "price_headline",
+              "reasoning": "The research confirms the headline price as $0.05 per CPU core-hour under usage pricing, with a $20/month Personal pool plan as an alternative."
+            }
+          ],
+          "content": {
+            "cold_start": "~0.6\u20130.8s (VPS demo) to ~2s (docs FAQ)",
+            "docker": true,
+            "free_while_idle": false,
+            "gpu": false,
+            "isolation": "KVM via Cloud Hypervisor (also uses crosvm; per a third-party article, Kata Containers)",
+            "max_runtime": null,
+            "memory_snapshots": false,
+            "notes": "Stopped VMs are not free: disk continues to meter at $0.08/GiB-month, and memory falls to a 'disk rate' under usage pricing.",
+            "price_headline": "$0.05 per CPU core-hour (usage pricing); $20/month Personal pool plan",
+            "pricing_model": "Two models: Pool (flat monthly bundle of CPU/RAM/disk/transfer) and Usage (per-second, billed on active CPU + active memory; idle drops to disk-only)",
+            "sdks": [
+              "JavaScript",
+              "TypeScript"
+            ],
+            "summary": "exe.dev provides persistent Linux virtual machines designed to be controlled programmatically by AI agents and developer tools. Each sandbox is a full Linux box with root access, systemd, a public hostname, a persistent disk, and SSH, accessed via 'ssh exe.dev new' or an HTTPS API. The product is marketed toward AI coding agents that need real isolated compute environments.",
+            "usage_billed": true,
+            "wake_on_request": false
+          },
+          "type": "json"
+        }
+      },
+      "processor": "lite",
+      "settings": {
+        "output_schema": {
+          "json_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "cold_start": {
+                "description": "Typical time from create or resume to running. Example: '~150 ms'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "docker": {
+                "description": "True if Docker containers can run inside the sandbox.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "free_while_idle": {
+                "description": "True if a stopped, paused, or sleeping sandbox costs nothing.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "gpu": {
+                "description": "GPU instances available.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "isolation": {
+                "description": "Isolation technology. Example: 'Firecracker microVM'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "max_runtime": {
+                "description": "Longest a sandbox may run. Example: '24 h' or 'No fixed limit'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "memory_snapshots": {
+                "description": "True if RAM state survives a pause/resume cycle, not just disk.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "notes": {
+                "description": "One factual caveat worth knowing, or null.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "price_headline": {
+                "description": "The headline compute price. Example: '$0.05 per vCPU-hour'.",
+                "type": "string"
+              },
+              "pricing_model": {
+                "description": "How billing works, in one short phrase. Example: 'Per-second, billed on reserved vCPU and RAM'.",
+                "type": "string"
+              },
+              "sdks": {
+                "description": "Official SDK languages, for example ['Python', 'TypeScript'].",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "summary": {
+                "description": "Two or three plain sentences on what the product is and who uses it. No marketing language.",
+                "type": "string"
+              },
+              "usage_billed": {
+                "description": "True if compute billing scales with what the sandbox actively uses (active or observed CPU time). False if billing is on reserved or allocated capacity, or on wall-clock running time, regardless of use. Null if the docs do not say.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "wake_on_request": {
+                "description": "True if a stopped sandbox wakes automatically on inbound traffic.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "summary",
+              "sdks",
+              "docker",
+              "usage_billed",
+              "isolation",
+              "notes",
+              "memory_snapshots",
+              "cold_start",
+              "pricing_model",
+              "free_while_idle",
+              "wake_on_request",
+              "max_runtime",
+              "gpu",
+              "price_headline"
+            ],
+            "type": "object"
+          },
+          "type": "json"
+        },
+        "query": "Research the cloud sandbox product exe.dev (https://exe.dev). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
+        "task_run_id": "trun_89f271244e32423589314529b3db2cdd"
+      },
+      "status": "active",
+      "type": "snapshot",
+      "webhook": {
+        "event_types": [
+          "monitor.event.detected"
+        ],
+        "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
+      }
+    },
     "fly": {
       "created_at": "2026-07-20T02:42:48.280635Z",
       "frequency": "1d",
