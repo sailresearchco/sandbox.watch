@@ -120,9 +120,7 @@ def discover_providers(client: ParallelClient, seeds: list[dict]) -> list[dict]:
         match_conditions=DISCOVER_MATCH_CONDITIONS,
         generator="base",
         match_limit=40,
-        exclude=[
-            {"name": seed["name"], "url": seed["website"]} for seed in seeds
-        ],
+        exclude=[{"name": seed["name"], "url": seed["website"]} for seed in seeds],
     )
     print(f"findall run started: {findall_id}")
     result = client.findall_result(findall_id)
@@ -140,12 +138,24 @@ def discover_providers(client: ParallelClient, seeds: list[dict]) -> list[dict]:
         if slug in taken or name.lower() in taken:
             continue
         taken.add(slug)
-        found.append({"name": name, "slug": slug, "website": url})
+        found.append(
+            {
+                "name": name,
+                "slug": slug,
+                "website": url,
+                # Kept for the approval turn: the agent judges from this.
+                "evidence": {
+                    "description": candidate.get("description"),
+                    "match_conditions": candidate.get("output"),
+                    "basis": candidate.get("basis"),
+                },
+            }
+        )
     return found
 
 
 def run_discovery(client: ParallelClient) -> int:
-    """--discover mode: FindAll candidate products into data/discovery.json.
+    """--discover mode: FindAll candidate products into state/discovery.json.
 
     Candidates are review input, not rows: broad generators match listicles,
     infrastructure libraries, and general compute platforms alongside real
@@ -158,11 +168,11 @@ def run_discovery(client: ParallelClient) -> int:
         return 0
     for seed in found:
         print(f"candidate: {seed['name']} ({seed['website']}) slug={seed['slug']}")
-    out = config.data_dir() / "discovery.json"
+    out = config.state_dir() / "discovery.json"
     out.write_text(json.dumps(found, indent=2) + "\n")
     print(
-        f"wrote {len(found)} candidates to {out}; move real products into "
-        "providers.json, then research them with --only <slug>"
+        f"wrote {len(found)} candidates to {out}; run --propose to have the "
+        "in-box agent judge them, then research accepted slugs with --only"
     )
     return 0
 
@@ -246,7 +256,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--discover",
         action="store_true",
-        help="FindAll new products into providers.json and exit",
+        help="FindAll candidate products into state/discovery.json and exit",
+    )
+    parser.add_argument(
+        "--propose",
+        action="store_true",
+        help="run an agent turn that judges state/discovery.json candidates",
     )
     args = parser.parse_args(argv)
 
@@ -260,11 +275,30 @@ def main(argv: list[str] | None = None) -> int:
     marker = config.busy_marker()
     marker.touch()
     try:
-        if args.discover:
-            return run_discovery(client)
+        if args.discover or args.propose:
+            rc = run_discovery(client) if args.discover else 0
+            if rc == 0 and args.propose:
+                rc = propose_discoveries()
+            return rc
         return _run(client, args)
     finally:
         marker.unlink(missing_ok=True)
+
+
+def propose_discoveries() -> int:
+    """Run the agent turn that judges state/discovery.json candidates."""
+    path = config.state_dir() / "discovery.json"
+    if not path.is_file():
+        print("no state/discovery.json; run --discover first", file=sys.stderr)
+        return 1
+    entry = turn.run_discovery_turn(path)
+    print(
+        f"discovery turn: status={entry['status']} commit={entry['commit']} "
+        f"summary={entry['summary']!r}"
+    )
+    for error in entry["validation_errors"]:
+        print(f"  validation: {error}", file=sys.stderr)
+    return 0 if entry["status"] in ("applied", "no_change") else 1
 
 
 def _run(client: ParallelClient, args: argparse.Namespace) -> int:

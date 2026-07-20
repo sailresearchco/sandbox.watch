@@ -138,7 +138,11 @@ class ParallelClient:
             status = resp.json().get("status") or {}
             active = status.get("is_active")
             if active is None:
-                active = status.get("status") in ("queued", "running", "action_required")
+                active = status.get("status") in (
+                    "queued",
+                    "running",
+                    "action_required",
+                )
             if not active:
                 break
             if time.time() > deadline:

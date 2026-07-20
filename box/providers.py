@@ -143,3 +143,36 @@ def validate_all(directory: Path | None = None) -> list[str]:
     for path in sorted(directory.glob("*.json")):
         errors.extend(validate_provider_file(path))
     return errors
+
+
+def validate_census() -> list[str]:
+    """Check providers.json's structure: a list of {name, slug, website}
+    entries with well-formed, unique slugs. Guards discovery turns, which
+    are the one place the census itself gets edited.
+
+    A seed without a data file is fine (research fills it in later), and a
+    data file without a seed is fine (a monitor event can add a product
+    before anyone seeds it), so neither direction is checked here."""
+    path = config.root_dir() / "providers.json"
+    try:
+        seeds = json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError) as exc:
+        return [f"providers.json: {exc}"]
+    if not isinstance(seeds, list):
+        return ["providers.json: top level must be a list"]
+    errors: list[str] = []
+    seen: set[str] = set()
+    for seed in seeds:
+        if not isinstance(seed, dict) or not all(
+            isinstance(seed.get(key), str) and seed[key].strip()
+            for key in ("name", "slug", "website")
+        ):
+            errors.append(f"providers.json: entry needs name/slug/website: {seed!r}")
+            continue
+        slug = seed["slug"]
+        if slug in seen:
+            errors.append(f"providers.json: duplicate slug {slug!r}")
+        seen.add(slug)
+        if not all(c.isalnum() or c == "-" for c in slug) or slug != slug.lower():
+            errors.append(f"providers.json: malformed slug {slug!r}")
+    return errors

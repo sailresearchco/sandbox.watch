@@ -103,10 +103,58 @@ def revert_working_tree() -> None:
     _git("clean", "-fdq", "data", "site")
 
 
+def _finish_turn(
+    *,
+    started: float,
+    turn_dir: Path,
+    kind: str,
+    agent_ok: bool,
+    errors: list[str],
+    extra: dict | None = None,
+) -> dict:
+    """Shared tail of every turn: commit or revert, then record on /log."""
+    if agent_ok and not errors:
+        title, summary_text = read_turn_summary()
+        commit = commit_and_push(title)
+        status = "applied" if commit else "no_change"
+    else:
+        revert_working_tree()
+        title, summary_text = "Turn failed, changes reverted", ""
+        commit = None
+        status = "failed"
+
+    duration = time.time() - started
+    entry = {
+        "ts": datetime.datetime.now(datetime.timezone.utc).isoformat(
+            timespec="seconds"
+        ),
+        "kind": kind,
+        "status": status,
+        "summary": title,
+        "details": summary_text,
+        "citations": [],
+        "commit": commit,
+        "duration_seconds": round(duration, 1),
+        "est_cost_usd": round(duration * config.EST_HOURLY_USD / 3600, 6),
+        "validation_errors": errors[:10],
+        **(extra or {}),
+    }
+    changelog.append(entry)
+    # The changelog is part of the site, so record it in git history too.
+    if status == "applied":
+        commit_and_push(f"log: {title}")
+    if summary_text:
+        (turn_dir / "turn_summary.md").write_text(summary_text)
+    logger.info(
+        "turn finished status=%s commit=%s duration=%.1fs", status, commit, duration
+    )
+    return entry
+
+
 def commit_and_push(message: str) -> str | None:
-    """Commit data/ and site/ changes. Returns the short hash, or None if
-    there was nothing to commit. Pushing is best-effort."""
-    _git("add", "-A", "data", "site")
+    """Commit data/, site/, and census changes. Returns the short hash, or
+    None if there was nothing to commit. Pushing is best-effort."""
+    _git("add", "-A", "data", "site", "providers.json")
     if _git("diff", "--cached", "--quiet").returncode == 0:
         return None
     result = _git("commit", "-m", message)
@@ -152,39 +200,55 @@ def run_turn(payload: dict, client: ParallelClient | None = None) -> dict:
     if agent_ok and errors:
         logger.warning("agent output failed validation: %s", errors)
 
-    if agent_ok and not errors:
-        title, summary_text = read_turn_summary()
-        commit = commit_and_push(title)
-        status = "applied" if commit else "no_change"
-    else:
-        revert_working_tree()
-        title, summary_text = "Turn failed, changes reverted", ""
-        commit = None
-        status = "failed"
-
-    duration = time.time() - started
-    entry = {
-        "ts": datetime.datetime.now(datetime.timezone.utc).isoformat(
-            timespec="seconds"
-        ),
-        "kind": "monitor_event",
-        "status": status,
-        "summary": title,
-        "details": summary_text,
-        "citations": details["citations"],
-        "monitor_id": details["monitor_id"],
-        "commit": commit,
-        "duration_seconds": round(duration, 1),
-        "est_cost_usd": round(duration * config.EST_HOURLY_USD / 3600, 6),
-        "validation_errors": errors[:10],
-    }
-    changelog.append(entry)
-    # The changelog is part of the site, so record it in git history too.
-    if status == "applied":
-        commit_and_push(f"log: {title}")
-    if summary_text:
-        (turn_dir / "turn_summary.md").write_text(summary_text)
-    logger.info(
-        "turn finished status=%s commit=%s duration=%.1fs", status, commit, duration
+    return _finish_turn(
+        started=started,
+        turn_dir=turn_dir,
+        kind="monitor_event",
+        agent_ok=agent_ok,
+        errors=errors,
+        extra={
+            "citations": details["citations"],
+            "monitor_id": details["monitor_id"],
+        },
     )
-    return entry
+
+
+def run_discovery_turn(discovery_path: Path | None = None) -> dict:
+    """Judge the FindAll candidates in state/discovery.json.
+
+    The agent promotes candidates whose evidence clears the census bar
+    (providers.json entry plus an evidence-limited data file) and rejects
+    the rest with reasons. The resulting commit is the approval record."""
+    started = time.time()
+    source = discovery_path or config.state_dir() / "discovery.json"
+    turn_dir = (
+        config.state_dir() / "turns" / time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
+    )
+    turn_dir.mkdir(parents=True, exist_ok=True)
+    summary_path = config.state_dir() / "turn_summary.md"
+    summary_path.unlink(missing_ok=True)
+
+    # Snapshot the candidates into the turn dir so the prompt references an
+    # immutable copy even if a later sweep rewrites state/discovery.json.
+    candidates_path = turn_dir / "discovery.json"
+    candidates_path.write_text(source.read_text())
+    template = (
+        config.root_dir() / "box" / "prompts" / "discovery_prompt.md"
+    ).read_text()
+    prompt_path = turn_dir / "prompt.md"
+    prompt_path.write_text(template.format(discovery_path=candidates_path))
+
+    agent_ok = run_agent(prompt_path)
+    errors = (
+        providers.validate_all() + providers.validate_census() if agent_ok else []
+    )
+    if agent_ok and errors:
+        logger.warning("discovery turn failed validation: %s", errors)
+
+    return _finish_turn(
+        started=started,
+        turn_dir=turn_dir,
+        kind="discovery",
+        agent_ok=agent_ok,
+        errors=errors,
+    )

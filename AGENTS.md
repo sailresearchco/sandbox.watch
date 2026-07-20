@@ -10,6 +10,8 @@ start with README.md.
 ## You may edit
 
 - `data/providers/*.json` (the site's data)
+- `providers.json` (the product census), only during a discovery turn and
+  only as far as the candidate evidence supports
 - `site/templates/` and `site/static/` prose and presentation
 - `state/turn_summary.md` (your report for each turn)
 
