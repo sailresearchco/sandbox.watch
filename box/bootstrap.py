@@ -120,7 +120,9 @@ def discover_providers(client: ParallelClient, seeds: list[dict]) -> list[dict]:
         match_conditions=DISCOVER_MATCH_CONDITIONS,
         generator="base",
         match_limit=40,
-        exclude_names=[seed["name"] for seed in seeds],
+        exclude=[
+            {"name": seed["name"], "url": seed["website"]} for seed in seeds
+        ],
     )
     print(f"findall run started: {findall_id}")
     result = client.findall_result(findall_id)

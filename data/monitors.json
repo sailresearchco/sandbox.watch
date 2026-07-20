@@ -1,15 +1,16 @@
 {
   "new_products": {
-    "created_at": "2026-07-20T02:42:49.340846Z",
+    "created_at": "2026-07-20T18:01:23.497908Z",
     "frequency": "1d",
-    "last_run_at": "2026-07-20T02:42:49.340846Z",
+    "last_run_at": "2026-07-20T18:01:23.497908Z",
     "metadata": {
       "kind": "new_products",
       "site": "sandboxwatch"
     },
-    "monitor_id": "monitor_db5c53b423574eeab7e453caa5febfd4",
-    "processor": "lite",
+    "monitor_id": "monitor_c60404e27fcc4b62a4e7adb6eccb9e45",
+    "processor": "base",
     "settings": {
+      "include_backfill": true,
       "query": "New cloud sandbox products for AI agents (isolated compute that runs\nagent-generated code), or major launches and pricing changes in existing ones.\nReport the product name, the company, the website, and what changed, with\nsources.\n"
     },
     "status": "active",

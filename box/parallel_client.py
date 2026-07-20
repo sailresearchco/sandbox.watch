@@ -102,9 +102,11 @@ class ParallelClient:
         match_conditions: list[dict],
         generator: str = "base",
         match_limit: int = 40,
-        exclude_names: Iterable[str] = (),
+        exclude: Iterable[Mapping[str, str]] = (),
     ) -> str:
-        """Start a FindAll run (public beta) and return its findall_id."""
+        """Start a FindAll run (public beta) and return its findall_id.
+
+        ``exclude`` entries need both ``name`` and ``url``."""
         body: dict[str, Any] = {
             "objective": objective,
             "entity_type": entity_type,
@@ -112,7 +114,9 @@ class ParallelClient:
             "generator": generator,
             "match_limit": match_limit,
         }
-        excludes = [name for name in exclude_names if name]
+        excludes = [
+            {"name": e["name"], "url": e["url"]} for e in exclude if e.get("name")
+        ]
         if excludes:
             body["exclude_list"] = excludes
         resp = self._http.post("/v1beta/findall/runs", json=body)
