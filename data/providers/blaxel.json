@@ -1,7 +1,7 @@
 {
   "cold_start": "~25 ms",
   "docker": true,
-  "free_while_idle": true,
+  "free_while_idle": false,
   "gpu": null,
   "isolation": "microVM",
   "last_verified": "2026-07-20",
@@ -44,6 +44,9 @@
     },
     {
       "url": "https://blaxel.ai/pricing"
+    },
+    {
+      "url": "https://blaxel.ai/"
     },
     {
       "url": "https://docs.blaxel.ai/Overview"
