@@ -47,6 +47,7 @@
     }
   ],
   "summary": "Sailboxes are persistent, kernel-isolated Linux virtual machines built as execution environments for long-horizon AI agents. They support Docker-in-Docker, provide root access, and allow workloads to pause, resume, and fork without losing in-memory state. A CLI/TUI and SDKs in Python, TypeScript, and Rust are provided.",
+  "usage_billed": true,
   "wake_on_request": true,
   "website": "https://sailresearch.com/sailboxes"
 }

@@ -49,6 +49,7 @@
     }
   ],
   "summary": "Morph Cloud is a cloud platform that provides programmable virtual machines ('instances') built on a snapshot/branch/restore primitive called Infinibranch, along with 'devboxes' (development workspaces) layered on top. It targets developers and AI coding agents that need to spin up, fork, and resume isolated compute environments on demand, with Docker-in-Docker support and integrations for VS Code, Cursor, and CLI-based agents. Key features include sub-250ms snapshot restore, pause/resume capability, and TTL-based lifecycle management.",
+  "usage_billed": null,
   "wake_on_request": true,
   "website": "https://cloud.morph.so"
 }

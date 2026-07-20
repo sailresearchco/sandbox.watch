@@ -56,6 +56,7 @@
     }
   ],
   "summary": "Modal Sandboxes are isolated containers on Modal's serverless infrastructure for safely running untrusted code, including code produced by LLM-based agents. They run on a gVisor-based container runtime by default and can be opted into a full Linux VM for workloads that need a real kernel. They are used by AI coding-agent platforms and other systems that need to spin up many concurrent execution environments.",
+  "usage_billed": null,
   "wake_on_request": false,
   "website": "https://modal.com"
 }

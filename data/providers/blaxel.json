@@ -56,6 +56,7 @@
     }
   ],
   "summary": "Blaxel is a managed cloud platform that provisions one microVM per AI agent, app, or job so that LLM-generated code can execute in isolation. Each sandbox auto-suspends when idle and resumes in ~25 ms with both filesystem and in-memory process state preserved. It is used to host coding-agent harnesses such as the Claude Agent SDK, OpenAI Codex CLI, Cline, and Cursor background agents.",
+  "usage_billed": true,
   "wake_on_request": true,
   "website": "https://blaxel.ai"
 }

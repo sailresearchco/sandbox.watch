@@ -52,6 +52,7 @@
     }
   ],
   "summary": "Fly Machines are VMs managed through a REST API, built from container images and executed inside Firecracker microVMs across Fly.io's global infrastructure. They expose lifecycle controls (start, stop, suspend, resume) and can autostart on inbound traffic through the Fly Proxy. Developers use them to deploy containerized workloads\u2014including AI agent sandboxes\u2014that need fast boot, per-second billing, and global placement.",
+  "usage_billed": false,
   "wake_on_request": true,
   "website": "https://fly.io/docs/machines/"
 }

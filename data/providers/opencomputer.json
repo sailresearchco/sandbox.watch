@@ -55,6 +55,7 @@
     }
   ],
   "summary": "OpenComputer provides persistent, full Linux VMs in the cloud intended for AI agents and their harnesses to run untrusted or long-lived code. Each sandbox is a real KVM-backed virtual machine with its own filesystem, kernel, and network namespace; sandboxes hibernate when idle and wake on inbound traffic instead of being torn down. It ships TypeScript and Python SDKs plus a REST API and is primarily used by teams building agent platforms on top of frameworks like Claude Agent SDK.",
+  "usage_billed": false,
   "wake_on_request": true,
   "website": "https://opencomputer.dev"
 }

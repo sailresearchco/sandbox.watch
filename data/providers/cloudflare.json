@@ -54,6 +54,7 @@
     }
   ],
   "summary": "Cloudflare Sandbox SDK is a managed environment for running untrusted code on behalf of AI agents, built on top of Cloudflare Containers. Each sandbox is a Linux container with a shell, filesystem, and background processes that starts on demand and resumes from where it left off. Developers drive sandboxes from a Cloudflare Worker via the @cloudflare/sandbox TypeScript SDK to execute commands, manage files, run background services, and expose preview URLs.",
+  "usage_billed": true,
   "wake_on_request": true,
   "website": "https://developers.cloudflare.com/sandboxes/"
 }

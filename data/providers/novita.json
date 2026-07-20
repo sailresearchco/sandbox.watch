@@ -56,6 +56,7 @@
     }
   ],
   "summary": "Novita Agent Sandbox provides isolated, stateful execution environments that let AI agents run code, install dependencies, manipulate files, and use browsers or full desktops. It is used by developers building coding agents, browser-automation agents, and long-running multi-step agent workflows.",
+  "usage_billed": false,
   "wake_on_request": true,
   "website": "https://novita.ai/sandbox"
 }

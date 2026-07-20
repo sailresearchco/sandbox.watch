@@ -58,6 +58,7 @@
     }
   ],
   "summary": "Beam Sandboxes are isolated compute environments that AI agents or their harnesses control to run untrusted or LLM-generated code. They expose process execution, filesystem transfer, and dynamically exposed ports, and accept custom container images, GPUs, and persistent storage volumes. The product is used by teams building AI coding agents, inference workloads, and tool-using assistants that need fast, ephemeral execution environments.",
+  "usage_billed": false,
   "wake_on_request": null,
   "website": "https://www.beam.cloud/sandbox"
 }

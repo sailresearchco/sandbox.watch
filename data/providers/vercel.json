@@ -56,6 +56,7 @@
     }
   ],
   "summary": "Vercel Sandbox is an on-demand, isolated Linux microVM (based on Firecracker) that safely runs arbitrary or untrusted code via an SDK or CLI. It is used by AI coding agents, AI code interpreters, and developer tools that need ephemeral, sandboxed execution environments for tasks such as running AI-generated scripts, executing user-submitted code, or previewing apps. Sandboxes support persistence, snapshots, and port exposure for live URLs.",
+  "usage_billed": true,
   "wake_on_request": false,
   "website": "https://vercel.com/docs/vercel-sandbox"
 }

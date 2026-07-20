@@ -58,6 +58,7 @@
     }
   ],
   "summary": "Daytona is a cloud platform that provisions isolated Linux, Windows, or GPU-backed sandbox environments for running AI-generated and untrusted code. Sandboxes are stateful and expose filesystem, process, and execution operations through official SDKs. The platform targets AI agent infrastructure use cases, supporting Docker-in-Docker execution and offering VM-based isolation with pause/resume capabilities.",
+  "usage_billed": false,
   "wake_on_request": null,
   "website": "https://daytona.io"
 }

@@ -49,6 +49,7 @@
     }
   ],
   "summary": "GKE Agent Sandbox is a managed GKE add-on, built on the open-source kubernetes-sigs/agent-sandbox project, that runs untrusted AI-generated code in isolated, stateful, single-replica Pods with persistent storage and kernel-level isolation via gVisor. It is used by AI agent runtimes, code interpreters, and development environments that need to execute code safely.",
+  "usage_billed": null,
   "wake_on_request": true,
   "website": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/agent-sandbox"
 }

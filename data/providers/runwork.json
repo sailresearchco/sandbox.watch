@@ -52,6 +52,7 @@
     }
   ],
   "summary": "Runwork Agent Sandbox is a feature within the Runwork AI-team platform that provides isolated computing environments for AI agents running Claude CLI (Codex CLI and Gemini CLI were added later). Agents receive delegated tasks, execute them in isolated environments with access to workspace skills, MCP servers, and integrations, and can resume work by session ID. It is used by teams that want AI agents to perform automated work within the Runwork workspace.",
+  "usage_billed": null,
   "wake_on_request": null,
   "website": "https://www.runwork.ai"
 }

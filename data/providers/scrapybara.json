@@ -55,6 +55,7 @@
     }
   ],
   "summary": "Scrapybara is a cloud service that hosts remote desktop instances (Ubuntu 22.04, Windows 11, and a lightweight Chromium browser) intended for AI agents to control. Developers provision these VMs via a Python or TypeScript SDK (or REST API) and drive them through mouse, keyboard, bash, and filesystem actions. Primary users are teams building autonomous computer-use agents, including integrations with OpenAI CUA and Claude Computer Use.",
+  "usage_billed": null,
   "wake_on_request": null,
   "website": "https://scrapybara.com"
 }

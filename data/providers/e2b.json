@@ -56,6 +56,7 @@
     }
   ],
   "summary": "E2B is an open-source infrastructure service that provisions isolated Linux sandboxes in the cloud for AI agents and code-execution workflows. Each sandbox is a lightweight microVM that can be spawned, used to run commands, paused, resumed, and shut down via SDK calls. Customers include teams building coding agents, data-analysis tools, RL environments, and computer-use agents.",
+  "usage_billed": false,
   "wake_on_request": false,
   "website": "https://e2b.dev"
 }

@@ -56,6 +56,7 @@
     }
   ],
   "summary": "Deno Sandbox is a managed service on Deno Deploy that provisions short-lived, isolated Linux microVMs via an API. Each sandbox is API-driven from the @deno/sandbox SDK and is intended for running untrusted or LLM-generated code on behalf of AI agents, CI runners, plug-in systems, or vibe-coding environments. The runtime is a full Linux environment with files, processes, package managers, and background services.",
+  "usage_billed": true,
   "wake_on_request": false,
   "website": "https://deno.com/deploy/sandbox"
 }

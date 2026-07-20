@@ -55,6 +55,7 @@
     }
   ],
   "summary": "Runloop is a platform for building and deploying AI software-engineering agents, centered on Devboxes \u2014 isolated Linux microVMs that run agent-generated code. It targets AI engineering teams that need persistent filesystems, Docker support, and snapshot/suspend/resume lifecycle control for long-running agent workloads.",
+  "usage_billed": false,
   "wake_on_request": true,
   "website": "https://runloop.ai"
 }

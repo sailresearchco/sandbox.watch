@@ -55,6 +55,7 @@
     }
   ],
   "summary": "Amazon Bedrock AgentCore Code Interpreter is a managed sandbox service that lets AI agents write and execute code in isolated environments. Each session runs in a dedicated Firecracker microVM with its own CPU, memory, and filesystem, pre-configured with Python and Node.js runtimes and a broad set of data-analysis libraries. Developers and agent frameworks invoke the service via the AWS console, CLI, or the official Python and TypeScript SDKs to run multi-step data analysis and visualization.",
+  "usage_billed": true,
   "wake_on_request": null,
   "website": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/code-interpreter-tool.html"
 }

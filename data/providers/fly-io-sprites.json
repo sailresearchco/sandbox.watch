@@ -57,6 +57,7 @@
     }
   ],
   "summary": "Fly.io Sprites are persistent, stateful Linux virtual machines built as sandboxes for AI agents. Each Sprite is a hardware-isolated Firecracker microVM with a full Linux filesystem that survives across runs. Sprites scale to zero (hibernate when idle, wake on the next request) so agents can keep long-lived state and installed tools between sessions. They expose a REST and WebSocket API and are intended for executing untrusted or agent-generated code in isolation, with built-in features for checkpoints, file transfer, port forwarding, and outbound network policy.",
+  "usage_billed": false,
   "wake_on_request": true,
   "website": "https://fly.io/sprites/"
 }

@@ -39,6 +39,7 @@
     }
   ],
   "summary": "AWS Lambda MicroVMs is a Lambda primitive that runs each user's code inside its own Firecracker microVM with VM-level isolation. Developers package their application with a Dockerfile, upload to S3, and AWS builds a snapshot that can be launched, suspended, resumed, or terminated on demand. It is designed for multi-tenant workloads \u2014 AI agents, code playgrounds, and secure code execution products \u2014 that need a dedicated isolated environment per end user or session, with state preserved for up to 8 hours.",
+  "usage_billed": null,
   "wake_on_request": true,
   "website": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/"
 }
