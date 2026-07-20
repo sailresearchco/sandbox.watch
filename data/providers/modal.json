@@ -1,11 +1,11 @@
 {
-  "cold_start": "sub-second",
+  "cold_start": "~1 s",
   "docker": true,
   "free_while_idle": true,
   "gpu": true,
   "isolation": "gVisor",
   "last_verified": "2026-07-20",
-  "max_runtime": null,
+  "max_runtime": "5 min default; configurable up to 24 h",
   "memory_snapshots": true,
   "name": "Modal Sandboxes",
   "notes": "VM Sandboxes currently only support CPU workloads.",
@@ -22,28 +22,25 @@
       "url": "https://modal.com/docs/guide/vm-sandboxes"
     },
     {
-      "url": "http://modal.com/resources/best-code-execution-sandbox-llamaindex"
+      "url": "https://modal.com/resources/best-code-execution-sandbox-llamaindex"
     },
     {
       "url": "https://modal.com/docs/guide/sdk-javascript-go"
     },
     {
-      "url": "http://modal.com/products/sandboxes"
+      "url": "https://modal.com/products/sandboxes"
     },
     {
       "url": "https://modal.com/resources/best-sandbox-claude-agent-sdk"
     },
     {
-      "url": "http://modal.com/docs/guide/sandboxes"
-    },
-    {
-      "url": "https://modal.com/products/sandboxes"
-    },
-    {
       "url": "https://modal.com/docs/guide/sandboxes"
     },
     {
-      "url": "http://modal.com/docs/guide/sandbox-resources"
+      "url": "https://modal.com/docs/guide/sandbox-resources"
+    },
+    {
+      "url": "https://modal.com/docs/guide/cold-start"
     }
   ],
   "summary": "Modal Sandboxes are secure, isolated containers used for executing untrusted code from users or AI agents. They are primarily used for running LLM-generated code and reinforcement learning (RL) rollouts at scale.",
