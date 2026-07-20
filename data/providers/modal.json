@@ -1,23 +1,52 @@
 {
-  "name": "Modal Sandboxes",
-  "slug": "modal",
-  "website": "https://modal.com",
-  "summary": "Sandboxes on Modal's serverless compute platform, used to run untrusted or agent-generated code next to Modal functions and GPUs.",
-  "pricing_model": "Per-second, billed on reserved vCPU and RAM",
-  "price_headline": "$0.071 per reserved vCPU-hour",
-  "free_while_idle": null,
-  "memory_snapshots": null,
-  "wake_on_request": null,
-  "cold_start": null,
-  "max_runtime": "24 h",
-  "isolation": "gVisor",
-  "sdks": ["Python"],
+  "cold_start": "sub-second",
+  "docker": true,
+  "free_while_idle": true,
   "gpu": true,
-  "docker": null,
-  "notes": "Seed entry with a minimal field set. The first bootstrap run replaces it with fresh cited research.",
-  "sources": [
-    { "url": "https://modal.com/pricing" },
-    { "url": "https://docs.sailresearch.com/sailboxes" }
+  "isolation": "gVisor",
+  "last_verified": "2026-07-20",
+  "max_runtime": null,
+  "memory_snapshots": true,
+  "name": "Modal Sandboxes",
+  "notes": "VM Sandboxes currently only support CPU workloads.",
+  "price_headline": "$0.00003942 per core/sec; $0.00000667 per GiB/sec",
+  "pricing_model": "Per-second billing based on requested or actual usage",
+  "sdks": [
+    "Python",
+    "TypeScript",
+    "Go"
   ],
-  "last_verified": "2026-07-19"
+  "slug": "modal",
+  "sources": [
+    {
+      "url": "https://modal.com/docs/guide/vm-sandboxes"
+    },
+    {
+      "url": "http://modal.com/resources/best-code-execution-sandbox-llamaindex"
+    },
+    {
+      "url": "https://modal.com/docs/guide/sdk-javascript-go"
+    },
+    {
+      "url": "http://modal.com/products/sandboxes"
+    },
+    {
+      "url": "https://modal.com/resources/best-sandbox-claude-agent-sdk"
+    },
+    {
+      "url": "http://modal.com/docs/guide/sandboxes"
+    },
+    {
+      "url": "https://modal.com/products/sandboxes"
+    },
+    {
+      "url": "https://modal.com/docs/guide/sandboxes"
+    },
+    {
+      "url": "http://modal.com/docs/guide/sandbox-resources"
+    }
+  ],
+  "summary": "Modal Sandboxes are secure, isolated containers used for executing untrusted code from users or AI agents. They are primarily used for running LLM-generated code and reinforcement learning (RL) rollouts at scale.",
+  "wake_on_request": null,
+  "website": "https://modal.com"
 }
