@@ -74,9 +74,15 @@ def _touch_activity() -> None:
 
 @app.middleware("http")
 async def track_activity(request: Request, call_next):
-    _touch_activity()
+    # Rejected webhook deliveries don't count as activity: Parallel retries
+    # failed deliveries with backoff, and anyone can POST to a public URL.
+    # Counting those would keep the box awake (and billed) indefinitely.
+    is_hook = request.url.path == "/hooks/parallel"
+    if not is_hook:
+        _touch_activity()
     response = await call_next(request)
-    _touch_activity()
+    if not is_hook or response.status_code < 400:
+        _touch_activity()
     return response
 
 
@@ -128,7 +134,7 @@ async def parallel_hook(request: Request):
     payload = json.loads(body)
     if payload.get("type") != "monitor.event.detected":
         return Response(status_code=204)
-    _enqueue_turn(payload)
+    _enqueue_turn(payload, dedupe_key=request.headers.get("webhook-id"))
     return {"ok": True}
 
 
@@ -138,13 +144,20 @@ def _pending_dir():
     return path
 
 
-def _enqueue_turn(payload: dict) -> None:
+def _enqueue_turn(payload: dict, dedupe_key: str | None = None) -> None:
     """Queue the event on disk, then make sure a worker is draining the queue.
 
-    Disk first so an event survives a restart between ack and processing."""
-    name = (
-        f"{time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())}-{uuid.uuid4().hex[:8]}.json"
-    )
+    Disk first so an event survives a restart between ack and processing.
+    Redeliveries of the same webhook reuse their id, so keying the queue file
+    on it collapses retries into one turn."""
+    if dedupe_key:
+        safe = "".join(c for c in dedupe_key if c.isalnum() or c in "-_.")[:80]
+        name = f"wh-{safe}.json"
+    else:
+        name = (
+            f"{time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())}"
+            f"-{uuid.uuid4().hex[:8]}.json"
+        )
     (_pending_dir() / name).write_text(json.dumps(payload))
     _maybe_start_worker()
 
