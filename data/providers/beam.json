@@ -1,5 +1,5 @@
 {
-  "cold_start": "1\u20133 s",
+  "cold_start": "~sub-second",
   "docker": true,
   "free_while_idle": true,
   "gpu": true,
@@ -9,7 +9,7 @@
   "memory_snapshots": true,
   "name": "Beam",
   "notes": "Beam's managed cloud and the self-hosted open-source Beta9 share the same API, but the public pricing page lists both per-second sandbox rates and on-demand hourly GPU rates that differ; verify which tier applies to your workload.",
-  "price_headline": "$0.19 per core-hour (CPU); GPU varies by SKU",
+  "price_headline": "Per-second/per-millisecond billing for CPU, RAM, and GPU (see pricing page for per-unit rates)",
   "pricing_model": "Per-second, billed on CPU cores, RAM, and GPU while the sandbox is running; idle sandboxes cost nothing.",
   "sdks": [
     "Python",
@@ -52,6 +52,9 @@
     },
     {
       "url": "https://beam.cloud/pricing"
+    },
+    {
+      "url": "https://www.beam.cloud/"
     }
   ],
   "summary": "Beam Sandboxes are isolated compute environments that AI agents or their harnesses control to run untrusted or LLM-generated code. They expose process execution, filesystem transfer, and dynamically exposed ports, and accept custom container images, GPUs, and persistent storage volumes. The product is used by teams building AI coding agents, inference workloads, and tool-using assistants that need fast, ephemeral execution environments.",
