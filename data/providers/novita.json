@@ -1,1 +1,61 @@
-{"cold_start": null, "docker": null, "free_while_idle": null, "gpu": null, "isolation": null, "last_verified": "2026-07-20", "max_runtime": null, "memory_snapshots": null, "name": "Novita AI Sandbox", "notes": null, "price_headline": null, "pricing_model": null, "sdks": [], "slug": "novita", "sources": [{"url": "https://novita.ai/sandbox"}], "summary": "Novita AI Sandbox provides secure, programmable sandboxes for AI-generated code, browser workflows, computer use, and long-running tasks. Novita offers $100 in free credits to new accounts.", "wake_on_request": null, "website": "https://novita.ai/sandbox"}
+{
+  "cold_start": "Under 200 ms on average for create; ~1 s to resume from paused",
+  "docker": null,
+  "free_while_idle": false,
+  "gpu": false,
+  "isolation": "Firecracker microVM",
+  "last_verified": "2026-07-20",
+  "max_runtime": "24 h (paid tier); 1 h (free tier)",
+  "memory_snapshots": true,
+  "name": "Novita AI Sandbox",
+  "notes": "CPU-only: Novita's own comparison states the sandbox has no GPU; GPU compute is a separate Novita product. Templates are built from Docker/OCI images, but public docs do not state Docker containers can run inside the sandbox.",
+  "price_headline": "$0.0000098 per vCPU-second ($0.0353/vCPU-hr); $0.0000032 per GiB-second ($0.0115/GiB-hr)",
+  "pricing_model": "Per-second billing on allocated vCPU and RAM; storage billed separately",
+  "sdks": [
+    "Python",
+    "JavaScript",
+    "TypeScript"
+  ],
+  "slug": "novita",
+  "sources": [
+    {
+      "url": "https://novita.ai/pricing"
+    },
+    {
+      "url": "https://novita.ai/docs/guides/sandbox-overview"
+    },
+    {
+      "url": "https://novita.ai/sandbox"
+    },
+    {
+      "url": "https://novita.ai/"
+    },
+    {
+      "url": "https://novita.ai/docs/guides/llm-dedicated-endpoint"
+    },
+    {
+      "url": "https://infrabase.ai/inference-apis/novita-ai"
+    },
+    {
+      "url": "https://novita.ai/llms.txt"
+    },
+    {
+      "url": "https://novita.ai/docs/guides/sandbox-overview.md"
+    },
+    {
+      "url": "https://novita.ai/sandbox.md"
+    },
+    {
+      "url": "https://novita.ai/pricing.md"
+    },
+    {
+      "url": "https://novita.ai/docs/guides/sandbox-your-first-agent-sandbox.md"
+    },
+    {
+      "url": "https://novita.ai/pricing?sandbox=1"
+    }
+  ],
+  "summary": "Novita Agent Sandbox provides isolated, stateful execution environments that let AI agents run code, install dependencies, manipulate files, and use browsers or full desktops. It is used by developers building coding agents, browser-automation agents, and long-running multi-step agent workflows.",
+  "wake_on_request": true,
+  "website": "https://novita.ai/sandbox"
+}

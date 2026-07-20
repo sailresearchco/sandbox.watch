@@ -1,0 +1,62 @@
+{
+  "cold_start": "~100-500 ms warm resume; ~1-2 s cold start",
+  "docker": false,
+  "free_while_idle": true,
+  "gpu": false,
+  "isolation": "Firecracker microVM",
+  "last_verified": "2026-07-20",
+  "max_runtime": "No fixed limit",
+  "memory_snapshots": false,
+  "name": "Fly.io Sprites",
+  "notes": "Sprites intentionally drop OCI/Docker container images \u2014 every Sprite boots from a standard base image and software is installed directly on the filesystem. RAM state does not survive hibernation (only disk and network config persist), so any process the agent needs to keep alive across a sleep must be registered as a Sprites 'Service' that auto-restarts on wake.",
+  "price_headline": "$0.07 per CPU-hour and $0.04375 per GB-hour of memory",
+  "pricing_model": "Pay-as-you-go, per-second billing on CPU and memory while running; no compute charge while the Sprite is hibernating",
+  "sdks": [
+    "Go",
+    "JavaScript/TypeScript",
+    "Python",
+    "Elixir"
+  ],
+  "slug": "fly-io-sprites",
+  "sources": [
+    {
+      "url": "https://community.fly.io/t/how-to-get-docker-running-on-sprites/27168"
+    },
+    {
+      "url": "https://github.com/superfly/sprites-go"
+    },
+    {
+      "url": "https://github.com/superfly/sprites-js"
+    },
+    {
+      "url": "https://github.com/superfly/sprites-py"
+    },
+    {
+      "url": "https://github.com/superfly/sprites-ex"
+    },
+    {
+      "url": "https://fly.io/"
+    },
+    {
+      "url": "https://community.fly.io/t/sprite-constantly-stays-warm-also-any-way-to-reboot/26926"
+    },
+    {
+      "url": "https://docs.sprites.dev/concepts/checkpoints"
+    },
+    {
+      "url": "https://fly.io/blog/design-and-implementation/"
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=46634450"
+    },
+    {
+      "url": "https://docs.sprites.dev/"
+    },
+    {
+      "url": "https://community.fly.io/t/sprites-not-shutting-off/26793"
+    }
+  ],
+  "summary": "Fly.io Sprites are persistent, stateful Linux virtual machines built as sandboxes for AI agents. Each Sprite is a hardware-isolated Firecracker microVM with a full Linux filesystem that survives across runs. Sprites scale to zero (hibernate when idle, wake on the next request) so agents can keep long-lived state and installed tools between sessions. They expose a REST and WebSocket API and are intended for executing untrusted or agent-generated code in isolation, with built-in features for checkpoints, file transfer, port forwarding, and outbound network policy.",
+  "wake_on_request": true,
+  "website": "https://fly.io/sprites/"
+}

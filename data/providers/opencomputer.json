@@ -1,0 +1,60 @@
+{
+  "cold_start": "Sandboxes 'start in milliseconds' (docs overview); resume from hibernation 'in seconds' (home page, README). No specific P50/P95 latency published.",
+  "docker": null,
+  "free_while_idle": true,
+  "gpu": false,
+  "isolation": "KVM (QEMU/KVM) \u2014 hardware-level virtualization; each sandbox is a full Linux VM with its own kernel",
+  "last_verified": "2026-07-20",
+  "max_runtime": "No fixed limit (default 300s idle timeout auto-hibernates the VM)",
+  "memory_snapshots": true,
+  "name": "OpenComputer",
+  "notes": "The 'Burst Sandbox' tier is priced roughly 2\u00d7 cheaper than the standard on-demand tier but explicitly does NOT preserve in-memory state, terminal sessions, or open network connections across infrastructure restarts\u2014only disk state survives. On-demand sandboxes snapshot full VM state on hibernate. Templates are currently in alpha.",
+  "price_headline": "$0.004 per VM-minute (\u2248 $0.24/hour, \u2248 $168.72/month) for the 1\u20134 GB RAM / 1 vCPU on-demand tier",
+  "pricing_model": "Per-minute billing while the VM is running; per-second disk metering (storage above 20 GB included is billed even while hibernated)",
+  "sdks": [
+    "TypeScript",
+    "Python"
+  ],
+  "slug": "opencomputer",
+  "sources": [
+    {
+      "url": "https://opencomputer.dev/"
+    },
+    {
+      "url": "https://github.com/diggerhq/opencomputer"
+    },
+    {
+      "url": "https://rocm.docs.amd.com/en/latest/conceptual/gpu-isolation.html"
+    },
+    {
+      "url": "https://northflank.com/blog/opencomputer-alternatives"
+    },
+    {
+      "url": "https://docs.opencomputer.dev/"
+    },
+    {
+      "url": "https://github.com/diggerhq/opencomputer/blob/main/README.md"
+    },
+    {
+      "url": "https://docs.opencomputer.dev/llms.txt"
+    },
+    {
+      "url": "https://docs.opencomputer.dev/api-reference/sandboxes/hibernate.md"
+    },
+    {
+      "url": "https://docs.opencomputer.dev/api-reference/sandboxes/wake.md"
+    },
+    {
+      "url": "https://docs.opencomputer.dev/agent-sessions/overview.md"
+    },
+    {
+      "url": "https://docs.opencomputer.dev/api-reference/sandboxes/create.md"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/diggerhq/opencomputer/main/README.md"
+    }
+  ],
+  "summary": "OpenComputer provides persistent, full Linux VMs in the cloud intended for AI agents and their harnesses to run untrusted or long-lived code. Each sandbox is a real KVM-backed virtual machine with its own filesystem, kernel, and network namespace; sandboxes hibernate when idle and wake on inbound traffic instead of being torn down. It ships TypeScript and Python SDKs plus a REST API and is primarily used by teams building agent platforms on top of frameworks like Claude Agent SDK.",
+  "wake_on_request": true,
+  "website": "https://opencomputer.dev"
+}

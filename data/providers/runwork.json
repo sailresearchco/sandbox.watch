@@ -1,1 +1,57 @@
-{"cold_start": null, "docker": null, "free_while_idle": null, "gpu": null, "isolation": null, "last_verified": "2026-07-20", "max_runtime": null, "memory_snapshots": null, "name": "Runwork Agent Sandbox", "notes": null, "price_headline": null, "pricing_model": null, "sdks": [], "slug": "runwork", "sources": [{"url": "https://www.runwork.ai/features/agent-sandbox/"}], "summary": "Runwork Agent Sandbox gives each AI agent an isolated computing environment. Agents analyze files, generate reports, write and run code, and coordinate with other agents.", "wake_on_request": null, "website": "https://www.runwork.ai/features/agent-sandbox/"}
+{
+  "cold_start": null,
+  "docker": null,
+  "free_while_idle": null,
+  "gpu": false,
+  "isolation": null,
+  "last_verified": "2026-07-20",
+  "max_runtime": null,
+  "memory_snapshots": null,
+  "name": "Runwork Agent Sandbox",
+  "notes": "Runwork Agent Sandbox is a feature within the Runwork team platform, not a standalone compute API. Public docs do not specify isolation technology, cold start latency, GPU availability, max runtime, idle costs, or wake-on-request behavior.",
+  "price_headline": "$79/month (Startup tier: 3 seats, $30/month usage credits)",
+  "pricing_model": "Monthly subscription with included usage credits; overage billed as additional spend",
+  "sdks": [],
+  "slug": "runwork",
+  "sources": [
+    {
+      "url": "https://www.runwork.ai/use-cases/ai-ecosystem/"
+    },
+    {
+      "url": "https://github.com/orgs/runwork-ai/repositories"
+    },
+    {
+      "url": "https://www.runwork.ai/changelog/"
+    },
+    {
+      "url": "https://www.runwork.ai/pricing/"
+    },
+    {
+      "url": "https://northflank.com/blog/ai-sandbox-pricing"
+    },
+    {
+      "url": "https://www.runwork.ai/features/agent-sandbox/"
+    },
+    {
+      "url": "https://runloop.ai/pricing"
+    },
+    {
+      "url": "https://blaxel.ai/blog/code-execution-sandboxes-for-ai-agents"
+    },
+    {
+      "url": "https://www.runwork.ai/"
+    },
+    {
+      "url": "https://ai-sdk.dev/"
+    },
+    {
+      "url": "https://www.runwork.ai/features/ai-agents/"
+    },
+    {
+      "url": "https://www.runwork.ai/for-agents/"
+    }
+  ],
+  "summary": "Runwork Agent Sandbox is a feature within the Runwork AI-team platform that provides isolated computing environments for AI agents running Claude CLI (Codex CLI and Gemini CLI were added later). Agents receive delegated tasks, execute them in isolated environments with access to workspace skills, MCP servers, and integrations, and can resume work by session ID. It is used by teams that want AI agents to perform automated work within the Runwork workspace.",
+  "wake_on_request": null,
+  "website": "https://www.runwork.ai"
+}

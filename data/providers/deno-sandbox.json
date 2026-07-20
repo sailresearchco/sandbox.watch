@@ -1,0 +1,57 @@
+{
+  "cold_start": null,
+  "docker": null,
+  "free_while_idle": null,
+  "gpu": null,
+  "isolation": null,
+  "last_verified": "2026-07-20",
+  "max_runtime": null,
+  "memory_snapshots": null,
+  "name": "Deno Sandbox",
+  "notes": null,
+  "price_headline": "",
+  "pricing_model": "",
+  "sdks": [],
+  "slug": "deno-sandbox",
+  "sources": [
+    {
+      "url": "https://deno.com/deploy/sandbox"
+    },
+    {
+      "url": "https://deno.com/deploy/pricing"
+    },
+    {
+      "url": "https://deno.com/blog/introducing-deno-sandbox"
+    },
+    {
+      "url": "https://deno.com/blog/deno-deploy-is-ga"
+    },
+    {
+      "url": "https://docs.deno.com/subhosting/manual/pricing_and_limits/"
+    },
+    {
+      "url": "https://docs.deno.com/sandbox/"
+    },
+    {
+      "url": "https://docs.deno.com/examples/snapshots_tutorial/"
+    },
+    {
+      "url": "https://docs.deno.com/runtime/reference/docker/"
+    },
+    {
+      "url": "https://deno.com/blog/v1.8"
+    },
+    {
+      "url": "https://docs.deno.com/runtime/deploy/"
+    },
+    {
+      "url": "https://docs.deno.com/runtime/getting_started/installation/"
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=46874097"
+    }
+  ],
+  "summary": "",
+  "wake_on_request": null,
+  "website": "https://deno.com/deploy/sandbox"
+}

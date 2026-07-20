@@ -1,1 +1,54 @@
-{"cold_start": null, "docker": null, "free_while_idle": null, "gpu": null, "isolation": "Sandboxed Python environment", "last_verified": "2026-07-20", "max_runtime": null, "memory_snapshots": null, "name": "GKE Agent Sandbox", "notes": null, "price_headline": null, "pricing_model": null, "sdks": [], "slug": "gke-agent-sandbox", "sources": [{"url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/agent-sandbox"}], "summary": "GKE Agent Sandbox isolates AI-generated Python code in a sandboxed Python environment on Google Kubernetes Engine. Google Cloud launched the feature for safely executing and testing model-written code within GKE AI/ML.", "wake_on_request": null, "website": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/agent-sandbox"}
+{
+  "cold_start": "~200 ms typical (90% of allocations under 200 ms; up to 300 sandboxes/sec/cluster; pre-warmed pods enable sub-second creation)",
+  "docker": false,
+  "free_while_idle": true,
+  "gpu": true,
+  "isolation": "gVisor (also supports Kata Containers and other OCI-compatible runtimes; runtimeClassName: gvisor)",
+  "last_verified": "2026-07-20",
+  "max_runtime": "Configurable TTL (no fixed maximum documented)",
+  "memory_snapshots": true,
+  "name": "GKE Agent Sandbox",
+  "notes": "Pod Snapshots (memory-preserving suspend/resume) is a GKE-exclusive preview feature; the open-source CRD is alpha (extensions.agents.x-k8s.io/v1alpha1). The default security profile forbids privileged mode, hostPath, hostPID/hostIPC, and capabilities.add, so Docker-in-Docker is not supported in default sandboxes.",
+  "price_headline": "$0.0445/vCPU-hour and $0.0049225/GiB-hour (GKE Autopilot, US regions; Agent Sandbox adds no charge)",
+  "pricing_model": "No additional charge for Agent Sandbox; standard GKE resource pricing (per-second, vCPU/memory/storage) applies",
+  "sdks": [
+    "Python",
+    "Go"
+  ],
+  "slug": "gke-agent-sandbox",
+  "sources": [
+    {
+      "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/agent-sandbox"
+    },
+    {
+      "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/how-install-agent-sandbox"
+    },
+    {
+      "url": "https://agent-sandbox.sigs.k8s.io/docs/"
+    },
+    {
+      "url": "https://github.com/kubernetes-sigs/agent-sandbox"
+    },
+    {
+      "url": "https://www.infoq.com/news/2026/05/gke-agent-sandbox-hypercluster/"
+    },
+    {
+      "url": "https://cloud.google.com/blog/products/containers-kubernetes/bringing-you-agent-sandbox-on-gke-and-agent-substrate"
+    },
+    {
+      "url": "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/machine-learning/agent-sandbox"
+    },
+    {
+      "url": "https://github.com/kubernetes-sigs/agent-sandbox/issues/694"
+    },
+    {
+      "url": "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/sandbox-pods"
+    },
+    {
+      "url": "https://cloud.google.com/kubernetes-engine/pricing"
+    }
+  ],
+  "summary": "GKE Agent Sandbox is a managed GKE add-on, built on the open-source kubernetes-sigs/agent-sandbox project, that runs untrusted AI-generated code in isolated, stateful, single-replica Pods with persistent storage and kernel-level isolation via gVisor. It is used by AI agent runtimes, code interpreters, and development environments that need to execute code safely.",
+  "wake_on_request": true,
+  "website": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/agent-sandbox"
+}

@@ -1,0 +1,60 @@
+{
+  "cold_start": "A few seconds for resume; create time not explicitly stated in extracted docs",
+  "docker": true,
+  "free_while_idle": true,
+  "gpu": false,
+  "isolation": "Hetzner Cloud VPS (current CX33); hypervisor not stated in docs",
+  "last_verified": "2026-07-20",
+  "max_runtime": "Default TTL overrideable up to 30 days; can disable auto-stop with ttl=null",
+  "memory_snapshots": false,
+  "name": "Box by ASCII",
+  "notes": "Box runs only in EU regions (DE/FI/FR), offers a single fixed machine spec with no GPU and no larger sizes, and SOC 2 compliance is described as 'in progress'.",
+  "price_headline": "$0.036 per hour per box (4 shared vCPU / 8 GB RAM / 75 GB NVMe)",
+  "pricing_model": "Per-second, billed only while boxes are running; stopped boxes are free",
+  "sdks": [
+    "Python",
+    "TypeScript"
+  ],
+  "slug": "box-by-ascii",
+  "sources": [
+    {
+      "url": "https://box.ascii.dev/"
+    },
+    {
+      "url": "https://docs.ascii.dev/box/machines"
+    },
+    {
+      "url": "https://docs.ascii.dev/box/faq.md"
+    },
+    {
+      "url": "https://docs.ascii.dev/box/sdks/overview"
+    },
+    {
+      "url": "https://docs.ascii.dev/llms.txt"
+    },
+    {
+      "url": "https://docs.ascii.dev"
+    },
+    {
+      "url": "https://docs.ascii.dev/box/faq"
+    },
+    {
+      "url": "https://docs.ascii.dev/box/long-running-tasks.md"
+    },
+    {
+      "url": "https://docs.ascii.dev/box/snapshots.md"
+    },
+    {
+      "url": "https://docs.ascii.dev/box/billing.md"
+    },
+    {
+      "url": "https://ascii.dev/pricing"
+    },
+    {
+      "url": "https://box.ascii.dev/compare"
+    }
+  ],
+  "summary": "Box is a cloud sandbox product by ASCII that provisions persistent Linux (Ubuntu) virtual machines on Hetzner Cloud infrastructure. It is built for AI coding agents (such as Claude Code, OpenAI Codex, and OpenCode) and developers running parallel agent workflows, and exposes a CLI, HTTP API, and Python and TypeScript SDKs for programmatic control.",
+  "wake_on_request": null,
+  "website": "https://box.ascii.dev"
+}
