@@ -15,9 +15,11 @@ from . import config
 # A dollar figure stated per vCPU (or CPU core) per exact time unit. Only
 # these normalize honestly: converting seconds or minutes to hours is unit
 # arithmetic. Per-credit, per-MCU, per-instance, and per-month prices carry
-# assumptions the docs do not state, so they stay unranked.
+# assumptions the docs do not state, so they stay unranked. A tilde marks an
+# approximation someone derived rather than a rate the provider states, so
+# those are skipped too.
 _VCPU_RATE = re.compile(
-    r"\$([0-9][0-9,]*(?:\.[0-9]+)?)"
+    r"(?<!~)\$([0-9][0-9,]*(?:\.[0-9]+)?)"
     r"\s*(?:per\s+|/\s*)(?:active\s+)?v?cpu(?:\s+core)?"
     r"[\s/-]*(sec(?:ond)?|min(?:ute)?|hour|hr)\b",
     re.IGNORECASE,
