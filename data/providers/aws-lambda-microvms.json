@@ -1,6 +1,6 @@
 {
   "cold_start": "Near-instant (AWS docs describe as 'seconds'; no specific ms figure published)",
-  "docker": true,
+  "docker": null,
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Firecracker microVM",
@@ -12,8 +12,7 @@
   "price_headline": "$0.0000276944 per vCPU-second + $0.0000036667 per GB-second (ARM/Graviton, US East); snapshot read $0.00155/GB, write $0.0038/GB, storage $0.08/GB-month",
   "pricing_model": "Per-second compute (baseline + peak) plus snapshot operations and storage",
   "sdks": [
-    "Python",
-    "Node.js"
+    "Exposed via AWS APIs/CLI (no explicit SDK language list published in the MicroVM docs)"
   ],
   "slug": "aws-lambda-microvms",
   "sources": [
@@ -25,6 +24,9 @@
     },
     {
       "url": "https://aws.amazon.com/lambda/lambda-microvms/"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/"
     },
     {
       "url": "https://aws.amazon.com/blogs/compute/announcing-lambda-microvms-serverless-compute-environments-with-vm-level-isolation-and-near-instant-startup/"
