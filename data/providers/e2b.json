@@ -9,7 +9,7 @@
   "memory_snapshots": false,
   "name": "E2B",
   "notes": "Users on the free Hobby tier are limited to 1-hour sandbox sessions, while Pro users can have sessions up to 24 hours.",
-  "price_headline": "$0.000014 per vCPU-second",
+  "price_headline": "Per-second billing for vCPU and memory (rates on pricing page)",
   "pricing_model": "Per-second, based on vCPU and RAM usage, with a monthly platform fee for Pro plans.",
   "sdks": [
     "Python",
@@ -35,6 +35,9 @@
     },
     {
       "url": "https://e2b.dev/pricing"
+    },
+    {
+      "url": "https://e2b.dev/docs/billing"
     },
     {
       "url": "https://e2b.dev/docs/sdk-reference/js-sdk/v1.2.0/sandbox"
