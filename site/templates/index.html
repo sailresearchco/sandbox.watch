@@ -46,12 +46,13 @@ comparison{% endblock %} {% block content %}
 <script>
   // Column sort and row filter. Everything else on this page is plain HTML.
   const table = document.getElementById("compare");
-  // Dollar cells sort by their numeric value. A plain text sort compares
-  // digit runs as whole numbers, which mis-orders decimals: it would put
-  // $0.15 before $0.0504. Other text sorts alphabetically, n/a stays last.
+  // Cells with a dollar figure sort by the first one. A plain text sort
+  // compares digit runs as whole numbers, which mis-orders decimals: it
+  // would put $0.15 before $0.0504. Other text sorts alphabetically, and
+  // n/a stays last in both directions.
   function sortKey(text) {
     const t = text.trim();
-    const money = t.match(/^~?\$([0-9][0-9,]*(?:\.[0-9]+)?)/);
+    const money = t.match(/\$([0-9][0-9,]*(?:\.[0-9]+)?)/);
     if (money) {
       return { rank: 0, num: parseFloat(money[1].replace(/,/g, "")), text: t };
     }
