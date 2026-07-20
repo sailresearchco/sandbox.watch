@@ -270,19 +270,15 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(client.trigger_monitor_run(args.trigger_monitor), indent=2))
         return 0
 
-    # Hold the busy marker so the server's idle self-sleep doesn't checkpoint
-    # the box in the middle of research.
-    marker = config.busy_marker()
-    marker.touch()
-    try:
+    # Hold a busy marker so the server's idle self-sleep doesn't checkpoint
+    # the box in the middle of research or an agent turn.
+    with config.busy_hold():
         if args.discover or args.propose:
             rc = run_discovery(client) if args.discover else 0
             if rc == 0 and args.propose:
                 rc = propose_discoveries()
             return rc
         return _run(client, args)
-    finally:
-        marker.unlink(missing_ok=True)
 
 
 def propose_discoveries() -> int:

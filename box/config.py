@@ -7,6 +7,7 @@ writes secrets/runtime.env with the values below before the server starts.
 
 from __future__ import annotations
 
+import contextlib
 import os
 from pathlib import Path
 
@@ -37,11 +38,33 @@ def state_dir() -> Path:
 
 
 def busy_marker() -> Path:
-    """Marker file that pauses idle self-sleep during long non-HTTP work.
+    """Legacy single marker file that pauses idle self-sleep.
 
-    Bootstrap research runs for many minutes without touching the web server,
-    and sleeping mid-run would freeze it and sever its API connections."""
+    Still honored by the server so an operator can hold the box awake with
+    one touch, but concurrent jobs must use busy_hold(): two jobs sharing
+    this one file delete each other's hold."""
     return state_dir() / "busy"
+
+
+def busy_holds_dir() -> Path:
+    """Directory of per-process hold files that pause idle self-sleep.
+
+    Bootstrap research and agent turns run for many minutes without touching
+    the web server, and sleeping mid-run would freeze them and sever their
+    API connections. Each holder owns one file, so holds stack."""
+    return state_dir() / "busy-holds"
+
+
+@contextlib.contextmanager
+def busy_hold():
+    """Hold an idle-sleep block for this process for the duration."""
+    path = busy_holds_dir() / str(os.getpid())
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.touch()
+    try:
+        yield
+    finally:
+        path.unlink(missing_ok=True)
 
 
 def secrets_dir() -> Path:

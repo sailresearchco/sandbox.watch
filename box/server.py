@@ -218,14 +218,22 @@ def _sleep_self() -> None:
 
 
 def _busy_hold() -> bool:
-    """True while a long non-HTTP job (e.g. bootstrap research) holds the
-    busy marker. A marker older than two hours is treated as stale so a
-    killed job cannot keep the box awake forever."""
+    """True while any long non-HTTP job (bootstrap research, an agent turn)
+    holds a busy marker. Holds older than two hours are treated as stale so
+    a killed job cannot keep the box awake forever."""
+    paths = [config.busy_marker()]
     try:
-        age = time.time() - config.busy_marker().stat().st_mtime
+        paths.extend(config.busy_holds_dir().iterdir())
     except OSError:
-        return False
-    return age < 7200
+        pass
+    now = time.time()
+    for path in paths:
+        try:
+            if now - path.stat().st_mtime < 7200:
+                return True
+        except OSError:
+            continue
+    return False
 
 
 def _sleep_when_idle() -> None:
