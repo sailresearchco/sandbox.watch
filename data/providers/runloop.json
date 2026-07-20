@@ -1,16 +1,16 @@
 {
-  "cold_start": "a few seconds",
+  "cold_start": "A few seconds for initial boot; resume typically under 1 second",
   "docker": true,
   "free_while_idle": true,
   "gpu": false,
-  "isolation": "microVM",
+  "isolation": "Linux microVM with hardware isolation (two-layer VM + container)",
   "last_verified": "2026-07-20",
   "max_runtime": null,
-  "memory_snapshots": null,
+  "memory_snapshots": false,
   "name": "Runloop",
-  "notes": "No GPU compute offering is available.",
-  "price_headline": "$0.108 per CPU-hour",
-  "pricing_model": "Usage-based, billed on compute resources and memory",
+  "notes": "Suspended devboxes continue to incur storage charges until explicitly shut down; snapshots preserve disk state only, not in-memory state.",
+  "price_headline": "$0.108 per CPU-hour (plus $0.0252 per GB-hour of memory)",
+  "pricing_model": "Per-second (and per-hour) usage-based billing on reserved CPU and memory while running",
   "sdks": [
     "Python",
     "TypeScript"
@@ -18,40 +18,43 @@
   "slug": "runloop",
   "sources": [
     {
-      "url": "https://runloop.ai/"
-    },
-    {
       "url": "https://docs.runloop.ai/docs/overview/runloop-features"
     },
     {
-      "url": "https://docs.runloop.ai/docs/tools/sdks"
+      "url": "https://docs.runloop.ai/docs/overview/what-is-runloop"
     },
     {
-      "url": "http://devtune.ai/verticals/ai-code-sandboxes-agent-runtimes/runloop"
+      "url": "https://docs.runloop.ai/docs/devboxes/execute-commands"
     },
     {
-      "url": "http://runloop.ai/about"
+      "url": "https://runloop.ai/"
+    },
+    {
+      "url": "https://docs.runloop.ai/docs/devboxes/lifecycle"
+    },
+    {
+      "url": "https://docs.runloop.ai/docs/devboxes/snapshots"
+    },
+    {
+      "url": "https://docs.runloop.ai/docs/tutorials/running-agents-on-sandboxes/suspend-resume-workflow"
     },
     {
       "url": "https://runloop.ai/pricing"
     },
     {
+      "url": "https://runloop.ai/product/agent-management"
+    },
+    {
+      "url": "https://docs.runloop.ai/docs/devboxes/tunnels"
+    },
+    {
+      "url": "https://northflank.com/blog/ai-sandbox-pricing"
+    },
+    {
       "url": "https://devtune.ai/verticals/ai-code-sandboxes-agent-runtimes/runloop"
-    },
-    {
-      "url": "http://runloop.ai/blog/trust-your-agent-with-a-credit-card-with-runloop-and-kernel"
-    },
-    {
-      "url": "http://runloop.ai/"
-    },
-    {
-      "url": "https://docs.runloop.ai/docs/devboxes/overview"
-    },
-    {
-      "url": "https://runloop.ai/blog/runloop-devbox-al-driven-development-environment"
     }
   ],
-  "summary": "Runloop is a platform providing secure cloud-hosted sandboxes (Devboxes) for building, testing, and deploying AI coding agents. It is used by AI-first teams, startups, enterprise innovation teams, and academic labs.",
-  "wake_on_request": null,
+  "summary": "Runloop is a platform for building and deploying AI software-engineering agents, centered on Devboxes \u2014 isolated Linux microVMs that run agent-generated code. It targets AI engineering teams that need persistent filesystems, Docker support, and snapshot/suspend/resume lifecycle control for long-running agent workloads.",
+  "wake_on_request": true,
   "website": "https://runloop.ai"
 }

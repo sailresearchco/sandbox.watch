@@ -1,44 +1,61 @@
 {
-  "cold_start": "milliseconds",
+  "cold_start": "Sub-second (millisecond-level startup with Firecracker microVMs)",
   "docker": true,
-  "free_while_idle": false,
-  "gpu": null,
+  "free_while_idle": true,
+  "gpu": false,
   "isolation": "Firecracker microVM",
   "last_verified": "2026-07-20",
-  "max_runtime": "Hobby: 45 min; Pro/Enterprise: 24 h (default timeout 5 min, extendable via sandbox.extendTimeout())",
-  "memory_snapshots": null,
+  "max_runtime": "24 h (Pro/Enterprise); 45 min (Hobby)",
+  "memory_snapshots": false,
   "name": "Vercel Sandbox",
-  "notes": "Vercel's docs describe Snapshots and Persistent sandboxes that auto-save filesystem and installed packages, but do not explicitly state that in-memory process state survives stop and resume.",
-  "price_headline": "$0.128 per vCPU-hour",
-  "pricing_model": "Metered by Active CPU (per vCPU-hour) and Provisioned Memory (per GB-hour); also charges for Sandbox Creations, Snapshot storage, and Data transfer",
+  "notes": "Memory and in-memory process state do NOT persist across stop/resume cycles - only filesystem state is preserved. Memory is billed for the full session duration even during idle I/O waits.",
+  "price_headline": "$0.128 per vCPU-hour (active CPU)",
+  "pricing_model": "Per-second metering: $0.128/vCPU-hour (active CPU), $0.0212/GB-hour memory (full session), $0.60 per million creations",
   "sdks": [
     "JavaScript",
     "TypeScript",
-    "Python",
-    "CLI"
+    "Python"
   ],
   "slug": "vercel",
   "sources": [
     {
-      "url": "https://vercel.com/docs/sandbox"
+      "url": "https://vercel.com/changelog/run-docker-containers-inside-vercel-sandbox"
     },
     {
-      "url": "https://vercel.com/blog/agent-stack"
+      "url": "https://vercel.com/docs/sandbox/sdk-reference"
+    },
+    {
+      "url": "https://vercel.com/docs/sandbox/python-sdk-reference"
+    },
+    {
+      "url": "https://github.com/vercel/sandbox"
+    },
+    {
+      "url": "https://vercel.com/changelog/sandbox-persistence-is-now-ga"
+    },
+    {
+      "url": "https://vercel.com/blog/vercel-sandbox-is-now-generally-available"
+    },
+    {
+      "url": "https://vercel.com/changelog/run-claude-managed-agents-with-vercel-sandbox"
+    },
+    {
+      "url": "https://vercel.com/changelog/vercel-sandbox-persistent-sandboxes-beta"
+    },
+    {
+      "url": "https://vercel.com/docs/sandbox/concepts/persistent-sandboxes"
+    },
+    {
+      "url": "https://vercel.com/docs/sandbox"
     },
     {
       "url": "https://vercel.com/sandbox"
     },
     {
-      "url": "https://vercel.com/docs/sandbox/pricing"
-    },
-    {
-      "url": "https://createos.sh/vs/vercel"
-    },
-    {
-      "url": "https://www.reddit.com/r/ClaudeAI/comments/1qa8bch/anthropic_and_vercel_chose_different_sandboxes/"
+      "url": "https://vercel.com/changelog/vercel-sandbox-can-now-run-for-up-to-24-hours"
     }
   ],
-  "summary": "Vercel Sandbox provides on-demand, isolated Linux microVMs for safely running untrusted or user-generated code. It is primarily used by developers building AI agents and interactive tools that require a secure, ephemeral compute environment.",
-  "wake_on_request": null,
+  "summary": "Vercel Sandbox is an on-demand, isolated Linux microVM (based on Firecracker) that safely runs arbitrary or untrusted code via an SDK or CLI. It is used by AI coding agents, AI code interpreters, and developer tools that need ephemeral, sandboxed execution environments for tasks such as running AI-generated scripts, executing user-submitted code, or previewing apps. Sandboxes support persistence, snapshots, and port exposure for live URLs.",
+  "wake_on_request": false,
   "website": "https://vercel.com/docs/vercel-sandbox"
 }

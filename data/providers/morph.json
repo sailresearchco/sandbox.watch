@@ -1,16 +1,16 @@
 {
-  "cold_start": "<250 ms",
+  "cold_start": "~250 ms (snapshot/restore via Infinibranch; cold-boot time for fresh images not documented)",
   "docker": true,
-  "free_while_idle": null,
+  "free_while_idle": true,
   "gpu": null,
-  "isolation": "Infinibranch (MorphVMs)",
+  "isolation": "Full VMs (hypervisor technology not explicitly named in public docs)",
   "last_verified": "2026-07-20",
-  "max_runtime": null,
+  "max_runtime": "No fixed limit documented; TTLs control stop/pause on expiry",
   "memory_snapshots": true,
   "name": "Morph Cloud",
-  "notes": "There is experimental support for Windows, OSX (x86), and nested virtualization.",
-  "price_headline": "The available sources do not contain a headline compute price for Morph Cloud sandboxes.",
-  "pricing_model": "Usage-based, billed on compute and storage used",
+  "notes": "GPU instances are not advertised in public documentation. The specific VM isolation technology (e.g., KVM, Firecracker) is not named in docs. The sub-250ms figure refers to snapshot/restore, not from-scratch boot time.",
+  "price_headline": "$0.05 per MCU (Morph Compute Unit)",
+  "pricing_model": "Hourly billing in MCUs (Morph Compute Units), allocated via monthly subscription tiers",
   "sdks": [
     "Python",
     "TypeScript"
@@ -18,31 +18,37 @@
   "slug": "morph",
   "sources": [
     {
-      "url": "https://github.com/morph-labs/morph-python-sdk"
-    },
-    {
-      "url": "https://cloud.morph.so/docs/blog/developers"
-    },
-    {
-      "url": "https://cloud.morph.so/docs/developers"
-    },
-    {
-      "url": "https://cloud.morph.so/docs/documentation/setup/installation-guide"
-    },
-    {
       "url": "https://cloud.morph.so/web/product/devboxes"
-    },
-    {
-      "url": "https://www.morphllm.com/pricing"
     },
     {
       "url": "https://cloud.morph.so/docs/devboxes/getting-started"
     },
     {
-      "url": "http://morph.so/"
+      "url": "https://cloud.morph.so/docs/documentation/setup/installation-guide"
+    },
+    {
+      "url": "https://cloud.morph.so/docs/developers"
+    },
+    {
+      "url": "https://cloud.morph.so/docs/documentation/instances/creating-snapshot"
+    },
+    {
+      "url": "https://devtune.ai/verticals/ai-code-sandboxes-agent-runtimes/morph-labs"
+    },
+    {
+      "url": "https://cloud.morph.so/docs/documentation/instances/ttl"
+    },
+    {
+      "url": "https://cloud.morph.so/web/subscribe"
+    },
+    {
+      "url": "https://cloud.morph.so/docs/concepts"
+    },
+    {
+      "url": "https://cloud.morph.so/docs/documentation/instances/wake-on"
     }
   ],
-  "summary": "Morph Cloud provides programmable cloud development environments called Devboxes and infrastructure for AI agents. It is used by developers to deploy and scale computational environments that support instant branching and sub-second startup times.",
+  "summary": "Morph Cloud is a cloud platform that provides programmable virtual machines ('instances') built on a snapshot/branch/restore primitive called Infinibranch, along with 'devboxes' (development workspaces) layered on top. It targets developers and AI coding agents that need to spin up, fork, and resume isolated compute environments on demand, with Docker-in-Docker support and integrations for VS Code, Cursor, and CLI-based agents. Key features include sub-250ms snapshot restore, pause/resume capability, and TTL-based lifecycle management.",
   "wake_on_request": true,
   "website": "https://cloud.morph.so"
 }

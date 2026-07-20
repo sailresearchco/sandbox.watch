@@ -1,51 +1,57 @@
 {
-  "cold_start": null,
+  "cold_start": "~3\u20138 s from stopped; ~300 ms from suspended snapshot",
   "docker": true,
   "free_while_idle": false,
-  "gpu": false,
+  "gpu": true,
   "isolation": "Firecracker microVM",
   "last_verified": "2026-07-20",
   "max_runtime": "No fixed limit",
-  "memory_snapshots": false,
+  "memory_snapshots": true,
   "name": "Fly Machines",
-  "notes": "Stopped Fly Machines are not free; they are charged for the root file system storage at $0.15 per 1GB for 30 days.",
-  "price_headline": "$0.0028 per hour for a shared 256 MB instance",
-  "pricing_model": "Per-second billing",
+  "notes": "Fly.io GPU Machines are scheduled to be fully deprecated on July 31, 2026.",
+  "price_headline": "From ~$0.0027/hr (shared-cpu-1x, 256 MB) with per-second metering",
+  "pricing_model": "Per-second billing on running CPU/RAM preset; stopped machines billed for rootfs storage",
   "sdks": [],
   "slug": "fly",
   "sources": [
     {
-      "url": "https://fly.io/machines/"
+      "url": "https://fly.io/docs/machines/flyctl/fly-machine-run/"
     },
     {
-      "url": "http://fly.io/"
+      "url": "https://fly.io/docs/languages-and-frameworks/dockerfile/"
     },
     {
-      "url": "http://fly.io/ai"
+      "url": "https://community.fly.io/t/feature-request-better-api-docs-or-an-official-fly-sdk/14894"
     },
     {
-      "url": "https://fly.io/docs/machines/overview/"
+      "url": "https://github.com/sosedoff/fly-machines"
     },
     {
-      "url": "http://rywalker.com/research/sprites"
+      "url": "https://community.fly.io/t/machines-take-3-8s-to-start-when-hitting-them-during-shutdown/7022"
     },
     {
-      "url": "http://fly.io/machines"
+      "url": "https://dev.to/aerc18/why-my-lightning-fast-spring-boot-native-app-took-9-seconds-to-boot-on-flyio-db5"
     },
     {
-      "url": "https://fly.io/docs/about/pricing/"
+      "url": "https://fly.io/blog/fly-machines/"
     },
     {
-      "url": "https://www.withorb.com/blog/flyio-pricing"
+      "url": "https://fly.io/docs/reference/suspend-resume/"
     },
     {
-      "url": "https://fly.io/docs/reference/architecture/"
+      "url": "https://community.fly.io/t/new-feature-in-preview-suspend-resume-for-machines/20672"
     },
     {
-      "url": "https://news.ycombinator.com/item?id=31496744"
+      "url": "https://fly.io/docs/machines/"
+    },
+    {
+      "url": "https://docs.machines.dev/"
+    },
+    {
+      "url": "https://community.fly.io/t/fly-machines-create-and-forget-and-limitations/11244"
     }
   ],
-  "summary": "Fly Machines are fast-booting, lightweight virtual machines powered by Firecracker microVMs. They provide isolated compute environments used by developers to run arbitrary code and as secure sandboxes for AI agents.",
+  "summary": "Fly Machines are VMs managed through a REST API, built from container images and executed inside Firecracker microVMs across Fly.io's global infrastructure. They expose lifecycle controls (start, stop, suspend, resume) and can autostart on inbound traffic through the Fly Proxy. Developers use them to deploy containerized workloads\u2014including AI agent sandboxes\u2014that need fast boot, per-second billing, and global placement.",
   "wake_on_request": true,
   "website": "https://fly.io/docs/machines/"
 }

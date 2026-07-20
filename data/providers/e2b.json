@@ -1,16 +1,16 @@
 {
-  "cold_start": "80-800 ms",
-  "docker": null,
+  "cold_start": "less than 200 ms (same region)",
+  "docker": true,
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Firecracker microVM",
   "last_verified": "2026-07-20",
-  "max_runtime": "24 h",
-  "memory_snapshots": false,
+  "max_runtime": "24 h on Pro plan; 1 h on Hobby (free) plan",
+  "memory_snapshots": true,
   "name": "E2B",
-  "notes": "Users on the free Hobby tier are limited to 1-hour sandbox sessions, while Pro users can have sessions up to 24 hours.",
-  "price_headline": "Per-second billing for vCPU and memory (rates on pricing page)",
-  "pricing_model": "Per-second, based on vCPU and RAM usage, with a monthly platform fee for Pro plans.",
+  "notes": "Docker support requires at least 2 vCPUs and 2 GiB RAM per the official Docker template. No GPU SKUs are listed in public pricing or docs. Pausing a sandbox via the SDK persists both filesystem and in-memory state (processes, variables), so the next 'connect' resumes from the same state.",
+  "price_headline": "$0.000014/vCPU-second (\u2248$0.0504/vCPU-hour); RAM $0.0000045/GiB/second (\u2248$0.0162/GiB-hour)",
+  "pricing_model": "Per-second, billed on running-sandbox vCPU and RAM",
   "sdks": [
     "Python",
     "JavaScript",
@@ -19,43 +19,43 @@
   "slug": "e2b",
   "sources": [
     {
-      "url": "http://e2b.dev/docs"
+      "url": "https://e2b.dev/docs/template/examples/docker"
     },
     {
-      "url": "http://github.com/e2b-dev/e2b"
+      "url": "https://github.com/e2b-dev/e2b"
+    },
+    {
+      "url": "https://github.com/e2b-dev/e2b#sdks"
+    },
+    {
+      "url": "https://thesequence.substack.com/p/the-sequence-ai-of-the-week-698-how"
     },
     {
       "url": "https://e2b.dev/"
     },
     {
-      "url": "https://www.morphllm.com/e2b-pricing"
+      "url": "https://e2b.dev/docs"
     },
     {
-      "url": "http://agdex.ai/tools/e2b"
+      "url": "https://e2b.dev/docs/quickstart"
+    },
+    {
+      "url": "https://pub.towardsai.net/e2b-ai-sandboxes-features-applications-real-world-impact-75e949ded8a7"
     },
     {
       "url": "https://e2b.dev/pricing"
     },
     {
-      "url": "https://e2b.dev/docs/billing"
-    },
-    {
-      "url": "https://e2b.dev/docs/sdk-reference/js-sdk/v1.2.0/sandbox"
-    },
-    {
-      "url": "https://www.usagepricing.com/tools/pricing-calculator/e2b"
-    },
-    {
-      "url": "http://checkthat.ai/brands/e2b"
-    },
-    {
-      "url": "http://e2b.dev/"
-    },
-    {
       "url": "https://www.beam.cloud/blog/e2b-pricing-explained"
+    },
+    {
+      "url": "https://www.morphllm.com/e2b-pricing"
+    },
+    {
+      "url": "https://checkthat.ai/brands/e2b"
     }
   ],
-  "summary": "E2B is an open-source cloud infrastructure that provides isolated Linux sandbox environments for executing AI-generated code. It is used by developers building AI agents, LLM-powered apps, and agentic workflows.",
-  "wake_on_request": null,
+  "summary": "E2B is an open-source infrastructure service that provisions isolated Linux sandboxes in the cloud for AI agents and code-execution workflows. Each sandbox is a lightweight microVM that can be spawned, used to run commands, paused, resumed, and shut down via SDK calls. Customers include teams building coding agents, data-analysis tools, RL environments, and computer-use agents.",
+  "wake_on_request": false,
   "website": "https://e2b.dev"
 }

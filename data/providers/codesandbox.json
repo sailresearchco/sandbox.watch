@@ -1,16 +1,16 @@
 {
-  "cold_start": "2.7 s",
+  "cold_start": "~2.7 s P95 cold-start; ~500 ms P95 snapshot resume",
   "docker": true,
   "free_while_idle": null,
   "gpu": false,
   "isolation": "Firecracker microVM",
   "last_verified": "2026-07-20",
-  "max_runtime": null,
+  "max_runtime": "24 h on Pro tier; no documented hard cap for Scale/Enterprise",
   "memory_snapshots": true,
   "name": "CodeSandbox SDK",
-  "notes": "The product is currently rebranding as Together Code Sandbox and migrating features to the Together AI platform.",
-  "price_headline": "$0.01486 per credit",
-  "pricing_model": "Credit-based",
+  "notes": "Product is mid-rebrand following Together AI's December 2024 acquisition of CodeSandbox (now sold as 'Together Code Sandbox'); whether hibernated sandboxes incur any VM-credit charge is not explicitly stated in public docs.",
+  "price_headline": "$0.01486 per VM credit",
+  "pricing_model": "Per VM credit at $0.01486/credit; subscription tiers Build (free + $100 one-time credit, 10 concurrent VMs), Pro ($150/mo, 24-h sessions), Scale ($170/mo + 1,100 credits/mo, 250 concurrent VMs), Enterprise (custom)",
   "sdks": [
     "TypeScript",
     "JavaScript"
@@ -18,31 +18,31 @@
   "slug": "codesandbox",
   "sources": [
     {
-      "url": "https://apis.io/apis/codesandbox/sdk/"
+      "url": "https://docs.together.ai/docs/together-code-sandbox"
     },
     {
-      "url": "http://together.ai/sandbox"
+      "url": "https://codesandbox.io/docs/sdk"
+    },
+    {
+      "url": "https://www.npmjs.com/package/%40codesandbox/sdk"
+    },
+    {
+      "url": "https://github.com/codesandbox/codesandbox-sdk/issues/59"
+    },
+    {
+      "url": "https://www.together.ai/sandbox"
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=42400274"
     },
     {
       "url": "https://rywalker.com/research/codesandbox-sdk"
     },
     {
-      "url": "http://docs.together.ai/docs/together-code-sandbox"
-    },
-    {
-      "url": "http://codesandbox.io/"
-    },
-    {
-      "url": "http://rywalker.com/research/codesandbox-sdk"
-    },
-    {
-      "url": "https://docs.together.ai/docs/together-code-sandbox"
-    },
-    {
-      "url": "http://apis.io/apis/codesandbox/sdk"
+      "url": "https://apis.io/plans/codesandbox/codesandbox-plans-pricing/"
     }
   ],
-  "summary": "CodeSandbox SDK provides programmable microVM environments designed for AI agents to execute untrusted code. It features environment forking, snapshotting, and hibernation, and is being rebranded as Together Code Sandbox under Together AI.",
-  "wake_on_request": null,
+  "summary": "CodeSandbox SDK is a programmable Firecracker-microVM sandbox product for running code on behalf of AI agents. Sandboxes are created from templates, can be cloned, snapshotted (RAM and filesystem), and hibernated between sessions. CodeSandbox was acquired by Together AI in December 2024 and the product is now sold as 'Together Code Sandbox' through Together AI's docs and pricing.",
+  "wake_on_request": false,
   "website": "https://codesandbox.io/docs/sdk"
 }

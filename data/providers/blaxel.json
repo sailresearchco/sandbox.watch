@@ -1,19 +1,19 @@
 {
-  "cold_start": "~25 ms",
+  "cold_start": "~25 ms (resume from standby)",
   "docker": true,
-  "free_while_idle": false,
-  "gpu": null,
-  "isolation": "microVM",
+  "free_while_idle": true,
+  "gpu": false,
+  "isolation": "microVM with hardware-level (kernel-level) isolation",
   "last_verified": "2026-07-20",
-  "max_runtime": "No fixed limit",
+  "max_runtime": "No fixed limit (starter quotas enforce TTLs; higher quota tiers unlock sandboxes with unlimited persistence)",
   "memory_snapshots": true,
   "name": "Blaxel",
-  "notes": "Maintaining sandboxes in standby incurs snapshot storage charges ($0.20/GB-month).",
-  "price_headline": "$0.0000115 per GB RAM-second",
-  "pricing_model": "Usage-based, pay-as-you-go",
+  "notes": "Blaxel offers $200 in free credits on signup and supports Zero Data Retention (ZDR) natively. The platform is CPU-only, with its own blog stating it is 'not suitable for GPU workloads.' Pricing is RAM-based rather than vCPU-based, which is unusual relative to most sandbox providers.",
+  "price_headline": "$0.0000115 per GB-RAM-second (active CPU)",
+  "pricing_model": "Per-second active compute billed by RAM-seconds (storage and snapshots billed separately per GB-month)",
   "sdks": [
-    "TypeScript",
     "Python",
+    "TypeScript",
     "Go"
   ],
   "slug": "blaxel",
@@ -25,37 +25,37 @@
       "url": "https://docs.blaxel.ai/sdk-reference/introduction"
     },
     {
-      "url": "http://docs.blaxel.ai/Overview"
-    },
-    {
-      "url": "https://www.theai.tw/en/tools/blaxel"
-    },
-    {
-      "url": "http://docs.blaxel.ai/Sandboxes/Overview"
-    },
-    {
       "url": "https://blaxel.ai/sandbox"
-    },
-    {
-      "url": "http://docs.blaxel.ai/"
-    },
-    {
-      "url": "http://blaxel.ai/blog"
-    },
-    {
-      "url": "https://blaxel.ai/pricing"
     },
     {
       "url": "https://blaxel.ai/"
     },
     {
+      "url": "https://blaxel.ai/blog/best-platforms-high-concurrency-sandbox-environments"
+    },
+    {
+      "url": "https://blaxel.ai/blog/soc-2-compliant-sandbox-providers"
+    },
+    {
+      "url": "https://blaxel.ai/pricing"
+    },
+    {
+      "url": "https://docs.blaxel.ai/Sandboxes/best-practices"
+    },
+    {
+      "url": "https://docs.blaxel.ai/Sandboxes/Overview"
+    },
+    {
+      "url": "https://blaxel.ai/blog/vercel-sandbox-alternatives"
+    },
+    {
       "url": "https://docs.blaxel.ai/Overview"
     },
     {
-      "url": "https://www.airframe.ai/product/blaxel-ai/analysis"
+      "url": "https://blaxel.ai/blog/serverless-gpu-platforms-2026"
     }
   ],
-  "summary": "Blaxel is a perpetual sandbox platform that provides isolated microVM compute environments for AI agents to execute code in production. It is used by AI builders and teams developing autonomous agents.",
+  "summary": "Blaxel is a managed cloud platform that provisions one microVM per AI agent, app, or job so that LLM-generated code can execute in isolation. Each sandbox auto-suspends when idle and resumes in ~25 ms with both filesystem and in-memory process state preserved. It is used to host coding-agent harnesses such as the Claude Agent SDK, OpenAI Codex CLI, Cline, and Cursor background agents.",
   "wake_on_request": true,
   "website": "https://blaxel.ai"
 }

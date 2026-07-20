@@ -1,16 +1,16 @@
 {
-  "cold_start": "under 1 second",
+  "cold_start": "Under 1 second for Ubuntu and Browser instances; Windows instances are described as 'slow' without a specific figure",
   "docker": null,
   "free_while_idle": null,
   "gpu": null,
-  "isolation": "Isolated virtual desktop environments",
+  "isolation": "Full Linux (Ubuntu 22.04) and Windows 11 virtual machines; open-source computer service is packaged as a Docker image with xdotool/noVNC",
   "last_verified": "2026-07-20",
-  "max_runtime": null,
+  "max_runtime": "Configurable via timeout_hours parameter; default 1 hour, no documented upper limit",
   "memory_snapshots": null,
   "name": "Scrapybara",
-  "notes": "The public docs omit many operational and billing details. Vendor statements such as 'under 1 second' and 'milliseconds' for cold start are marketing phrasing. For paused-instance billing, isolation, GPU availability, and RAM-level snapshot behavior, contact Scrapybara sales or support.",
-  "price_headline": "$29/month",
-  "pricing_model": "Monthly subscription tiers based on allocated compute-hours",
+  "notes": "Windows instances are in early access and billed at 2x compute cost. Default instance timeout is 1 hour (auto-terminate); longer sessions require configuring a higher timeout_hours value.",
+  "price_headline": "$29/month (Basic) or $99/month (Pro)",
+  "pricing_model": "Monthly subscription tiers with included compute hours; pay-per-use agent credits beyond included quota",
   "sdks": [
     "Python",
     "TypeScript"
@@ -18,31 +18,43 @@
   "slug": "scrapybara",
   "sources": [
     {
-      "url": "https://www.ycombinator.com/launches/MHN-scrapybara-a-computer-for-your-ai"
+      "url": "https://github.com/Scrapybara/scrapybara-oss/tree/main/computer"
     },
     {
-      "url": "https://scrapybara.com/"
+      "url": "https://docs.scrapybara.com/ubuntu"
     },
     {
-      "url": "https://scrapybara.com/blog"
+      "url": "https://docs.scrapybara.com/windows"
     },
     {
       "url": "https://scrapybara.com/blog/sdk2"
     },
     {
+      "url": "https://docs.scrapybara.com/sdk-reference/python"
+    },
+    {
+      "url": "https://github.com/scrapybara"
+    },
+    {
+      "url": "https://docs.scrapybara.com/browser"
+    },
+    {
+      "url": "https://docs.scrapybara.com/best-practices"
+    },
+    {
+      "url": "https://scrapybara.com/"
+    },
+    {
       "url": "https://docs.scrapybara.com/"
     },
     {
-      "url": "https://www.ycombinator.com/companies/capy"
+      "url": "https://www.ycombinator.com/launches/MHN-scrapybara-a-computer-for-your-ai"
     },
     {
-      "url": "https://www.pulsrev.com/tools/scrapybara"
-    },
-    {
-      "url": "https://moge.ai/product/scrapybara"
+      "url": "https://docs.scrapybara.com/cursor-rules"
     }
   ],
-  "summary": "Scrapybara provides virtual desktop and browser infrastructure designed for computer-use AI agents to perform tasks. It allows developers to deploy secure, remote environments where agents can interact with digital interfaces and execute code via an API.",
+  "summary": "Scrapybara is a cloud service that hosts remote desktop instances (Ubuntu 22.04, Windows 11, and a lightweight Chromium browser) intended for AI agents to control. Developers provision these VMs via a Python or TypeScript SDK (or REST API) and drive them through mouse, keyboard, bash, and filesystem actions. Primary users are teams building autonomous computer-use agents, including integrations with OpenAI CUA and Claude Computer Use.",
   "wake_on_request": null,
   "website": "https://scrapybara.com"
 }
