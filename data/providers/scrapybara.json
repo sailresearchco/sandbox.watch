@@ -1,16 +1,16 @@
 {
   "cold_start": "under 1 second",
   "docker": null,
-  "free_while_idle": true,
+  "free_while_idle": null,
   "gpu": null,
   "isolation": "Isolated virtual desktop environments",
   "last_verified": "2026-07-20",
   "max_runtime": null,
   "memory_snapshots": null,
   "name": "Scrapybara",
-  "notes": null,
+  "notes": "The public docs omit many operational and billing details. Vendor statements such as 'under 1 second' and 'milliseconds' for cold start are marketing phrasing. For paused-instance billing, isolation, GPU availability, and RAM-level snapshot behavior, contact Scrapybara sales or support.",
   "price_headline": "$29/month",
-  "pricing_model": "Per-second billing with monthly subscription plans",
+  "pricing_model": "Monthly subscription tiers based on allocated compute-hours",
   "sdks": [
     "Python",
     "TypeScript"
@@ -27,6 +27,9 @@
       "url": "https://scrapybara.com/blog"
     },
     {
+      "url": "https://scrapybara.com/blog/sdk2"
+    },
+    {
       "url": "https://docs.scrapybara.com/"
     },
     {
@@ -34,6 +37,9 @@
     },
     {
       "url": "https://www.pulsrev.com/tools/scrapybara"
+    },
+    {
+      "url": "https://moge.ai/product/scrapybara"
     }
   ],
   "summary": "Scrapybara provides virtual desktop and browser infrastructure designed for computer-use AI agents to perform tasks. It allows developers to deploy secure, remote environments where agents can interact with digital interfaces and execute code via an API.",
