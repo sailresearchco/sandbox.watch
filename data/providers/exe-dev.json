@@ -1,5 +1,5 @@
 {
-  "cold_start": "~0.6\u20130.8s (VPS demo) to ~2s (docs FAQ)",
+  "cold_start": "~2 s",
   "docker": true,
   "free_while_idle": false,
   "gpu": false,
@@ -34,6 +34,21 @@
     },
     {
       "url": "https://exe.dev/docs/can-i-run-docker-images"
+    },
+    {
+      "url": "https://exe.dev/docs/all"
+    },
+    {
+      "url": "https://exe.dev/docs/faq"
+    },
+    {
+      "url": "https://exe.dev/docs/snapshots"
+    },
+    {
+      "url": "https://exe.dev/docs/usage-pricing"
+    },
+    {
+      "url": "https://exe.dev/docs/cli"
     },
     {
       "url": "https://www.npmjs.com/package/%40exedev/sdk"
