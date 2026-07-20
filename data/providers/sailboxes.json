@@ -1,0 +1,23 @@
+{
+  "name": "Sailboxes",
+  "slug": "sailboxes",
+  "website": "https://sailresearch.com/sailboxes",
+  "summary": "Persistent Linux VMs built for long-horizon AI agents. A Sailbox checkpoints its full memory state when idle, wakes on inbound traffic, and bills only the CPU, RAM, and disk it actually uses while running.",
+  "pricing_model": "Usage-based: billed on actively used vCPU, RAM, and disk, plus a one-time creation fee",
+  "price_headline": "$0.015 per actively used vCPU-hour",
+  "free_while_idle": true,
+  "memory_snapshots": true,
+  "wake_on_request": true,
+  "cold_start": "under 3 s",
+  "max_runtime": "No fixed limit",
+  "isolation": "Kernel-isolated VM",
+  "sdks": ["Python", "TypeScript", "Rust"],
+  "gpu": null,
+  "docker": true,
+  "notes": "Seed entry from the provider's public docs. The first bootstrap run replaces it with fresh cited research.",
+  "sources": [
+    { "url": "https://docs.sailresearch.com/sailboxes" },
+    { "url": "https://docs.sailresearch.com/sailboxes-pricing" }
+  ],
+  "last_verified": "2026-07-19"
+}

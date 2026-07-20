@@ -1,0 +1,23 @@
+[project]
+name = "sandboxwatch"
+version = "0.1.0"
+description = "A comparison site for agent sandboxes that researches and updates itself"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.111",
+    "uvicorn>=0.30",
+    "jinja2>=3.1",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+# Only launch.py (run from your machine, not in the box) needs the Sail SDK.
+launch = ["sail>=0.3.0"]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+# Not an installable package: box/ is imported straight from the repo root,
+# the same way it runs inside the Sailbox.
+package = false

@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}{{ p.name }} · sandboxwatch{%
+endblock %} {% block content %}
+<article class="provider">
+  <h1>{{ p.name }}</h1>
+  <p class="website"><a href="{{ p.website }}">{{ p.website }}</a></p>
+  <p class="summary">{{ p.summary }}</p>
+
+  <table class="specs">
+    <tr>
+      <th>Pricing model</th>
+      <td>{{ p.get("pricing_model") | cell }}</td>
+    </tr>
+    {% for key, label in spec_fields %}
+    <tr>
+      <th>{{ label }}</th>
+      <td>{{ p.get(key) | cell }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <th>SDKs</th>
+      <td>{{ p.get("sdks") | cell }}</td>
+    </tr>
+  </table>
+
+  {% if p.get("notes") %}
+  <p class="notes">{{ p.notes }}</p>
+  {% endif %}
+
+  <h2>Sources</h2>
+  <ul class="sources">
+    {% for s in p.sources %}
+    <li><a href="{{ s.url }}">{{ s.get("title") or s.url }}</a></li>
+    {% endfor %}
+  </ul>
+  <p class="verified">
+    Last verified {{ p.last_verified }}. Corrections land through the
+    <a href="/log">update log</a>.
+  </p>
+</article>
+{% endblock %}

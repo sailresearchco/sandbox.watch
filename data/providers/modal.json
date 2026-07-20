@@ -1,0 +1,23 @@
+{
+  "name": "Modal Sandboxes",
+  "slug": "modal",
+  "website": "https://modal.com",
+  "summary": "Sandboxes on Modal's serverless compute platform, used to run untrusted or agent-generated code next to Modal functions and GPUs.",
+  "pricing_model": "Per-second, billed on reserved vCPU and RAM",
+  "price_headline": "$0.071 per reserved vCPU-hour",
+  "free_while_idle": null,
+  "memory_snapshots": null,
+  "wake_on_request": null,
+  "cold_start": null,
+  "max_runtime": "24 h",
+  "isolation": "gVisor",
+  "sdks": ["Python"],
+  "gpu": true,
+  "docker": null,
+  "notes": "Seed entry with a minimal field set. The first bootstrap run replaces it with fresh cited research.",
+  "sources": [
+    { "url": "https://modal.com/pricing" },
+    { "url": "https://docs.sailresearch.com/sailboxes" }
+  ],
+  "last_verified": "2026-07-19"
+}

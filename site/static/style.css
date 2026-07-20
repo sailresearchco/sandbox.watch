@@ -1,0 +1,249 @@
+:root {
+  --bg: #fcfcfa;
+  --fg: #1c1e21;
+  --muted: #5c6470;
+  --line: #e3e5e8;
+  --accent: #0b6bcb;
+  --card: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161a;
+    --fg: #e8eaed;
+    --muted: #9aa3af;
+    --line: #2b2f36;
+    --accent: #6cb2f7;
+    --card: #1b1e24;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font:
+    16px/1.55 system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+}
+main {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 3rem;
+}
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+h1 {
+  font-size: 1.7rem;
+  margin: 1.2rem 0 0.5rem;
+}
+h2 {
+  font-size: 1.15rem;
+  margin: 1.6rem 0 0.4rem;
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+.wordmark {
+  font-weight: 700;
+  color: var(--fg);
+  letter-spacing: 0.01em;
+}
+.nav nav a {
+  margin-left: 1.1rem;
+  color: var(--muted);
+}
+.nav nav a:hover {
+  color: var(--accent);
+}
+
+.intro p {
+  max-width: 46rem;
+  color: var(--muted);
+}
+
+#filter {
+  margin: 0.8rem 0;
+  padding: 0.45rem 0.7rem;
+  width: 16rem;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--fg);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: var(--card);
+}
+th,
+td {
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+  white-space: nowrap;
+}
+thead th {
+  position: sticky;
+  top: 0;
+  background: var(--card);
+  border-bottom: 2px solid var(--line);
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+thead th[data-dir="asc"]::after {
+  content: " \2191";
+}
+thead th[data-dir="desc"]::after {
+  content: " \2193";
+}
+tbody tr {
+  border-top: 1px solid var(--line);
+}
+tbody tr:hover {
+  background: color-mix(in srgb, var(--accent) 6%, var(--card));
+}
+td.name a {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.specs {
+  max-width: 42rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.specs th {
+  width: 12rem;
+  color: var(--muted);
+  font-weight: 500;
+  white-space: normal;
+}
+.specs td {
+  white-space: normal;
+}
+.provider .summary {
+  max-width: 46rem;
+  font-size: 1.05rem;
+}
+.website {
+  color: var(--muted);
+  margin-top: -0.4rem;
+}
+.sources {
+  padding-left: 1.2rem;
+}
+.sources li {
+  margin: 0.25rem 0;
+  overflow-wrap: anywhere;
+}
+.verified {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.notes {
+  max-width: 46rem;
+}
+
+.turn {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  padding: 0.9rem 1.1rem;
+  margin: 0.9rem 0;
+}
+.turn header {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.turn h2 {
+  margin: 0.35rem 0;
+  font-size: 1.05rem;
+}
+.turn dl {
+  display: flex;
+  gap: 1.6rem;
+  margin: 0.4rem 0 0;
+}
+.turn dt {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.turn dd {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.badge {
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  padding: 0.05rem 0.55rem;
+  font-size: 0.75rem;
+}
+.turn.failed .badge.status {
+  border-color: #c0392b;
+  color: #c0392b;
+}
+.turn.applied .badge.status {
+  border-color: #1e8e3e;
+  color: #1e8e3e;
+}
+.citations {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.about ol {
+  max-width: 46rem;
+  padding-left: 1.2rem;
+}
+.about ol li {
+  margin: 0.5rem 0;
+}
+.about p {
+  max-width: 46rem;
+}
+
+.empty {
+  color: var(--muted);
+}
+footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+footer p {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+}

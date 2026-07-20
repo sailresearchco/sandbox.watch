@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}sandboxwatch{% endblock %}</title>
+    <meta
+      name="description"
+      content="Side-by-side specs for the cloud sandboxes that run AI agents' code, with sources for every claim."
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="wordmark" href="/">sandboxwatch</a>
+      <nav>
+        <a href="/">Compare</a>
+        <a href="/log">Update log</a>
+        <a href="/about">About</a>
+      </nav>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+    <footer>
+      <p>
+        Data is researched from public sources and every row cites them. {% if
+        repo_url %}<a href="{{ repo_url }}">Source and history</a> ·{% endif %}
+        <a href="/about">How this site maintains itself</a>
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block title %}sandboxwatch: agent sandbox
+comparison{% endblock %} {% block content %}
+<section class="intro">
+  <h1>Sandboxes for AI agents, side by side</h1>
+  <p>
+    Every agent needs somewhere to run code. These products rent you that
+    somewhere: isolated cloud machines an agent can use and break safely. The
+    table compares what each one costs and what it can do. Click a row for
+    details and sources, sort by clicking a column header.
+  </p>
+</section>
+
+<input
+  id="filter"
+  type="search"
+  placeholder="Filter products"
+  aria-label="Filter products"
+/>
+
+<div class="table-wrap">
+  <table id="compare">
+    <thead>
+      <tr>
+        <th>Product</th>
+        {% for key, label in spec_fields %}
+        <th>{{ label }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in providers %}
+      <tr data-href="/p/{{ p.slug }}">
+        <td class="name"><a href="/p/{{ p.slug }}">{{ p.name }}</a></td>
+        {% for key, label in spec_fields %}
+        <td>{{ p.get(key) | cell }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% if not providers %}
+<p class="empty">No data yet. The first bootstrap run fills this table.</p>
+{% endif %}
+
+<script>
+  // Column sort and row filter. Everything else on this page is plain HTML.
+  const table = document.getElementById("compare");
+  table.querySelectorAll("th").forEach((th, col) => {
+    th.addEventListener("click", () => {
+      const dir = th.dataset.dir === "asc" ? -1 : 1;
+      table.querySelectorAll("th").forEach((h) => delete h.dataset.dir);
+      th.dataset.dir = dir === 1 ? "asc" : "desc";
+      const rows = [...table.tBodies[0].rows];
+      rows.sort(
+        (a, b) =>
+          dir *
+          a.cells[col].innerText.localeCompare(
+            b.cells[col].innerText,
+            undefined,
+            { numeric: true },
+          ),
+      );
+      rows.forEach((r) => table.tBodies[0].appendChild(r));
+    });
+  });
+  document.getElementById("filter").addEventListener("input", (e) => {
+    const q = e.target.value.toLowerCase();
+    for (const row of table.tBodies[0].rows) {
+      row.hidden = q && !row.innerText.toLowerCase().includes(q);
+    }
+  });
+</script>
+{% endblock %}

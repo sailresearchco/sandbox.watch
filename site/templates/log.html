@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block title %}Update log · sandboxwatch{% endblock
+%} {% block content %}
+<h1>Update log</h1>
+<p>
+  Every change made to this site, newest first. Each entry shows what triggered
+  it, what changed, and roughly what the compute for that update cost. Between
+  entries the server is asleep.
+</p>
+
+{% if not entries %}
+<p class="empty">
+  No updates yet. The first bootstrap run writes the opening entries.
+</p>
+{% endif %} {% for e in entries %}
+<article class="turn {{ e.status }}">
+  <header>
+    <time>{{ e.ts }}</time>
+    <span class="badge">{{ e.kind }}</span>
+    <span class="badge status">{{ e.status }}</span>
+  </header>
+  <h2>{{ e.summary }}</h2>
+  {% if e.details %}
+  <p>{{ e.details }}</p>
+  {% endif %}
+  <dl>
+    {% if e.commit %}
+    <div>
+      <dt>Commit</dt>
+      <dd><code>{{ e.commit }}</code></dd>
+    </div>
+    {% endif %} {% if e.duration_seconds is not none %}
+    <div>
+      <dt>Awake for</dt>
+      <dd>{{ e.duration_seconds }}s</dd>
+    </div>
+    {% endif %} {% if e.est_cost_usd is not none %}
+    <div>
+      <dt>Estimated cost</dt>
+      <dd>${{ "%.4f" | format(e.est_cost_usd) }}</dd>
+    </div>
+    {% endif %}
+  </dl>
+  {% if e.citations %}
+  <p class="citations">
+    Sources: {% for url in e.citations %}<a href="{{ url }}"
+      >[{{ loop.index }}]</a
+    >
+    {% endfor %}
+  </p>
+  {% endif %}
+</article>
+{% endfor %} {% endblock %}

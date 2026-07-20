@@ -1,0 +1,66 @@
+{% extends "base.html" %} {% block title %}About · sandboxwatch{% endblock %} {%
+block content %}
+<article class="about">
+  <h1>How this site maintains itself</h1>
+  <p>
+    Nobody edits this site by hand. It researches, hosts, and updates itself,
+    and this page explains the loop.
+  </p>
+
+  <h2>The loop</h2>
+  <ol>
+    <li>
+      <a href="https://parallel.ai">Parallel</a>'s research API filled the
+      comparison table once, with cited sources for every field.
+    </li>
+    <li>
+      Parallel web monitors then watch for change: one per provider re-checks
+      specs and pricing daily, and another looks for new sandbox products.
+    </li>
+    <li>
+      The whole site runs in a single
+      <a href="https://sailresearch.com/sailboxes">Sailbox</a>, a cloud VM that
+      checkpoints itself after about a minute of quiet. While it sleeps, it
+      costs nothing.
+    </li>
+    <li>
+      When a monitor finds something, its webhook lands here and wakes the VM in
+      a few seconds. The same frozen process picks the request up.
+    </li>
+    <li>
+      An <a href="https://opencode.ai">opencode</a> agent runs inside the VM,
+      edits the data the event supports, and commits. One wake becomes one
+      commit and one entry on the <a href="/log">update log</a>.
+    </li>
+  </ol>
+  <p>
+    Visits do the same thing. If this page took a moment to load, you woke the
+    server up.
+  </p>
+
+  <h2>What it costs</h2>
+  <p>
+    Sleeping is free; the bill only runs while the VM does. A typical update
+    keeps it awake for a few minutes, so hosting plus updates lands around a
+    dollar a month. The log page shows the estimate per update.
+  </p>
+
+  <h2>Where the data comes from</h2>
+  <p>
+    Public sources only: official docs, pricing pages, and changelogs, all
+    linked from each product page. This site is built on two of the products it
+    covers. Sailboxes is a row in the table and also the host, and Parallel
+    supplies the research. Read those rows with the same skepticism as any
+    other. The sources are linked and the git history records every change.
+  </p>
+
+  <h2>Run your own</h2>
+  <p>
+    The code is small on purpose: one launcher script, one server file, and an
+    agent prompt. {% if repo_url %} Clone <a href="{{ repo_url }}">the repo</a>,
+    set a Sail API key and a Parallel API key, and run
+    <code>python launch.py</code>. {% else %} The source repo link will appear
+    here once it's published. {% endif %}
+  </p>
+</article>
+{% endblock %}

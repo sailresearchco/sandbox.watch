@@ -1,0 +1,214 @@
+"""The web app that runs inside the Sailbox.
+
+It serves the comparison site, receives Parallel monitor webhooks, runs agent
+turns, and puts its own Sailbox to sleep when nothing is happening. The next
+inbound request (a webhook or a visitor) wakes the box and lands here again.
+
+Local preview, no Sailbox involved:
+
+    SANDBOXWATCH_SELF_SLEEP=0 uvicorn box.server:app --reload
+"""
+
+from __future__ import annotations
+
+import contextlib
+import json
+import logging
+import threading
+import time
+import uuid
+
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse, JSONResponse, Response
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+
+from . import changelog, config, providers, turn
+from .parallel_client import verify_webhook_signature
+
+logger = logging.getLogger("sandboxwatch")
+logging.basicConfig(level=logging.INFO)
+
+
+@contextlib.asynccontextmanager
+async def _lifespan(app: FastAPI):
+    _maybe_start_worker()  # drain anything queued before a restart
+    if config.self_sleep_enabled():
+        threading.Thread(target=_sleep_when_idle, daemon=True).start()
+    else:
+        logger.info("self-sleep disabled (no SANDBOXWATCH_SAILBOX_ID or turned off)")
+    yield
+
+
+app = FastAPI(title="sandboxwatch", lifespan=_lifespan)
+app.mount(
+    "/static", StaticFiles(directory=str(config.site_dir() / "static")), name="static"
+)
+templates = Jinja2Templates(directory=str(config.site_dir() / "templates"))
+
+
+def _cell(value) -> str:
+    """Render a spec value for the tables: booleans as Yes/No, missing as n/a."""
+    if value is True:
+        return "Yes"
+    if value is False:
+        return "No"
+    if isinstance(value, list):
+        return ", ".join(str(v) for v in value) or "n/a"
+    if value in (None, ""):
+        return "n/a"
+    return str(value)
+
+
+templates.env.filters["cell"] = _cell
+
+_last_activity = time.monotonic()
+_turn_lock = threading.Lock()
+
+
+def _touch_activity() -> None:
+    global _last_activity
+    _last_activity = time.monotonic()
+
+
+@app.middleware("http")
+async def track_activity(request: Request, call_next):
+    _touch_activity()
+    response = await call_next(request)
+    _touch_activity()
+    return response
+
+
+def _page(request: Request, template: str, **context) -> HTMLResponse:
+    context.update(request=request, repo_url=config.repo_url())
+    return templates.TemplateResponse(request, template, context)
+
+
+@app.get("/", response_class=HTMLResponse)
+def index(request: Request):
+    items = providers.load_providers()
+    return _page(
+        request, "index.html", providers=items, spec_fields=providers.SPEC_FIELDS
+    )
+
+
+@app.get("/p/{slug}", response_class=HTMLResponse)
+def provider_detail(request: Request, slug: str):
+    item = providers.load_provider(slug)
+    if item is None:
+        return HTMLResponse("Not found", status_code=404)
+    return _page(request, "provider.html", p=item, spec_fields=providers.SPEC_FIELDS)
+
+
+@app.get("/log", response_class=HTMLResponse)
+def log_page(request: Request):
+    return _page(request, "log.html", entries=changelog.read())
+
+
+@app.get("/about", response_class=HTMLResponse)
+def about_page(request: Request):
+    return _page(request, "about.html")
+
+
+@app.get("/healthz")
+def healthz():
+    return {"ok": True}
+
+
+@app.post("/hooks/parallel")
+async def parallel_hook(request: Request):
+    secret = config.secret("parallel_webhook_secret")
+    if not secret:
+        # Fail closed: without a secret we can't tell Parallel from anyone else.
+        return JSONResponse({"error": "webhook secret not configured"}, status_code=503)
+    body = await request.body()
+    if not verify_webhook_signature(secret, request.headers, body):
+        return JSONResponse({"error": "bad signature"}, status_code=401)
+    payload = json.loads(body)
+    if payload.get("type") != "monitor.event.detected":
+        return Response(status_code=204)
+    _enqueue_turn(payload)
+    return {"ok": True}
+
+
+def _pending_dir():
+    path = config.state_dir() / "pending"
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def _enqueue_turn(payload: dict) -> None:
+    """Queue the event on disk, then make sure a worker is draining the queue.
+
+    Disk first so an event survives a restart between ack and processing."""
+    name = (
+        f"{time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())}-{uuid.uuid4().hex[:8]}.json"
+    )
+    (_pending_dir() / name).write_text(json.dumps(payload))
+    _maybe_start_worker()
+
+
+def _maybe_start_worker() -> None:
+    if _turn_lock.acquire(blocking=False):
+        threading.Thread(target=_drain_pending, daemon=True).start()
+
+
+def _drain_pending() -> None:
+    try:
+        while True:
+            pending = sorted(_pending_dir().glob("*.json"))
+            if not pending:
+                return
+            for path in pending:
+                try:
+                    payload = json.loads(path.read_text())
+                except json.JSONDecodeError:
+                    path.unlink(missing_ok=True)
+                    continue
+                path.unlink(missing_ok=True)
+                try:
+                    turn.run_turn(payload)
+                except Exception:
+                    logger.exception("turn crashed")
+    finally:
+        _turn_lock.release()
+        _touch_activity()
+
+
+def _sleep_self() -> None:
+    # Imported lazily: the SDK is only installed inside the box.
+    import sail
+
+    box_id = config.sailbox_id()
+    sail.Sailbox(
+        sailbox_id=box_id,
+        name="sandboxwatch",
+        status="running",
+        worker_address="",
+        exec_endpoint="",
+    ).sleep()
+
+
+def _sleep_when_idle() -> None:
+    """Sleep the box once the server has been idle long enough.
+
+    sleep() checkpoints the whole VM, this thread included. When ingress wakes
+    the box the call returns and the loop continues where it left off."""
+    while True:
+        time.sleep(5)
+        if _turn_lock.locked():
+            continue
+        if time.monotonic() - _last_activity < config.idle_seconds():
+            continue
+        before = time.time()
+        try:
+            logger.info("idle for %.0fs, sleeping the box", config.idle_seconds())
+            _sleep_self()
+        except Exception:
+            logger.warning("self-sleep failed, retrying later", exc_info=True)
+            time.sleep(30)
+        else:
+            slept = time.time() - before
+            if slept > 5:
+                logger.info("woke after %.0fs asleep", slept)
+        _touch_activity()
