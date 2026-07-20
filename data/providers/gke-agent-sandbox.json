@@ -1,7 +1,7 @@
 {
   "cold_start": "~200 ms typical (90% of allocations under 200 ms; up to 300 sandboxes/sec/cluster; pre-warmed pods enable sub-second creation)",
   "docker": false,
-  "free_while_idle": true,
+  "free_while_idle": false,
   "gpu": true,
   "isolation": "gVisor (also supports Kata Containers and other OCI-compatible runtimes; runtimeClassName: gvisor)",
   "last_verified": "2026-07-20",
@@ -9,7 +9,7 @@
   "memory_snapshots": true,
   "name": "GKE Agent Sandbox",
   "notes": "Pod Snapshots (memory-preserving suspend/resume) is a GKE-exclusive preview feature; the open-source CRD is alpha (extensions.agents.x-k8s.io/v1alpha1). The default security profile forbids privileged mode, hostPath, hostPID/hostIPC, and capabilities.add, so Docker-in-Docker is not supported in default sandboxes.",
-  "price_headline": "$0.0445/vCPU-hour and $0.0049225/GiB-hour (GKE Autopilot, US regions; Agent Sandbox adds no charge)",
+  "price_headline": "No Agent Sandbox surcharge; standard GKE vCPU/memory/storage rates apply (see GKE pricing)",
   "pricing_model": "No additional charge for Agent Sandbox; standard GKE resource pricing (per-second, vCPU/memory/storage) applies",
   "sdks": [
     "Python",
