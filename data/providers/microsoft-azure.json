@@ -13,7 +13,6 @@
   "pricing_model": "Per-second billing on active vCPU and memory (Consumption-plan style); no charge while suspended.",
   "sdks": [
     "Python",
-    ".NET",
     "CLI"
   ],
   "slug": "microsoft-azure",
