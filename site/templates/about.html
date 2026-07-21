@@ -373,7 +373,7 @@
     <svg
       viewBox="0 0 700 240"
       role="img"
-      aria-label="Sequence of one update: the daily Monitor API snapshot runs, a signed monitor.event.detected webhook lands, the box wakes in about three seconds, it fetches the full event from the monitors events endpoint, GLM-5.2 edits the data through opencode and Sail inference, then commit, log entry, and back to sleep."
+      aria-label="Sequence of one update: the daily Monitor API snapshot runs, a signed monitor.event.detected webhook lands, the box wakes in seconds, it fetches the full event from the monitors events endpoint, GLM-5.2 edits the data through opencode and Sail inference, then commit, log entry, and back to sleep."
     >
       <defs>
         <marker
@@ -492,7 +492,7 @@
         font-size="12"
         fill="var(--muted)"
       >
-        about 3 seconds
+        in seconds
       </text>
 
       <line
@@ -630,7 +630,7 @@
     </li>
     <li>
       When a monitor finds something, its webhook lands here and wakes the VM in
-      a few seconds. The same frozen process picks the request up.
+      seconds. The same frozen process picks the request up.
     </li>
     <li>
       An <a href="https://opencode.ai">opencode</a> agent runs inside the VM on
