@@ -4,11 +4,11 @@
   "free_while_idle": false,
   "gpu": false,
   "isolation": "Per-sandbox VM on Railway's VM primitive (specific hypervisor technology not publicly disclosed)",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-21",
   "max_runtime": null,
   "memory_snapshots": false,
   "name": "Railway Sandboxes",
-  "notes": "Sandboxes are gated behind Railway's Priority Boarding program; the TypeScript SDK is in beta and may have breaking changes.",
+  "notes": "Sandboxes are gated behind Railway's Priority Boarding program; Docker is preinstalled in every sandbox.",
   "price_headline": "$50/vCPU-month and $50/GB-memory-month (~$0.0000000193 per vCPU-second or GB-second); egress $0.05/GB",
   "pricing_model": "Per-second, billed on vCPU and memory consumed while running",
   "sdks": [
