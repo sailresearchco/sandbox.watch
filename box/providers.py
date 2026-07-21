@@ -60,10 +60,10 @@ SPEC_FIELDS = [
     ),
     (
         "usage_billed",
-        "Billed on use",
-        "Yes when the bill scales with compute the sandbox actively uses. "
-        "No when you pay for reserved or allocated capacity, or running "
-        "time, whether or not it is used.",
+        "Elastic",
+        "Resources flex with what the sandbox actually uses, and the bill "
+        "follows: yes when the provider bills on active or observed use, no "
+        "when capacity is reserved or allocated and billed while it runs.",
     ),
     (
         "memory_snapshots",
@@ -77,7 +77,7 @@ SPEC_FIELDS = [
     ),
     (
         "cold_start",
-        "Cold start",
+        "Start / resume",
         "Typical time from create or resume to running.",
     ),
     ("max_runtime", "Max runtime", "The longest a sandbox may run."),
@@ -121,10 +121,10 @@ PROVIDER_OUTPUT_SCHEMA = {
         "usage_billed": {
             "type": ["boolean", "null"],
             "description": (
-                "True if compute billing scales with what the sandbox actively "
-                "uses (active or observed CPU time). False if billing is on "
-                "reserved or allocated capacity, or on wall-clock running "
-                "time, regardless of use. Null if the docs do not say."
+                "True if the sandbox is elastic: resources flex with actual "
+                "use and billing follows (active or observed CPU time). "
+                "False if capacity is reserved or allocated and billed for "
+                "running time regardless of use. Null if the docs do not say."
             ),
         },
         "memory_snapshots": {

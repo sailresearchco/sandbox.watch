@@ -23,6 +23,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from markupsafe import Markup, escape
 
 from . import changelog, config, providers, turn
 from .parallel_client import verify_webhook_signature
@@ -48,17 +49,20 @@ app.mount(
 templates = Jinja2Templates(directory=str(config.site_dir() / "templates"))
 
 
-def _cell(value) -> str:
-    """Render a spec value for the tables: booleans as Yes/No, missing as n/a."""
+_NA_CELL = Markup('<span class="g na" role="img" aria-label="no cited public fact">–</span>')
+
+
+def _cell(value) -> Markup:
+    """Render a spec value: booleans and gaps as labelled glyphs, text as is."""
     if value is True:
-        return "Yes"
+        return Markup('<span class="g yes" role="img" aria-label="yes">✓</span>')
     if value is False:
-        return "No"
+        return Markup('<span class="g no" role="img" aria-label="no">✕</span>')
     if isinstance(value, list):
-        return ", ".join(str(v) for v in value) or "n/a"
+        return escape(", ".join(str(v) for v in value)) if value else _NA_CELL
     if value in (None, ""):
-        return "n/a"
-    return str(value)
+        return _NA_CELL
+    return escape(str(value))
 
 
 templates.env.filters["cell"] = _cell
@@ -95,9 +99,16 @@ def _page(request: Request, template: str, **context) -> HTMLResponse:
 def index(request: Request):
     items = providers.load_providers()
     # Sort keys for the pricing column: dollars per vCPU-hour where the
-    # provider states such a rate, None (unranked) everywhere else.
+    # provider states such a rate, None (unranked) everywhere else. The same
+    # figure doubles as the compact display; other rows show their raw
+    # wording, clamped by CSS until the column is expanded.
     price_keys = {
         p.get("slug"): providers.vcpu_hour_rate(p.get("price_headline")) for p in items
+    }
+    price_compact = {
+        slug: f"${key:.4g}/vCPU-hr"
+        for slug, key in price_keys.items()
+        if key is not None
     }
     return _page(
         request,
@@ -105,6 +116,7 @@ def index(request: Request):
         providers=items,
         spec_fields=providers.SPEC_FIELDS,
         price_keys=price_keys,
+        price_compact=price_compact,
     )
 
 

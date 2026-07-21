@@ -23,7 +23,26 @@ comparison{% endblock %} {% block content %}
       <tr>
         <th>Product</th>
         {% for key, label, tip in spec_fields %}
-        <th title="{{ tip }}" data-col="{{ key }}">{{ label }}</th>
+        <th data-col="{{ key }}">
+          <span class="tipwrap">
+            <span class="tip" tabindex="0" aria-describedby="tt-{{ key }}"
+              >{{ label }}</span
+            >
+            <span class="tooltip" role="tooltip" id="tt-{{ key }}"
+              >{{ tip }}</span
+            >
+          </span>
+          {% if key == "price_headline" %}
+          <button
+            class="expander"
+            id="price-toggle"
+            type="button"
+            aria-pressed="false"
+          >
+            ⤢ full
+          </button>
+          {% endif %}
+        </th>
         {% endfor %}
       </tr>
     </thead>
@@ -34,17 +53,25 @@ comparison{% endblock %} {% block content %}
         data-price-key="{{ price_keys.get(p.slug) if price_keys.get(p.slug) is not none else '' }}"
       >
         <td class="name"><a href="/p/{{ p.slug }}">{{ p.name }}</a></td>
-        {% for key, label, tip in spec_fields %}
+        {% for key, label, tip in spec_fields %} {% if key == "price_headline"
+        and p.get(key) %}
+        <td class="price">
+          <span class="p-c">{{ price_compact.get(p.slug) or p.get(key) }}</span>
+          <span class="p-f">{{ p.get(key) }}</span>
+        </td>
+        {% elif key == "price_headline" %}
+        <td class="price">{{ none | cell }}</td>
+        {% else %}
         <td>{{ p.get(key) | cell }}</td>
-        {% endfor %}
+        {% endif %} {% endfor %}
       </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
 <p class="legend">
-  n/a means the public record does not state it. Hover a column header for what
-  it measures.
+  ✓ yes · ✕ no · – no cited public fact. Hover or focus a dotted heading for
+  what it measures.
 </p>
 {% if not providers %}
 <p class="empty">No data yet. The first bootstrap run fills this table.</p>
@@ -61,7 +88,7 @@ comparison{% endblock %} {% block content %}
   function sortKey(cell, priceKey) {
     const t = cell.innerText.trim();
     if (priceKey) return { rank: 0, num: parseFloat(priceKey), text: t };
-    if (!t || t === "n/a") return { rank: 2, num: 0, text: t };
+    if (!t || t === "n/a" || t === "–") return { rank: 2, num: 0, text: t };
     return { rank: 1, num: 0, text: t };
   }
   table.querySelectorAll("th").forEach((th, col) => {
@@ -82,6 +109,13 @@ comparison{% endblock %} {% block content %}
       });
       rows.forEach((r) => table.tBodies[0].appendChild(r));
     });
+  });
+  const priceToggle = document.getElementById("price-toggle");
+  priceToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const on = table.classList.toggle("price-full");
+    priceToggle.textContent = on ? "⤡ compact" : "⤢ full";
+    priceToggle.setAttribute("aria-pressed", String(on));
   });
   document.getElementById("filter").addEventListener("input", (e) => {
     const q = e.target.value.toLowerCase();

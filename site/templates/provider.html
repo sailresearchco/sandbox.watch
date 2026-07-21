@@ -12,7 +12,16 @@ endblock %} {% block content %}
     </tr>
     {% for key, label, tip in spec_fields %}
     <tr>
-      <th title="{{ tip }}">{{ label }}</th>
+      <th>
+        <span class="tipwrap">
+          <span class="tip" tabindex="0" aria-describedby="pt-{{ key }}"
+            >{{ label }}</span
+          >
+          <span class="tooltip" role="tooltip" id="pt-{{ key }}"
+            >{{ tip }}</span
+          >
+        </span>
+      </th>
       <td>{{ p.get(key) | cell }}</td>
     </tr>
     {% endfor %}
@@ -21,6 +30,7 @@ endblock %} {% block content %}
       <td>{{ p.get("sdks") | cell }}</td>
     </tr>
   </table>
+  <p class="legend">✓ yes · ✕ no · – no cited public fact.</p>
 
   {% if p.get("notes") %}
   <p class="notes">{{ p.notes }}</p>
