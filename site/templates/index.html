@@ -52,6 +52,7 @@ comparison{% endblock %} {% block content %}
       <tr
         data-href="/p/{{ p.slug }}"
         data-price-key="{{ price_keys.get(p.slug) if price_keys.get(p.slug) is not none else '' }}"
+        data-start-key="{{ start_keys.get(p.slug) if start_keys.get(p.slug) is not none else '' }}"
       >
         <td class="name"><a href="/p/{{ p.slug }}">{{ p.name }}</a></td>
         {% for key, label, tip in spec_fields %} {% if key == "price_headline"
@@ -81,14 +82,15 @@ comparison{% endblock %} {% block content %}
 <script>
   // Column sort and row filter. Everything else on this page is plain HTML.
   const table = document.getElementById("compare");
-  // Rows carry a server-computed price key: dollars per vCPU-hour where the
-  // provider states such a rate. In the pricing column those rank first, by
-  // value. Rows without one (per-credit, per-month, and other shapes that
-  // do not normalize honestly) sort after them alphabetically, and n/a
-  // stays last in both directions.
-  function sortKey(cell, priceKey) {
+  // Rows carry server-computed sort keys: dollars per vCPU-hour where the
+  // provider states such a rate, and seconds where a start/resume time is
+  // stated. In those columns keyed rows rank first, by value. Rows without
+  // a key (shapes and claims that do not normalize honestly) sort after
+  // them alphabetically, and n/a stays last in both directions.
+  const KEYED_COLS = { price_headline: "priceKey", cold_start: "startKey" };
+  function sortKey(cell, rowKey) {
     const t = cell.innerText.trim();
-    if (priceKey) return { rank: 0, num: parseFloat(priceKey), text: t };
+    if (rowKey) return { rank: 0, num: parseFloat(rowKey), text: t };
     if (!t || t === "n/a" || t === "–") return { rank: 2, num: 0, text: t };
     return { rank: 1, num: 0, text: t };
   }
@@ -97,11 +99,11 @@ comparison{% endblock %} {% block content %}
       const dir = th.dataset.dir === "asc" ? -1 : 1;
       table.querySelectorAll("th").forEach((h) => delete h.dataset.dir);
       th.dataset.dir = dir === 1 ? "asc" : "desc";
-      const isPrice = th.dataset.col === "price_headline";
+      const keyName = KEYED_COLS[th.dataset.col];
       const rows = [...table.tBodies[0].rows];
       rows.sort((a, b) => {
-        const ka = sortKey(a.cells[col], isPrice ? a.dataset.priceKey : "");
-        const kb = sortKey(b.cells[col], isPrice ? b.dataset.priceKey : "");
+        const ka = sortKey(a.cells[col], keyName ? a.dataset[keyName] : "");
+        const kb = sortKey(b.cells[col], keyName ? b.dataset[keyName] : "");
         if (ka.rank !== kb.rank) return ka.rank - kb.rank;
         if (ka.rank === 0 && ka.num !== kb.num) return dir * (ka.num - kb.num);
         return (

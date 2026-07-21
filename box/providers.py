@@ -27,6 +27,34 @@ _VCPU_RATE = re.compile(
 _PER_HOUR_FACTOR = {"s": 3600.0, "m": 60.0, "h": 1.0}
 
 
+# A stated start or resume time. Bounds count as their value ("<1 s" and
+# "under a second" rank as one second), and explicit sub-second wording
+# ranks as one second too. Wordier claims with no figure stay unranked.
+_TIME_QTY = re.compile(
+    r"(\d[\d,]*(?:\.\d+)?)\s*(ms|milliseconds?|secs?\b|seconds?|s\b|min\b|minutes?)",
+    re.IGNORECASE,
+)
+_SUB_SECOND = re.compile(r"sub-?second|millisecond|under a second", re.IGNORECASE)
+
+
+def start_seconds(cold_start: str | None) -> float | None:
+    """Seconds for the first stated time in a start/resume claim, or None."""
+    if not cold_start:
+        return None
+    match = _TIME_QTY.search(cold_start)
+    if match:
+        value = float(match.group(1).replace(",", ""))
+        unit = match.group(2).lower()
+        if unit.startswith("ms") or unit.startswith("millisecond"):
+            return round(value / 1000, 6)
+        if unit.startswith("min"):
+            return value * 60
+        return value
+    if _SUB_SECOND.search(cold_start):
+        return 1.0
+    return None
+
+
 def vcpu_hour_rate(price_headline: str | None) -> float | None:
     """Dollars per vCPU-hour when the headline states a per-vCPU time rate.
 
@@ -78,7 +106,9 @@ SPEC_FIELDS = [
     (
         "cold_start",
         "Start / resume",
-        "Typical time from create or resume to running.",
+        "Typical time from create or resume to running. Sorting ranks "
+        "stated times, converted to seconds; claims with no figure sort "
+        "after, unranked.",
     ),
     ("max_runtime", "Max runtime", "The longest a sandbox may run."),
     ("isolation", "Isolation", "The isolation technology between sandboxes."),

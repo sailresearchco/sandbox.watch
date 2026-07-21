@@ -112,6 +112,10 @@ def index(request: Request):
         for slug, key in price_keys.items()
         if key is not None
     }
+    # Same idea for start/resume: seconds where a time is stated.
+    start_keys = {
+        p.get("slug"): providers.start_seconds(p.get("cold_start")) for p in items
+    }
     return _page(
         request,
         "index.html",
@@ -119,6 +123,7 @@ def index(request: Request):
         spec_fields=providers.SPEC_FIELDS,
         price_keys=price_keys,
         price_compact=price_compact,
+        start_keys=start_keys,
     )
 
 
