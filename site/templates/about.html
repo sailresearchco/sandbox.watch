@@ -10,7 +10,7 @@
     <svg
       viewBox="0 0 700 330"
       role="img"
-      aria-label="Parallel's Monitor, FindAll, and Task APIs feed one Sailbox that contains a web server, an opencode agent, and a git repo with the data. The agent calls GLM-5.2 through Sail inference. Visitors reach the web server. The box sleeps between events."
+      aria-label="Parallel's Monitor, FindAll, and Task APIs feed one Sailbox that contains a web server, an opencode agent, and a git repo with the data. The agent calls GLM-5.2 through Sail inference. Visitors reach the web server. The box sleeps at no cost between events and lives forever."
     >
       <defs>
         <marker
@@ -33,7 +33,7 @@
         font-size="12"
         fill="var(--muted)"
       >
-        Parallel
+        Parallel Web Systems
       </text>
       <rect
         x="8"
@@ -139,7 +139,7 @@
         font-weight="600"
         fill="var(--accent)"
       >
-        One Sailbox
+        Sailbox
       </text>
       <text
         x="392"
@@ -148,7 +148,7 @@
         font-size="11"
         fill="var(--muted)"
       >
-        asleep between events
+        asleep at no cost between events, lives forever
       </text>
 
       <rect
@@ -624,8 +624,9 @@
     <li>
       The whole site runs in a single
       <a href="https://sailresearch.com/sailboxes">Sailbox</a>, a cloud VM that
-      checkpoints itself after about a minute of quiet. While it sleeps, it
-      costs nothing.
+      checkpoints itself after about a minute of quiet. While it sleeps it costs
+      nothing, and its lifetime has no cap: the same VM can host this site for
+      years.
     </li>
     <li>
       When a monitor finds something, its webhook lands here and wakes the VM in
