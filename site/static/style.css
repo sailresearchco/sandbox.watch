@@ -227,26 +227,30 @@ td.price .p-c {
   text-overflow: ellipsis;
   vertical-align: bottom;
 }
-/* Long text cells clamp with an ellipsis; the product page has the full
-   wording. Glyph cells are short and unaffected. */
-#compare td:not(.name):not(.price) {
+/* Long text cells clamp with an ellipsis; the column's expand button or
+   the product page has the full wording. Glyph cells are short and
+   unaffected. */
+#compare td:not(.name):not(.price):not(.cell-full) {
   max-width: 15rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* An expanded column's cells wrap in place, capped so one verbose cell
+   cannot blow up the layout. */
+#compare td.cell-full {
+  white-space: normal;
+  min-width: 16rem;
+  max-width: 24rem;
+  line-height: 1.45;
+}
 #compare .p-f {
   display: none;
 }
-#compare.price-full .p-c {
+#compare td.price.cell-full .p-c {
   display: none;
 }
-#compare.price-full .p-f {
+#compare td.price.cell-full .p-f {
   display: inline;
-}
-#compare.price-full td.price {
-  white-space: normal;
-  min-width: 20rem;
-  line-height: 1.45;
 }
 .expander {
   margin-left: 0.4rem;

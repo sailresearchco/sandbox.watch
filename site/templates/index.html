@@ -32,10 +32,11 @@ comparison{% endblock %} {% block content %}
               >{{ tip }}</span
             >
           </span>
-          {% if key == "price_headline" %}
+          {% if key in ("price_headline", "cold_start", "max_runtime",
+          "isolation") %}
           <button
             class="expander"
-            id="price-toggle"
+            data-col-toggle="{{ key }}"
             type="button"
             aria-pressed="false"
           >
@@ -110,12 +111,26 @@ comparison{% endblock %} {% block content %}
       rows.forEach((r) => table.tBodies[0].appendChild(r));
     });
   });
-  const priceToggle = document.getElementById("price-toggle");
-  priceToggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const on = table.classList.toggle("price-full");
-    priceToggle.textContent = on ? "⤡ compact" : "⤢ full";
-    priceToggle.setAttribute("aria-pressed", String(on));
+  // Per-column expand: each button unclamps its own column. A button hides
+  // itself when nothing in its column is actually truncated, so the control
+  // appears exactly where the data needs it. Pricing always keeps its
+  // button: expanding there swaps the normalized rate for the provider's
+  // full wording.
+  table.querySelectorAll(".expander").forEach((btn) => {
+    const th = btn.closest("th");
+    const col = [...th.parentNode.children].indexOf(th);
+    const cells = [...table.tBodies[0].rows].map((r) => r.cells[col]);
+    const isPrice = th.dataset.col === "price_headline";
+    if (!isPrice && !cells.some((c) => c.scrollWidth > c.clientWidth + 1)) {
+      btn.hidden = true;
+    }
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const on = !cells[0].classList.contains("cell-full");
+      cells.forEach((c) => c.classList.toggle("cell-full", on));
+      btn.textContent = on ? "⤡ compact" : "⤢ full";
+      btn.setAttribute("aria-pressed", String(on));
+    });
   });
   document.getElementById("filter").addEventListener("input", (e) => {
     const q = e.target.value.toLowerCase();
