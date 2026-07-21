@@ -1,10 +1,10 @@
 {
-  "cold_start": "~2 s",
+  "cold_start": "sub-second",
   "docker": true,
   "free_while_idle": false,
   "gpu": false,
   "isolation": "KVM via Cloud Hypervisor (also uses crosvm; per a third-party article, Kata Containers)",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-21",
   "max_runtime": null,
   "memory_snapshots": false,
   "name": "exe.dev",
@@ -67,6 +67,9 @@
     },
     {
       "url": "https://algustionesa.com/the-rise-of-micro-vms-a-look-at-exe-dev/"
+    },
+    {
+      "url": "https://blog.exe.dev/meet-exe.dev"
     }
   ],
   "summary": "exe.dev provides persistent Linux virtual machines designed to be controlled programmatically by AI agents and developer tools. Each sandbox is a full Linux box with root access, systemd, a public hostname, a persistent disk, and SSH, accessed via 'ssh exe.dev new' or an HTTPS API. The product is marketed toward AI coding agents that need real isolated compute environments.",
