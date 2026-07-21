@@ -208,9 +208,18 @@ def _drain_pending() -> None:
                     continue
                 path.unlink(missing_ok=True)
                 try:
-                    turn.run_turn(payload)
+                    entry = turn.run_turn(payload)
+                    failed = entry.get("status") == "failed"
                 except Exception:
                     logger.exception("turn crashed")
+                    failed = True
+                # One automatic retry, so a transiently slow model or a
+                # crash does not silently drop the event until the next
+                # daily diff happens to re-detect it.
+                if failed and payload.get("_retries", 0) < 1:
+                    payload["_retries"] = payload.get("_retries", 0) + 1
+                    retry_name = f"retry-{path.name}"
+                    (_pending_dir() / retry_name).write_text(json.dumps(payload))
     finally:
         _turn_lock.release()
         _touch_activity()
