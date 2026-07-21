@@ -221,6 +221,13 @@ td.price .p-c {
   text-overflow: ellipsis;
   vertical-align: bottom;
 }
+/* Long text cells clamp with an ellipsis; the product page has the full
+   wording. Glyph cells are short and unaffected. */
+#compare td:not(.name):not(.price) {
+  max-width: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 #compare .p-f {
   display: none;
 }
