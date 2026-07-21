@@ -69,6 +69,10 @@ uv run pytest
 | `data/providers/` | One JSON file per product. Ships with seed entries; bootstrap replaces them. |
 | `site/` | Templates and CSS. |
 
+## License
+
+Apache-2.0.
+
 ## Costs and keys
 
 Sail bills compute only while the VM runs, and this VM mostly doesn't. A
