@@ -1,10 +1,10 @@
 {
-  "cold_start": "Near-instant (AWS docs describe as 'seconds'; no specific ms figure published)",
+  "cold_start": "near-instant",
   "docker": null,
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Firecracker microVM",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-21",
   "max_runtime": "8 h (28,800 s state-retention window)",
   "memory_snapshots": true,
   "name": "AWS Lambda MicroVMs",
