@@ -421,3 +421,29 @@ footer p {
   margin: 0 auto;
   padding: 1rem 1.25rem;
 }
+
+/* Small screens: the brand compresses to the periscope, the sticky name
+   column wraps inside a cap so data keeps most of the width, and the
+   table tightens a step. */
+@media (max-width: 430px) {
+  .wordmark-text {
+    display: none;
+  }
+  .nav nav a {
+    margin-left: 0.8rem;
+  }
+}
+@media (max-width: 700px) {
+  #compare {
+    font-size: 0.875rem;
+  }
+  #compare th,
+  #compare td {
+    padding: 0.45rem 0.55rem;
+  }
+  #compare td.name {
+    max-width: 7.5rem;
+    white-space: normal;
+    line-height: 1.3;
+  }
+}
