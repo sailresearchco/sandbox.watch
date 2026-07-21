@@ -175,6 +175,13 @@ def init_git(sb: sail.Sailbox, github_repo: str | None) -> None:
         " && git config user.email sandboxwatch@users.noreply.github.com"
         " && git add -A && (git diff --cached --quiet || git commit -qm 'deploy: sandboxwatch')",
     )
+    # If the box already has a public remote, publish the deploy right away
+    # instead of waiting for the next agent turn's push.
+    sb.exec(
+        f"cd {REMOTE_ROOT} && git remote get-url origin >/dev/null 2>&1"
+        " && git push -q origin HEAD || true",
+        timeout=120,
+    ).wait()
     if not github_repo:
         return
     if not os.environ.get("GITHUB_TOKEN"):
