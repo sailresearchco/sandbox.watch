@@ -20,7 +20,7 @@ from . import config
 # those are skipped too.
 _VCPU_RATE = re.compile(
     r"(?<!~)\$([0-9][0-9,]*(?:\.[0-9]+)?)"
-    r"\s*(?:per\s+|/\s*)(?:active\s+)?v?cpu(?:\s+core)?"
+    r"\s*(?:per\s+|/\s*)(?:active(?:ly\s+used)?\s+)?v?cpu(?:\s+core)?"
     r"[\s/-]*(sec(?:ond)?|min(?:ute)?|hour|hr)\b",
     re.IGNORECASE,
 )
