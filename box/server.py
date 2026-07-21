@@ -80,14 +80,13 @@ def _touch_activity() -> None:
 
 @app.middleware("http")
 async def track_activity(request: Request, call_next):
-    # Rejected webhook deliveries don't count as activity: Parallel retries
-    # failed deliveries with backoff, and anyone can POST to a public URL.
-    # Counting those would keep the box awake (and billed) indefinitely.
-    is_hook = request.url.path == "/hooks/parallel"
-    if not is_hook:
-        _touch_activity()
+    # Only served requests count as activity. Failed ones don't: Parallel
+    # retries rejected webhook deliveries with backoff, and a public
+    # hostname draws a constant trickle of scanner probes for paths that
+    # 404. Counting either would keep the box awake (and billed) around
+    # the clock.
     response = await call_next(request)
-    if not is_hook or response.status_code < 400:
+    if response.status_code < 400:
         _touch_activity()
     return response
 
