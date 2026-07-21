@@ -49,7 +49,9 @@ app.mount(
 templates = Jinja2Templates(directory=str(config.site_dir() / "templates"))
 
 
-_NA_CELL = Markup('<span class="g na" role="img" aria-label="no cited public fact">–</span>')
+_NA_CELL = Markup(
+    '<span class="g na" role="img" aria-label="no cited public fact">–</span>'
+)
 
 
 def _cell(value) -> Markup:

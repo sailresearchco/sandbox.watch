@@ -203,6 +203,12 @@ thead th {
 .tip:focus-visible + .tooltip {
   display: block;
 }
+/* Sticky cells form their own stacking contexts, so an open tooltip must
+   lift its whole header cell above sibling sticky cells. */
+thead th:has(.tipwrap:hover),
+thead th:has(.tip:focus-visible) {
+  z-index: 10;
+}
 #compare thead th:nth-last-child(-n + 4) .tooltip {
   left: auto;
   right: 0;
