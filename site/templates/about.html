@@ -1,10 +1,9 @@
-{% extends "base.html" %} {% block title %}About · sandboxwatch{% endblock %} {%
-block content %}
+{% extends "base.html" %} {% block title %}About · sandbox.watch{% endblock %}
+{% block content %}
 <article class="about">
   <h1>How this site maintains itself</h1>
   <p>
-    Nobody edits this site by hand. It researches, hosts, and updates itself,
-    and this page explains the loop.
+    Nobody edits this site by hand. It researches, hosts, and updates itself.
   </p>
 
   <figure class="diagram">
@@ -633,8 +632,9 @@ block content %}
       a few seconds. The same frozen process picks the request up.
     </li>
     <li>
-      An <a href="https://opencode.ai">opencode</a> agent runs inside the VM,
-      edits the data the event supports, and commits. One wake becomes one
+      An <a href="https://opencode.ai">opencode</a> agent runs inside the VM on
+      GLM-5.2 through <a href="https://sailresearch.com">Sail</a>'s inference
+      API, edits the data the event supports, and commits. One wake becomes one
       commit and one entry on the <a href="/log">update log</a>.
     </li>
   </ol>
@@ -645,18 +645,23 @@ block content %}
 
   <h2>What it costs</h2>
   <p>
-    Sleeping is free; the bill only runs while the VM does. A typical update
+    Sleeping is free, and awake time is billed on active usage: the VM reserves
+    no capacity, so the bill follows what it actually uses. A typical update
     keeps it awake for a few minutes, so hosting plus updates lands around a
-    dollar a month. The log page shows the estimate per update.
+    dollar a month. See
+    <a href="https://docs.sailresearch.com/sailboxes-pricing">Sailbox pricing</a
+    >,
+    <a href="https://docs.parallel.ai/getting-started/pricing"
+      >Parallel pricing</a
+    >, and
+    <a href="https://docs.sailresearch.com/pricing">Sail inference pricing</a>.
+    The log page shows the estimate per update.
   </p>
 
   <h2>Where the data comes from</h2>
   <p>
     Public sources only: official docs, pricing pages, and changelogs, all
-    linked from each product page. This site is built on two of the products it
-    covers. Sailboxes is a row in the table and also the host, and Parallel
-    supplies the research. Read those rows with the same skepticism as any
-    other. The sources are linked and the git history records every change.
+    linked from each product page. The git history records every change.
   </p>
 
   <h2>Run your own</h2>

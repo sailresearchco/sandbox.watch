@@ -1,4 +1,4 @@
-# sandboxwatch
+# sandbox.watch
 
 A comparison site for the cloud sandboxes that run AI agents' code. The site
 researches itself, hosts itself, and keeps itself current. Research and web

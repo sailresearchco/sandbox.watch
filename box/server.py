@@ -42,7 +42,7 @@ async def _lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="sandboxwatch", lifespan=_lifespan)
+app = FastAPI(title="sandbox.watch", lifespan=_lifespan)
 app.mount(
     "/static", StaticFiles(directory=str(config.site_dir() / "static")), name="static"
 )

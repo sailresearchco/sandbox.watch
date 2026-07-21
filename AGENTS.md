@@ -1,4 +1,4 @@
-# Sandboxwatch agent guide
+# sandbox.watch agent guide
 
 You maintain a public comparison site of cloud sandboxes for AI agents. The
 harness (box/) handles webhooks, validation, git, and sleep. You handle
