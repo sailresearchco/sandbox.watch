@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .tube { stroke: #1c1e21; }
+    .lens { fill: #0b6bcb; }
+    .box { fill: #ffffff; stroke: #1c1e21; }
+    @media (prefers-color-scheme: dark) {
+      .tube { stroke: #e8eaed; }
+      .lens { fill: #6cb2f7; }
+      .box { fill: #1b1e24; stroke: #e8eaed; }
+    }
+  </style>
+  <path class="tube" d="M24 40 V20 Q24 10 34 10 H38" fill="none" stroke-width="9" stroke-linecap="round" />
+  <circle class="lens" cx="46" cy="11" r="9" />
+  <rect class="box" x="8" y="40" width="48" height="18" rx="6" stroke-width="4" />
+</svg>
