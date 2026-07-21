@@ -191,38 +191,66 @@ def _enqueue_turn(payload: dict, dedupe_key: str | None = None) -> None:
 
 def _maybe_start_worker() -> None:
     if _turn_lock.acquire(blocking=False):
-        threading.Thread(target=_drain_pending, daemon=True).start()
+        try:
+            threading.Thread(target=_drain_pending, daemon=True).start()
+        except Exception:
+            # A failed thread start must not wedge the queue forever.
+            _turn_lock.release()
+            raise
 
 
 def _drain_pending() -> None:
     try:
-        while True:
-            pending = sorted(_pending_dir().glob("*.json"))
-            if not pending:
-                return
-            for path in pending:
-                try:
-                    payload = json.loads(path.read_text())
-                except json.JSONDecodeError:
-                    path.unlink(missing_ok=True)
-                    continue
-                path.unlink(missing_ok=True)
-                try:
-                    entry = turn.run_turn(payload)
-                    failed = entry.get("status") == "failed"
-                except Exception:
-                    logger.exception("turn crashed")
-                    failed = True
-                # One automatic retry, so a transiently slow model or a
-                # crash does not silently drop the event until the next
-                # daily diff happens to re-detect it.
-                if failed and payload.get("_retries", 0) < 1:
-                    payload["_retries"] = payload.get("_retries", 0) + 1
-                    retry_name = f"retry-{path.name}"
-                    (_pending_dir() / retry_name).write_text(json.dumps(payload))
+        _drain_loop()
     finally:
         _turn_lock.release()
         _touch_activity()
+    # A webhook that landed between the final empty scan and the lock
+    # release found no worker to start; pick its file up now.
+    if sorted(_pending_dir().glob("*.json")):
+        _maybe_start_worker()
+
+
+def _drain_loop() -> None:
+    while True:
+        pending = sorted(_pending_dir().glob("*.json"))
+        if not pending:
+            return
+        for path in pending:
+            # Claim the file first so a crash mid-turn cannot lose the
+            # event: success deletes the claim, a first failure requeues
+            # once, and a final failure parks the payload under
+            # state/failed for inspection.
+            claimed = path.with_suffix(".working")
+            try:
+                path.rename(claimed)
+            except OSError:
+                continue
+            try:
+                payload = json.loads(claimed.read_text())
+            except json.JSONDecodeError:
+                claimed.unlink(missing_ok=True)
+                continue
+            try:
+                entry = turn.run_turn(payload)
+                failed = entry.get("status") == "failed"
+            except Exception:
+                logger.exception("turn crashed")
+                failed = True
+            # One automatic retry, so a transiently slow model or a
+            # crash does not silently drop the event until the next
+            # daily diff happens to re-detect it.
+            if failed and payload.get("_retries", 0) < 1:
+                payload["_retries"] = payload.get("_retries", 0) + 1
+                retry_name = f"retry-{path.name}"
+                (_pending_dir() / retry_name).write_text(json.dumps(payload))
+                claimed.unlink(missing_ok=True)
+            elif failed:
+                parked = config.state_dir() / "failed"
+                parked.mkdir(parents=True, exist_ok=True)
+                claimed.rename(parked / path.name)
+            else:
+                claimed.unlink(missing_ok=True)
 
 
 def _sleep_self() -> None:

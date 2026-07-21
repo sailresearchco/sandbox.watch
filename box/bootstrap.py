@@ -192,7 +192,7 @@ def cancel_existing_monitors(client: ParallelClient) -> None:
     created = list((existing.get("providers") or {}).values())
     created.append(existing.get("new_products"))
     for record in created:
-        monitor_id = (record or {}).get("monitor_id")
+        monitor_id = (record or {}).get("monitor_id") or (record or {}).get("id")
         if not monitor_id:
             continue
         try:
@@ -313,11 +313,16 @@ def _run(client: ParallelClient, args: argparse.Namespace) -> int:
 
     runs = research_all(client, seeds, args.processor)
     failures = []
+    # Deep-research processors can legitimately run for tens of minutes;
+    # only the fast tiers get the short wait.
+    wait_seconds = 900 if args.processor in ("lite", "base") else 3600
     for seed in seeds:
         run_id = runs[seed["slug"]]
         print(f"waiting for {seed['name']} ({run_id})...")
         try:
-            write_provider_file(seed, client.task_result(run_id))
+            write_provider_file(
+                seed, client.task_result(run_id, timeout_seconds=wait_seconds)
+            )
         except Exception as exc:
             failures.append(seed["slug"])
             print(f"research failed for {seed['slug']}: {exc}", file=sys.stderr)
@@ -326,11 +331,26 @@ def _run(client: ParallelClient, args: argparse.Namespace) -> int:
     if errors:
         print("validation problems:", *errors, sep="\n  ", file=sys.stderr)
 
+    # Commit the research before monitors can fire: a webhook turn that
+    # interleaves with bootstrap must not sweep half-recorded data into
+    # its own commit.
+    turn.commit_and_push("bootstrap: refresh provider research")
+
+    clean = not failures and not errors
     if not args.skip_monitors:
-        if not args.webhook_url:
+        if not clean:
+            # Replacing monitors cancels the old set first; a partial or
+            # invalid bootstrap must not tear down working monitors.
+            print(
+                "skipping monitor refresh: bootstrap had failures or "
+                "validation problems",
+                file=sys.stderr,
+            )
+        elif not args.webhook_url:
             print("--webhook-url is required to create monitors", file=sys.stderr)
             return 1
-        create_monitors(client, runs, args.webhook_url, args.frequency)
+        else:
+            create_monitors(client, runs, args.webhook_url, args.frequency)
 
     changelog.append(
         {
@@ -338,9 +358,9 @@ def _run(client: ParallelClient, args: argparse.Namespace) -> int:
                 timespec="seconds"
             ),
             "kind": "bootstrap",
-            "status": "applied" if not failures else "partial",
+            "status": "applied" if clean else "partial",
             "summary": f"Researched {len(seeds) - len(failures)} of {len(seeds)} providers "
-            "and set up web monitors",
+            "and refreshed web monitors",
             "details": "",
             "citations": [],
             "commit": None,
@@ -349,8 +369,8 @@ def _run(client: ParallelClient, args: argparse.Namespace) -> int:
             "validation_errors": errors[:10] + [f"failed: {slug}" for slug in failures],
         }
     )
-    turn.commit_and_push("bootstrap: refresh provider research")
-    return 0 if not failures else 1
+    turn.commit_and_push("bootstrap: record monitors and log")
+    return 0 if clean else 1
 
 
 if __name__ == "__main__":

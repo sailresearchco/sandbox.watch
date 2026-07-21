@@ -98,6 +98,10 @@ def _git(*args: str, check: bool = False) -> subprocess.CompletedProcess:
     )
 
 
+def _provider_files() -> set[str]:
+    return {path.name for path in config.providers_dir().glob("*.json")}
+
+
 def revert_working_tree() -> None:
     _git("checkout", "--", ".")
     _git("clean", "-fdq", "data", "site")
@@ -111,11 +115,12 @@ def _finish_turn(
     agent_ok: bool,
     errors: list[str],
     extra: dict | None = None,
+    commit_paths: tuple[str, ...] = ("data", "site"),
 ) -> dict:
     """Shared tail of every turn: commit or revert, then record on /log."""
     if agent_ok and not errors:
         title, summary_text = read_turn_summary()
-        commit = commit_and_push(title)
+        commit = commit_and_push(title, paths=commit_paths)
         status = "applied" if commit else "no_change"
     else:
         revert_working_tree()
@@ -140,9 +145,10 @@ def _finish_turn(
         **(extra or {}),
     }
     changelog.append(entry)
-    # The changelog is part of the site, so record it in git history too.
-    if status == "applied":
-        commit_and_push(f"log: {title}")
+    # Record every outcome in git history, failures included: the changelog
+    # is the audit trail, and an uncommitted line would be discarded by the
+    # next turn's revert.
+    commit_and_push(f"log: {title}", paths=commit_paths)
     if summary_text:
         (turn_dir / "turn_summary.md").write_text(summary_text)
     logger.info(
@@ -151,10 +157,15 @@ def _finish_turn(
     return entry
 
 
-def commit_and_push(message: str) -> str | None:
-    """Commit data/, site/, and census changes. Returns the short hash, or
-    None if there was nothing to commit. Pushing is best-effort."""
-    _git("add", "-A", "data", "site", "providers.json")
+def commit_and_push(
+    message: str, paths: tuple[str, ...] = ("data", "site")
+) -> str | None:
+    """Commit changes under the given paths. Returns the short hash, or
+    None if there was nothing to commit. Pushing is best-effort.
+
+    The census (providers.json) is only in scope for discovery turns, so
+    callers that may commit it pass it explicitly."""
+    _git("add", "-A", *paths)
     if _git("diff", "--cached", "--quiet").returncode == 0:
         return None
     result = _git("commit", "-m", message)
@@ -195,8 +206,15 @@ def run_turn(payload: dict, client: ParallelClient | None = None) -> dict:
     prompt_path = turn_dir / "prompt.md"
     prompt_path.write_text(build_prompt(event_path))
 
+    files_before = _provider_files()
     agent_ok = run_agent(prompt_path)
     errors = providers.validate_all() if agent_ok else []
+    if agent_ok:
+        # A monitor event never justifies dropping a product outright.
+        errors += sorted(
+            f"deleted provider file: {name}"
+            for name in files_before - _provider_files()
+        )
     if agent_ok and errors:
         logger.warning("agent output failed validation: %s", errors)
 
@@ -238,8 +256,15 @@ def run_discovery_turn(discovery_path: Path | None = None) -> dict:
     prompt_path = turn_dir / "prompt.md"
     prompt_path.write_text(template.format(discovery_path=candidates_path))
 
+    files_before = _provider_files()
     agent_ok = run_agent(prompt_path)
     errors = providers.validate_all() + providers.validate_census() if agent_ok else []
+    if agent_ok:
+        # Discovery adds products; removals are an operator decision.
+        errors += sorted(
+            f"deleted provider file: {name}"
+            for name in files_before - _provider_files()
+        )
     if agent_ok and errors:
         logger.warning("discovery turn failed validation: %s", errors)
 
@@ -249,4 +274,5 @@ def run_discovery_turn(discovery_path: Path | None = None) -> dict:
         kind="discovery",
         agent_ok=agent_ok,
         errors=errors,
+        commit_paths=("data", "site", "providers.json"),
     )

@@ -229,6 +229,34 @@ def validate_provider_file(path: Path) -> list[str]:
         errors.append(
             f"{path.name}: slug {data.get('slug')!r} does not match the filename"
         )
+    # Type checks against the schema. Presence of the schema's required
+    # fields is deliberately not enforced: evidence-limited stubs from
+    # discovery turns legitimately carry nulls until research fills them.
+    for field in (
+        "free_while_idle",
+        "usage_billed",
+        "memory_snapshots",
+        "wake_on_request",
+        "gpu",
+        "docker",
+    ):
+        if field in data and not isinstance(data[field], (bool, type(None))):
+            errors.append(f"{path.name}: '{field}' must be true, false, or null")
+    for field in (
+        "pricing_model",
+        "price_headline",
+        "cold_start",
+        "max_runtime",
+        "isolation",
+        "notes",
+    ):
+        if field in data and not isinstance(data[field], (str, type(None))):
+            errors.append(f"{path.name}: '{field}' must be a string or null")
+    if "sdks" in data and not (
+        isinstance(data["sdks"], list)
+        and all(isinstance(item, str) for item in data["sdks"])
+    ):
+        errors.append(f"{path.name}: 'sdks' must be a list of strings")
     sources = data.get("sources")
     if not isinstance(sources, list) or not sources:
         errors.append(f"{path.name}: 'sources' must be a non-empty list")

@@ -115,7 +115,9 @@ class ParallelClient:
             "match_limit": match_limit,
         }
         excludes = [
-            {"name": e["name"], "url": e["url"]} for e in exclude if e.get("name")
+            {"name": e["name"], "url": e["url"]}
+            for e in exclude
+            if e.get("name") and e.get("url")
         ]
         if excludes:
             body["exclude_list"] = excludes
