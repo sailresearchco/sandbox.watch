@@ -1,10 +1,10 @@
 {
-  "cold_start": "~2.7 s P95 cold-start; ~500 ms P95 snapshot resume",
+  "cold_start": "500 ms (P95)",
   "docker": true,
   "free_while_idle": null,
   "gpu": false,
   "isolation": "Firecracker microVM",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-22",
   "max_runtime": "24 h on Pro tier; no documented hard cap for Scale/Enterprise",
   "memory_snapshots": true,
   "name": "CodeSandbox SDK",
@@ -19,6 +19,9 @@
   "sources": [
     {
       "url": "https://docs.together.ai/docs/together-code-sandbox"
+    },
+    {
+      "url": "https://www.together.ai/blog/code-sandbox-code-interpreter"
     },
     {
       "url": "https://codesandbox.io/docs/sdk"
