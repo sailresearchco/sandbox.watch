@@ -123,7 +123,12 @@ def agent_cmd() -> str:
 
 
 def agent_timeout_seconds() -> float:
-    return float(os.environ.get("SANDBOXWATCH_AGENT_TIMEOUT") or "900")
+    # Generous by default: a normal turn finishes in a few minutes, but Sail
+    # inference latency varies and a heavy diff can run much longer, so give
+    # it an hour before the backstop fires. Not unbounded on purpose: a turn
+    # holds the queue lock and blocks self-sleep, so a genuinely hung turn
+    # must eventually be killed rather than wedge the queue and bill forever.
+    return float(os.environ.get("SANDBOXWATCH_AGENT_TIMEOUT") or "3600")
 
 
 # Cost model for the per-turn estimate shown on /log. One small Sailbox vCPU
