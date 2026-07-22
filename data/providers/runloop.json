@@ -2,10 +2,10 @@
   "cold_start": "A few seconds for initial boot; resume typically under 1 second",
   "docker": true,
   "free_while_idle": true,
-  "gpu": false,
+  "gpu": true,
   "isolation": "Linux microVM with hardware isolation (two-layer VM + container)",
-  "last_verified": "2026-07-20",
-  "max_runtime": null,
+  "last_verified": "2026-07-22",
+  "max_runtime": "Default 1 h, configurable",
   "memory_snapshots": false,
   "name": "Runloop",
   "notes": "Suspended devboxes continue to incur storage charges until explicitly shut down; snapshots preserve disk state only, not in-memory state.",
@@ -52,6 +52,15 @@
     },
     {
       "url": "https://devtune.ai/verticals/ai-code-sandboxes-agent-runtimes/runloop"
+    },
+    {
+      "url": "https://docs.runloop.ai/llms.txt"
+    },
+    {
+      "url": "https://docs.runloop.ai/docs/devboxes/start-stop"
+    },
+    {
+      "url": "https://runloop.ai/blog/tunnels-now-support-wake-on-http-this-means-that-y"
     }
   ],
   "summary": "Runloop is a platform for building and deploying AI software-engineering agents, centered on Devboxes \u2014 isolated Linux microVMs that run agent-generated code. It targets AI engineering teams that need persistent filesystems, Docker support, and snapshot/suspend/resume lifecycle control for long-running agent workloads.",
