@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": true,
   "isolation": "OCI/Docker containers by default; Linux VM and Windows VM available for full kernel isolation",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-22",
   "max_runtime": "No fixed limit",
   "memory_snapshots": true,
   "name": "Daytona",
@@ -55,6 +55,9 @@
     },
     {
       "url": "https://www.zenml.io/blog/e2b-vs-daytona"
+    },
+    {
+      "url": "https://www.daytona.io/docs/en/sandboxes/"
     }
   ],
   "summary": "Daytona is a cloud platform that provisions isolated Linux, Windows, or GPU-backed sandbox environments for running AI-generated and untrusted code. Sandboxes are stateful and expose filesystem, process, and execution operations through official SDKs. The platform targets AI agent infrastructure use cases, supporting Docker-in-Docker execution and offering VM-based isolation with pause/resume capabilities.",
