@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": null,
   "isolation": "Kernel-isolated Linux VM (full VM, not microVM)",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-22",
   "max_runtime": "No fixed limit",
   "memory_snapshots": true,
   "name": "Sailboxes",
@@ -44,6 +44,12 @@
     },
     {
       "url": "https://docs.sailresearch.com/sailboxes-pricing"
+    },
+    {
+      "url": "https://sailresearch.mintlify.app/sailboxes-pricing"
+    },
+    {
+      "url": "https://sailresearch.mintlify.app/sailboxes-networking"
     }
   ],
   "summary": "Sailboxes are persistent, kernel-isolated Linux virtual machines built as execution environments for long-horizon AI agents. They support Docker-in-Docker, provide root access, and allow workloads to pause, resume, and fork without losing in-memory state. A CLI/TUI and SDKs in Python, TypeScript, and Rust are provided.",
