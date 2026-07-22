@@ -659,6 +659,18 @@
     The log page shows the estimate per update.
   </p>
 
+  <h2>How the list is built</h2>
+  <p>
+    sandbox.watch finds its own entries. A discovery sweep uses
+    <a href="https://parallel.ai">Parallel</a>'s FindAll to pull candidate
+    products from across the web, and the agent keeps the ones that clear a
+    single bar: a hosted sandbox an agent can drive, with public docs. New
+    launches arrive through a monitor. The site booted from a short starter
+    list, and a fresh sweep turns up those same products alongside new ones, so
+    the table tracks what's out there rather than a private pick. Every entry
+    joins in a commit on the <a href="/log">update log</a>.
+  </p>
+
   <h2>Where the data comes from</h2>
   <p>
     Public sources only: official docs, pricing pages, and changelogs, all
