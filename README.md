@@ -70,7 +70,7 @@ uv run pytest
 
 | Path | What it is |
 | --- | --- |
-| `launch.py` | Creates the box and deploys everything. The only file that runs on your machine. |
+| `launch.py` | Creates the box and deploys everything. |
 | `box/server.py` | The web app: site pages, the webhook endpoint, idle self-sleep. |
 | `box/bootstrap.py` | One-time research and monitor setup. |
 | `box/turn.py` | Runs one agent turn per monitor event and commits the result. |
