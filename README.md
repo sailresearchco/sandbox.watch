@@ -31,6 +31,14 @@ sleeps between updates.
 Every update is one git commit and one entry on the site's `/log` page, so
 the whole history is public.
 
+The list is not a fixed set. It booted from a short starter list in
+`providers.json`, then grows on its own: the discovery sweep in step 5 pulls
+candidate products from across the web and the agent vets each one against a
+single bar (a hosted sandbox an agent can drive, with public docs). A fresh
+sweep turns up most of the starter products alongside new ones, so the table
+tracks what's out there rather than a hand-picked few. Run a sweep yourself
+with `python3 -m box.bootstrap --discover --propose`.
+
 ## Run your own
 
 You need two accounts: [Sail](https://app.sailresearch.com) for the Sailbox
@@ -68,7 +76,7 @@ uv run pytest
 | `box/turn.py` | Runs one agent turn per monitor event and commits the result. |
 | `box/agent.sh` | The headless opencode invocation. |
 | `AGENTS.md` | Instructions the in-box agent follows, data rules and writing style included. |
-| `data/providers/` | One JSON file per product. Ships with seed entries; bootstrap replaces them. |
+| `data/providers/` | One JSON file per product. A starter set ships in the repo; research fills each file and discovery grows the set. |
 | `site/` | Templates and CSS. |
 
 ## License
