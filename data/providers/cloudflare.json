@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Per-instance isolation on Cloudflare Containers platform (Firecracker microVMs; gVisor and QEMU also supported)",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-22",
   "max_runtime": null,
   "memory_snapshots": false,
   "name": "Cloudflare Sandboxes",
@@ -51,6 +51,12 @@
     },
     {
       "url": "https://developers.cloudflare.com/sandbox/platform/pricing/"
+    },
+    {
+      "url": "https://blog.cloudflare.com/container-platform-preview/"
+    },
+    {
+      "url": "https://nirvanalabs.io/blog/agent-sandboxes-comparison-2026"
     }
   ],
   "summary": "Cloudflare Sandbox SDK is a managed environment for running untrusted code on behalf of AI agents, built on top of Cloudflare Containers. Each sandbox is a Linux container with a shell, filesystem, and background processes that starts on demand and resumes from where it left off. Developers drive sandboxes from a Cloudflare Worker via the @cloudflare/sandbox TypeScript SDK to execute commands, manage files, run background services, and expose preview URLs.",
