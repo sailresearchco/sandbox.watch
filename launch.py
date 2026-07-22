@@ -137,6 +137,17 @@ def write_runtime_env(sb: sail.Sailbox, repo_url: str | None) -> None:
         value = os.environ.get(var)
         if value:
             lines.append(f"export {var}={shlex.quote(value)}")
+    # A bare --attach must not drop config the box already owns: keep the
+    # existing public repo URL when this run doesn't set a new one.
+    if not repo_url:
+        current = sb.exec(
+            f"sed -n 's/^export SANDBOXWATCH_REPO_URL=//p' {SECRETS_DIR}/runtime.env"
+            " 2>/dev/null | head -1",
+            timeout=30,
+        ).wait()
+        existing = (current.stdout or "").strip().strip("'\"")
+        if existing:
+            repo_url = existing
     if repo_url:
         lines.append(f"export SANDBOXWATCH_REPO_URL={shlex.quote(repo_url)}")
     _upload_bytes(sb, f"{SECRETS_DIR}/runtime.env", ("\n".join(lines) + "\n").encode())
