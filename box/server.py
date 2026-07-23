@@ -134,9 +134,19 @@ def provider_detail(request: Request, slug: str):
     return _page(request, "provider.html", p=item, spec_fields=providers.SPEC_FIELDS)
 
 
+# Turn outcomes hidden from the public log. The raw changelog
+# (data/changelog.jsonl) and the git history keep every turn as the audit
+# trail; the page shows only the turns that changed something. A failed turn
+# reverts and changes nothing, so it is noise here.
+_HIDDEN_LOG_STATUSES = {"failed"}
+
+
 @app.get("/log", response_class=HTMLResponse)
 def log_page(request: Request):
-    return _page(request, "log.html", entries=changelog.read())
+    entries = [
+        e for e in changelog.read() if e.get("status") not in _HIDDEN_LOG_STATUSES
+    ]
+    return _page(request, "log.html", entries=entries)
 
 
 @app.get("/about", response_class=HTMLResponse)
