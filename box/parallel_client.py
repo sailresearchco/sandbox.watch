@@ -81,6 +81,16 @@ class ParallelClient:
         resp.raise_for_status()
         return resp.json()
 
+    def list_monitors(self, limit: int = 100) -> list[dict]:
+        """One page of monitors for this key, each with last_run_at. Used for
+        the liveness display, so it takes a short timeout and one page."""
+        resp = self._http.get("/v1/monitors", params={"limit": limit}, timeout=10.0)
+        resp.raise_for_status()
+        payload = resp.json()
+        if isinstance(payload, list):
+            return payload
+        return payload.get("monitors", [])
+
     def monitor_events(
         self, monitor_id: str, event_group_id: str | None = None
     ) -> list[dict]:

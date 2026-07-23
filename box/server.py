@@ -12,6 +12,7 @@ Local preview, no Sailbox involved:
 from __future__ import annotations
 
 import contextlib
+import datetime
 import json
 import logging
 import os
@@ -140,13 +141,56 @@ def provider_detail(request: Request, slug: str):
 # reverts and changes nothing, so it is noise here.
 _HIDDEN_LOG_STATUSES = {"failed"}
 
+# When the monitors last ran, shown on /log so a quiet day (monitors ran,
+# nothing changed) is distinguishable from a stalled one. The box never hears
+# about no-change runs (it only wakes on detected events), so the value comes
+# from Parallel's own last_run_at. Cached in memory and fetched only while the
+# box is already awake serving the page, so it adds no wakes.
+_monitors_last_ran = {"display": None, "at": 0.0}
+_MONITORS_LAST_RAN_TTL = 900
+
+
+def _monitors_last_ran_display() -> str | None:
+    now = time.time()
+    if now - _monitors_last_ran["at"] < _MONITORS_LAST_RAN_TTL:
+        return _monitors_last_ran["display"]
+    display = _monitors_last_ran["display"]  # keep last good value on failure
+    try:
+        path = config.data_dir() / "monitors.json"
+        recorded = json.loads(path.read_text())
+        ids = {
+            m.get("monitor_id")
+            for m in (recorded.get("providers") or {}).values()
+            if m
+        }
+        ids.add((recorded.get("new_products") or {}).get("monitor_id"))
+        runs = [
+            m.get("last_run_at")
+            for m in turn.default_client().list_monitors()
+            if m.get("monitor_id") in ids and m.get("last_run_at")
+        ]
+        latest = max(runs, default=None)
+        if latest:
+            dt = datetime.datetime.fromisoformat(latest.replace("Z", "+00:00"))
+            display = dt.strftime("%Y-%m-%d %H:%M UTC")
+    except Exception:
+        logger.info("could not refresh monitors-last-ran", exc_info=True)
+    _monitors_last_ran["display"] = display
+    _monitors_last_ran["at"] = now
+    return display
+
 
 @app.get("/log", response_class=HTMLResponse)
 def log_page(request: Request):
     entries = [
         e for e in changelog.read() if e.get("status") not in _HIDDEN_LOG_STATUSES
     ]
-    return _page(request, "log.html", entries=entries)
+    return _page(
+        request,
+        "log.html",
+        entries=entries,
+        monitors_last_ran=_monitors_last_ran_display(),
+    )
 
 
 @app.get("/about", response_class=HTMLResponse)

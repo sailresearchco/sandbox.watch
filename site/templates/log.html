@@ -6,6 +6,12 @@
   it, what changed, and roughly what the compute for that update cost. Between
   entries the server is asleep.
 </p>
+{% if monitors_last_ran %}
+<p class="verified">
+  Monitors last ran {{ monitors_last_ran }}. Quiet stretches mean the monitors
+  checked and nothing changed.
+</p>
+{% endif %}
 
 {% if not entries %}
 <p class="empty">
