@@ -4,13 +4,13 @@
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Firecracker microVM",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-27",
   "max_runtime": "24 h on Pro plan; 1 h on Hobby (free) plan",
   "memory_snapshots": true,
   "name": "E2B",
   "notes": "Docker support requires at least 2 vCPUs and 2 GiB RAM per the official Docker template. No GPU SKUs are listed in public pricing or docs. Pausing a sandbox via the SDK persists both filesystem and in-memory state (processes, variables), so the next 'connect' resumes from the same state.",
   "price_headline": "$0.000014/vCPU-second (\u2248$0.0504/vCPU-hour); RAM $0.0000045/GiB/second (\u2248$0.0162/GiB-hour)",
-  "pricing_model": "Per-second, billed on running-sandbox vCPU and RAM",
+  "pricing_model": "Pro plan at $150/month plus per-second vCPU/RAM usage; Hobby tier free with a one-time $100 credit",
   "sdks": [
     "Python",
     "JavaScript",
@@ -53,6 +53,12 @@
     },
     {
       "url": "https://checkthat.ai/brands/e2b"
+    },
+    {
+      "url": "https://infragap.com/tools/e2b/"
+    },
+    {
+      "url": "https://infragap.com/compare/e2b-vs-daytona/"
     }
   ],
   "summary": "E2B is an open-source infrastructure service that provisions isolated Linux sandboxes in the cloud for AI agents and code-execution workflows. Each sandbox is a lightweight microVM that can be spawned, used to run commands, paused, resumed, and shut down via SDK calls. Customers include teams building coding agents, data-analysis tools, RL environments, and computer-use agents.",
