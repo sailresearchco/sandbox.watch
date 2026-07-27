@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Hardware-isolated microVM (hypervisor-enforced boundary)",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-27",
   "max_runtime": "No documented fixed limit; sandboxes auto-suspend after configurable idle timeout (1\u201360 min, default 5 min) and auto-delete after configurable days.",
   "memory_snapshots": true,
   "name": "Azure Container Apps",
@@ -43,6 +43,9 @@
     },
     {
       "url": "https://modal.com/resources/best-gpu-enabled-sandboxes-ai-agents"
+    },
+    {
+      "url": "https://www.infoq.com/news/2026/06/untrusted-ai-agents-sandboxes/"
     }
   ],
   "summary": "Azure Container Apps Sandboxes (public preview, announced June 2026) are isolated execution environments for running untrusted code such as AI-generated scripts. Each sandbox runs in a hardware-isolated microVM, supports standard OCI container images, and starts in sub-second time. They support suspend/resume with full memory and disk state preservation, and are designed for AI agent workloads, code interpreters, and ephemeral development environments.",
