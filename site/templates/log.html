@@ -11,9 +11,7 @@
   Monitors last ran {{ monitors_last_ran }}. Quiet stretches mean the monitors
   checked and nothing changed.
 </p>
-{% endif %}
-
-{% if not entries %}
+{% endif %} {% if not entries %}
 <p class="empty">
   No updates yet. The first bootstrap run writes the opening entries.
 </p>

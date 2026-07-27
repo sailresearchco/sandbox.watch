@@ -159,9 +159,7 @@ def _monitors_last_ran_display() -> str | None:
         path = config.data_dir() / "monitors.json"
         recorded = json.loads(path.read_text())
         ids = {
-            m.get("monitor_id")
-            for m in (recorded.get("providers") or {}).values()
-            if m
+            m.get("monitor_id") for m in (recorded.get("providers") or {}).values() if m
         }
         ids.add((recorded.get("new_products") or {}).get("monitor_id"))
         runs = [
