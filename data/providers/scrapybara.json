@@ -4,7 +4,7 @@
   "free_while_idle": null,
   "gpu": null,
   "isolation": "Full Linux (Ubuntu 22.04) and Windows 11 virtual machines; open-source computer service is packaged as a Docker image with xdotool/noVNC",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-28",
   "max_runtime": "Configurable via timeout_hours parameter; default 1 hour, no documented upper limit",
   "memory_snapshots": null,
   "name": "Scrapybara",
