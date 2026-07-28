@@ -4,12 +4,12 @@
   "free_while_idle": true,
   "gpu": null,
   "isolation": "Kernel-isolated Linux VM (full VM, not microVM)",
-  "last_verified": "2026-07-22",
+  "last_verified": "2026-07-28",
   "max_runtime": "No fixed limit",
   "memory_snapshots": true,
   "name": "Sailboxes",
   "notes": "Billing is based on observed/actual resource usage each second (not reserved capacity), which differs from Modal, E2B, or Vercel that bill on reserved allocations. Available sizes include 's' (1 vCPU) and 'm' (4 vCPU), with 's' marketed for fastest cold starts, forks, and resumes.",
-  "price_headline": "$0.015 per active vCPU-hour",
+  "price_headline": "$0.015 per active vCPU-hour; $0.008 per active GB-hour; $0.00012 per active GB-disk-hour",
   "pricing_model": "Per-second, billed on observed vCPU, RAM, and disk usage",
   "sdks": [
     "Python",
@@ -50,6 +50,9 @@
     },
     {
       "url": "https://sailresearch.mintlify.app/sailboxes-networking"
+    },
+    {
+      "url": "https://www.sailresearch.com/blog/introducing-sailboxes-persistent-sandboxes"
     }
   ],
   "summary": "Sailboxes are persistent, kernel-isolated Linux virtual machines built as execution environments for long-horizon AI agents. They support Docker-in-Docker, provide root access, and allow workloads to pause, resume, and fork without losing in-memory state. A CLI/TUI and SDKs in Python, TypeScript, and Rust are provided.",
