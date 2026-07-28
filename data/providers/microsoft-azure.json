@@ -1,10 +1,10 @@
 {
   "cold_start": "Sub-second",
-  "docker": true,
+  "docker": null,
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Hardware-isolated microVM (hypervisor-enforced boundary)",
-  "last_verified": "2026-07-27",
+  "last_verified": "2026-07-28",
   "max_runtime": "No documented fixed limit; sandboxes auto-suspend after configurable idle timeout (1\u201360 min, default 5 min) and auto-delete after configurable days.",
   "memory_snapshots": true,
   "name": "Azure Container Apps",
