@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Firecracker microVM",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-28",
   "max_runtime": "No fixed limit",
   "memory_snapshots": false,
   "name": "Fly.io Sprites",
@@ -15,7 +15,8 @@
     "Go",
     "JavaScript/TypeScript",
     "Python",
-    "Elixir"
+    "Elixir",
+    "Rust"
   ],
   "slug": "fly-io-sprites",
   "sources": [
@@ -33,6 +34,9 @@
     },
     {
       "url": "https://github.com/superfly/sprites-ex"
+    },
+    {
+      "url": "https://crates.io/crates/sprites"
     },
     {
       "url": "https://fly.io/"
