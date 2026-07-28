@@ -1,10 +1,10 @@
 {
   "cold_start": "near-instant",
-  "docker": null,
+  "docker": true,
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Firecracker microVM",
-  "last_verified": "2026-07-21",
+  "last_verified": "2026-07-28",
   "max_runtime": "8 h (28,800 s state-retention window)",
   "memory_snapshots": true,
   "name": "AWS Lambda MicroVMs",
@@ -27,6 +27,12 @@
     },
     {
       "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/"
+    },
+    {
+      "url": "https://builder.aws.com/content/3FqF0Cc1MTZjXuYiZMGAHNBpkvt/lambda-microvms-are-kind-of-insane-tiny-virtual-machines-that-boot-in-milliseconds-and-sleep-when-you-are-not-looking"
+    },
+    {
+      "url": "https://awsteele.com/blog/2026/06/23/some-notes-on-lambda-microvms.html"
     },
     {
       "url": "https://aws.amazon.com/blogs/compute/announcing-lambda-microvms-serverless-compute-environments-with-vm-level-isolation-and-near-instant-startup/"
