@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Linux microVM (official docs say 'individual Linux microVMs'; Firecracker is named by third-party blogs and HN commentary but not in the official Deno documentation)",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-29",
   "max_runtime": "30 min (per docs limits; extendable on demand via extendTimeout)",
   "memory_snapshots": false,
   "name": "Deno Sandbox",
