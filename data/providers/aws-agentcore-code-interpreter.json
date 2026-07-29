@@ -1,10 +1,10 @@
 {
-  "cold_start": null,
+  "cold_start": "300-800 ms",
   "docker": false,
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Firecracker microVM (per-session, running on AWS Lambda MicroVMs)",
-  "last_verified": "2026-07-28",
+  "last_verified": "2026-07-29",
   "max_runtime": "8 hours (configurable; 15 min default timeout, up to 8h max)",
   "memory_snapshots": null,
   "name": "AWS AgentCore Code Interpreter",
@@ -58,6 +58,9 @@
     },
     {
       "url": "https://repost.aws/articles/ARCJIn3t7aRC2FxiRTV1SuCA/minimizing-startup-latency-with-amazon-bedrock-agentcore-runtime"
+    },
+    {
+      "url": "https://medium.com/@gzmcdll/what-i-learned-about-aws-agentcore-from-the-experts-and-why-it-matters-5534ea79573d"
     }
   ],
   "summary": "Amazon Bedrock AgentCore Code Interpreter is a managed sandbox service that lets AI agents write and execute code in isolated environments. Each session runs in a dedicated Firecracker microVM with its own CPU, memory, and filesystem, pre-configured with Python and Node.js runtimes and a broad set of data-analysis libraries. Developers and agent frameworks invoke the service via the AWS console, CLI, or the official Python and TypeScript SDKs to run multi-step data analysis and visualization.",
