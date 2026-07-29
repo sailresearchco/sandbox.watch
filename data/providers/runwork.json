@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": null,
   "isolation": "Isolated computing environment (\"their own computer\"), underlying isolation technology not specified publicly",
-  "last_verified": "2026-07-27",
+  "last_verified": "2026-07-29",
   "max_runtime": null,
   "memory_snapshots": null,
   "name": "Runwork Agent Sandbox",
@@ -31,6 +31,9 @@
     },
     {
       "url": "https://www.runwork.ai/features/agent-sandbox/"
+    },
+    {
+      "url": "https://www.runwork.ai/features/apis/"
     },
     {
       "url": "https://www.runwork.ai/features/scalable/"
