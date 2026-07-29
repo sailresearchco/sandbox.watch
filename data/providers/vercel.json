@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Firecracker microVM",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-07-29",
   "max_runtime": "24 h (Pro/Enterprise); 45 min (Hobby)",
   "memory_snapshots": false,
   "name": "Vercel Sandbox",
@@ -53,6 +53,12 @@
     },
     {
       "url": "https://vercel.com/changelog/vercel-sandbox-can-now-run-for-up-to-24-hours"
+    },
+    {
+      "url": "https://vercel.com/kb/guide/how-to-run-a-multi-step-research-agent-on-vercel"
+    },
+    {
+      "url": "https://www.truefoundry.com/de/blog/claude-managed-agents-vs-vercel-eve"
     }
   ],
   "summary": "Vercel Sandbox is an on-demand, isolated Linux microVM (based on Firecracker) that safely runs arbitrary or untrusted code via an SDK or CLI. It is used by AI coding agents, AI code interpreters, and developer tools that need ephemeral, sandboxed execution environments for tasks such as running AI-generated scripts, executing user-submitted code, or previewing apps. Sandboxes support persistence, snapshots, and port exposure for live URLs.",
