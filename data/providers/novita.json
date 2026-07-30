@@ -4,7 +4,7 @@
   "free_while_idle": false,
   "gpu": false,
   "isolation": "Firecracker microVM",
-  "last_verified": "2026-07-29",
+  "last_verified": "2026-07-30",
   "max_runtime": "24 h (paid tier); 1 h (free tier)",
   "memory_snapshots": true,
   "name": "Novita AI Sandbox",
