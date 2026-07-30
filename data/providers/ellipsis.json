@@ -49,10 +49,13 @@
     },
     {
       "url": "https://www.ellipsis.dev/docs/pricing"
+    },
+    {
+      "url": "https://www.ellipsis.dev/docs/guides/sandbox"
     }
   ],
   "summary": "Ellipsis is a cloud platform that runs managed coding agents (powered by Claude) on behalf of engineering teams. Each agent executes inside its own isolated Linux sandbox in Ellipsis's cloud, with credentials scoped below any developer. Agents are defined as YAML files in the user's repository and triggered on schedules, PR events, mentions, or via API, and are used for code review, automated fixes, dependency bumps, and similar engineering tasks.",
-  "usage_billed": true,
+  "usage_billed": false,
   "wake_on_request": null,
   "website": "https://www.ellipsis.dev"
 }
