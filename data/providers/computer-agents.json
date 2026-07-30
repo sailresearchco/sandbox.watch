@@ -1,7 +1,7 @@
 {
   "cold_start": null,
   "docker": null,
-  "free_while_idle": null,
+  "free_while_idle": true,
   "gpu": null,
   "isolation": "Isolated Linux container per agent (technology not specified)",
   "last_verified": "2026-07-30",
@@ -43,6 +43,9 @@
     },
     {
       "url": "https://computer-agents.com/pricing"
+    },
+    {
+      "url": "https://computer-agents.com/developers/core-concepts/computers"
     }
   ],
   "summary": "Computer Agents (computer-agents.com) is an Agentic Compute Platform that gives each AI agent its own persistent cloud computer, running code inside an isolated Linux container with custom runtimes and packages. Developers and teams use it to run coding, research, marketing, finance, and product agents from a web UI, REST API, or the official Python and TypeScript SDKs.",
