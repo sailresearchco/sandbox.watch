@@ -142,7 +142,13 @@ PROVIDER_OUTPUT_SCHEMA = {
         },
         "price_headline": {
             "type": "string",
-            "description": "The headline compute price. Example: '$0.05 per vCPU-hour'.",
+            "description": (
+                "The single headline compute rate, as the provider states it. "
+                "Example: '$0.05 per vCPU-hour'. When a page shows several "
+                "plan tiers side by side, name the tier each figure belongs "
+                "to rather than merging them, and never attribute one tier's "
+                "price to another. Subscription tiers belong in pricing_model."
+            ),
         },
         "free_while_idle": {
             "type": ["boolean", "null"],

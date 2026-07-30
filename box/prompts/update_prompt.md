@@ -7,6 +7,13 @@ URLs, is in {event_path}.
 
 Do the following, changing only what the event gives evidence for:
 
+0. Verify before you edit. The event is a research summary, not the source:
+   it can misread a page. For every field you are about to change, fetch the
+   cited URL (curl is available) and confirm the page itself states the new
+   value for the thing being described. Watch for values lifted from a
+   neighbouring row, column, or plan tier: a price next to a heading is not
+   necessarily that heading's price. If the page does not clearly support
+   the change, leave the field alone and say why in your summary.
 1. Update the matching files under data/providers/. Touch only fields the
    event supports, set last_verified to today, and add the event's citation
    URLs to sources (deduplicated).

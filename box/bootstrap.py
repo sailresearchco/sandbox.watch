@@ -215,6 +215,9 @@ def create_monitors(
             frequency=frequency,
             settings={"task_run_id": run_id},
             webhook_url=webhook_url,
+            # base, not lite: measured against a live pricing page, lite
+            # derived a computed rate instead of reporting the stated one.
+            processor="base",
             metadata={"site": "sandboxwatch", "slug": slug},
         )
         monitors["providers"][slug] = created

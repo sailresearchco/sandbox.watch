@@ -28,6 +28,15 @@ secrets directory.
 - Update `last_verified` (YYYY-MM-DD) whenever you verify or change a file.
 - Spec strings stay short and unit-labeled: "24 h", "~150 ms", "$0.05 per
   vCPU-hour".
+- Confirm a claim against the cited page before you write it. A research
+  summary can misattribute a figure it found next to the right words, most
+  often by pulling a value from an adjacent plan tier, column, or row.
+- When sources disagree, prefer the provider's own current docs or pricing
+  page over blog posts, launch announcements, and third-party write-ups, and
+  prefer the more specific stated figure over a rounded one. Don't rewrite a
+  field to an equally-supported alternative: change it when the new value is
+  better sourced, not merely different. Fields that flip back and forth
+  between runs read as unreliable.
 
 ## Writing style
 
