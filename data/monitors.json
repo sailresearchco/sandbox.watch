@@ -2893,6 +2893,419 @@
         "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
       }
     },
+    "computer-agents": {
+      "created_at": "2026-07-30T00:43:05.912844Z",
+      "frequency": "1d",
+      "last_run_at": "2026-07-30T00:43:05.912844Z",
+      "metadata": {
+        "site": "sandboxwatch",
+        "slug": "computer-agents"
+      },
+      "monitor_id": "monitor_0132134705db48b19b10532edccb7cb0",
+      "output": {
+        "latest_snapshot": {
+          "basis": [
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "$20/month for your first AI employee. Start free with $1.00 in included credits."
+                  ],
+                  "title": "Computer Agents | Agentic Compute Platform",
+                  "url": "https://computer-agents.com/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Computer Agents | Agentic Compute Platform",
+                  "url": "https://computer-agents.com/platform"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Features - AI Agent Capabilities | Computer Agents",
+                  "url": "https://computer-agents.com/features"
+                }
+              ],
+              "confidence": "high",
+              "field": "summary",
+              "reasoning": "Based on the research findings, Computer Agents is an Agentic Compute Platform that provides persistent cloud computers for AI agents. Each agent runs in its own isolated Linux container with custom runtimes and packages. Developers and teams use it for coding, research, marketing, finance, and product agents via web UI, REST API, or Python/TypeScript SDKs."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Features - AI Agent Capabilities | Computer Agents",
+                  "url": "https://computer-agents.com/features"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Computer Agents | Agentic Compute Platform",
+                  "url": "https://computer-agents.com/docs"
+                }
+              ],
+              "confidence": "low",
+              "field": "docker",
+              "reasoning": "The research plan indicates Docker support was searched for but not documented in public sources. The product describes isolated Linux containers with custom runtimes, but does not specifically state that Docker containers can run inside the sandbox."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Use this SDK from Python scripts, services, notebooks, backend jobs, and internal tools to start agents, stream their work, manage projects and computers,"
+                  ],
+                  "title": "Computer Agents Python SDK",
+                  "url": "https://github.com/computer-agents/computer-agents-sdk-python"
+                },
+                {
+                  "excerpts": [
+                    "Official TypeScript SDK for the Computer Agents API. Execute Claude-powered AI agents in isolated cloud containers."
+                  ],
+                  "title": "GitHub - computer-agents/computer-agents-sdk: Official TypeScript SDK for the Computer Agents API. Execute Claude-powered AI agents in isolated cloud containers. \u00b7 GitHub",
+                  "url": "https://github.com/computer-agents/computer-agents-sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "computer-agents \u00b7 PyPI",
+                  "url": "https://pypi.org/project/computer-agents/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "computer-agents - npm",
+                  "url": "https://www.npmjs.com/package/computer-agents"
+                }
+              ],
+              "confidence": "high",
+              "field": "sdks",
+              "reasoning": "The research confirmed Python and TypeScript SDKs exist via GitHub repositories (computer-agents-sdk-python and computer-agents-sdk) and are available on PyPI and npm."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Compare Sandbox, Individual, Team, and Enterprise plans with cost estimates, $19.99 / month. Start with Individual $15.00 included credits. Enterprise $100 /"
+                  ],
+                  "title": "Computer Agents Pricing - Start Free, Scale with Usage",
+                  "url": "https://computer-agents.com/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Features - AI Agent Capabilities | Computer Agents",
+                  "url": "https://computer-agents.com/features"
+                }
+              ],
+              "confidence": "medium",
+              "field": "usage_billed",
+              "reasoning": "The pricing is per-minute based on computer tier (Lite/Standard/Power/Desktop), and subscriptions bundle credits. This indicates an elastic billing model where costs track actual usage rather than reserved capacity."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Features - AI Agent Capabilities | Computer Agents",
+                  "url": "https://computer-agents.com/features"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Computer Agents | Agentic Compute Platform",
+                  "url": "https://computer-agents.com/platform"
+                }
+              ],
+              "confidence": "low",
+              "field": "isolation",
+              "reasoning": "The documentation describes isolated Linux containers per agent but does not specify the underlying isolation technology (e.g., Firecracker, gVisor, Docker, etc.)."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Features - AI Agent Capabilities | Computer Agents",
+                  "url": "https://computer-agents.com/features"
+                }
+              ],
+              "confidence": "medium",
+              "field": "notes",
+              "reasoning": "Each agent runs in its own isolated Linux container with custom runtimes (Python, Node, Go, Ruby, Rust, Java) and a 4GB storage quota. The Lite tier is the default computer and GUI is only available on the Desktop tier."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Features - AI Agent Capabilities | Computer Agents",
+                  "url": "https://computer-agents.com/features"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Computer Agents | Agentic Compute Platform",
+                  "url": "https://computer-agents.com/docs"
+                }
+              ],
+              "confidence": "low",
+              "field": "cold_start",
+              "reasoning": "No cold start time is documented in public sources."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Features - AI Agent Capabilities | Computer Agents",
+                  "url": "https://computer-agents.com/features"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Computer Agents | Agentic Compute Platform",
+                  "url": "https://computer-agents.com/docs"
+                }
+              ],
+              "confidence": "low",
+              "field": "memory_snapshots",
+              "reasoning": "Memory snapshot functionality (RAM state surviving pause/resume) is not specifically documented."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Compare Sandbox, Individual, Team, and Enterprise plans with cost estimates, $19.99 / month. Start with Individual $15.00 included credits. Enterprise $100 /"
+                  ],
+                  "title": "Computer Agents Pricing - Start Free, Scale with Usage",
+                  "url": "https://computer-agents.com/pricing"
+                }
+              ],
+              "confidence": "high",
+              "field": "pricing_model",
+              "reasoning": "Billing is per-minute based on computer tier (Lite/Standard/Power/Desktop), with monthly subscriptions (Sandbox/Individual/Team/Enterprise) that bundle credits."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Computer Agents Pricing - Start Free, Scale with Usage",
+                  "url": "https://computer-agents.com/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Features - AI Agent Capabilities | Computer Agents",
+                  "url": "https://computer-agents.com/features"
+                }
+              ],
+              "confidence": "low",
+              "field": "free_while_idle",
+              "reasoning": "No explicit documentation about whether stopped/paused/sleeping sandboxes cost nothing."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Features - AI Agent Capabilities | Computer Agents",
+                  "url": "https://computer-agents.com/features"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Computer Agents | Agentic Compute Platform",
+                  "url": "https://computer-agents.com/docs"
+                }
+              ],
+              "confidence": "low",
+              "field": "wake_on_request",
+              "reasoning": "No documentation about automatic wake-on-request functionality for stopped sandboxes."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Features - AI Agent Capabilities | Computer Agents",
+                  "url": "https://computer-agents.com/features"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Computer Agents | Agentic Compute Platform",
+                  "url": "https://computer-agents.com/docs"
+                }
+              ],
+              "confidence": "low",
+              "field": "max_runtime",
+              "reasoning": "No maximum runtime is documented."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Computer Agents Pricing - Start Free, Scale with Usage",
+                  "url": "https://computer-agents.com/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Features - AI Agent Capabilities | Computer Agents",
+                  "url": "https://computer-agents.com/features"
+                }
+              ],
+              "confidence": "low",
+              "field": "gpu",
+              "reasoning": "GPU instances are not mentioned in the documentation. The available tiers (Lite, Standard, Power, Desktop) are all CPU-based."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Compare Sandbox, Individual, Team, and Enterprise plans with cost estimates, $19.99 / month. Start with Individual $15.00 included credits. Enterprise $100 /"
+                  ],
+                  "title": "Computer Agents Pricing - Start Free, Scale with Usage",
+                  "url": "https://computer-agents.com/pricing"
+                }
+              ],
+              "confidence": "medium",
+              "field": "price_headline",
+              "reasoning": "The Lite tier is the default computer and is priced at $0.0026/min ($0.16/hour). All prices listed per tier."
+            }
+          ],
+          "content": {
+            "cold_start": null,
+            "docker": null,
+            "free_while_idle": null,
+            "gpu": null,
+            "isolation": "Isolated Linux container per agent (technology not specified)",
+            "max_runtime": null,
+            "memory_snapshots": null,
+            "notes": "Each agent runs in its own isolated Linux container with custom runtimes (Python, Node, Go, Ruby, Rust, Java) and a 4GB storage quota; Lite is the default computer tier and GUI is only enabled on the Desktop tier.",
+            "price_headline": "Lite: $0.0026/min ($0.16/hour) | Standard: $0.0052/min ($0.31/hour) | Power: $0.0097/min ($0.58/hour) | Desktop: $0.013/min ($0.78/hour)",
+            "pricing_model": "Per-minute, billed by computer tier (Lite/Standard/Power/Desktop); monthly subscriptions bundle credits.",
+            "sdks": [
+              "Python",
+              "TypeScript"
+            ],
+            "summary": "Computer Agents (computer-agents.com) is an Agentic Compute Platform that gives each AI agent its own persistent cloud computer, running code inside an isolated Linux container with custom runtimes and packages. Developers and teams use it to run coding, research, marketing, finance, and product agents from a web UI, REST API, or the official Python and TypeScript SDKs.",
+            "usage_billed": true,
+            "wake_on_request": null
+          },
+          "type": "json"
+        }
+      },
+      "processor": "base",
+      "settings": {
+        "output_schema": {
+          "json_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "cold_start": {
+                "description": "Typical time from create or resume to running. Example: '~150 ms'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "docker": {
+                "description": "True if Docker containers can run inside the sandbox.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "free_while_idle": {
+                "description": "True if a stopped, paused, or sleeping sandbox costs nothing.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "gpu": {
+                "description": "GPU instances available.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "isolation": {
+                "description": "Isolation technology. Example: 'Firecracker microVM'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "max_runtime": {
+                "description": "Longest a sandbox may run. Example: '24 h' or 'No fixed limit'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "memory_snapshots": {
+                "description": "True if RAM state survives a pause/resume cycle, not just disk.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "notes": {
+                "description": "One factual caveat worth knowing, or null.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "price_headline": {
+                "description": "The single headline compute rate, as the provider states it. Example: '$0.05 per vCPU-hour'. When a page shows several plan tiers side by side, name the tier each figure belongs to rather than merging them, and never attribute one tier's price to another. Subscription tiers belong in pricing_model.",
+                "type": "string"
+              },
+              "pricing_model": {
+                "description": "How billing works, in one short phrase. Example: 'Per-second, billed on reserved vCPU and RAM'.",
+                "type": "string"
+              },
+              "sdks": {
+                "description": "Official SDK languages, for example ['Python', 'TypeScript'].",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "summary": {
+                "description": "Two or three plain sentences on what the product is and who uses it. No marketing language.",
+                "type": "string"
+              },
+              "usage_billed": {
+                "description": "True if the sandbox is elastic: resources flex with actual use and billing follows (active or observed CPU time). False if capacity is reserved or allocated and billed for running time regardless of use. Null if the docs do not say.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "wake_on_request": {
+                "description": "True if a stopped sandbox wakes automatically on inbound traffic.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "summary",
+              "sdks",
+              "docker",
+              "usage_billed",
+              "isolation",
+              "notes",
+              "memory_snapshots",
+              "cold_start",
+              "pricing_model",
+              "free_while_idle",
+              "wake_on_request",
+              "max_runtime",
+              "gpu",
+              "price_headline"
+            ],
+            "type": "object"
+          },
+          "type": "json"
+        },
+        "query": "Research the cloud sandbox product Computer Agents (https://computer-agents.com). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
+        "task_run_id": "trun_17dcc47e11014514ba711187187e2d02"
+      },
+      "status": "active",
+      "type": "snapshot",
+      "webhook": {
+        "event_types": [
+          "monitor.event.detected"
+        ],
+        "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
+      }
+    },
     "daytona": {
       "created_at": "2026-07-20T02:42:47.448874Z",
       "frequency": "1d",
@@ -4871,6 +5284,425 @@
         },
         "query": "Research the cloud sandbox product E2B (https://e2b.dev). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
         "task_run_id": "trun_24f44f01c78c45c8a08354e9ccb6f5f6"
+      },
+      "status": "active",
+      "type": "snapshot",
+      "webhook": {
+        "event_types": [
+          "monitor.event.detected"
+        ],
+        "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
+      }
+    },
+    "ellipsis": {
+      "created_at": "2026-07-30T00:43:05.514439Z",
+      "frequency": "1d",
+      "last_run_at": "2026-07-30T00:43:05.514439Z",
+      "metadata": {
+        "site": "sandboxwatch",
+        "slug": "ellipsis"
+      },
+      "monitor_id": "monitor_6e61c730bcb04aa886ed16de4ab89261",
+      "output": {
+        "latest_snapshot": {
+          "basis": [
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Each agent gets an isolated sandbox, scoped permissions, and hard budget caps."
+                  ],
+                  "title": "Ellipsis | Cloud platform for coding agents",
+                  "url": "https://www.ellipsis.dev/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs"
+                },
+                {
+                  "excerpts": [
+                    "An isolated computer for every session. Each agent works on its own cloud machine: your repos cloned in, credentials scoped below any developer,"
+                  ],
+                  "title": "Sandbox - Ellipsis.dev",
+                  "url": "https://www.ellipsis.dev/platform/sandbox"
+                }
+              ],
+              "confidence": "high",
+              "field": "summary",
+              "reasoning": "I reviewed Ellipsis's homepage, docs, and pricing page to assemble a plain product description. The platform provides managed Claude-based coding agents that execute in isolated Linux containers."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "The sandbox \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/concepts/sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/concepts/environments"
+                }
+              ],
+              "confidence": "low",
+              "field": "docker",
+              "reasoning": "Checked docs, platform page, sandbox page, and blog posts for any mention of running Docker containers inside the sandbox. None found. The environment provides Python 3.13, Node.js 22, git, gh CLI, curl, make/g++ \u2014 no Docker."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "CLI \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/cli"
+                },
+                {
+                  "excerpts": [],
+                  "title": "API reference \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/api"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/sdks/python"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/sdks/typescript"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/sdks/go"
+                }
+              ],
+              "confidence": "medium",
+              "field": "sdks",
+              "reasoning": "The docs reference CLI and REST API for interacting with Ellipsis. There are no published Python, TypeScript, JavaScript, or Go SDKs \u2014 only documentation pages under /docs/sdks that appear to be templates or redirects (no content returned)."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Pricing | Ellipsis",
+                  "url": "https://www.ellipsis.dev/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/billing"
+                }
+              ],
+              "confidence": "high",
+              "field": "usage_billed",
+              "reasoning": "Pricing is per-second metering of vCPU and memory. There is no reserved capacity model; billing follows actual compute consumption."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Each agent works on its own cloud machine: your repos cloned in, credentials scoped below any developer"
+                  ],
+                  "title": "Sandbox - Ellipsis.dev",
+                  "url": "https://www.ellipsis.dev/platform/sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "The sandbox \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/concepts/sandbox"
+                }
+              ],
+              "confidence": "medium",
+              "field": "isolation",
+              "reasoning": "Docs describe each agent as getting 'an isolated sandbox' in the cloud. No mention of Firecracker, gVisor, microVMs, or specific isolation technology beyond 'isolated Linux container' in the verified research."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "The sandbox \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/concepts/sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs"
+                }
+              ],
+              "confidence": "medium",
+              "field": "notes",
+              "reasoning": "The verified research states each sandbox is destroyed at session end and the next session boots from a cached image; runtime state does not carry over. Default session timeout is 1 hour (matching GitHub App token lifetime) and can be shortened in config but cannot exceed the 24-hour ceiling."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "The sandbox \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/concepts/sandbox"
+                }
+              ],
+              "confidence": "medium",
+              "field": "cold_start",
+              "reasoning": "Verified research states warm snapshot boot is ~8 seconds; first-session image build is ~3 minutes 40 seconds. No faster cold-start figure is documented."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "The sandbox \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/concepts/sandbox"
+                }
+              ],
+              "confidence": "medium",
+              "field": "memory_snapshots",
+              "reasoning": "No memory snapshot or pause/resume capability is documented. Each session boots fresh from the cached image; runtime state does not survive between sessions."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Pricing | Ellipsis",
+                  "url": "https://www.ellipsis.dev/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/billing"
+                }
+              ],
+              "confidence": "medium",
+              "field": "pricing_model",
+              "reasoning": "Verified research: per-second metering of vCPU-hour and GB-hour, plus a per-session platform fee equal to 100% of token usage cost."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Introduction \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/billing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "The sandbox \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/concepts/sandbox"
+                }
+              ],
+              "confidence": "medium",
+              "field": "free_while_idle",
+              "reasoning": "Verified research notes docs say there are no idle charges. Since each sandbox is destroyed at session end and a fresh one boots for the next session, there is nothing to charge while idle."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "CLI \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/cli"
+                },
+                {
+                  "excerpts": [],
+                  "title": "API reference \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/api"
+                }
+              ],
+              "confidence": "low",
+              "field": "wake_on_request",
+              "reasoning": "No wake-on-request / auto-resume feature is documented. Sandboxes are short-lived and invoked explicitly via CLI, API, or triggers."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "The sandbox \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/concepts/sandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs"
+                }
+              ],
+              "confidence": "medium",
+              "field": "max_runtime",
+              "reasoning": "Verified research: maximum 24 hours per session, with a 1-hour default (matching GitHub App token lifetime)."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Pricing | Ellipsis",
+                  "url": "https://www.ellipsis.dev/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Features | Ellipsis",
+                  "url": "https://www.ellipsis.dev/features"
+                }
+              ],
+              "confidence": "low",
+              "field": "gpu",
+              "reasoning": "No GPU instances are mentioned in any documentation, pricing page, or blog post."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Pricing | Ellipsis",
+                  "url": "https://www.ellipsis.dev/pricing"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction \u2014 Ellipsis Docs",
+                  "url": "https://www.ellipsis.dev/docs/pricing"
+                }
+              ],
+              "confidence": "medium",
+              "field": "price_headline",
+              "reasoning": "Verified research states the Ellipsis Cloud tier compute rate is $0.142/vCPU-hr. Memory rate is separate at $0.024/GB-hr."
+            }
+          ],
+          "content": {
+            "cold_start": "~8 s (warm snapshot boot); first session image build ~3m40s",
+            "docker": null,
+            "free_while_idle": true,
+            "gpu": null,
+            "isolation": "Linux container",
+            "max_runtime": "24 h",
+            "memory_snapshots": false,
+            "notes": "Each sandbox is destroyed at session end; the next session boots from a cached image and runtime state does not carry over. Default session timeout is 1 hour (matching the GitHub App token lifetime), configurable downward but capped at 24 hours.",
+            "price_headline": "$0.142 / vCPU-hour (Ellipsis Cloud tier)",
+            "pricing_model": "Per-second metering of vCPU-hour and GB-hour, plus a per-session platform fee equal to 100% of token usage",
+            "sdks": [],
+            "summary": "Ellipsis is a cloud platform that runs managed coding agents (powered by Claude) on behalf of engineering teams. Each agent executes inside its own isolated Linux sandbox in Ellipsis's cloud, with credentials scoped below any developer. Agents are defined as YAML files in the user's repository and triggered on schedules, PR events, mentions, or via API, and are used for code review, automated fixes, dependency bumps, and similar engineering tasks.",
+            "usage_billed": true,
+            "wake_on_request": null
+          },
+          "type": "json"
+        }
+      },
+      "processor": "base",
+      "settings": {
+        "output_schema": {
+          "json_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "cold_start": {
+                "description": "Typical time from create or resume to running. Example: '~150 ms'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "docker": {
+                "description": "True if Docker containers can run inside the sandbox.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "free_while_idle": {
+                "description": "True if a stopped, paused, or sleeping sandbox costs nothing.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "gpu": {
+                "description": "GPU instances available.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "isolation": {
+                "description": "Isolation technology. Example: 'Firecracker microVM'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "max_runtime": {
+                "description": "Longest a sandbox may run. Example: '24 h' or 'No fixed limit'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "memory_snapshots": {
+                "description": "True if RAM state survives a pause/resume cycle, not just disk.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "notes": {
+                "description": "One factual caveat worth knowing, or null.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "price_headline": {
+                "description": "The single headline compute rate, as the provider states it. Example: '$0.05 per vCPU-hour'. When a page shows several plan tiers side by side, name the tier each figure belongs to rather than merging them, and never attribute one tier's price to another. Subscription tiers belong in pricing_model.",
+                "type": "string"
+              },
+              "pricing_model": {
+                "description": "How billing works, in one short phrase. Example: 'Per-second, billed on reserved vCPU and RAM'.",
+                "type": "string"
+              },
+              "sdks": {
+                "description": "Official SDK languages, for example ['Python', 'TypeScript'].",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "summary": {
+                "description": "Two or three plain sentences on what the product is and who uses it. No marketing language.",
+                "type": "string"
+              },
+              "usage_billed": {
+                "description": "True if the sandbox is elastic: resources flex with actual use and billing follows (active or observed CPU time). False if capacity is reserved or allocated and billed for running time regardless of use. Null if the docs do not say.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "wake_on_request": {
+                "description": "True if a stopped sandbox wakes automatically on inbound traffic.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "summary",
+              "sdks",
+              "docker",
+              "usage_billed",
+              "isolation",
+              "notes",
+              "memory_snapshots",
+              "cold_start",
+              "pricing_model",
+              "free_while_idle",
+              "wake_on_request",
+              "max_runtime",
+              "gpu",
+              "price_headline"
+            ],
+            "type": "object"
+          },
+          "type": "json"
+        },
+        "query": "Research the cloud sandbox product Ellipsis (https://www.ellipsis.dev). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
+        "task_run_id": "trun_17dcc47e11014514b22d71390a1ee29e"
       },
       "status": "active",
       "type": "snapshot",
@@ -8140,6 +8972,451 @@
         },
         "query": "Research the cloud sandbox product Morph Cloud (https://cloud.morph.so). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
         "task_run_id": "trun_24f44f01c78c45c8b3e45a60ae78e63c"
+      },
+      "status": "active",
+      "type": "snapshot",
+      "webhook": {
+        "event_types": [
+          "monitor.event.detected"
+        ],
+        "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
+      }
+    },
+    "northflank": {
+      "created_at": "2026-07-30T00:43:05.326203Z",
+      "frequency": "1d",
+      "last_run_at": "2026-07-30T00:43:05.326203Z",
+      "metadata": {
+        "site": "sandboxwatch",
+        "slug": "northflank"
+      },
+      "monitor_id": "monitor_cf7c010e4fc74222897e3244bece1c13",
+      "output": {
+        "latest_snapshot": {
+          "basis": [
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "No forced time limits\u2014run for seconds or weeks depending on your use case. Set minimum and maximum sandbox counts, $2.74/hour all-in, up to 62% cheaper than"
+                  ],
+                  "title": "Secure sandboxes for multi-tenant workloads",
+                  "url": "https://northflank.com/product/sandboxes"
+                },
+                {
+                  "excerpts": [
+                    "Northflank sandboxes are microVM-backed containers."
+                  ],
+                  "title": "Sandboxes | Northflank Application docs",
+                  "url": "https://northflank.com/docs/v1/application/sandboxes/sandboxes-on-northflank"
+                },
+                {
+                  "excerpts": [
+                    "Northflank provides microVM-backed remote code execution sandboxes using Firecracker, gVisor, and Kata, with both ephemeral and persistent"
+                  ],
+                  "title": "Remote code execution sandbox: secure isolation at scale ...",
+                  "url": "https://northflank.com/blog/remote-code-execution-sandbox"
+                }
+              ],
+              "confidence": "high",
+              "field": "summary",
+              "reasoning": "The answer is directly supported by multiple sources. Northflank documentation describes sandboxes as microVM-backed containers for running untrusted code, part of a broader platform that includes services, jobs, databases, and build pipelines."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Isolation: Docker-based sandbox environments with support for standard Docker images, Dockerfile"
+                  ],
+                  "title": "Top BYOC AI sandboxes for running untrusted code in 2026",
+                  "url": "https://northflank.com/blog/top-byoc-ai-sandboxes"
+                },
+                {
+                  "excerpts": [
+                    "Deploy containers using Northflank. Run Docker and OCI images."
+                  ],
+                  "title": "Deploy containers and Docker images",
+                  "url": "https://northflank.com/deploy/run-persistent-and-ephemeral-docker-containers"
+                }
+              ],
+              "confidence": "high",
+              "field": "docker",
+              "reasoning": "Multiple sources confirm that Docker containers can run inside sandboxes. Northflank supports standard Docker images and Dockerfile builds, and Docker-based isolation is mentioned in their sandbox documentation."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "The Northflank JavaScript client allows you to interact with Northflank via JavaScript code."
+                  ],
+                  "title": "Use the JavaScript client | Northflank API docs",
+                  "url": "https://northflank.com/docs/v1/api/use-the-javascript-client"
+                },
+                {
+                  "excerpts": [],
+                  "title": "@northflank/js-client - npm",
+                  "url": "https://www.npmjs.com/package/%40northflank/js-client"
+                },
+                {
+                  "excerpts": [],
+                  "title": "northflank \u00b7 PyPI",
+                  "url": "https://pypi.org/project/northflank/"
+                }
+              ],
+              "confidence": "medium",
+              "field": "sdks",
+              "reasoning": "The official JavaScript SDK is documented in the API docs and available as an npm package (@northflank/js-client). Additionally, a Python SDK (northflank on PyPI) exists. The JavaScript SDK is the one explicitly documented as the official client library."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Northflank offers transparent, usage-based billing, so you can scale both horizontally and vertically with no unexpected costs."
+                  ],
+                  "title": "Pricing on Northflank | Billing",
+                  "url": "https://northflank.com/docs/v1/application/billing/pricing-on-northflank"
+                },
+                {
+                  "excerpts": [
+                    "On PaaS, Northflank has the lowest published CPU rate at $0.01667/vCPU-hr, billed per second."
+                  ],
+                  "title": "AI Sandbox pricing comparison (2026) | Blog",
+                  "url": "https://northflank.com/blog/ai-sandbox-pricing"
+                }
+              ],
+              "confidence": "high",
+              "field": "usage_billed",
+              "reasoning": "Northflank uses usage-based billing - per-second billing on vCPU and memory. Resources scale to zero, and billing is tied to actual usage (active CPU time). This is confirmed by the pricing documentation and blog posts comparing pricing models."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Northflank is a full-stack cloud platform that runs microVM-backed sandboxes using Kata Containers,"
+                  ],
+                  "title": "How to spin up a secure code sandbox & microVM in ...",
+                  "url": "https://northflank.com/blog/how-to-spin-up-a-secure-code-sandbox-and-microvm-in-seconds-with-northflank-firecracker-gvisor-kata-clh"
+                },
+                {
+                  "excerpts": [
+                    "Northflank provides microVM-backed remote code execution sandboxes using Firecracker, gVisor, and Kata, with both ephemeral and persistent"
+                  ],
+                  "title": "Remote code execution sandbox: secure isolation at scale ...",
+                  "url": "https://northflank.com/blog/remote-code-execution-sandbox"
+                },
+                {
+                  "excerpts": [
+                    "Northflank supports microVM-based runtimes: Firecracker, gVisor, and Kata Containers, selected based on your workload requirements."
+                  ],
+                  "title": "Ephemeral sandbox environments [2026 guide] | Blog",
+                  "url": "https://northflank.com/blog/ephemeral-sandbox-environments"
+                }
+              ],
+              "confidence": "high",
+              "field": "isolation",
+              "reasoning": "Northflank supports multiple isolation technologies: Firecracker, gVisor, Kata Containers, and Cloud Hypervisor. These are all microVM-based isolation technologies."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Northflank persistent environments run until you terminate them with no forced time limits. paused sandboxes are kept indefinitely, though"
+                  ],
+                  "title": "Best persistent sandbox platforms for AI agents (2026) | Blog",
+                  "url": "https://northflank.com/blog/best-persistent-sandbox-platforms"
+                }
+              ],
+              "confidence": "medium",
+              "field": "notes",
+              "reasoning": "Pause/resume works by scaling to zero, which retains persistent volume and configuration but not RAM state. This means resuming requires a cold boot rather than restoration from a snapshot."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "$2.74/hour all-in, up to 62% cheaper than"
+                  ],
+                  "title": "Secure sandboxes for multi-tenant workloads",
+                  "url": "https://northflank.com/product/sandboxes"
+                },
+                {
+                  "excerpts": [
+                    "Northflank is a full-stack cloud platform that runs microVM-backed sandboxes using Kata Containers,"
+                  ],
+                  "title": "How to spin up a secure code sandbox & microVM in ...",
+                  "url": "https://northflank.com/blog/how-to-spin-up-a-secure-code-sandbox-and-microvm-in-seconds-with-northflank-firecracker-gvisor-kata-clh"
+                }
+              ],
+              "confidence": "high",
+              "field": "cold_start",
+              "reasoning": "Northflank documentation states microVMs boot in under 1 second. Additional data from a ComputeSDK benchmark shows P99 allocate latency around 566ms and P99 readiness around 733ms, which is still under a second."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Northflank persistent environments run until you terminate them with no forced time limits. paused sandboxes are kept indefinitely, though"
+                  ],
+                  "title": "Best persistent sandbox platforms for AI agents (2026) | Blog",
+                  "url": "https://northflank.com/blog/best-persistent-sandbox-platforms"
+                }
+              ],
+              "confidence": "medium",
+              "field": "memory_snapshots",
+              "reasoning": "When a sandbox is paused (scaled to zero), only persistent volumes and configuration are kept. RAM state is not snapshotted. This means resuming from pause requires a cold boot rather than restoration from a memory snapshot."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "On PaaS, Northflank has the lowest published CPU rate at $0.01667/vCPU-hr, billed per second."
+                  ],
+                  "title": "AI Sandbox pricing comparison (2026) | Blog",
+                  "url": "https://northflank.com/blog/ai-sandbox-pricing"
+                },
+                {
+                  "excerpts": [
+                    "Northflank offers transparent, usage-based billing, so you can scale both horizontally and vertically with no unexpected costs."
+                  ],
+                  "title": "Pricing on Northflank | Billing",
+                  "url": "https://northflank.com/docs/v1/application/billing/pricing-on-northflank"
+                }
+              ],
+              "confidence": "high",
+              "field": "pricing_model",
+              "reasoning": "Northflank bills per-second based on vCPU and memory (RAM) usage. This is usage-based pricing with per-second granularity."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Northflank persistent environments run until you terminate them with no forced time limits. paused sandboxes are kept indefinitely, though"
+                  ],
+                  "title": "Best persistent sandbox platforms for AI agents (2026) | Blog",
+                  "url": "https://northflank.com/blog/best-persistent-sandbox-platforms"
+                }
+              ],
+              "confidence": "medium",
+              "field": "free_while_idle",
+              "reasoning": "When a sandbox is paused (scaled to zero), compute billing stops. Only persistent storage may incur charges. Pausing effectively stops compute billing."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Scaling a service to 0 instances will make it unavailable."
+                  ],
+                  "title": "Scale instances - Northflank Application docs",
+                  "url": "https://northflank.com/docs/v1/application/scale/scale-instances"
+                }
+              ],
+              "confidence": "medium",
+              "field": "wake_on_request",
+              "reasoning": "Northflank does not document automatic wake-on-request for paused sandboxes. Scaling to zero means the sandbox is not running, and there's no indication that inbound traffic automatically resumes it."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "No forced time limits\u2014run for seconds or weeks depending on your use case."
+                  ],
+                  "title": "Secure sandboxes for multi-tenant workloads",
+                  "url": "https://northflank.com/product/sandboxes"
+                }
+              ],
+              "confidence": "high",
+              "field": "max_runtime",
+              "reasoning": "Northflank explicitly states 'No forced time limits - run for seconds or weeks.' Sandboxes can run for seconds or weeks without forced termination."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Sandboxes GPU workloads"
+                  ],
+                  "title": "Pricing",
+                  "url": "https://northflank.com/pricing"
+                },
+                {
+                  "excerpts": [
+                    "Pricing: CPU at $0.01667/vCPU-hour, memory at $0.00833/GB-hour. H100 at $2.74/hour all-inclusive."
+                  ],
+                  "title": "LangSmith Sandboxes alternatives for secure AI code ...",
+                  "url": "https://northflank.com/blog/langsmith-sandboxes-alternatives"
+                }
+              ],
+              "confidence": "high",
+              "field": "gpu",
+              "reasoning": "Northflank offers GPU instances including L4, A100 (40GB and 80GB), H100, and RTX PRO 6000 for sandbox workloads."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "MB Price $12.00/month ($0.0167/hr)"
+                  ],
+                  "title": "Pricing",
+                  "url": "https://northflank.com/pricing"
+                },
+                {
+                  "excerpts": [
+                    "On PaaS, Northflank has the lowest published CPU rate at $0.01667/vCPU-hr, billed per second."
+                  ],
+                  "title": "AI Sandbox pricing comparison (2026) | Blog",
+                  "url": "https://northflank.com/blog/ai-sandbox-pricing"
+                },
+                {
+                  "excerpts": [
+                    "Pricing: CPU at $0.01667/vCPU-hour, memory at $0.00833/GB-hour."
+                  ],
+                  "title": "LangSmith Sandboxes alternatives for secure AI code ...",
+                  "url": "https://northflank.com/blog/langsmith-sandboxes-alternatives"
+                }
+              ],
+              "confidence": "high",
+              "field": "price_headline",
+              "reasoning": "Northflank's headline CPU rate is $0.01667/vCPU-hour, billed per second. This is documented across the pricing page and blog comparisons."
+            }
+          ],
+          "content": {
+            "cold_start": "Under 1 second (microVMs boot in <1s; P99 allocate ~566ms, P99 readiness ~733ms per ComputeSDK 2026 benchmark)",
+            "docker": true,
+            "free_while_idle": true,
+            "gpu": true,
+            "isolation": "MicroVM via Firecracker, gVisor, Kata Containers, and Cloud Hypervisor",
+            "max_runtime": "No fixed limit",
+            "memory_snapshots": false,
+            "notes": "Pause/resume works by scaling to zero: persistent volumes and configuration are retained, but RAM state is not snapshotted, so resuming requires a cold boot.",
+            "price_headline": "$0.01667/vCPU-hour",
+            "pricing_model": "Per-second usage-based billing on vCPU and memory",
+            "sdks": [
+              "JavaScript"
+            ],
+            "summary": "Northflank Sandboxes are microVM-backed container workloads for running untrusted code (LLM-generated, user-submitted, AI agent, CI/CD). Each sandbox is a single deployment service that boots in under a second, with VM-level isolation and container-level performance. The product is built into the broader Northflank runtime platform (services, jobs, databases, build pipelines), and can be run on Northflank's managed infrastructure or in a customer's own VPC across AWS, GCP, Azure, Civo, Oracle Cloud, CoreWeave, on-prem, or bare metal.",
+            "usage_billed": true,
+            "wake_on_request": false
+          },
+          "type": "json"
+        }
+      },
+      "processor": "base",
+      "settings": {
+        "output_schema": {
+          "json_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "cold_start": {
+                "description": "Typical time from create or resume to running. Example: '~150 ms'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "docker": {
+                "description": "True if Docker containers can run inside the sandbox.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "free_while_idle": {
+                "description": "True if a stopped, paused, or sleeping sandbox costs nothing.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "gpu": {
+                "description": "GPU instances available.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "isolation": {
+                "description": "Isolation technology. Example: 'Firecracker microVM'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "max_runtime": {
+                "description": "Longest a sandbox may run. Example: '24 h' or 'No fixed limit'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "memory_snapshots": {
+                "description": "True if RAM state survives a pause/resume cycle, not just disk.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "notes": {
+                "description": "One factual caveat worth knowing, or null.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "price_headline": {
+                "description": "The single headline compute rate, as the provider states it. Example: '$0.05 per vCPU-hour'. When a page shows several plan tiers side by side, name the tier each figure belongs to rather than merging them, and never attribute one tier's price to another. Subscription tiers belong in pricing_model.",
+                "type": "string"
+              },
+              "pricing_model": {
+                "description": "How billing works, in one short phrase. Example: 'Per-second, billed on reserved vCPU and RAM'.",
+                "type": "string"
+              },
+              "sdks": {
+                "description": "Official SDK languages, for example ['Python', 'TypeScript'].",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "summary": {
+                "description": "Two or three plain sentences on what the product is and who uses it. No marketing language.",
+                "type": "string"
+              },
+              "usage_billed": {
+                "description": "True if the sandbox is elastic: resources flex with actual use and billing follows (active or observed CPU time). False if capacity is reserved or allocated and billed for running time regardless of use. Null if the docs do not say.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "wake_on_request": {
+                "description": "True if a stopped sandbox wakes automatically on inbound traffic.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "summary",
+              "sdks",
+              "docker",
+              "usage_billed",
+              "isolation",
+              "notes",
+              "memory_snapshots",
+              "cold_start",
+              "pricing_model",
+              "free_while_idle",
+              "wake_on_request",
+              "max_runtime",
+              "gpu",
+              "price_headline"
+            ],
+            "type": "object"
+          },
+          "type": "json"
+        },
+        "query": "Research the cloud sandbox product Northflank Sandboxes (https://northflank.com/product/sandboxes). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
+        "task_run_id": "trun_17dcc47e11014514b5be46c11a8413ec"
       },
       "status": "active",
       "type": "snapshot",
@@ -12921,6 +14198,1332 @@
         },
         "query": "Research the cloud sandbox product Scrapybara (https://scrapybara.com). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
         "task_run_id": "trun_24f44f01c78c45c8966bb8af886779f0"
+      },
+      "status": "active",
+      "type": "snapshot",
+      "webhook": {
+        "event_types": [
+          "monitor.event.detected"
+        ],
+        "url": "https://sb-7469e477-89d4-49a5-a318-5d2f34a069ff-8080.api.sailresearch.com/hooks/parallel"
+      }
+    },
+    "tencent-cubesandbox": {
+      "created_at": "2026-07-30T00:43:05.696941Z",
+      "frequency": "1d",
+      "last_run_at": "2026-07-30T00:43:05.696941Z",
+      "metadata": {
+        "site": "sandboxwatch",
+        "slug": "tencent-cubesandbox"
+      },
+      "monitor_id": "monitor_5df343fb1cf9440b940ffb899f48b03b",
+      "output": {
+        "latest_snapshot": {
+          "basis": [
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents."
+                  ],
+                  "title": "GitHub - TencentCloud/CubeSandbox: Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents. \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox"
+                },
+                {
+                  "excerpts": [
+                    "Each sandbox runs its own Linux kernel"
+                  ],
+                  "title": "CubeSandbox/docs/architecture/overview.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/index.md"
+                }
+              ],
+              "confidence": "medium",
+              "field": "summary",
+              "reasoning": "The CubeSandbox GitHub README and documentation describe it as an open-source sandbox infrastructure layer for AI agents. It uses KVM-based microVMs (via RustVMM), exposes an E2B-compatible REST API with lifecycle controls (create, pause/resume, snapshot, clone, rollback, kill), and is meant to be self-hosted on bare metal, Kubernetes, or Tencent Cloud via Terraform. The target users are developers running agent-generated or untrusted code."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture/overview.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/templates.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/templates.md"
+                }
+              ],
+              "confidence": "medium",
+              "field": "docker",
+              "reasoning": "Docker is used in the build pipeline (templates are built FROM Dockerfiles via Buildkit to create the root filesystem), but the sandbox itself is a microVM, not a Docker container. The README explicitly states: 'Sandbox is hardware-isolated MicroVM, not a container.' There is no documentation stating that users can run arbitrary Docker containers inside a running sandbox. The docs/docker directory contains deployment Dockerfiles for the platform itself."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/python"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/node at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/node"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/go at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/go"
+                },
+                {
+                  "excerpts": [],
+                  "title": "cubesandbox \u00b7 PyPI",
+                  "url": "https://pypi.org/project/cubesandbox/"
+                }
+              ],
+              "confidence": "high",
+              "field": "sdks",
+              "reasoning": "The GitHub repository contains three SDK directories: sdk/python, sdk/node (TypeScript), and sdk/go. The PyPI package 'cubesandbox' and npm packages confirm Python and Node/TypeScript SDKs. The Go SDK directory confirms a Go SDK."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "GitHub - TencentCloud/CubeSandbox: Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents. \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/index.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/webui.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/webui.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/quickstart.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/quickstart.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/quickstart.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/guide/quickstart.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/index.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture/overview.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture/overview.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/examples at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/examples"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/examples at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/tree/master/examples"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/templates.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/templates.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/templates.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/guide/templates.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/tree/master/sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "cubesandbox - npm search",
+                  "url": "https://www.npmjs.com/search?q=cubesandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "cubesandbox \u00b7 PyPI",
+                  "url": "https://pypi.org/project/cubesandbox/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/python"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/node at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/node"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/go at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/go"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python/README.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/sdk/python/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python/README.zh.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/sdk/python/README.zh.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Snapshot, Rollback & Clone | Cube Sandbox",
+                  "url": "https://cubesandbox.com/guide/snapshot-rollback-clone.html"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Cube Sandbox v0.3.0: A Time Machine and a Cloning ...",
+                  "url": "https://www.tencentcloud.com/dynamic/blogs/sample-article/101259"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/changelog/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/changelog/index.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/changelog/v0.3.0.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/changelog/v0.3.0.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/changelog/v0.3.0.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/changelog/v0.3.0.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Changelog | Cube Sandbox",
+                  "url": "https://cubesandbox.com/changelog"
+                },
+                {
+                  "excerpts": [],
+                  "title": "About us - Cube Sandbox",
+                  "url": "https://cubesandbox.com/about-us.html"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Cube Sandbox",
+                  "url": "https://cubesandbox.com/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/sdk/python/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/sdk/go/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/sdk/node/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docs"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docker at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docker"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/snapshot-rollback-clone.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/snapshot-rollback-clone.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docs/guide"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docs/architecture"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/examples at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/examples"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/guide/snapshot-rollback-clone.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/lifecycle.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/lifecycle.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/guide/lifecycle.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/guide/introduction.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction | Cube Sandbox",
+                  "url": "https://cubesandbox.com/guide/introduction.html"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Tencent Cloud Cube Sandbox Goes Fully Open-Source, ...",
+                  "url": "https://www.tencentcloud.com/dynamic/news-details/101123"
+                }
+              ],
+              "confidence": "medium",
+              "field": "usage_billed",
+              "reasoning": "CubeSandbox is open-source software that is self-hosted. There is no managed billing model documented; users deploy it on their own bare metal, Kubernetes, or Tencent Cloud infrastructure. The docs do not describe an elastic billing model tied to active CPU time. Billing, if any, would be to the underlying cloud provider (e.g., Tencent Cloud for VMs)."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Each sandbox runs its own Linux kernel"
+                  ],
+                  "title": "CubeSandbox/docs/architecture/overview.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [
+                    "Secure & Lightweight Sandbox"
+                  ],
+                  "title": "GitHub - TencentCloud/CubeSandbox: Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents. \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox"
+                }
+              ],
+              "confidence": "high",
+              "field": "isolation",
+              "reasoning": "The architecture overview explicitly states: 'KVM MicroVM via RustVMM' and 'each sandbox runs its own Linux kernel; hardware-isolated from the host and from other sandboxes.' This is confirmed in the README and architecture docs."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Apache 2.0"
+                  ],
+                  "title": "GitHub - TencentCloud/CubeSandbox: Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents. \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/templates.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/templates.md"
+                }
+              ],
+              "confidence": "high",
+              "field": "notes",
+              "reasoning": "CubeSandbox is open-source (Apache-2.0) software intended for self-hosting; it is not a managed SaaS with published pricing. Sandbox root filesystem templates are built FROM Dockerfiles via Buildkit, but the running sandbox is a hardware-isolated MicroVM, not a container."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox Core Operations Performance Benchmark ...",
+                  "url": "https://dev.to/jerrylin_0101/cubesandbox-core-operations-performance-benchmark-report-pvm-cloud-server-4dn8"
+                }
+              ],
+              "confidence": "medium",
+              "field": "cold_start",
+              "reasoning": "The performance benchmark blog post states approximately 60ms average cold start time for serial creation. Under 50 concurrent creations, the average stays under ~280ms with P99 at ~137ms."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "Snapshot, Rollback & Clone | Cube Sandbox",
+                  "url": "https://cubesandbox.com/guide/snapshot-rollback-clone.html"
+                },
+                {
+                  "excerpts": [
+                    "memory + filesystem snapshots on running sandboxes"
+                  ],
+                  "title": "CubeSandbox Core Operations Performance Benchmark ...",
+                  "url": "https://dev.to/jerrylin_0101/cubesandbox-core-operations-performance-benchmark-report-pvm-cloud-server-4dn8"
+                }
+              ],
+              "confidence": "high",
+              "field": "memory_snapshots",
+              "reasoning": "The snapshot/rollback/clone documentation and changelog v0.3.0 indicate support for memory + filesystem snapshots that can be restored near-instantly. The dev.to article also mentions 'memory + filesystem snapshots on running sandboxes that can be restored near-instantly.'"
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "Apache 2.0",
+                    "open-source"
+                  ],
+                  "title": "GitHub - TencentCloud/CubeSandbox: Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents. \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox"
+                }
+              ],
+              "confidence": "high",
+              "field": "pricing_model",
+              "reasoning": "CubeSandbox is open-source/self-hosted software. There is no documented pricing model from the product itself. Users would pay their underlying infrastructure provider (e.g., Tencent Cloud for CVM instances). No per-resource or per-second billing model is published by CubeSandbox."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "pause a running sandbox so that it stops consuming CPU / memory"
+                  ],
+                  "title": "Pausing and Resuming",
+                  "url": "https://openkruise.io/kruiseagents/user-manuals/pause-resume"
+                }
+              ],
+              "confidence": "medium",
+              "field": "free_while_idle",
+              "reasoning": "As open-source self-hosted software, there is no documented billing for idle/stopped sandboxes from the product itself. Cost would depend on the user's underlying infrastructure. The OpenKruise pause/resume feature allows pausing sandboxes to stop consuming CPU/memory, but this is a resource optimization, not a billing feature."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [
+                    "later resume it back to a running state"
+                  ],
+                  "title": "Pausing and Resuming",
+                  "url": "https://openkruise.io/kruiseagents/user-manuals/pause-resume"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/lifecycle.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/lifecycle.md"
+                }
+              ],
+              "confidence": "medium",
+              "field": "wake_on_request",
+              "reasoning": "The OpenKruise documentation mentions pausing and resuming sandboxes, but there is no documented automatic wake-on-inbound-traffic feature. Resuming requires an explicit API call. The sandbox lifecycle is controlled via API operations."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "GitHub - TencentCloud/CubeSandbox: Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents. \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/index.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/webui.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/webui.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/quickstart.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/quickstart.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/quickstart.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/guide/quickstart.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/index.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture/overview.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture/overview.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/examples at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/examples"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/examples at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/tree/master/examples"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/templates.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/templates.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/templates.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/guide/templates.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/tree/master/sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "cubesandbox - npm search",
+                  "url": "https://www.npmjs.com/search?q=cubesandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "cubesandbox \u00b7 PyPI",
+                  "url": "https://pypi.org/project/cubesandbox/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/python"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/node at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/node"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/go at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/go"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python/README.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/sdk/python/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python/README.zh.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/sdk/python/README.zh.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Snapshot, Rollback & Clone | Cube Sandbox",
+                  "url": "https://cubesandbox.com/guide/snapshot-rollback-clone.html"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Cube Sandbox v0.3.0: A Time Machine and a Cloning ...",
+                  "url": "https://www.tencentcloud.com/dynamic/blogs/sample-article/101259"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/changelog/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/changelog/index.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/changelog/v0.3.0.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/changelog/v0.3.0.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/changelog/v0.3.0.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/changelog/v0.3.0.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Changelog | Cube Sandbox",
+                  "url": "https://cubesandbox.com/changelog"
+                },
+                {
+                  "excerpts": [],
+                  "title": "About us - Cube Sandbox",
+                  "url": "https://cubesandbox.com/about-us.html"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Cube Sandbox",
+                  "url": "https://cubesandbox.com/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/sdk/python/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/sdk/go/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/sdk/node/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docs"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docker at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docker"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/snapshot-rollback-clone.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/snapshot-rollback-clone.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docs/guide"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docs/architecture"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/examples at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/examples"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/guide/snapshot-rollback-clone.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/lifecycle.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/lifecycle.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/guide/lifecycle.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/guide/introduction.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction | Cube Sandbox",
+                  "url": "https://cubesandbox.com/guide/introduction.html"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Tencent Cloud Cube Sandbox Goes Fully Open-Source, ...",
+                  "url": "https://www.tencentcloud.com/dynamic/news-details/101123"
+                }
+              ],
+              "confidence": "medium",
+              "field": "max_runtime",
+              "reasoning": "No documented maximum runtime per sandbox was found in the GitHub repository, documentation, or changelogs. The product does not specify a fixed maximum lifetime for sandboxes."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "GitHub - TencentCloud/CubeSandbox: Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents. \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/index.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/webui.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/webui.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/quickstart.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/quickstart.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/quickstart.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/guide/quickstart.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/index.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture/overview.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture/overview.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/examples at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/examples"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/examples at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/tree/master/examples"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/templates.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/templates.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/templates.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/guide/templates.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/tree/master/sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "cubesandbox - npm search",
+                  "url": "https://www.npmjs.com/search?q=cubesandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "cubesandbox \u00b7 PyPI",
+                  "url": "https://pypi.org/project/cubesandbox/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/python"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/node at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/node"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/go at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/go"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python/README.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/sdk/python/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python/README.zh.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/sdk/python/README.zh.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Snapshot, Rollback & Clone | Cube Sandbox",
+                  "url": "https://cubesandbox.com/guide/snapshot-rollback-clone.html"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Cube Sandbox v0.3.0: A Time Machine and a Cloning ...",
+                  "url": "https://www.tencentcloud.com/dynamic/blogs/sample-article/101259"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/changelog/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/changelog/index.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/changelog/v0.3.0.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/changelog/v0.3.0.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/changelog/v0.3.0.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/changelog/v0.3.0.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Changelog | Cube Sandbox",
+                  "url": "https://cubesandbox.com/changelog"
+                },
+                {
+                  "excerpts": [],
+                  "title": "About us - Cube Sandbox",
+                  "url": "https://cubesandbox.com/about-us.html"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Cube Sandbox",
+                  "url": "https://cubesandbox.com/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/sdk/python/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/sdk/go/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/sdk/node/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docs"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docker at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docker"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/snapshot-rollback-clone.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/snapshot-rollback-clone.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docs/guide"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docs/architecture"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/examples at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/examples"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/guide/snapshot-rollback-clone.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/lifecycle.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/lifecycle.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/guide/lifecycle.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/guide/introduction.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction | Cube Sandbox",
+                  "url": "https://cubesandbox.com/guide/introduction.html"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Tencent Cloud Cube Sandbox Goes Fully Open-Source, ...",
+                  "url": "https://www.tencentcloud.com/dynamic/news-details/101123"
+                }
+              ],
+              "confidence": "medium",
+              "field": "gpu",
+              "reasoning": "No documentation found about GPU support for sandboxes. The architecture overview, README, and changelogs do not mention GPU passthrough or GPU instances. GPU-related search results were from unrelated sources (Qubes OS, NVIDIA)."
+            },
+            {
+              "citations": [
+                {
+                  "excerpts": [],
+                  "title": "GitHub - TencentCloud/CubeSandbox: Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents. \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/index.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/webui.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/webui.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/quickstart.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/quickstart.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/quickstart.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/guide/quickstart.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/index.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture/overview.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture/overview.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/examples at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/examples"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/examples at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/tree/master/examples"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/templates.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/templates.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/templates.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/guide/templates.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/tree/master/sdk"
+                },
+                {
+                  "excerpts": [],
+                  "title": "cubesandbox - npm search",
+                  "url": "https://www.npmjs.com/search?q=cubesandbox"
+                },
+                {
+                  "excerpts": [],
+                  "title": "cubesandbox \u00b7 PyPI",
+                  "url": "https://pypi.org/project/cubesandbox/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/python"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/node at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/node"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/go at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/go"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python/README.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/sdk/python/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/sdk/python/README.zh.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/sdk/python/README.zh.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Snapshot, Rollback & Clone | Cube Sandbox",
+                  "url": "https://cubesandbox.com/guide/snapshot-rollback-clone.html"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Cube Sandbox v0.3.0: A Time Machine and a Cloning ...",
+                  "url": "https://www.tencentcloud.com/dynamic/blogs/sample-article/101259"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/changelog/index.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/changelog/index.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/changelog/v0.3.0.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/changelog/v0.3.0.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/changelog/v0.3.0.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/changelog/v0.3.0.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Changelog | Cube Sandbox",
+                  "url": "https://cubesandbox.com/changelog"
+                },
+                {
+                  "excerpts": [],
+                  "title": "About us - Cube Sandbox",
+                  "url": "https://cubesandbox.com/about-us.html"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Cube Sandbox",
+                  "url": "https://cubesandbox.com/"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/sdk/python/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/sdk/go/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/sdk/node/README.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docs"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docker at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docker"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/snapshot-rollback-clone.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/snapshot-rollback-clone.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docs/guide"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/architecture at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/docs/architecture"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/examples at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/examples"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/guide/snapshot-rollback-clone.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/architecture/overview.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "CubeSandbox/docs/guide/lifecycle.md at master \u00b7 TencentCloud/CubeSandbox \u00b7 GitHub",
+                  "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/lifecycle.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/guide/lifecycle.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Fetched web page",
+                  "url": "https://raw.githubusercontent.com/tencentcloud/CubeSandbox/master/docs/guide/introduction.md"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Introduction | Cube Sandbox",
+                  "url": "https://cubesandbox.com/guide/introduction.html"
+                },
+                {
+                  "excerpts": [],
+                  "title": "Tencent Cloud Cube Sandbox Goes Fully Open-Source, ...",
+                  "url": "https://www.tencentcloud.com/dynamic/news-details/101123"
+                }
+              ],
+              "confidence": "medium",
+              "field": "price_headline",
+              "reasoning": "CubeSandbox is open-source software (Apache-2.0). There is no headline compute rate published by the product itself. Users would pay their underlying infrastructure provider (e.g., Tencent Cloud CVM pricing). No per-vCPU-hour or per-GB-hour rate is published by CubeSandbox."
+            }
+          ],
+          "content": {
+            "cold_start": "~60 ms average cold start (serial); under 50 concurrent creations avg stays under ~280 ms with P99 ~137 ms",
+            "docker": false,
+            "free_while_idle": null,
+            "gpu": null,
+            "isolation": "KVM MicroVM via RustVMM (each sandbox runs its own Linux kernel; hardware-isolated from the host and from other sandboxes)",
+            "max_runtime": null,
+            "memory_snapshots": true,
+            "notes": "CubeSandbox is open-source (Apache-2.0) software meant to be self-hosted on bare metal, Kubernetes, or Tencent Cloud (via Terraform); it is not a managed SaaS with published per-resource pricing. Root filesystem templates are built FROM Dockerfiles via Buildkit, but the running sandbox is a hardware-isolated KVM MicroVM, not a container.",
+            "price_headline": "No published headline rate (open-source/self-hosted software)",
+            "pricing_model": "Open-source/self-hosted software; no product-level billing model published. Users pay their underlying infrastructure provider.",
+            "sdks": [
+              "Python",
+              "TypeScript",
+              "Go"
+            ],
+            "summary": "CubeSandbox is an open-source (Apache-2.0) infrastructure layer for executing code on behalf of AI agents. Each sandbox runs inside a hardware-isolated KVM microVM built on RustVMM, with its own Linux kernel, and exposes create/pause/resume/snapshot/clone/rollback/kill lifecycle operations over an E2B-compatible REST API. It is deployed by developers self-hosting on bare metal, Kubernetes, or Tencent Cloud, and is used to safely run agent-generated or untrusted code.",
+            "usage_billed": null,
+            "wake_on_request": false
+          },
+          "type": "json"
+        }
+      },
+      "processor": "base",
+      "settings": {
+        "output_schema": {
+          "json_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "cold_start": {
+                "description": "Typical time from create or resume to running. Example: '~150 ms'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "docker": {
+                "description": "True if Docker containers can run inside the sandbox.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "free_while_idle": {
+                "description": "True if a stopped, paused, or sleeping sandbox costs nothing.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "gpu": {
+                "description": "GPU instances available.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "isolation": {
+                "description": "Isolation technology. Example: 'Firecracker microVM'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "max_runtime": {
+                "description": "Longest a sandbox may run. Example: '24 h' or 'No fixed limit'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "memory_snapshots": {
+                "description": "True if RAM state survives a pause/resume cycle, not just disk.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "notes": {
+                "description": "One factual caveat worth knowing, or null.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "price_headline": {
+                "description": "The single headline compute rate, as the provider states it. Example: '$0.05 per vCPU-hour'. When a page shows several plan tiers side by side, name the tier each figure belongs to rather than merging them, and never attribute one tier's price to another. Subscription tiers belong in pricing_model.",
+                "type": "string"
+              },
+              "pricing_model": {
+                "description": "How billing works, in one short phrase. Example: 'Per-second, billed on reserved vCPU and RAM'.",
+                "type": "string"
+              },
+              "sdks": {
+                "description": "Official SDK languages, for example ['Python', 'TypeScript'].",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "summary": {
+                "description": "Two or three plain sentences on what the product is and who uses it. No marketing language.",
+                "type": "string"
+              },
+              "usage_billed": {
+                "description": "True if the sandbox is elastic: resources flex with actual use and billing follows (active or observed CPU time). False if capacity is reserved or allocated and billed for running time regardless of use. Null if the docs do not say.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "wake_on_request": {
+                "description": "True if a stopped sandbox wakes automatically on inbound traffic.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "summary",
+              "sdks",
+              "docker",
+              "usage_billed",
+              "isolation",
+              "notes",
+              "memory_snapshots",
+              "cold_start",
+              "pricing_model",
+              "free_while_idle",
+              "wake_on_request",
+              "max_runtime",
+              "gpu",
+              "price_headline"
+            ],
+            "type": "object"
+          },
+          "type": "json"
+        },
+        "query": "Research the cloud sandbox product Tencent Cloud CubeSandbox (https://github.com/tencentcloud/CubeSandbox). These sandboxes run\ncode for AI agents: isolated compute that an agent or its harness controls.\n\nFill every field of the output schema from public sources: official docs and\npricing pages first, then changelogs and engineering blog posts. Use null for\nanything the public record doesn't state. Do not guess numbers and do not copy\nmarketing claims; report what the docs actually say.\n",
+        "task_run_id": "trun_17dcc47e11014514bc791fa6145397a3"
       },
       "status": "active",
       "type": "snapshot",

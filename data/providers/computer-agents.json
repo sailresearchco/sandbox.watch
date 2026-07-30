@@ -3,26 +3,50 @@
   "docker": null,
   "free_while_idle": null,
   "gpu": null,
-  "isolation": "Isolated cloud container with strict resource and access boundaries (underlying technology not specified)",
-  "last_verified": "2026-07-28",
+  "isolation": "Isolated Linux container per agent (technology not specified)",
+  "last_verified": "2026-07-30",
   "max_runtime": null,
   "memory_snapshots": null,
   "name": "Computer Agents",
-  "notes": null,
-  "price_headline": "$20/month for your first AI employee; starts free with $1.00 in included credits",
-  "pricing_model": "Subscription with included credits",
+  "notes": "Each agent runs in its own isolated Linux container with custom runtimes (Python, Node, Go, Ruby, Rust, Java) and a 4GB storage quota; Lite is the default computer tier and GUI is only enabled on the Desktop tier.",
+  "price_headline": "Lite: $0.0026/min ($0.16/hour) | Standard: $0.0052/min ($0.31/hour) | Power: $0.0097/min ($0.58/hour) | Desktop: $0.013/min ($0.78/hour)",
+  "pricing_model": "Per-minute, billed by computer tier (Lite/Standard/Power/Desktop); monthly subscriptions bundle credits.",
   "sdks": [
-    "TypeScript",
-    "Python"
+    "Python",
+    "TypeScript"
   ],
   "slug": "computer-agents",
   "sources": [
     {
       "url": "https://computer-agents.com/"
+    },
+    {
+      "url": "https://computer-agents.com/platform"
+    },
+    {
+      "url": "https://computer-agents.com/features"
+    },
+    {
+      "url": "https://computer-agents.com/docs"
+    },
+    {
+      "url": "https://github.com/computer-agents/computer-agents-sdk-python"
+    },
+    {
+      "url": "https://github.com/computer-agents/computer-agents-sdk"
+    },
+    {
+      "url": "https://pypi.org/project/computer-agents/"
+    },
+    {
+      "url": "https://www.npmjs.com/package/computer-agents"
+    },
+    {
+      "url": "https://computer-agents.com/pricing"
     }
   ],
-  "summary": "Computer Agents is an agentic compute platform that gives each AI agent a persistent cloud computer with a browser, terminal, files, and deployment tools. Each agent runs in its own isolated cloud container with strict resource and access boundaries, and work persists across sessions in a shared workspace. It is used by teams running agents that research, build, and operate products and workflows end to end.",
-  "usage_billed": null,
+  "summary": "Computer Agents (computer-agents.com) is an Agentic Compute Platform that gives each AI agent its own persistent cloud computer, running code inside an isolated Linux container with custom runtimes and packages. Developers and teams use it to run coding, research, marketing, finance, and product agents from a web UI, REST API, or the official Python and TypeScript SDKs.",
+  "usage_billed": true,
   "wake_on_request": null,
   "website": "https://computer-agents.com"
 }

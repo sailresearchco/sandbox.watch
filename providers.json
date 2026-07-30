@@ -128,5 +128,25 @@
     "name": "exe.dev",
     "slug": "exe-dev",
     "website": "https://exe.dev"
+  },
+  {
+    "name": "Northflank Sandboxes",
+    "slug": "northflank",
+    "website": "https://northflank.com/product/sandboxes"
+  },
+  {
+    "name": "Ellipsis",
+    "slug": "ellipsis",
+    "website": "https://www.ellipsis.dev"
+  },
+  {
+    "name": "Tencent Cloud CubeSandbox",
+    "slug": "tencent-cubesandbox",
+    "website": "https://github.com/tencentcloud/CubeSandbox"
+  },
+  {
+    "name": "Computer Agents",
+    "slug": "computer-agents",
+    "website": "https://computer-agents.com"
   }
 ]

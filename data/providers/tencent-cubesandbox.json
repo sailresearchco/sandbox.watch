@@ -1,1 +1,62 @@
-{"cold_start": "under 60 ms", "docker": null, "free_while_idle": null, "gpu": null, "isolation": "RustVMM and KVM microVM", "last_verified": "2026-07-27", "max_runtime": null, "memory_snapshots": null, "name": "Tencent Cloud CubeSandbox", "notes": "Tencent describes CubeSandbox as a high-performance, lightweight sandbox service for AI agents, with under 5 MB of memory overhead per sandbox.", "price_headline": null, "pricing_model": null, "sdks": [], "slug": "tencent-cubesandbox", "sources": [{"url": "https://github.com/tencentcloud/CubeSandbox"}, {"url": "https://aideveloper44.com/ReleaseCalendar"}], "summary": "Tencent Cloud CubeSandbox is a secure, lightweight sandbox service for AI agents, built on RustVMM and KVM, designed for fast concurrent startup and high deployment density.", "usage_billed": null, "wake_on_request": null, "website": "https://github.com/tencentcloud/CubeSandbox"}
+{
+  "cold_start": "~60 ms average cold start (serial); under 50 concurrent creations avg stays under ~280 ms with P99 ~137 ms",
+  "docker": false,
+  "free_while_idle": null,
+  "gpu": null,
+  "isolation": "KVM MicroVM via RustVMM (each sandbox runs its own Linux kernel; hardware-isolated from the host and from other sandboxes)",
+  "last_verified": "2026-07-30",
+  "max_runtime": null,
+  "memory_snapshots": true,
+  "name": "Tencent Cloud CubeSandbox",
+  "notes": "CubeSandbox is open-source (Apache-2.0) software meant to be self-hosted on bare metal, Kubernetes, or Tencent Cloud (via Terraform); it is not a managed SaaS with published per-resource pricing. Root filesystem templates are built FROM Dockerfiles via Buildkit, but the running sandbox is a hardware-isolated KVM MicroVM, not a container.",
+  "price_headline": "No published headline rate (open-source/self-hosted software)",
+  "pricing_model": "Open-source/self-hosted software; no product-level billing model published. Users pay their underlying infrastructure provider.",
+  "sdks": [
+    "Python",
+    "TypeScript",
+    "Go"
+  ],
+  "slug": "tencent-cubesandbox",
+  "sources": [
+    {
+      "url": "https://github.com/tencentcloud/CubeSandbox"
+    },
+    {
+      "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/architecture/overview.md"
+    },
+    {
+      "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/index.md"
+    },
+    {
+      "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/templates.md"
+    },
+    {
+      "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/python"
+    },
+    {
+      "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/node"
+    },
+    {
+      "url": "https://github.com/tencentcloud/CubeSandbox/tree/master/sdk/go"
+    },
+    {
+      "url": "https://pypi.org/project/cubesandbox/"
+    },
+    {
+      "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/webui.md"
+    },
+    {
+      "url": "https://github.com/tencentcloud/CubeSandbox/blob/master/docs/guide/quickstart.md"
+    },
+    {
+      "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/guide/quickstart.md"
+    },
+    {
+      "url": "https://github.com/TencentCloud/CubeSandbox/blob/master/docs/index.md"
+    }
+  ],
+  "summary": "CubeSandbox is an open-source (Apache-2.0) infrastructure layer for executing code on behalf of AI agents. Each sandbox runs inside a hardware-isolated KVM microVM built on RustVMM, with its own Linux kernel, and exposes create/pause/resume/snapshot/clone/rollback/kill lifecycle operations over an E2B-compatible REST API. It is deployed by developers self-hosting on bare metal, Kubernetes, or Tencent Cloud, and is used to safely run agent-generated or untrusted code.",
+  "usage_billed": null,
+  "wake_on_request": false,
+  "website": "https://github.com/tencentcloud/CubeSandbox"
+}

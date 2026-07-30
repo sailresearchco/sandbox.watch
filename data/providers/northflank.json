@@ -1,1 +1,60 @@
-{"cold_start": null, "docker": null, "free_while_idle": null, "gpu": null, "isolation": null, "last_verified": "2026-07-29", "max_runtime": null, "memory_snapshots": null, "name": "Northflank Sandboxes", "notes": null, "price_headline": null, "pricing_model": null, "sdks": [], "slug": "northflank", "sources": [{"url": "https://northflank.com/blog/best-platform-for-deploying-long-running-ai-agents"}], "summary": "Northflank Sandboxes run untrusted code in isolated microVMs, either ephemerally or persistently, for AI agents that run commands or agent-generated code. They are part of Northflank's broader container platform, which also runs services, jobs, databases, queues, storage, and GPU workloads alongside sandboxes.", "usage_billed": null, "wake_on_request": null, "website": "https://northflank.com/product/sandboxes"}
+{
+  "cold_start": "Under 1 second (microVMs boot in <1s; P99 allocate ~566ms, P99 readiness ~733ms per ComputeSDK 2026 benchmark)",
+  "docker": true,
+  "free_while_idle": true,
+  "gpu": true,
+  "isolation": "MicroVM via Firecracker, gVisor, Kata Containers, and Cloud Hypervisor",
+  "last_verified": "2026-07-30",
+  "max_runtime": "No fixed limit",
+  "memory_snapshots": false,
+  "name": "Northflank Sandboxes",
+  "notes": "Pause/resume works by scaling to zero: persistent volumes and configuration are retained, but RAM state is not snapshotted, so resuming requires a cold boot.",
+  "price_headline": "$0.01667/vCPU-hour",
+  "pricing_model": "Per-second usage-based billing on vCPU and memory",
+  "sdks": [
+    "JavaScript"
+  ],
+  "slug": "northflank",
+  "sources": [
+    {
+      "url": "https://northflank.com/product/sandboxes"
+    },
+    {
+      "url": "https://northflank.com/docs/v1/application/sandboxes/sandboxes-on-northflank"
+    },
+    {
+      "url": "https://northflank.com/blog/remote-code-execution-sandbox"
+    },
+    {
+      "url": "https://northflank.com/blog/top-byoc-ai-sandboxes"
+    },
+    {
+      "url": "https://northflank.com/deploy/run-persistent-and-ephemeral-docker-containers"
+    },
+    {
+      "url": "https://northflank.com/docs/v1/api/use-the-javascript-client"
+    },
+    {
+      "url": "https://www.npmjs.com/package/%40northflank/js-client"
+    },
+    {
+      "url": "https://pypi.org/project/northflank/"
+    },
+    {
+      "url": "https://northflank.com/docs/v1/application/billing/pricing-on-northflank"
+    },
+    {
+      "url": "https://northflank.com/blog/ai-sandbox-pricing"
+    },
+    {
+      "url": "https://northflank.com/blog/how-to-spin-up-a-secure-code-sandbox-and-microvm-in-seconds-with-northflank-firecracker-gvisor-kata-clh"
+    },
+    {
+      "url": "https://northflank.com/blog/ephemeral-sandbox-environments"
+    }
+  ],
+  "summary": "Northflank Sandboxes are microVM-backed container workloads for running untrusted code (LLM-generated, user-submitted, AI agent, CI/CD). Each sandbox is a single deployment service that boots in under a second, with VM-level isolation and container-level performance. The product is built into the broader Northflank runtime platform (services, jobs, databases, build pipelines), and can be run on Northflank's managed infrastructure or in a customer's own VPC across AWS, GCP, Azure, Civo, Oracle Cloud, CoreWeave, on-prem, or bare metal.",
+  "usage_billed": true,
+  "wake_on_request": false,
+  "website": "https://northflank.com/product/sandboxes"
+}
