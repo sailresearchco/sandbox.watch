@@ -102,6 +102,114 @@ def _provider_files() -> set[str]:
     return {path.name for path in config.providers_dir().glob("*.json")}
 
 
+def queue_research(slugs: set[str]) -> None:
+    """Mark newly created products for their first full research pass.
+
+    A turn writes only what its event cited, which is usually a name, a URL
+    and little else. Without this the row would sit half empty forever and
+    nothing would watch the product for changes."""
+    if not slugs:
+        return
+    directory = config.pending_research_dir()
+    directory.mkdir(parents=True, exist_ok=True)
+    for slug in slugs:
+        (directory / slug).touch()
+    logger.info("queued first research for %s", sorted(slugs))
+
+
+def complete_new_provider(slug: str, processor: str = "pro") -> str:
+    """Research a newly discovered product, then start monitoring it.
+
+    Returns a short status string. Imports bootstrap lazily because bootstrap
+    imports this module."""
+    from . import bootstrap
+
+    path = config.providers_dir() / f"{slug}.json"
+    if not path.is_file():
+        return "gone"
+    stub = json.loads(path.read_text())
+    seed = {"name": stub["name"], "slug": slug, "website": stub["website"]}
+    client = default_client()
+
+    runs = bootstrap.research_all(client, [seed], processor)
+    run_id = runs[slug]
+    before = path.read_text()
+    bootstrap.write_provider_file(
+        seed, client.task_result(run_id, timeout_seconds=3600)
+    )
+    errors = providers.validate_all()
+    if errors:
+        # Keep the stub rather than publish a malformed row.
+        path.write_text(before)
+        logger.warning("research for %s failed validation: %s", slug, errors)
+        return "invalid"
+
+    # Census entry, so the product is a first-class row rather than a file
+    # that happens to exist.
+    census_path = config.root_dir() / "providers.json"
+    census = json.loads(census_path.read_text())
+    if not any(entry.get("slug") == slug for entry in census):
+        census.append(seed)
+        census_path.write_text(json.dumps(census, indent=2) + "\n")
+
+    monitors_path = config.data_dir() / "monitors.json"
+    monitors = json.loads(monitors_path.read_text())
+    # Reuse the webhook the existing monitors already point at, so a new
+    # monitor can never drift onto a stale URL.
+    webhook_url = ""
+    for record in list((monitors.get("providers") or {}).values()) + [
+        monitors.get("new_products")
+    ]:
+        url = ((record or {}).get("webhook") or {}).get("url")
+        if url:
+            webhook_url = url
+            break
+    if not webhook_url:
+        logger.warning("no webhook url on record; skipping monitor for %s", slug)
+        commit_and_push(
+            f"{slug}: research the new entry",
+            paths=("data", "site", "providers.json"),
+        )
+        return "researched-unmonitored"
+    created = client.create_monitor(
+        monitor_type="snapshot",
+        frequency="1d",
+        settings={"task_run_id": run_id},
+        webhook_url=webhook_url,
+        processor="base",
+        metadata={"site": "sandboxwatch", "slug": slug},
+    )
+    monitors.setdefault("providers", {})[slug] = created
+    monitors_path.write_text(json.dumps(monitors, indent=2, sort_keys=True) + "\n")
+
+    commit_and_push(
+        f"{slug}: research the new entry and start monitoring it",
+        paths=("data", "site", "providers.json"),
+    )
+    return "researched"
+
+
+def drain_pending_research(limit: int = 3) -> list[tuple[str, str]]:
+    """Complete queued new products, a few per wake to bound cost and how
+    long the box stays awake. Anything left waits for the next wake."""
+    directory = config.pending_research_dir()
+    if not directory.is_dir():
+        return []
+    results = []
+    for marker in sorted(directory.iterdir())[:limit]:
+        slug = marker.name
+        try:
+            status = complete_new_provider(slug)
+        except Exception:
+            logger.exception("first research failed for %s", slug)
+            status = "error"
+        # Drop the marker either way: a retry loop here would re-spend money
+        # on every wake. An operator can requeue with bootstrap --only.
+        marker.unlink(missing_ok=True)
+        results.append((slug, status))
+    return results
+
+
 def revert_working_tree() -> None:
     _git("checkout", "--", ".")
     _git("clean", "-fdq", "data", "site")
@@ -218,7 +326,8 @@ def run_turn(payload: dict, client: ParallelClient | None = None) -> dict:
     if agent_ok and errors:
         logger.warning("agent output failed validation: %s", errors)
 
-    return _finish_turn(
+    created_slugs = {n[:-5] for n in _provider_files() - files_before}
+    entry = _finish_turn(
         started=started,
         turn_dir=turn_dir,
         kind="monitor_event",
@@ -229,6 +338,9 @@ def run_turn(payload: dict, client: ParallelClient | None = None) -> dict:
             "monitor_id": details["monitor_id"],
         },
     )
+    if entry["status"] == "applied":
+        queue_research(created_slugs)
+    return entry
 
 
 def run_discovery_turn(discovery_path: Path | None = None) -> dict:
@@ -268,7 +380,8 @@ def run_discovery_turn(discovery_path: Path | None = None) -> dict:
     if agent_ok and errors:
         logger.warning("discovery turn failed validation: %s", errors)
 
-    return _finish_turn(
+    created_slugs = {n[:-5] for n in _provider_files() - files_before}
+    entry = _finish_turn(
         started=started,
         turn_dir=turn_dir,
         kind="discovery",
@@ -276,3 +389,6 @@ def run_discovery_turn(discovery_path: Path | None = None) -> dict:
         errors=errors,
         commit_paths=("data", "site", "providers.json"),
     )
+    if entry["status"] == "applied":
+        queue_research(created_slugs)
+    return entry

@@ -254,6 +254,10 @@ def _maybe_start_worker() -> None:
 def _drain_pending() -> None:
     try:
         _drain_loop()
+        # New products an agent turn created arrive as near-empty stubs.
+        # Research them and start monitoring them before going back to sleep.
+        for slug, status in turn.drain_pending_research():
+            logger.info("first research for %s: %s", slug, status)
     finally:
         _turn_lock.release()
         _touch_activity()

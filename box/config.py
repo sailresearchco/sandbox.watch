@@ -46,6 +46,12 @@ def busy_marker() -> Path:
     return state_dir() / "busy"
 
 
+def pending_research_dir() -> Path:
+    """Slugs an agent turn created from thin event evidence, waiting on their
+    first full research pass and their own monitor."""
+    return state_dir() / "pending-research"
+
+
 def busy_holds_dir() -> Path:
     """Directory of per-process hold files that pause idle self-sleep.
 

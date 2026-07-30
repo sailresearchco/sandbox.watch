@@ -206,7 +206,16 @@ def create_monitors(
     client: ParallelClient, runs: dict[str, str], webhook_url: str, frequency: str
 ) -> dict:
     """One snapshot monitor per provider (diffs against the research run) plus
-    one event-stream monitor that watches for new products."""
+    one event-stream monitor that watches for new products.
+
+    A snapshot monitor can only be created from a task run that still exists:
+    Parallel expires run records after a while (ours were gone within nine
+    days), and the create then fails with "task run id not found". Running
+    monitors are unaffected, since Parallel keeps their baseline internally,
+    but the run id recorded in monitors.json stops being usable. Anything
+    that needs to recreate a monitor, including changing its processor, which
+    the update endpoint does not support, therefore needs fresh research
+    first. Do not plan on reusing an old baseline."""
     cancel_existing_monitors(client)
     monitors: dict[str, dict] = {"providers": {}, "new_products": None}
     for slug, run_id in runs.items():
