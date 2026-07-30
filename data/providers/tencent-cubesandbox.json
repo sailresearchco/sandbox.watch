@@ -57,6 +57,6 @@
   ],
   "summary": "CubeSandbox is an open-source (Apache-2.0) infrastructure layer for executing code on behalf of AI agents. Each sandbox runs inside a hardware-isolated KVM microVM built on RustVMM, with its own Linux kernel, and exposes create/pause/resume/snapshot/clone/rollback/kill lifecycle operations over an E2B-compatible REST API. It is deployed by developers self-hosting on bare metal, Kubernetes, or Tencent Cloud, and is used to safely run agent-generated or untrusted code.",
   "usage_billed": null,
-  "wake_on_request": false,
+  "wake_on_request": true,
   "website": "https://github.com/tencentcloud/CubeSandbox"
 }
