@@ -4,8 +4,8 @@
   "free_while_idle": true,
   "gpu": false,
   "isolation": "microVM with hardware-level (kernel-level) isolation",
-  "last_verified": "2026-07-30",
-  "max_runtime": "No fixed limit (starter quotas enforce TTLs; higher quota tiers unlock sandboxes with unlimited persistence)",
+  "last_verified": "2026-08-01",
+  "max_runtime": "Tier-dependent: up to 7 days (tier 0), up to 30 days (tier 1); unlimited in tier 2 and above",
   "memory_snapshots": true,
   "name": "Blaxel",
   "notes": "Blaxel offers $200 in free credits on signup and supports Zero Data Retention (ZDR) natively. The platform is CPU-only, with its own blog stating it is 'not suitable for GPU workloads.' Pricing is RAM-based rather than vCPU-based, which is unusual relative to most sandbox providers.",
@@ -41,6 +41,9 @@
     },
     {
       "url": "https://docs.blaxel.ai/Sandboxes/best-practices"
+    },
+    {
+      "url": "https://docs.blaxel.ai/Sandboxes/Expiration"
     },
     {
       "url": "https://docs.blaxel.ai/Sandboxes/Overview"
