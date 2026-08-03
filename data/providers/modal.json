@@ -4,7 +4,7 @@
   "free_while_idle": false,
   "gpu": true,
   "isolation": "gVisor container runtime (default); full Linux VM with VM Sandboxes (Beta)",
-  "last_verified": "2026-07-22",
+  "last_verified": "2026-08-03",
   "max_runtime": "24 h",
   "memory_snapshots": true,
   "name": "Modal Sandboxes",
