@@ -4,11 +4,11 @@
   "free_while_idle": true,
   "gpu": null,
   "isolation": "Full VMs (hypervisor technology not explicitly named in public docs)",
-  "last_verified": "2026-07-29",
+  "last_verified": "2026-08-03",
   "max_runtime": "No fixed limit documented; TTLs control stop/pause on expiry",
   "memory_snapshots": true,
   "name": "Morph Cloud",
-  "notes": "One MCU represents 1 vCPU-hour, 4 GB RAM-hour, 16 GB disk-hour, or 5 TB snapshot-hour.",
+  "notes": "Morph Cloud bills compute only while an instance is actively used; snapshot and storage charges may still apply while paused.",
   "price_headline": "$0.05 per MCU (Morph Compute Unit)",
   "pricing_model": "Hourly billing in MCUs (Morph Compute Units), allocated via monthly subscription tiers",
   "sdks": [
