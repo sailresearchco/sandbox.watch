@@ -4,11 +4,11 @@
   "free_while_idle": false,
   "gpu": true,
   "isolation": "Firecracker microVM",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-08-03",
   "max_runtime": "No fixed limit",
   "memory_snapshots": true,
   "name": "Fly Machines",
-  "notes": "Fly.io GPU Machines are scheduled to be fully deprecated on July 31, 2026.",
+  "notes": "Suspend snapshots can be discarded after deployments, host migration, corruption, or maintenance, causing a cold start; attached volumes persist. GPU-enabled Machines are deprecated and will be unavailable after August 1, 2026.",
   "price_headline": "From ~$0.0027/hr (shared-cpu-1x, 256 MB) with per-second metering",
   "pricing_model": "Per-second billing on running CPU/RAM preset; stopped machines billed for rootfs storage",
   "sdks": [],
@@ -34,6 +34,9 @@
     },
     {
       "url": "https://fly.io/blog/fly-machines/"
+    },
+    {
+      "url": "https://fly.io/docs/about/pricing/"
     },
     {
       "url": "https://fly.io/docs/reference/suspend-resume/"
