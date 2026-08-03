@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": false,
   "isolation": "microVM with hardware-level (kernel-level) isolation",
-  "last_verified": "2026-08-01",
+  "last_verified": "2026-08-03",
   "max_runtime": "Tier-dependent: up to 7 days (tier 0), up to 30 days (tier 1); unlimited in tier 2 and above",
   "memory_snapshots": true,
   "name": "Blaxel",
@@ -56,6 +56,9 @@
     },
     {
       "url": "https://blaxel.ai/blog/serverless-gpu-platforms-2026"
+    },
+    {
+      "url": "https://blaxel.ai/blog/how-to-fix-cold-start-latency-for-ai-agents"
     }
   ],
   "summary": "Blaxel is a managed cloud platform that provisions one microVM per AI agent, app, or job so that LLM-generated code can execute in isolation. Each sandbox auto-suspends when idle and resumes in ~25 ms with both filesystem and in-memory process state preserved. It is used to host coding-agent harnesses such as the Claude Agent SDK, OpenAI Codex CLI, Cline, and Cursor background agents.",
