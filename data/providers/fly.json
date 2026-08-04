@@ -1,10 +1,10 @@
 {
-  "cold_start": "~3\u20138 s from stopped; ~300 ms from suspended snapshot",
+  "cold_start": "Well under 1 s to start an existing or stopped Machine; a few hundred ms from suspend; ~2+ s for a cold start",
   "docker": true,
   "free_while_idle": false,
   "gpu": true,
   "isolation": "Firecracker microVM",
-  "last_verified": "2026-08-03",
+  "last_verified": "2026-08-04",
   "max_runtime": "No fixed limit",
   "memory_snapshots": true,
   "name": "Fly Machines",
@@ -37,6 +37,9 @@
     },
     {
       "url": "https://fly.io/docs/about/pricing/"
+    },
+    {
+      "url": "https://fly.io/docs/machines/overview/"
     },
     {
       "url": "https://fly.io/docs/reference/suspend-resume/"
