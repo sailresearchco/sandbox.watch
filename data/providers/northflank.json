@@ -1,10 +1,10 @@
 {
   "cold_start": "Under 1 second (microVMs boot in <1s; P99 allocate ~566ms, P99 readiness ~733ms per ComputeSDK 2026 benchmark)",
   "docker": true,
-  "free_while_idle": true,
+  "free_while_idle": false,
   "gpu": true,
   "isolation": "MicroVM via Firecracker, gVisor, Kata Containers, and Cloud Hypervisor",
-  "last_verified": "2026-07-30",
+  "last_verified": "2026-08-04",
   "max_runtime": "No fixed limit",
   "memory_snapshots": false,
   "name": "Northflank Sandboxes",
@@ -21,6 +21,9 @@
     },
     {
       "url": "https://northflank.com/docs/v1/application/sandboxes/sandboxes-on-northflank"
+    },
+    {
+      "url": "https://northflank.com/docs/v1/application/sandboxes/deploy-sandboxes-on-northflank"
     },
     {
       "url": "https://northflank.com/blog/remote-code-execution-sandbox"
