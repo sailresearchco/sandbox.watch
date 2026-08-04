@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": null,
   "isolation": "Linux container",
-  "last_verified": "2026-07-30",
+  "last_verified": "2026-08-04",
   "max_runtime": "24 h",
   "memory_snapshots": false,
   "name": "Ellipsis",
@@ -22,6 +22,9 @@
     },
     {
       "url": "https://www.ellipsis.dev/platform/sandbox"
+    },
+    {
+      "url": "https://www.ellipsis.dev/docs/cloud-agents/sandboxes"
     },
     {
       "url": "https://www.ellipsis.dev/docs/concepts/sandbox"
