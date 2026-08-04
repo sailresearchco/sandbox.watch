@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": false,
   "isolation": "KVM (QEMU/KVM) \u2014 hardware-level virtualization; each sandbox is a full Linux VM with its own kernel",
-  "last_verified": "2026-07-20",
+  "last_verified": "2026-08-04",
   "max_runtime": "No fixed limit (default 300s idle timeout auto-hibernates the VM)",
   "memory_snapshots": true,
   "name": "OpenComputer",
@@ -52,6 +52,15 @@
     },
     {
       "url": "https://raw.githubusercontent.com/diggerhq/opencomputer/main/README.md"
+    },
+    {
+      "url": "https://docs.opencomputer.dev/sandboxes/overview"
+    },
+    {
+      "url": "https://docs.opencomputer.dev/sandboxes/timeout"
+    },
+    {
+      "url": "https://opencomputer.dev/pricing"
     }
   ],
   "summary": "OpenComputer provides persistent, full Linux VMs in the cloud intended for AI agents and their harnesses to run untrusted or long-lived code. Each sandbox is a real KVM-backed virtual machine with its own filesystem, kernel, and network namespace; sandboxes hibernate when idle and wake on inbound traffic instead of being torn down. It ships TypeScript and Python SDKs plus a REST API and is primarily used by teams building agent platforms on top of frameworks like Claude Agent SDK.",
