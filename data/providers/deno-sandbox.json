@@ -4,11 +4,11 @@
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Linux microVM (official docs say 'individual Linux microVMs'; Firecracker is named by third-party blogs and HN commentary but not in the official Deno documentation)",
-  "last_verified": "2026-07-29",
+  "last_verified": "2026-08-04",
   "max_runtime": "30 min (per docs limits; extendable on demand via extendTimeout)",
   "memory_snapshots": false,
   "name": "Deno Sandbox",
-  "notes": "Snapshots capture only the filesystem (read-only images of bootable volumes) \u2014 RAM state is not preserved across pause/resume. No Docker, GPU, or automatic-wake-on-request capability is documented. Default concurrency during pre-release is 5 sandboxes per organization (raise via deploy@deno.com).",
+  "notes": "Sandboxes are ephemeral by default: files you upload exist only for the sandbox lifetime unless you mount a volume, and the VM is destroyed and the disk wiped when its last reference is dropped or sandbox.kill() is called. Public docs do not establish Docker, GPU, RAM-state snapshots, automatic wake-on-request, or zero-cost idle behavior. Default concurrency during pre-release is 5 sandboxes per organization.",
   "price_headline": "$0.05 per CPU-hour (40h/month included with Pro plan, then $0.05/h; Free plan 15h included)",
   "pricing_model": "Billed on CPU time (and memory time) consumed, not wall-clock; included in Deno Deploy plans",
   "sdks": [
@@ -32,6 +32,9 @@
     },
     {
       "url": "https://docs.deno.com/sandbox/getting_started/"
+    },
+    {
+      "url": "https://docs.deno.com/sandbox/security/"
     },
     {
       "url": "https://deno.com/blog/introducing-deno-sandbox"
