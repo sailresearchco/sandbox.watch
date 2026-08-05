@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Firecracker microVM",
-  "last_verified": "2026-07-30",
+  "last_verified": "2026-08-05",
   "max_runtime": "No fixed limit",
   "memory_snapshots": false,
   "name": "Fly.io Sprites",
