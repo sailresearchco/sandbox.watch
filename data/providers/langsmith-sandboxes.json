@@ -4,11 +4,11 @@
   "free_while_idle": false,
   "gpu": false,
   "isolation": "Hardware-virtualized microVM (kernel-isolated)",
-  "last_verified": "2026-08-03",
+  "last_verified": "2026-08-05",
   "max_runtime": "No documented hard limit. idle_ttl_seconds (default 600s) auto-stops after inactivity; delete_after_stop_seconds deletes after stop. Setting idle_ttl_seconds=0 disables the idle stop.",
   "memory_snapshots": false,
   "name": "LangSmith Sandboxes",
-  "notes": "Public documentation confirms Docker support and filesystem persistence across stop/start, but does not state a general cold-start time, GPU availability, or whether retained stopped-sandbox storage is free.",
+  "notes": "The 0.98s start figure is p50 with prewarming, and LangChain publishes no separate cold-start time. Snapshots preserve the persistent filesystem, while in-memory state does not carry over. A stopped sandbox keeps its filesystem clone until the deletion timer elapses, and LangSmith bills that storage per GiB-hour.",
   "price_headline": "$0.0576 per vCPU-hour",
   "pricing_model": "Per-second billing based on vCPU, memory, and storage usage",
   "sdks": [
