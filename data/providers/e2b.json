@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": false,
   "isolation": "Firecracker microVM",
-  "last_verified": "2026-08-04",
+  "last_verified": "2026-08-05",
   "max_runtime": "24 h on Pro plan; 1 h on Hobby (free) plan",
   "memory_snapshots": true,
   "name": "E2B",
