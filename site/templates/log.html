@@ -8,8 +8,10 @@
 </p>
 {% if monitors_last_ran %}
 <p class="verified">
-  Monitors last ran {{ monitors_last_ran }}. Quiet stretches mean the monitors
-  checked and nothing changed.
+  Monitors last ran
+  <time class="ts" datetime="{{ monitors_last_ran }}"
+    >{{ monitors_last_ran }}</time
+  >. Quiet stretches mean the monitors checked and nothing changed.
 </p>
 {% endif %} {% if not entries %}
 <p class="empty">
@@ -18,7 +20,7 @@
 {% endif %} {% for e in entries %}
 <article class="turn {{ e.status }}">
   <header>
-    <time>{{ e.ts }}</time>
+    <time class="ts" datetime="{{ e.ts }}">{{ e.ts }}</time>
     <span class="badge">{{ e.kind }}</span>
     <span class="badge status">{{ e.status }}</span>
   </header>
@@ -53,4 +55,20 @@
   </p>
   {% endif %}
 </article>
-{% endfor %} {% endblock %}
+{% endfor %}
+
+<script>
+  // Timestamps are stored and rendered in UTC. Rewrite them in the reader's
+  // own zone, keeping the exact original in the tooltip. Without JS the ISO
+  // text still shows, which is unlovely but unambiguous.
+  for (const el of document.querySelectorAll("time.ts[datetime]")) {
+    const when = new Date(el.getAttribute("datetime"));
+    if (isNaN(when)) continue;
+    el.title = el.textContent.trim();
+    el.textContent = when.toLocaleString(undefined, {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+  }
+</script>
+{% endblock %}

@@ -169,8 +169,10 @@ def _monitors_last_ran_display() -> str | None:
         ]
         latest = max(runs, default=None)
         if latest:
+            # Hand the page an ISO instant, not a formatted string: the
+            # template renders it in the reader's own zone.
             dt = datetime.datetime.fromisoformat(latest.replace("Z", "+00:00"))
-            display = dt.strftime("%Y-%m-%d %H:%M UTC")
+            display = dt.isoformat(timespec="seconds")
     except Exception:
         logger.info("could not refresh monitors-last-ran", exc_info=True)
     _monitors_last_ran["display"] = display
