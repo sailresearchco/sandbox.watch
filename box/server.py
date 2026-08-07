@@ -21,7 +21,7 @@ import time
 import uuid
 
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, JSONResponse, Response
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from markupsafe import Markup, escape
@@ -77,6 +77,18 @@ _turn_lock = threading.Lock()
 def _touch_activity() -> None:
     global _last_activity
     _last_activity = time.monotonic()
+
+
+@app.middleware("http")
+async def canonical_host(request: Request, call_next):
+    """Send www to the bare domain, so the site has one canonical URL.
+
+    Done here rather than at a CDN so nothing sits in front of the box."""
+    host = (request.headers.get("host") or "").split(":")[0]
+    if host.startswith("www.") and len(host) > 4:
+        target = request.url.replace(netloc=host[4:])
+        return RedirectResponse(str(target), status_code=308)
+    return await call_next(request)
 
 
 @app.middleware("http")
