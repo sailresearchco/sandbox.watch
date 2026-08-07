@@ -86,11 +86,15 @@ async def canonical_host(request: Request, call_next):
     Done here rather than at a CDN so nothing sits in front of the box."""
     host = (request.headers.get("host") or "").split(":")[0]
     if host.startswith("www.") and len(host) > 4:
-        # TLS terminates at the edge, so the request arrives as plain http.
-        # Redirect straight to https, or the visitor pays a second hop
-        # through the http-to-https redirect.
-        scheme = request.headers.get("x-forwarded-proto") or request.url.scheme
-        target = request.url.replace(scheme=scheme, netloc=host[4:])
+        # TLS terminates at the edge and the request reaches us as plain
+        # http, with no forwarded-proto header to consult, so a naive
+        # redirect would send the visitor to http and cost a second hop
+        # through the http-to-https redirect. Anything reached by hostname
+        # is served over TLS; only local development is not.
+        bare = host[4:]
+        local = bare in ("localhost", "127.0.0.1", "0.0.0.0", "testserver")
+        scheme = request.url.scheme if local else "https"
+        target = request.url.replace(scheme=scheme, netloc=bare)
         return RedirectResponse(str(target), status_code=308)
     return await call_next(request)
 
