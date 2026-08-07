@@ -4,7 +4,7 @@
   "free_while_idle": null,
   "gpu": false,
   "isolation": "Firecracker microVM",
-  "last_verified": "2026-07-28",
+  "last_verified": "2026-08-07",
   "max_runtime": "24 h on Pro tier; no documented hard cap for Scale/Enterprise",
   "memory_snapshots": true,
   "name": "CodeSandbox SDK",
