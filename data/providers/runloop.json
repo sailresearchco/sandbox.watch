@@ -4,7 +4,7 @@
   "free_while_idle": true,
   "gpu": true,
   "isolation": "Linux microVM with hardware isolation (two-layer VM + container)",
-  "last_verified": "2026-07-31",
+  "last_verified": "2026-08-07",
   "max_runtime": "Default 1 h, configurable",
   "memory_snapshots": false,
   "name": "Runloop",
