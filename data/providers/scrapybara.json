@@ -4,11 +4,11 @@
   "free_while_idle": null,
   "gpu": null,
   "isolation": "Full Linux (Ubuntu 22.04) and Windows 11 virtual machines; open-source computer service is packaged as a Docker image with xdotool/noVNC",
-  "last_verified": "2026-07-28",
+  "last_verified": "2026-08-08",
   "max_runtime": "Configurable via timeout_hours parameter; default 1 hour, no documented upper limit",
   "memory_snapshots": null,
   "name": "Scrapybara",
-  "notes": "Windows instances are in early access and billed at 2x compute cost. Default instance timeout is 1 hour (auto-terminate); longer sessions require configuring a higher timeout_hours value.",
+  "notes": "Ubuntu is documented as having fast startup and 1x compute cost; Windows has slow startup and 2x compute cost. The API exposes a `warm_pool` status, but its behavior and billing implications are not publicly explained. No standalone per-instance compute rate was found in the reviewed public sources.",
   "price_headline": "$29/month (Basic) or $99/month (Pro)",
   "pricing_model": "Monthly subscription tiers with included compute hours; pay-per-use agent credits beyond included quota",
   "sdks": [
@@ -52,6 +52,9 @@
     },
     {
       "url": "https://docs.scrapybara.com/cursor-rules"
+    },
+    {
+      "url": "https://docs.scrapybara.com/api-reference/start.md"
     }
   ],
   "summary": "Scrapybara is a cloud service that hosts remote desktop instances (Ubuntu 22.04, Windows 11, and a lightweight Chromium browser) intended for AI agents to control. Developers provision these VMs via a Python or TypeScript SDK (or REST API) and drive them through mouse, keyboard, bash, and filesystem actions. Primary users are teams building autonomous computer-use agents, including integrations with OpenAI CUA and Claude Computer Use.",
